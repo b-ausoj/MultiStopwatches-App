@@ -7,6 +7,7 @@ import 'package:flutter_stopwatch_app_v1/enums/sort_direction.dart';
 import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
 import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
 import 'package:flutter_stopwatch_app_v1/models/stopwatch_model.dart';
+import 'package:flutter_stopwatch_app_v1/services/shared_preferences_service.dart';
 import 'package:flutter_stopwatch_app_v1/utils/badge_checking.dart';
 import 'package:flutter_stopwatch_app_v1/utils/snackbar_utils.dart';
 import 'package:flutter_stopwatch_app_v1/utils/sorting.dart';
@@ -20,7 +21,8 @@ class StopwatchesPageController extends BadgeController {
   final SetupModel setupModel;
   final SettingsModel settings;
 
-  StopwatchesPageController(this.allSetups, this.context, this.setupModel, this.settings) {
+  StopwatchesPageController(
+      this.allSetups, this.context, this.setupModel, this.settings) {
     for (var element in setupModel.stopwatches) {
       _stopwatchCards.add(StopwatchCard(
         element,
@@ -51,7 +53,8 @@ class StopwatchesPageController extends BadgeController {
   }
 
   void changedState() {
-    sortAndListCards(_stopwatchCards, setupModel.criterion, setupModel.direction, settings);
+    sortAndListCards(
+        _stopwatchCards, setupModel.criterion, setupModel.direction, settings);
     refreshBadgeState();
   }
 
@@ -132,6 +135,15 @@ class StopwatchesPageController extends BadgeController {
                 element.stopwatchModel.restore();
               }
             }));
+  }
+
+  void saveAllStopwatches() {
+    for (StopwatchCard element in stopwatchCards) {
+      if (element.stopwatchModel.state == StopwatchState.stopped) {
+        saveStopwatch(element.stopwatchModel, name);
+      }
+    }
+    changedState();
   }
 
   void restoreAllStopwatches(List<String> oldStopwatchesPage) {

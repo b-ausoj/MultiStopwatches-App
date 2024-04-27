@@ -7,10 +7,7 @@ import 'package:flutter_stopwatch_app_v1/enums/sort_direction.dart';
 import 'package:flutter_stopwatch_app_v1/enums/stopwatches_page_menu_item.dart';
 import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
 import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/stopwatch_model.dart';
-import 'package:flutter_stopwatch_app_v1/services/shared_preferences_service.dart';
 import 'package:flutter_stopwatch_app_v1/widgets/cards/add_stopwatch_card.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/cards/stopwatch_card.dart';
 import 'package:flutter_stopwatch_app_v1/widgets/dialogs/delete_setup_dialog.dart';
 import 'package:flutter_stopwatch_app_v1/widgets/dialogs/rename_dialog.dart';
 import 'package:flutter_stopwatch_app_v1/widgets/dialogs/sort_dialog.dart';
@@ -55,16 +52,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
                   _showDeleteSetupDialog();
                   break;
                 case StopwatchesPageMenuItem.saveAll:
-                // TODO: move to controller
-                  for (StopwatchCard element
-                      in _stopwatchesPageController.stopwatchCards) {
-                    if (element.stopwatchModel.state ==
-                        StopwatchState.stopped) {
-                      saveStopwatch(element.stopwatchModel,
-                          _stopwatchesPageController.name);
-                    }
-                  }
-                  _stopwatchesPageController.changedState();
+                  _stopwatchesPageController.saveAllStopwatches();
                   break;
                 case StopwatchesPageMenuItem.resetAll:
                   _stopwatchesPageController.resetAllStopwatches();
@@ -80,8 +68,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
           )
         ],
       ),
-      drawer: NavDrawer(widget.allSetups, widget.settings, _stopwatchesPageController,
-          _stopwatchesPageController.setupModel),
+      drawer: NavDrawer(widget.allSetups, widget.settings,
+          _stopwatchesPageController, _stopwatchesPageController.setupModel),
       floatingActionButton: _stopwatchesPageController.isFabActive()
           ? FloatingActionButton.extended(
               foregroundColor: Colors.white,
@@ -97,8 +85,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ReorderableListView(
-          buildDefaultDragHandles:
-              _stopwatchesPageController.criterion == SortCriterion.customReordable,
+          buildDefaultDragHandles: _stopwatchesPageController.criterion ==
+              SortCriterion.customReordable,
           footer: AddStopwatchCard(_stopwatchesPageController.addStopwatch),
           children: _stopwatchesPageController.stopwatchCards,
           onReorder: (int oldIndex, int newIndex) {
@@ -121,11 +109,13 @@ class _StopwatchesPageState extends State<StopwatchesPage>
   @override
   void initState() {
     super.initState();
-    _stopwatchesPageController =
-        StopwatchesPageController(widget.allSetups, context, _setupModel, widget.settings);
+    _stopwatchesPageController = StopwatchesPageController(
+        widget.allSetups, context, _setupModel, widget.settings);
     _ticker = createTicker((elapsed) {
       setState(() {});
-      if (!widget.settings.seperateRunningStopped) _stopwatchesPageController.changedState();
+      if (!widget.settings.seperateRunningStopped) {
+        _stopwatchesPageController.changedState();
+      }
     });
     _ticker.start();
     _stopwatchesPageController.refreshBadgeState();
