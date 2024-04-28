@@ -4,10 +4,21 @@ import 'package:flutter_stopwatch_app_v1/pages/tnc_page.dart';
 import 'package:flutter_stopwatch_app_v1/services/launch_url_service.dart';
 import 'package:flutter_stopwatch_app_v1/utils/snackbar_utils.dart';
 import 'package:flutter_stopwatch_app_v1/widgets/icons/back_icon.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class AboutPage extends StatelessWidget {
   final bool isBadgeVisible;
   const AboutPage(this.isBadgeVisible, {super.key});
+
+  Future<void> getVersionNumber(BuildContext context) async {
+    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    final String appVersion = packageInfo.version;
+    final String appBuildNumber = packageInfo.buildNumber;
+    if (context.mounted) {
+      showShortSnackBar(
+          context, "Your app version is $appVersion+$appBuildNumber");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +31,15 @@ class AboutPage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 16.0),
-            Image.asset(
-              "assets/images/rect39.png",
-              scale: 2,
-            ),
+            InkWell(
+                borderRadius: BorderRadius.circular(12.0),
+                onTap: () => getVersionNumber(context),
+                splashColor: Colors.white10,
+                child: Ink.image(
+                    fit: BoxFit.cover,
+                    width: 100,
+                    height: 100,
+                    image: const AssetImage("assets/images/rect39.png"))),
             const SizedBox(height: 16.0),
             const Padding(
               padding: EdgeInsets.all(16.0),
