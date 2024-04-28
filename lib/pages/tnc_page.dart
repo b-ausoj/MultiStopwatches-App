@@ -45,7 +45,7 @@ class TnCPage extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, height: 2),
               ),
               Text(
-                  "Since MultiStopwatches does not collect or store any personal data, the app’s functionality is outlined in our Privacy Policy, available [insert location here]."),
+                  "Since MultiStopwatches does not collect or store any personal data, the app's functionality is outlined in our Privacy Policy."),
               Text(
                 "Limitation of Liability",
                 style: TextStyle(fontWeight: FontWeight.bold, height: 2),
@@ -61,12 +61,6 @@ class TnCPage extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, height: 2)),
               Text(
                   "We reserve the right to modify these terms at any time. Thus, you should check the terms regularly. Your continued use of the app after any such changes constitutes your acceptance of the new terms."),
-              Text(
-                "Applicable Law",
-                style: TextStyle(fontWeight: FontWeight.bold, height: 2),
-              ),
-              Text(
-                  "These terms will be governed by and interpreted in accordance with the laws of Switzerland, and you submit to the non-exclusive jurisdiction of the state and federal courts located in Switzerland for the resolution of any disputes."),
               Text(
                 "Contact Us",
                 style: TextStyle(fontWeight: FontWeight.bold, height: 2),

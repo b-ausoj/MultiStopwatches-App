@@ -32,7 +32,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   const Expanded(
                       child: Text(
-                    "Do you want to have the running and stopped stopwatches seperated in sorting by longest (lap) time?",
+                    "In sort criterion \"by longest (lap) time\", do you want to have the stopped stopwatches at the bottom?",
                     style: TextStyle(fontSize: 16),
                   )),
                   const SizedBox(

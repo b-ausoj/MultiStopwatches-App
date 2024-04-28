@@ -21,6 +21,9 @@ class RecordingsSetPopupMenuButton extends StatelessWidget {
                         width: 12,
                       ),
                       Text(menuItem.label),
+                      const SizedBox(
+                        width: 12,
+                      ),
                     ],
                   )))
           .toList(),
