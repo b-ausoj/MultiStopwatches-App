@@ -18,24 +18,22 @@ class AboutPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 16.0),
             Image.asset(
               "assets/images/rect39.png",
               scale: 2,
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 16.0),
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(16.0),
               child: Text(
-                "Hello, my name is Josua, and I'm a computer science student. In my free time, I work as a triathlon coach, and I found the need to simultaneously record the times of my athletes during track intervals or swim races. That's why I developed this app. \n\n If you have any feedback, suggestions for improvement, or encounter any issues, please don't hesitate to let me know! \n\n Your input is greatly appreciated.",
+                "Hello, my name is Josua, and I'm a computer science student. In my free time, I work as a triathlon coach, and I found the need to simultaneously record the times of my athletes during track intervals or swim races. That's why I developed this app. \n\nIf you have any feedback, suggestions for improvement, or encounter any issues, please don't hesitate to let me know! \n\nYour input is greatly appreciated.",
                 textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(height: 20.0),
             const SelectableText("josua.bu@gmail.com"),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 16.0),
             TextButton.icon(
                 onPressed: () => launchMailApp(),
                 icon: const Icon(Icons.rate_review_outlined),
@@ -44,7 +42,7 @@ class AboutPage extends StatelessWidget {
                     foregroundColor: Colors.black,
                     backgroundColor: const Color(0xFFEFEFEF),
                     padding: const EdgeInsets.symmetric(horizontal: 16.0))),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 16.0),
             TextButton.icon(
                 onPressed: () => showShortSnackBar(
                     context, "Please add the app to the store first!"),

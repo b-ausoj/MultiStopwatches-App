@@ -4,7 +4,7 @@ final Uri contactUri = Uri(
   scheme: "mailto",
   path: "josua.bu@gmail.com",
   query: encodeQueryParameters(<String, String>{
-    "subject": "Stopwatch App Feedback",
+    "subject": "[Feedback] MultiStopwatches App",
   }),
 );
 
