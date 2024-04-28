@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/pages/agb_page.dart';
+import 'package:flutter_stopwatch_app_v1/pages/pp_page.dart';
+import 'package:flutter_stopwatch_app_v1/pages/tnc_page.dart';
 import 'package:flutter_stopwatch_app_v1/services/launch_url_service.dart';
 import 'package:flutter_stopwatch_app_v1/utils/snackbar_utils.dart';
 import 'package:flutter_stopwatch_app_v1/widgets/icons/back_icon.dart';
@@ -19,8 +20,12 @@ class AboutPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image.asset("assets/images/rect39.png"),
-            const Text("Version 1.0"),
+            const SizedBox(height: 20.0),
+            Image.asset(
+              "assets/images/rect39.png",
+              scale: 2,
+            ),
+            const SizedBox(height: 20.0),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
@@ -28,14 +33,18 @@ class AboutPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+            const SizedBox(height: 20.0),
             const SelectableText("josua.bu@gmail.com"),
+            const SizedBox(height: 20.0),
             TextButton.icon(
                 onPressed: () => launchMailApp(),
                 icon: const Icon(Icons.rate_review_outlined),
                 label: const Text("Contact me"),
                 style: TextButton.styleFrom(
                     foregroundColor: Colors.black,
-                    backgroundColor: const Color(0xFFEFEFEF))),
+                    backgroundColor: const Color(0xFFEFEFEF),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0))),
+            const SizedBox(height: 20.0),
             TextButton.icon(
                 onPressed: () => showShortSnackBar(
                     context, "Please add the app to the store first!"),
@@ -43,7 +52,9 @@ class AboutPage extends StatelessWidget {
                 label: const Text("Rate this app"),
                 style: TextButton.styleFrom(
                     foregroundColor: Colors.black,
-                    backgroundColor: const Color(0xFFEFEFEF))),
+                    backgroundColor: const Color(0xFFEFEFEF),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0))),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -51,7 +62,7 @@ class AboutPage extends StatelessWidget {
                   child: const Text("Terms & conditions"),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const AGBPage()));
+                        builder: (context) => const TnCPage()));
                   },
                 ),
                 const Text("|"),
@@ -59,11 +70,12 @@ class AboutPage extends StatelessWidget {
                   child: const Text("Privacy policy"),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const AGBPage()));
+                        builder: (context) => const PPPage()));
                   },
                 ),
               ],
             ),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),
