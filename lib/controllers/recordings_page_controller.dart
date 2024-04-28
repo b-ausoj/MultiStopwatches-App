@@ -35,6 +35,7 @@ class RecordingsPageController extends BadgeController {
       } else {
         var timeStamp = last.copyWith();
         recordingsList.add(Card(
+          clipBehavior: Clip.antiAlias,
           color: const Color(0xFFEFEFEF),
           elevation: 0,
           child: ExpansionTile(
