@@ -55,6 +55,7 @@ class _StartPageState extends State<StartPage> {
                 shrinkWrap: true,
                 children: [
                   ..._startController.allSetups.map((SetupModel setup) => Card(
+                        clipBehavior: Clip.antiAlias,
                         color: const Color(0xFFEFEFEF),
                         elevation: 0,
                         child: ListTile(
@@ -96,6 +97,7 @@ class _StartPageState extends State<StartPage> {
                     color: const Color(0xFFEFEFEF),
                     elevation: 0,
                     child: InkWell(
+                        borderRadius: BorderRadius.circular(12.0),
                         onTap: () {
                           SetupModel newSetup = SetupModel(
                               "Setup ${_startController.allSetups.length + 1}",
