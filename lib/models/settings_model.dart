@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter_stopwatch_app_v1/enums/csv_delimiter.dart';
-import 'package:flutter_stopwatch_app_v1/enums/sort_criterion.dart';
-import 'package:flutter_stopwatch_app_v1/enums/sort_direction.dart';
-import 'package:flutter_stopwatch_app_v1/enums/time_format.dart';
+import 'package:multistopwatches/enums/csv_delimiter.dart';
+import 'package:multistopwatches/enums/sort_criterion.dart';
+import 'package:multistopwatches/enums/sort_direction.dart';
+import 'package:multistopwatches/enums/time_format.dart';
 
 class SettingsModel {
   SortCriterion defaultSortCriterion = SortCriterion.creationDate;

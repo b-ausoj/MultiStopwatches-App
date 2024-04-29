@@ -1,4 +1,4 @@
-package com.example.flutter_stopwatch_app_v1
+package b.josua.multistopwatches
 
 import io.flutter.embedding.android.FlutterActivity
 

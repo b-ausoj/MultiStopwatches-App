@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_stopwatch_app_v1/models/lap_model.dart';
+import 'package:multistopwatches/models/lap_model.dart';
 
 class StopwatchModel {
   static int nextId = 1;

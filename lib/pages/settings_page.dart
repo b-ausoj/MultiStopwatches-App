@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/enums/csv_delimiter.dart';
-import 'package:flutter_stopwatch_app_v1/enums/sort_criterion.dart';
-import 'package:flutter_stopwatch_app_v1/enums/sort_direction.dart';
-import 'package:flutter_stopwatch_app_v1/enums/time_format.dart';
-import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
-import 'package:flutter_stopwatch_app_v1/services/shared_preferences_service.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/icons/back_icon.dart';
+import 'package:multistopwatches/enums/csv_delimiter.dart';
+import 'package:multistopwatches/enums/sort_criterion.dart';
+import 'package:multistopwatches/enums/sort_direction.dart';
+import 'package:multistopwatches/enums/time_format.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/widgets/icons/back_icon.dart';
 
 class SettingsPage extends StatefulWidget {
   final bool isBadgeVisible;

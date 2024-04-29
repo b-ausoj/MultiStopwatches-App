@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/controllers/badge_controller.dart';
-import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/pages/about_page.dart';
-import 'package:flutter_stopwatch_app_v1/pages/recordings_page.dart';
-import 'package:flutter_stopwatch_app_v1/pages/settings_page.dart';
-import 'package:flutter_stopwatch_app_v1/pages/stopwatches_page.dart';
-import 'package:flutter_stopwatch_app_v1/utils/badge_checking.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/text_with_badge/nav_text_with_badge.dart';
+import 'package:multistopwatches/controllers/badge_controller.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/pages/about_page.dart';
+import 'package:multistopwatches/pages/recordings_page.dart';
+import 'package:multistopwatches/pages/settings_page.dart';
+import 'package:multistopwatches/pages/stopwatches_page.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
+import 'package:multistopwatches/widgets/text_with_badge/nav_text_with_badge.dart';
 
 class NavDrawer extends StatefulWidget {
   final List<SetupModel> allSetups;
@@ -84,8 +84,7 @@ class _NavDrawerState extends State<NavDrawer> {
               "Setup ${widget.allSetups.length + 1}",
               0,
               widget.settings.defaultSortCriterion,
-              widget.settings.defaultSortDirection,
-              []);
+              widget.settings.defaultSortDirection, []);
           widget.allSetups.add(newSetup);
           Navigator.of(context)
               .push(MaterialPageRoute(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/controllers/badge_controller.dart';
+import 'package:multistopwatches/controllers/badge_controller.dart';
 
 class NavIcon extends StatefulWidget {
   final BadgeController stopwatchesPageController;

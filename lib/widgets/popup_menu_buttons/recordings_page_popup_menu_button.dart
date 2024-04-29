@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/enums/recordings_page_menu_item.dart';
+import 'package:multistopwatches/enums/recordings_page_menu_item.dart';
 
 class RecordingsPagePopupMenuButton extends StatelessWidget {
   final Function(RecordingsPageMenuItem) onSelected;

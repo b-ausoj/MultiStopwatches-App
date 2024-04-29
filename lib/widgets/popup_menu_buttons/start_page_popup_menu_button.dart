@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/enums/start_page_card_menu_item.dart';
+import 'package:multistopwatches/enums/start_page_card_menu_item.dart';
 
 class StartPagePopupMenuButton extends StatelessWidget {
   final Function(StartPageCardMenuItem) onSelected;

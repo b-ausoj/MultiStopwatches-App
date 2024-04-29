@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_stopwatch_app_v1/enums/sort_criterion.dart';
-import 'package:flutter_stopwatch_app_v1/enums/sort_direction.dart';
-import 'package:flutter_stopwatch_app_v1/models/stopwatch_model.dart';
+import 'package:multistopwatches/enums/sort_criterion.dart';
+import 'package:multistopwatches/enums/sort_direction.dart';
+import 'package:multistopwatches/models/stopwatch_model.dart';
 
 // idea is, that this is the model that can be saved and loaded from the shared preferences
 // it contains the setup of the stopwatches (previously screen)
@@ -22,7 +22,8 @@ class SetupModel {
 
   List<StopwatchModel> stopwatches;
 
-  SetupModel(this.name, this.id, this.criterion, this.direction, this.stopwatches);
+  SetupModel(
+      this.name, this.id, this.criterion, this.direction, this.stopwatches);
 
   // TODO: Should write tests for that
   factory SetupModel.fromJson(Map<String, dynamic> json) {

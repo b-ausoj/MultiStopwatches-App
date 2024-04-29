@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/controllers/recordings_page_controller.dart';
-import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/services/shared_preferences_service.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/icons/back_icon.dart';
+import 'package:multistopwatches/controllers/recordings_page_controller.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/widgets/icons/back_icon.dart';
 
 class RecordingsPage extends StatefulWidget {
   final List<SetupModel> allSetups;

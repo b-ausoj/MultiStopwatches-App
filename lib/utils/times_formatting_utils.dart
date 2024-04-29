@@ -1,5 +1,5 @@
-import 'package:flutter_stopwatch_app_v1/enums/time_format.dart';
-import 'package:flutter_stopwatch_app_v1/models/lap_model.dart';
+import 'package:multistopwatches/enums/time_format.dart';
+import 'package:multistopwatches/models/lap_model.dart';
 
 String dateTimeToString(DateTime dateTime) {
   String d = dateTime.day < 10 ? "0${dateTime.day}" : "${dateTime.day}";

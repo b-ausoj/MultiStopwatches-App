@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/controllers/badge_controller.dart';
-import 'package:flutter_stopwatch_app_v1/enums/sort_criterion.dart';
-import 'package:flutter_stopwatch_app_v1/enums/sort_direction.dart';
-import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/stopwatch_model.dart';
-import 'package:flutter_stopwatch_app_v1/services/shared_preferences_service.dart';
-import 'package:flutter_stopwatch_app_v1/utils/badge_checking.dart';
-import 'package:flutter_stopwatch_app_v1/utils/snackbar_utils.dart';
-import 'package:flutter_stopwatch_app_v1/utils/sorting.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/cards/stopwatch_card.dart';
+import 'package:multistopwatches/controllers/badge_controller.dart';
+import 'package:multistopwatches/enums/sort_criterion.dart';
+import 'package:multistopwatches/enums/sort_direction.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/stopwatch_model.dart';
+import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
+import 'package:multistopwatches/utils/snackbar_utils.dart';
+import 'package:multistopwatches/utils/sorting.dart';
+import 'package:multistopwatches/widgets/cards/stopwatch_card.dart';
 
 class StopwatchesPageController extends BadgeController {
   BuildContext context;

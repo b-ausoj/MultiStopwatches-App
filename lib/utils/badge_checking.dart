@@ -5,8 +5,8 @@
 
 import 'dart:convert';
 
-import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/stopwatch_model.dart';
+import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/stopwatch_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 List<SetupModel> getAllRunningConfigurations(List<SetupModel> allSetups) {

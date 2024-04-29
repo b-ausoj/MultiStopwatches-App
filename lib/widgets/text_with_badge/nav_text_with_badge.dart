@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/utils/badge_checking.dart';
+import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
 
 // TODO: This class is very ugly and its constructor, please revise it
 class NavTextWithBadge extends StatefulWidget {
@@ -28,7 +28,9 @@ class _NavTextWithBadgeState extends State<NavTextWithBadge> {
       // TODO: Attention, this could throw an exception
       badgeVisible = isTextBadgeRequired(widget.allSetups!, widget.setup!);
     }
-    getUnseenRecordingsCount().then((value) => setState(() =>  badgeLabel = value,));
+    getUnseenRecordingsCount().then((value) => setState(
+          () => badgeLabel = value,
+        ));
   }
 
   @override

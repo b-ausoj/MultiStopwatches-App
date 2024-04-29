@@ -1,4 +1,4 @@
-# flutter_stopwatch_app_v1
+# multistopwatches
 
 A new Flutter project.
 

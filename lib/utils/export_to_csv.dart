@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:csv/csv.dart';
-import 'package:flutter_stopwatch_app_v1/enums/time_format.dart';
-import 'package:flutter_stopwatch_app_v1/models/recording_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
-import 'package:flutter_stopwatch_app_v1/utils/times_formatting_utils.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/cards/recording_card.dart';
+import 'package:multistopwatches/enums/time_format.dart';
+import 'package:multistopwatches/models/recording_model.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/utils/times_formatting_utils.dart';
+import 'package:multistopwatches/widgets/cards/recording_card.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 

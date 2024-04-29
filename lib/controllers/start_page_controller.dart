@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/controllers/badge_controller.dart';
-import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/services/shared_preferences_service.dart';
-import 'package:flutter_stopwatch_app_v1/utils/badge_checking.dart';
+import 'package:multistopwatches/controllers/badge_controller.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
 
 class StartController extends BadgeController {
   final String sharedPreferencesKey;

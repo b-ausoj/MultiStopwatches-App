@@ -1,17 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/controllers/start_page_controller.dart';
-import 'package:flutter_stopwatch_app_v1/enums/start_page_card_menu_item.dart';
-import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/pages/stopwatches_page.dart';
-import 'package:flutter_stopwatch_app_v1/services/shared_preferences_service.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/dialogs/delete_setup_dialog.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/dialogs/rename_dialog.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/icons/navigation_icon.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/navigation_drawer.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/popup_menu_buttons/start_page_popup_menu_button.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/text_with_badge/start_text_with_badge.dart';
+import 'package:multistopwatches/controllers/start_page_controller.dart';
+import 'package:multistopwatches/enums/start_page_card_menu_item.dart';
+import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/pages/stopwatches_page.dart';
+import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/widgets/dialogs/delete_setup_dialog.dart';
+import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
+import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
+import 'package:multistopwatches/widgets/navigation_drawer.dart';
+import 'package:multistopwatches/widgets/popup_menu_buttons/start_page_popup_menu_button.dart';
+import 'package:multistopwatches/widgets/text_with_badge/start_text_with_badge.dart';
 
 class StartPage extends StatefulWidget {
   final String sharedPreferencesKey;

@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stopwatch_app_v1/controllers/recordings_page_controller.dart';
-import 'package:flutter_stopwatch_app_v1/controllers/start_page_controller.dart';
-import 'package:flutter_stopwatch_app_v1/models/settings_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/setup_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/lap_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/recording_model.dart';
-import 'package:flutter_stopwatch_app_v1/models/stopwatch_model.dart';
-import 'package:flutter_stopwatch_app_v1/widgets/cards/recording_card.dart';
+import 'package:multistopwatches/controllers/recordings_page_controller.dart';
+import 'package:multistopwatches/controllers/start_page_controller.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/lap_model.dart';
+import 'package:multistopwatches/models/recording_model.dart';
+import 'package:multistopwatches/models/stopwatch_model.dart';
+import 'package:multistopwatches/widgets/cards/recording_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // This function is only executed once per app lifecycle namely for the initialization
@@ -91,7 +91,7 @@ Future<void> resetSharedPreferences() async {
   prefs.clear();
 }
 
-// This function turns the given stopwatchModel into a recording and then saves 
+// This function turns the given stopwatchModel into a recording and then saves
 // the recording into shared preferences recordings list
 Future<void> saveStopwatch(
     StopwatchModel stopwatchModel, String setupName) async {
