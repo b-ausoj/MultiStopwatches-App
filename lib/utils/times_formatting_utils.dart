@@ -12,6 +12,17 @@ String dateTimeToString(DateTime dateTime) {
   return "$h:$min $d.$m.$y";
 }
 
+String dateTimeForExport(DateTime dateTime) {
+  String d = dateTime.day < 10 ? "0${dateTime.day}" : "${dateTime.day}";
+  String m = dateTime.month < 10 ? "0${dateTime.month}" : "${dateTime.month}";
+  String y = "${dateTime.year}";
+  String h = dateTime.hour < 10 ? "0${dateTime.hour}" : "${dateTime.hour}";
+  String min =
+      dateTime.minute < 10 ? "0${dateTime.minute}" : "${dateTime.minute}";
+  //String sec = dateTime.second < 10 ? "0${dateTime.second}" : "${dateTime.second}";
+  return "$y$m${d}_$h$min";
+}
+
 String durationToString(Duration duration) {
   int hours = duration.inHours;
   int minutes = duration.inMinutes % 60;
