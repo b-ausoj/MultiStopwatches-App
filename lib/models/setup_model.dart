@@ -9,8 +9,7 @@ import 'package:multistopwatches/models/stopwatch_model.dart';
 // so the stopwatches themself are here but the cards are in the stopwatches_page_controller
 // so seperate the data from the view (i.e. the controller takes the data, puts it in the cards and then displays it on the screen)
 // the controller only has the cards and the model
-// every screen has an unique id and order and direction
-// TODO: rename order to criterion
+// every screen has an unique id and criterion and direction
 class SetupModel {
   static int nextId = 1;
   final int id; // not needed

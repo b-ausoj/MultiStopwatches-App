@@ -37,7 +37,7 @@ class _StartPageState extends State<StartPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("MultiStopwatches by Josua"),
+        title: const Text("MultiStopwatches"),
         leading: NavIcon(_startController),
       ),
       drawer: NavDrawer(_startController.allSetups, _startController.settings,

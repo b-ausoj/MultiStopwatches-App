@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     //resetSharedPreferences();
     //logAllSharedPreferences();
     return MaterialApp(
-      title: "MultiStopwatch by Josua",
+      title: "MultiStopwatches",
       theme: ThemeData(
         useMaterial3: true,
         switchTheme: SwitchThemeData(
