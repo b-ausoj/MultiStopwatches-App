@@ -39,7 +39,7 @@ class _NavDrawerState extends State<NavDrawer> {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 16, 16, 20),
             child: Text(
-              "MultiStopwatches by Josua",
+              "MultiStopwatches",
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.titleLarge,
             ),
