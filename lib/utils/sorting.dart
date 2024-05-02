@@ -8,26 +8,28 @@ buildSort(SortCriterion criterion, SortDirection direction,
     ((StopwatchCard a, StopwatchCard b) {
       int sign = direction == SortDirection.ascending ? 1 : -1;
       switch (criterion) {
-        case SortCriterion.creationDate: // TODO: delete this case
-          return 0;
         case SortCriterion.name:
           return sign * a.stopwatchModel.name.compareTo(b.stopwatchModel.name);
         case SortCriterion.longestTime:
           if (settings.seperateRunningStopped) {
-            if (a.stopwatchModel.isRunning && !b.stopwatchModel.isRunning)
+            if (a.stopwatchModel.isRunning && !b.stopwatchModel.isRunning) {
               return -1;
-            if (!a.stopwatchModel.isRunning && b.stopwatchModel.isRunning)
+            }
+            if (!a.stopwatchModel.isRunning && b.stopwatchModel.isRunning) {
               return 1;
+            }
           }
           return sign *
               a.stopwatchModel.elapsedTimeRounded
                   .compareTo(b.stopwatchModel.elapsedTimeRounded);
         case SortCriterion.longestLapTime:
           if (settings.seperateRunningStopped) {
-            if (a.stopwatchModel.isRunning && !b.stopwatchModel.isRunning)
+            if (a.stopwatchModel.isRunning && !b.stopwatchModel.isRunning) {
               return -1;
-            if (!a.stopwatchModel.isRunning && b.stopwatchModel.isRunning)
+            }
+            if (!a.stopwatchModel.isRunning && b.stopwatchModel.isRunning) {
               return 1;
+            }
           }
           return sign *
               a.stopwatchModel.elapsedLapTimeRounded

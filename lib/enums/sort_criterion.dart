@@ -1,5 +1,4 @@
 enum SortCriterion {
-  creationDate("Creation date"),
   name("Name"),
   longestTime("Longest Time"),
   longestLapTime("Longest Lap Time"),

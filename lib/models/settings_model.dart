@@ -6,7 +6,7 @@ import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/enums/time_format.dart';
 
 class SettingsModel {
-  SortCriterion defaultSortCriterion = SortCriterion.creationDate;
+  SortCriterion defaultSortCriterion = SortCriterion.customReordable;
   SortDirection defaultSortDirection = SortDirection.ascending;
   bool seperateRunningStopped = true;
   CSVDelimiter csvDelimiter = CSVDelimiter.semicolon;
