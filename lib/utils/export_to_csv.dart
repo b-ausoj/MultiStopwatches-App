@@ -12,8 +12,10 @@ import 'package:share_plus/share_plus.dart';
 Future<void> exportRecordingToCSV(
     RecordingModel recording, SettingsModel settings) async {
   final path = (await getApplicationDocumentsDirectory()).path;
+  // Zielname: Export_20210801_1200_Setup1.csv
+  String dateTime = dateTimeForExport(recording.startingTime);
   String fileName =
-      "$path/${recording.name}_${dateTimeToString(recording.startingTime).replaceAll(" ", "_")}.csv";
+      "$path/Export_${dateTime}_${recording.name.replaceAll(" ", "")}.csv";
   final file = File(fileName);
 
   List<List<String>> data = [];
@@ -31,8 +33,10 @@ Future<void> exportRecordingToCSV(
 Future<void> exportRecordingsSetToCSV(
     List<RecordingCard> recordings, SettingsModel settings) async {
   final path = (await getApplicationDocumentsDirectory()).path;
+  String dateTime =
+      dateTimeForExport(recordings.first.recordingModel.startingTime);
   String fileName =
-      "$path/${recordings.first.recordingModel.fromSetup}_${dateTimeToString(recordings.first.recordingModel.startingTime).replaceAll(" ", "_")}.csv";
+      "$path/Export_${dateTime}_${recordings.first.recordingModel.fromSetup.replaceAll(" ", "")}.csv";
   final file = File(fileName);
 
   List<List<String>> data = [];
