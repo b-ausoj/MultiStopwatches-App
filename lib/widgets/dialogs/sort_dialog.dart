@@ -26,85 +26,39 @@ class _SortDialogState extends State<SortDialog> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            // TODO: can make this shorter with map and the enum values string function
-            RadioListTile(
-                title: const Text("Creation date"),
-                value: SortCriterion.creationDate,
-                groupValue: _selectedCriterion,
-                onChanged: (SortCriterion? value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCriterion = value;
-                  });
-                  widget.onValueChange(_selectedCriterion, _selectedDirection);
-                }),
-            RadioListTile(
-                title: const Text("Name"),
-                value: SortCriterion.name,
-                groupValue: _selectedCriterion,
-                onChanged: (SortCriterion? value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCriterion = value;
-                  });
-                  widget.onValueChange(_selectedCriterion, _selectedDirection);
-                }),
-            RadioListTile(
-                title: const Text("Longest Time"),
-                value: SortCriterion.longestTime,
-                groupValue: _selectedCriterion,
-                onChanged: (SortCriterion? value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCriterion = value;
-                  });
-                  widget.onValueChange(_selectedCriterion, _selectedDirection);
-                }),
-            RadioListTile(
-                title: const Text("Longest Lap Time"),
-                value: SortCriterion.longestLapTime,
-                groupValue: _selectedCriterion,
-                onChanged: (SortCriterion? value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCriterion = value;
-                  });
-                  widget.onValueChange(_selectedCriterion, _selectedDirection);
-                }),
-            RadioListTile(
-                title: const Text("Custom"),
-                value: SortCriterion.customReordable,
-                groupValue: _selectedCriterion,
-                onChanged: (SortCriterion? value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCriterion = value;
-                  });
-                  widget.onValueChange(_selectedCriterion, _selectedDirection);
-                }),
+            ...SortCriterion.values
+                .map((SortCriterion criterion) => RadioListTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    title: Text(criterion.label),
+                    value: criterion,
+                    groupValue: _selectedCriterion,
+                    onChanged: (SortCriterion? value) {
+                      if (value == null) return;
+                      setState(() {
+                        _selectedCriterion = value;
+                      });
+                      widget.onValueChange(
+                          _selectedCriterion, _selectedDirection);
+                    })),
             const Divider(),
-            RadioListTile(
-                title: const Text("Ascending"),
-                value: SortDirection.ascending,
-                groupValue: _selectedDirection,
-                onChanged: (SortDirection? value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedDirection = value;
-                  });
-                  widget.onValueChange(_selectedCriterion, _selectedDirection);
-                }),
-            RadioListTile(
-                title: const Text("Descending"),
-                value: SortDirection.descending,
-                groupValue: _selectedDirection,
-                onChanged: (SortDirection? value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedDirection = value;
-                  });
-                  widget.onValueChange(_selectedCriterion, _selectedDirection);
-                }),
+            ...SortDirection.values
+                .map((SortDirection direction) => RadioListTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    title: Text(direction.label),
+                    value: direction,
+                    groupValue: _selectedDirection,
+                    onChanged: (SortDirection? value) {
+                      if (value == null) return;
+                      setState(() {
+                        _selectedDirection = value;
+                      });
+                      widget.onValueChange(
+                          _selectedCriterion, _selectedDirection);
+                    })),
           ],
         ));
   }
