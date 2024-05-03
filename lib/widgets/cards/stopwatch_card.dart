@@ -123,11 +123,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                           case StopwatchCardMenuItem.reset:
                             switch (_stopwatchModel.state) {
                               case StopwatchState.running:
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
-                                  content: Text("Can't reset while running"),
-                                  duration: Duration(seconds: 2),
-                                ));
+                                showShortSnackBar(
+                                    context, "Can't reset while running");
                                 break;
                               case StopwatchState.reseted:
                                 break;
