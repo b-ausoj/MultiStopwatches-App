@@ -5,7 +5,7 @@ import 'package:multistopwatches/controllers/badge_controller.dart';
 import 'package:multistopwatches/enums/sort_criterion.dart';
 import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/models/settings_model.dart';
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/models/stopwatch_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
@@ -15,15 +15,15 @@ import 'package:multistopwatches/widgets/cards/stopwatch_card.dart';
 
 class StopwatchesPageController extends BadgeController {
   BuildContext context;
-  final List<SetupModel> allSetups;
+  final List<GroupModel> allGroups;
   final List<StopwatchCard> _stopwatchCards = [];
   final List<String> _oldStopwatchesPage = [];
-  final SetupModel setupModel;
+  final GroupModel groupModel;
   final SettingsModel settings;
 
   StopwatchesPageController(
-      this.allSetups, this.context, this.setupModel, this.settings) {
-    for (var element in setupModel.stopwatches) {
+      this.allGroups, this.context, this.groupModel, this.settings) {
+    for (var element in groupModel.stopwatches) {
       _stopwatchCards.add(StopwatchCard(
         element,
         changedState,
@@ -34,10 +34,10 @@ class StopwatchesPageController extends BadgeController {
     changedState();
   }
 
-  get direction => setupModel.direction;
-  String get name => setupModel.name;
-  set name(String value) => setupModel.name = value;
-  get criterion => setupModel.criterion;
+  get direction => groupModel.direction;
+  String get name => groupModel.name;
+  set name(String value) => groupModel.name = value;
+  get criterion => groupModel.criterion;
   List<StopwatchCard> get stopwatchCards => _stopwatchCards;
 
   Future<void> addStopwatch() async {
@@ -48,13 +48,13 @@ class StopwatchesPageController extends BadgeController {
         StopwatchModel("Athlete ${_stopwatchCards.length + 1}", id);
     _stopwatchCards.add(StopwatchCard(model, changedState,
         key: Key("$id"), stopwatchesPageController: this));
-    setupModel.stopwatches.add(model);
+    groupModel.stopwatches.add(model);
     changedState();
   }
 
   void changedState() {
     sortAndListCards(
-        _stopwatchCards, setupModel.criterion, setupModel.direction, settings);
+        _stopwatchCards, groupModel.criterion, groupModel.direction, settings);
     refreshBadgeState();
   }
 
@@ -68,7 +68,7 @@ class StopwatchesPageController extends BadgeController {
       }
       _oldStopwatchesPage.add(jsonEncode(card.stopwatchModel));
     }
-    setupModel.stopwatches.clear();
+    groupModel.stopwatches.clear();
     _stopwatchCards.clear();
     showLongSnackBar(context, "All stopwatches have been removed",
         action: SnackBarAction(
@@ -84,19 +84,19 @@ class StopwatchesPageController extends BadgeController {
         element.stopwatchModel.id == id &&
         element.stopwatchModel.state != StopwatchState.running);
     int index2 =
-        setupModel.stopwatches.indexWhere((element) => element.id == id);
+        groupModel.stopwatches.indexWhere((element) => element.id == id);
     if (index == -1) {
       showShortSnackBar(context, "Can't delete while running");
       return;
     }
     StopwatchCard deleted = _stopwatchCards.removeAt(index);
-    StopwatchModel deletedModel = setupModel.stopwatches.removeAt(index2);
+    StopwatchModel deletedModel = groupModel.stopwatches.removeAt(index2);
     showLongSnackBar(context, "'$name' has been removed",
         action: SnackBarAction(
             label: "Undo",
             onPressed: () {
               _stopwatchCards.add(deleted);
-              setupModel.stopwatches.insert(index2, deletedModel);
+              groupModel.stopwatches.insert(index2, deletedModel);
               changedState();
             }));
   }
@@ -109,7 +109,7 @@ class StopwatchesPageController extends BadgeController {
 
   @override
   void refreshBadgeState() {
-    isMenuBadgeRequired(allSetups, setupModel)
+    isMenuBadgeRequired(allGroups, groupModel)
         .then((value) => badgeVisible = value);
     getUnseenRecordingsCount().then((value) => badgeLabel = value);
   }
@@ -157,13 +157,13 @@ class StopwatchesPageController extends BadgeController {
         key: Key("${json["id"]}"),
         stopwatchesPageController: this,
       ));
-      setupModel.stopwatches.add(stopwatch);
+      groupModel.stopwatches.add(stopwatch);
     }
   }
 
   void setSorting(SortCriterion criterion, SortDirection direction) {
-    setupModel.criterion = criterion;
-    setupModel.direction = direction;
+    groupModel.criterion = criterion;
+    groupModel.direction = direction;
     changedState();
   }
 
@@ -177,7 +177,7 @@ class StopwatchesPageController extends BadgeController {
     StopwatchCard stopwatchCard = stopwatchCards.removeAt(oldIndex);
     stopwatchCards.insert(newIndex, stopwatchCard);
 
-    StopwatchModel stopwatchModel = setupModel.stopwatches.removeAt(oldIndex);
-    setupModel.stopwatches.insert(newIndex, stopwatchModel);
+    StopwatchModel stopwatchModel = groupModel.stopwatches.removeAt(oldIndex);
+    groupModel.stopwatches.insert(newIndex, stopwatchModel);
   }
 }

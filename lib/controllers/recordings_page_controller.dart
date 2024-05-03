@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:multistopwatches/controllers/badge_controller.dart';
 import 'package:multistopwatches/enums/recordings_set_menu_item.dart';
 import 'package:multistopwatches/models/settings_model.dart';
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/utils/export_to_csv.dart';
@@ -16,11 +16,11 @@ class RecordingsPageController extends BadgeController {
   void Function() refresh;
   final List<RecordingCard> recordingCards = [];
   final List<Widget> recordingsList = [];
-  final List<SetupModel> allSetups;
+  final List<GroupModel> allGroups;
   final SettingsModel settings;
 
   RecordingsPageController(
-      this.context, this.refresh, this.allSetups, this.settings);
+      this.context, this.refresh, this.allGroups, this.settings);
 
   void createRecordingList() {
     recordingsList.clear();
@@ -65,7 +65,7 @@ class RecordingsPageController extends BadgeController {
             }),
             title: Center(child: RecordingsSetTextWithBadge(list, timeStamp)),
             subtitle: Center(
-                child: Text("from ${list.first.recordingModel.fromSetup}")),
+                child: Text("from ${list.first.recordingModel.fromGroup}")),
             children: list,
           ),
         ));
@@ -104,7 +104,7 @@ class RecordingsPageController extends BadgeController {
           }),
           title: Center(child: RecordingsSetTextWithBadge(list, last)),
           subtitle: Center(
-              child: Text("from ${list.first.recordingModel.fromSetup}")),
+              child: Text("from ${list.first.recordingModel.fromGroup}")),
           children: list,
         ),
       ));
@@ -175,7 +175,7 @@ class RecordingsPageController extends BadgeController {
 
   @override
   void refreshBadgeState() {
-    badgeVisible = isBackBadgeRequired(allSetups);
+    badgeVisible = isBackBadgeRequired(allGroups);
   }
 
   void setViewedToTrue(DateTime timestamp) {

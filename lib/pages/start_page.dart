@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/controllers/start_page_controller.dart';
 import 'package:multistopwatches/enums/start_page_card_menu_item.dart';
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/pages/stopwatches_page.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
-import 'package:multistopwatches/widgets/dialogs/delete_setup_dialog.dart';
+import 'package:multistopwatches/widgets/dialogs/delete_group_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
@@ -40,7 +40,7 @@ class _StartPageState extends State<StartPage> {
         title: const Text("MultiStopwatches"),
         leading: NavIcon(_startController),
       ),
-      drawer: NavDrawer(_startController.allSetups, _startController.settings,
+      drawer: NavDrawer(_startController.allGroups, _startController.settings,
           _startController, null),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -54,7 +54,7 @@ class _StartPageState extends State<StartPage> {
               child: ListView(
                 shrinkWrap: true,
                 children: [
-                  ..._startController.allSetups.map((SetupModel setup) => Card(
+                  ..._startController.allGroups.map((GroupModel group) => Card(
                         clipBehavior: Clip.antiAlias,
                         color: const Color(0xFFEFEFEF),
                         elevation: 0,
@@ -64,15 +64,15 @@ class _StartPageState extends State<StartPage> {
                           leading: const Icon(Icons.timer_outlined),
                           title: Center(
                               child: StartTextWithBadge(_startController,
-                                  _startController.allSetups.indexOf(setup))),
+                                  _startController.allGroups.indexOf(group))),
                           trailing: StartPagePopupMenuButton(
                               onSelected: (StartPageCardMenuItem item) {
                             switch (item) {
                               case StartPageCardMenuItem.rename:
-                                _showRenameDialog(setup);
+                                _showRenameDialog(group);
                                 break;
                               case StartPageCardMenuItem.delete:
-                                _showDeleteSetupDialog(setup);
+                                _showDeleteGroupDialog(group);
                                 break;
                             }
                           }),
@@ -80,8 +80,8 @@ class _StartPageState extends State<StartPage> {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(
                                     builder: (context) => StopwatchesPage(
-                                        setup,
-                                        _startController.allSetups,
+                                        group,
+                                        _startController.allGroups,
                                         _startController.settings)))
                                 .then((value) {
                               _startController.refreshBadgeState();
@@ -91,7 +91,7 @@ class _StartPageState extends State<StartPage> {
                         ),
                       )),
                   Card(
-                    // Add new Setup
+                    // Add new Group
                     margin: const EdgeInsets.symmetric(
                         horizontal: 90.0, vertical: 4.0),
                     color: const Color(0xFFEFEFEF),
@@ -99,20 +99,20 @@ class _StartPageState extends State<StartPage> {
                     child: InkWell(
                         borderRadius: BorderRadius.circular(12.0),
                         onTap: () {
-                          SetupModel newSetup = SetupModel(
-                              "Setup ${_startController.allSetups.length + 1}",
+                          GroupModel newGroup = GroupModel(
+                              "Group ${_startController.allGroups.length + 1}",
                               0,
                               _startController.settings.defaultSortCriterion,
                               _startController.settings.defaultSortDirection,
                               []);
-                          _startController.allSetups.add(newSetup);
+                          _startController.allGroups.add(newGroup);
                           _startController.refreshBadgeState();
                           setState(() {});
                           Navigator.of(context)
                               .push(MaterialPageRoute(
                                   builder: (context) => StopwatchesPage(
-                                      newSetup,
-                                      _startController.allSetups,
+                                      newGroup,
+                                      _startController.allGroups,
                                       _startController.settings)))
                               .then((value) {
                             _startController.refreshBadgeState();
@@ -125,7 +125,7 @@ class _StartPageState extends State<StartPage> {
                             children: [
                               Expanded(
                                 child: Text(
-                                  "Add a new setup",
+                                  "Add a new group",
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(fontSize: 16),
                                 ),
@@ -144,15 +144,15 @@ class _StartPageState extends State<StartPage> {
     );
   }
 
-  Future<void> _showDeleteSetupDialog(SetupModel setupModel) async {
+  Future<void> _showDeleteGroupDialog(GroupModel groupModel) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return DeleteSetupDialog(
-          setupModel.name,
+        return DeleteGroupDialog(
+          groupModel.name,
           onAccept: () {
-            _startController.removeSetup(setupModel);
+            _startController.removeGroup(groupModel);
             setState(() {});
           },
         );
@@ -160,13 +160,13 @@ class _StartPageState extends State<StartPage> {
     );
   }
 
-  Future<String?> _showRenameDialog(SetupModel setupModel) async {
+  Future<String?> _showRenameDialog(GroupModel groupModel) async {
     return showDialog<String>(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return RenameDialog(setupModel.name, (String newName) {
-          setupModel.name = newName;
+        return RenameDialog(groupModel.name, (String newName) {
+          groupModel.name = newName;
           setState(() {});
         });
       },

@@ -12,14 +12,14 @@ import 'package:share_plus/share_plus.dart';
 Future<void> exportRecordingToCSV(
     RecordingModel recording, SettingsModel settings) async {
   final path = (await getApplicationDocumentsDirectory()).path;
-  // Zielname: Export_20210801_1200_Setup1.csv
+  // Zielname: Export_20210801_1200_Group1.csv
   String dateTime = dateTimeForExport(recording.startingTime);
   String fileName =
       "$path/Export_${dateTime}_${recording.name.replaceAll(" ", "")}.csv";
   final file = File(fileName);
 
   List<List<String>> data = [];
-  data.add(["", recording.fromSetup, dateTimeToString(recording.startingTime)]);
+  data.add(["", recording.fromGroup, dateTimeToString(recording.startingTime)]);
   data.add(["", "", ""]);
   data.addAll(recordingToList(recording, settings.timeFormat));
 
@@ -36,13 +36,13 @@ Future<void> exportRecordingsSetToCSV(
   String dateTime =
       dateTimeForExport(recordings.first.recordingModel.startingTime);
   String fileName =
-      "$path/Export_${dateTime}_${recordings.first.recordingModel.fromSetup.replaceAll(" ", "")}.csv";
+      "$path/Export_${dateTime}_${recordings.first.recordingModel.fromGroup.replaceAll(" ", "")}.csv";
   final file = File(fileName);
 
   List<List<String>> data = [];
   data.add([
     "",
-    recordings.first.recordingModel.fromSetup,
+    recordings.first.recordingModel.fromGroup,
     dateTimeToString(recordings.first.recordingModel.startingTime)
   ]);
   for (RecordingCard recording in recordings) {

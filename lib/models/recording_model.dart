@@ -10,7 +10,7 @@ class RecordingModel {
   String name;
   DateTime startingTime;
   bool viewed;
-  String fromSetup;
+  String fromGroup;
 
   Duration totalTime;
   List<LapModel> lapTimes = [];
@@ -18,7 +18,7 @@ class RecordingModel {
 
   // constructor
   RecordingModel(this.id, this.name, this.startingTime, this.viewed,
-      this.fromSetup, this.totalTime);
+      this.fromGroup, this.totalTime);
 
   factory RecordingModel.fromJson(Map<String, dynamic> json) {
     RecordingModel model = RecordingModel(
@@ -26,7 +26,7 @@ class RecordingModel {
         json["name"],
         DateTime.fromMillisecondsSinceEpoch(json["startingTime"]),
         json["viewed"],
-        json["fromSetup"],
+        json["fromGroup"],
         Duration(milliseconds: json["totalTime"]));
     Map<String, dynamic> lapTimes = jsonDecode(json["lapTimes"]);
     lapTimes.forEach((key, value) {
@@ -46,7 +46,7 @@ class RecordingModel {
         "name": name,
         "startingTime": startingTime.millisecondsSinceEpoch,
         "viewed": viewed,
-        "fromSetup": fromSetup,
+        "fromGroup": fromGroup,
         "totalTime": totalTime.inMilliseconds,
         "lapTimes": jsonEncode(getListJson(lapTimes)),
         "splitTimes": jsonEncode(getListJson(splitTimes))

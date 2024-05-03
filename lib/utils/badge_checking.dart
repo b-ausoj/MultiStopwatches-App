@@ -5,23 +5,23 @@
 
 import 'dart:convert';
 
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/models/stopwatch_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-List<SetupModel> getAllRunningConfigurations(List<SetupModel> allSetups) {
-  List<SetupModel> runningSetups = [];
+List<GroupModel> getAllRunningConfigurations(List<GroupModel> allGroups) {
+  List<GroupModel> runningGroups = [];
 
-  for (SetupModel setup in allSetups) {
-    for (StopwatchModel stopwatch in setup.stopwatches) {
+  for (GroupModel group in allGroups) {
+    for (StopwatchModel stopwatch in group.stopwatches) {
       if (stopwatch.isRunning) {
-        runningSetups.add(setup);
+        runningGroups.add(group);
         break;
       }
     }
   }
 
-  return runningSetups;
+  return runningGroups;
 }
 
 Future<int> getUnseenRecordingsCount() async {
@@ -39,17 +39,17 @@ Future<int> getUnseenRecordingsCount() async {
   return count;
 }
 
-bool isBackBadgeRequired(List<SetupModel> allSetups) {
-  return getAllRunningConfigurations(allSetups).isNotEmpty;
+bool isBackBadgeRequired(List<GroupModel> allGroups) {
+  return getAllRunningConfigurations(allGroups).isNotEmpty;
 }
 
 // menu badge only if there are any running stopwatches or new recordings entries
 Future<bool> isMenuBadgeRequired(
-    List<SetupModel> allSetups, SetupModel? setup) async {
+    List<GroupModel> allGroups, GroupModel? group) async {
   // check if there are any running stopwatches
-  List<SetupModel> runningSetups = getAllRunningConfigurations(allSetups);
-  runningSetups.remove(setup);
-  if (runningSetups.isNotEmpty) {
+  List<GroupModel> runningGroups = getAllRunningConfigurations(allGroups);
+  runningGroups.remove(group);
+  if (runningGroups.isNotEmpty) {
     return true;
   }
   // check if there are any unseen recordings entries
@@ -57,9 +57,9 @@ Future<bool> isMenuBadgeRequired(
   return unseenRecordingsCount > 0;
 }
 
-bool isTextBadgeRequired(List<SetupModel> allSetups, SetupModel setup) {
+bool isTextBadgeRequired(List<GroupModel> allGroups, GroupModel group) {
   // check if there are any running stopwatches
-  List<SetupModel> runningConfigurations =
-      getAllRunningConfigurations(allSetups);
-  return runningConfigurations.contains(setup);
+  List<GroupModel> runningConfigurations =
+      getAllRunningConfigurations(allGroups);
+  return runningConfigurations.contains(group);
 }

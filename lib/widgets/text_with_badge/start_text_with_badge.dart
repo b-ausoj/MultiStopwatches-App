@@ -15,14 +15,14 @@ class _StartTextWithBadgeState extends State<StartTextWithBadge> {
   @override
   Widget build(BuildContext context) {
     return Badge(
-      isLabelVisible: widget.controller.isSetupBadgeVisibleList[widget.index],
+      isLabelVisible: widget.controller.isGroupBadgeVisibleList[widget.index],
       alignment: Alignment.centerRight,
       offset: const Offset(8, 0),
       smallSize: 8.0,
       child: Padding(
         padding: const EdgeInsets.only(right: 16.0, left: 16.0),
         child: Text(
-          widget.controller.allSetups[widget.index].name,
+          widget.controller.allGroups[widget.index].name,
           overflow: TextOverflow.ellipsis,
         ),
       ),

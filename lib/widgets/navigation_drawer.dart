@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/controllers/badge_controller.dart';
 import 'package:multistopwatches/models/settings_model.dart';
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/pages/about_page.dart';
 import 'package:multistopwatches/pages/recordings_page.dart';
 import 'package:multistopwatches/pages/settings_page.dart';
@@ -10,14 +10,14 @@ import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/text_with_badge/nav_text_with_badge.dart';
 
 class NavDrawer extends StatefulWidget {
-  final List<SetupModel> allSetups;
+  final List<GroupModel> allGroups;
   final SettingsModel settings;
   // add list of startControllers so that if we open the drawer from start page and
-  // then navigate to a setup and go back per arrows (back wishing)
+  // then navigate to a group and go back per arrows (back wishing)
   // the badge will be updated
   final BadgeController controller;
-  final SetupModel? setup;
-  const NavDrawer(this.allSetups, this.settings, this.controller, this.setup,
+  final GroupModel? group;
+  const NavDrawer(this.allGroups, this.settings, this.controller, this.group,
       {super.key});
 
   @override
@@ -26,12 +26,12 @@ class NavDrawer extends StatefulWidget {
 
 class _NavDrawerState extends State<NavDrawer> {
   late int _selectedIndex =
-      widget.setup == null ? -1 : widget.allSetups.indexOf(widget.setup!);
+      widget.group == null ? -1 : widget.allGroups.indexOf(widget.group!);
 
   @override
   Widget build(BuildContext context) {
     return NavigationDrawer(
-        onDestinationSelected: handleSetupChanged,
+        onDestinationSelected: handleGroupChanged,
         selectedIndex: _selectedIndex,
         backgroundColor: const Color(0xFFDFDFDF),
         indicatorColor: const Color(0xFFBFBFBF),
@@ -44,14 +44,14 @@ class _NavDrawerState extends State<NavDrawer> {
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          ...widget.allSetups.map((SetupModel setup) =>
+          ...widget.allGroups.map((GroupModel group) =>
               NavigationDrawerDestination(
                   icon: const Icon(Icons.timer_outlined),
                   label: Flexible(
                       child: NavTextWithBadge(
-                          setup.name, setup, widget.allSetups, false)))),
+                          group.name, group, widget.allGroups, false)))),
           const NavigationDrawerDestination(
-              icon: Icon(Icons.add), label: Text("Add a new setup")),
+              icon: Icon(Icons.add), label: Text("Add a new group")),
           const Divider(),
           const NavigationDrawerDestination(
               icon: Icon(Icons.history),
@@ -63,33 +63,33 @@ class _NavDrawerState extends State<NavDrawer> {
         ]);
   }
 
-  void handleSetupChanged(int selectedIndex) {
-    SetupModel? selectedSetup = widget.allSetups.elementAtOrNull(selectedIndex);
+  void handleGroupChanged(int selectedIndex) {
+    GroupModel? selectedGroup = widget.allGroups.elementAtOrNull(selectedIndex);
 
-    if (selectedSetup != null) {
-      // setup x
+    if (selectedGroup != null) {
+      // group x
       Navigator.pop(context);
       Navigator.of(context)
           .push(MaterialPageRoute(
               builder: (context) => StopwatchesPage(
-                  selectedSetup, widget.allSetups, widget.settings)))
+                  selectedGroup, widget.allGroups, widget.settings)))
           .then((value) => widget.controller.refreshBadgeState());
     } else {
-      int base = widget.allSetups.length;
+      int base = widget.allGroups.length;
       switch (selectedIndex - base) {
         case 0:
-          // add setup
+          // add group
           Navigator.pop(context);
-          SetupModel newSetup = SetupModel(
-              "Setup ${widget.allSetups.length + 1}",
+          GroupModel newGroup = GroupModel(
+              "Group ${widget.allGroups.length + 1}",
               0,
               widget.settings.defaultSortCriterion,
               widget.settings.defaultSortDirection, []);
-          widget.allSetups.add(newSetup);
+          widget.allGroups.add(newGroup);
           Navigator.of(context)
               .push(MaterialPageRoute(
                   builder: (context) => StopwatchesPage(
-                      newSetup, widget.allSetups, widget.settings)))
+                      newGroup, widget.allGroups, widget.settings)))
               .then((value) => widget.controller.refreshBadgeState());
           break;
         case 1:
@@ -98,7 +98,7 @@ class _NavDrawerState extends State<NavDrawer> {
           Navigator.of(context)
               .push(MaterialPageRoute(
                   builder: (context) =>
-                      RecordingsPage(widget.allSetups, widget.settings)))
+                      RecordingsPage(widget.allGroups, widget.settings)))
               .then((value) => widget.controller.refreshBadgeState());
           break;
         case 2:
@@ -106,18 +106,18 @@ class _NavDrawerState extends State<NavDrawer> {
           Navigator.pop(context);
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => SettingsPage(
-                  isBackBadgeRequired(widget.allSetups), widget.settings)));
+                  isBackBadgeRequired(widget.allGroups), widget.settings)));
           break;
         case 3:
           // about
           Navigator.pop(context);
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) =>
-                  AboutPage(isBackBadgeRequired(widget.allSetups))));
+                  AboutPage(isBackBadgeRequired(widget.allGroups))));
 
           break;
         default:
-          throw Exception("Invalid selectedSetup state");
+          throw Exception("Invalid selectedGroup state");
       }
     }
 

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class DeleteSetupDialog extends StatefulWidget {
+class DeleteGroupDialog extends StatefulWidget {
   final void Function() onAccept;
   final String name;
 
-  const DeleteSetupDialog(this.name, {required this.onAccept, super.key});
+  const DeleteGroupDialog(this.name, {required this.onAccept, super.key});
 
   @override
-  State<DeleteSetupDialog> createState() => _DeleteSetupDialogState();
+  State<DeleteGroupDialog> createState() => _DeleteGroupDialogState();
 }
 
-class _DeleteSetupDialogState extends State<DeleteSetupDialog> {
+class _DeleteGroupDialogState extends State<DeleteGroupDialog> {
   bool confirmed = false;
   bool red = false;
 
@@ -30,7 +30,12 @@ class _DeleteSetupDialogState extends State<DeleteSetupDialog> {
                   setState(() {});
                 },
               ),
-              const SizedBox(width: 180,child: Text("Are you sure? This can not be undone",),)
+              const SizedBox(
+                width: 180,
+                child: Text(
+                  "Are you sure? This can not be undone",
+                ),
+              )
             ],
           ),
           red
@@ -58,9 +63,7 @@ class _DeleteSetupDialogState extends State<DeleteSetupDialog> {
             } else {
               // show little red text or make checkbox red
               red = true;
-              setState(() {
-                
-              });
+              setState(() {});
             }
           },
         ),

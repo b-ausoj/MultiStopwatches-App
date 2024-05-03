@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 
 // TODO: This class is very ugly and its constructor, please revise it
 class NavTextWithBadge extends StatefulWidget {
   final String name;
-  final SetupModel? setup;
-  final List<SetupModel>? allSetups;
+  final GroupModel? group;
+  final List<GroupModel>? allGroups;
   final bool isRecordings;
 
   const NavTextWithBadge(
-      this.name, this.setup, this.allSetups, this.isRecordings,
+      this.name, this.group, this.allGroups, this.isRecordings,
       {super.key});
 
   @override
@@ -26,7 +26,7 @@ class _NavTextWithBadgeState extends State<NavTextWithBadge> {
     super.initState();
     if (!widget.isRecordings) {
       // TODO: Attention, this could throw an exception
-      badgeVisible = isTextBadgeRequired(widget.allSetups!, widget.setup!);
+      badgeVisible = isTextBadgeRequired(widget.allGroups!, widget.group!);
     }
     getUnseenRecordingsCount().then((value) => setState(
           () => badgeLabel = value,

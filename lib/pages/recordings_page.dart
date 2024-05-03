@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/controllers/recordings_page_controller.dart';
 import 'package:multistopwatches/models/settings_model.dart';
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/widgets/icons/back_icon.dart';
 
 class RecordingsPage extends StatefulWidget {
-  final List<SetupModel> allSetups;
+  final List<GroupModel> allGroups;
   final SettingsModel settings;
 
-  const RecordingsPage(this.allSetups, this.settings, {super.key});
+  const RecordingsPage(this.allGroups, this.settings, {super.key});
 
   @override
   State<RecordingsPage> createState() => _RecordingsPageState();
@@ -56,7 +56,7 @@ class _RecordingsPageState extends State<RecordingsPage>
   void initState() {
     super.initState();
     loadRecordings(recordingsPageController = RecordingsPageController(
-            context, () => setState(() {}), widget.allSetups, widget.settings))
+            context, () => setState(() {}), widget.allGroups, widget.settings))
         .then((value) => null);
     recordingsPageController.refreshBadgeState();
     setState(() {});

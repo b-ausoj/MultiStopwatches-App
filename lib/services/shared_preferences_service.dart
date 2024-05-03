@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:multistopwatches/controllers/recordings_page_controller.dart';
 import 'package:multistopwatches/controllers/start_page_controller.dart';
 import 'package:multistopwatches/models/settings_model.dart';
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/models/lap_model.dart';
 import 'package:multistopwatches/models/recording_model.dart';
 import 'package:multistopwatches/models/stopwatch_model.dart';
@@ -14,24 +14,24 @@ import 'package:multistopwatches/widgets/cards/recording_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // This function is only executed once per app lifecycle namely for the initialization
-// and loades all the data i.e. the setups with their stopwatches
-Future<void> _loadData(List<SetupModel> setups, String key) async {
+// and loades all the data i.e. the groups with their stopwatches
+Future<void> _loadData(List<GroupModel> groups, String key) async {
   final prefs = await SharedPreferences.getInstance();
   // loades the next stopwatch id (so it is unique)
   StopwatchModel.nextId = prefs.getInt("nextStopwatchId") ?? 1;
-  // loades the setups with their stopwatchs
+  // loades the groups with their stopwatchs
   List<String> jsons = prefs.getStringList(key) ?? [];
   for (String json in jsons) {
-    SetupModel loaded = SetupModel.fromJson(jsonDecode(json));
-    SetupModel setup = SetupModel(loaded.name, loaded.id, loaded.criterion,
+    GroupModel loaded = GroupModel.fromJson(jsonDecode(json));
+    GroupModel group = GroupModel(loaded.name, loaded.id, loaded.criterion,
         loaded.direction, loaded.stopwatches);
-    setups.add(setup);
+    groups.add(group);
   }
 }
 
 // This function is a wrapper around the loadData (without the release build doesn't work)
 loadStart(StartController startController) async {
-  _loadData(startController.allSetups, startController.sharedPreferencesKey)
+  _loadData(startController.allGroups, startController.sharedPreferencesKey)
       .then((value) => startController.refreshBadgeState());
 }
 
@@ -94,7 +94,7 @@ Future<void> resetSharedPreferences() async {
 // This function turns the given stopwatchModel into a recording and then saves
 // the recording into shared preferences recordings list
 Future<void> saveStopwatch(
-    StopwatchModel stopwatchModel, String setupName) async {
+    StopwatchModel stopwatchModel, String groupName) async {
   final prefs = await SharedPreferences.getInstance();
   RecordingModel.nextId = prefs.getInt("nextRecordingId") ?? 1;
   RecordingModel model = RecordingModel(
@@ -102,7 +102,7 @@ Future<void> saveStopwatch(
       stopwatchModel.name,
       stopwatchModel.startTimestamp,
       false,
-      setupName,
+      groupName,
       stopwatchModel.elapsedTime);
   model.lapTimes = stopwatchModel.lapList;
   model.lapTimes.add(
@@ -118,16 +118,16 @@ Future<void> saveStopwatch(
   stopwatchModel.reset();
 }
 
-// This function stores the data i.e. next stopwatch id and all the setups
+// This function stores the data i.e. next stopwatch id and all the groups
 // with their stopwatchs into shared preferences, can get executed periodically
-Future<void> storeData(List<SetupModel> setups, String key) async {
+Future<void> storeData(List<GroupModel> groups, String key) async {
   final prefs = await SharedPreferences.getInstance();
   // stores the next stopwatch id (so it is unique)
   prefs.setInt("nextStopwatchId", StopwatchModel.nextId);
-  // stores the setups with their stopwatchs
+  // stores the groups with their stopwatchs
   List<String> jsons = [];
-  for (SetupModel setupModel in setups) {
-    jsons.add(jsonEncode(setupModel));
+  for (GroupModel groupModel in groups) {
+    jsons.add(jsonEncode(groupModel));
   }
   prefs.setStringList(key, jsons);
 }

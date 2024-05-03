@@ -6,9 +6,9 @@ import 'package:multistopwatches/enums/sort_criterion.dart';
 import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/enums/stopwatches_page_menu_item.dart';
 import 'package:multistopwatches/models/settings_model.dart';
-import 'package:multistopwatches/models/setup_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/widgets/cards/add_stopwatch_card.dart';
-import 'package:multistopwatches/widgets/dialogs/delete_setup_dialog.dart';
+import 'package:multistopwatches/widgets/dialogs/delete_group_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/sort_dialog.dart';
 import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
@@ -16,10 +16,10 @@ import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/stopwatches_page_popup_menu_button.dart';
 
 class StopwatchesPage extends StatefulWidget {
-  final SetupModel setup;
-  final List<SetupModel> allSetups;
+  final GroupModel group;
+  final List<GroupModel> allGroups;
   final SettingsModel settings;
-  const StopwatchesPage(this.setup, this.allSetups, this.settings, {super.key});
+  const StopwatchesPage(this.group, this.allGroups, this.settings, {super.key});
 
   @override
   State<StopwatchesPage> createState() => _StopwatchesPageState();
@@ -29,7 +29,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
     with SingleTickerProviderStateMixin {
   late final Ticker _ticker;
   late final StopwatchesPageController _stopwatchesPageController;
-  late final SetupModel _setupModel = widget.setup;
+  late final GroupModel _groupModel = widget.group;
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +48,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
                 case StopwatchesPageMenuItem.rename:
                   _showRenameDialog();
                   break;
-                case StopwatchesPageMenuItem.deleteSetup:
-                  _showDeleteSetupDialog();
+                case StopwatchesPageMenuItem.deleteGroup:
+                  _showDeleteGroupDialog();
                   break;
                 case StopwatchesPageMenuItem.saveAll:
                   _stopwatchesPageController.saveAllStopwatches();
@@ -68,8 +68,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
           )
         ],
       ),
-      drawer: NavDrawer(widget.allSetups, widget.settings,
-          _stopwatchesPageController, _stopwatchesPageController.setupModel),
+      drawer: NavDrawer(widget.allGroups, widget.settings,
+          _stopwatchesPageController, _stopwatchesPageController.groupModel),
       floatingActionButton: _stopwatchesPageController.isFabActive()
           ? FloatingActionButton.extended(
               foregroundColor: Colors.white,
@@ -110,7 +110,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
   void initState() {
     super.initState();
     _stopwatchesPageController = StopwatchesPageController(
-        widget.allSetups, context, _setupModel, widget.settings);
+        widget.allGroups, context, _groupModel, widget.settings);
     _ticker = createTicker((elapsed) {
       setState(() {});
       if (!widget.settings.seperateRunningStopped) {
@@ -121,15 +121,15 @@ class _StopwatchesPageState extends State<StopwatchesPage>
     _stopwatchesPageController.refreshBadgeState();
   }
 
-  Future<void> _showDeleteSetupDialog() async {
+  Future<void> _showDeleteGroupDialog() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return DeleteSetupDialog(
+        return DeleteGroupDialog(
           _stopwatchesPageController.name,
           onAccept: () {
-            widget.allSetups.remove(_setupModel);
+            widget.allGroups.remove(_groupModel);
             Navigator.pop(context);
           },
         );
