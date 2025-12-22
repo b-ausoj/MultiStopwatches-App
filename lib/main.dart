@@ -26,6 +26,11 @@ class MyApp extends StatelessWidget {
       title: "MultiStopwatches",
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'Roboto',
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 14),
+          bodyMedium: TextStyle(fontSize: 14),
+        ),
         switchTheme: SwitchThemeData(
           thumbColor: MaterialStateProperty.all(Colors.white),
           trackColor: MaterialStateProperty.all(Colors.black),
