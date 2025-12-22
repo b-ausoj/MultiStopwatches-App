@@ -51,18 +51,18 @@ class _StopwatchCardState extends State<StopwatchCard>
                       style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w600,
-                          height: 0)),
+                          height: 1.0)),
                   Text(
                       "${_stopwatchModel.lapCount < 9 ? "0${_stopwatchModel.lapCount + 1}" : "${_stopwatchModel.lapCount + 1}"} ${durationToString(_stopwatchModel.elapsedLapTime)}",
                       style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          height: 0)),
+                          height: 1.0)),
                   Text(formatPastLaps(_stopwatchModel.lapList, showAllLaps),
                       style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
-                          height: 0)),
+                          height: 1.0)),
                 ],
               ),
             ),
