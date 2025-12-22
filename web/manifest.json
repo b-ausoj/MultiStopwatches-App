@@ -1,13 +1,14 @@
 {
-    "name": "multistopwatches",
-    "short_name": "multistopwatches",
+    "name": "MultiStopwatches",
+    "short_name": "MultiStop",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#FFFFFF",
+    "theme_color": "#000000",
+    "description": "Multiple stopwatches app - Run and track multiple timers simultaneously with history saving.",
+    "orientation": "any",
     "prefer_related_applications": false,
+    "categories": ["utilities", "productivity"],
     "icons": [
         {
             "src": "icons/Icon-192.png",

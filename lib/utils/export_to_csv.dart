@@ -1,43 +1,38 @@
-import 'dart:io';
-
 import 'package:csv/csv.dart';
 import 'package:multistopwatches/enums/time_format.dart';
 import 'package:multistopwatches/models/recording_model.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/cards/recording_card.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
+
+// Conditional imports for platform-specific code
+import 'export_to_csv_stub.dart'
+    if (dart.library.io) 'export_to_csv_mobile.dart'
+    if (dart.library.html) 'export_to_csv_web.dart';
 
 Future<void> exportRecordingToCSV(
     RecordingModel recording, SettingsModel settings) async {
-  final path = (await getApplicationDocumentsDirectory()).path;
-  // Zielname: Export_20210801_1200_Group1.csv
   String dateTime = dateTimeForExport(recording.startingTime);
   String fileName =
-      "$path/Export_${dateTime}_${recording.name.replaceAll(" ", "")}.csv";
-  final file = File(fileName);
+      "Export_${dateTime}_${recording.name.replaceAll(" ", "")}.csv";
 
   List<List<String>> data = [];
   data.add(["", recording.fromGroup, dateTimeToString(recording.startingTime)]);
   data.add(["", "", ""]);
   data.addAll(recordingToList(recording, settings.timeFormat));
 
-  file.writeAsString(
-      ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
-          .convert(data));
+  String csvContent = ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
+      .convert(data);
 
-  Share.shareXFiles([XFile(fileName)], text: "Here is your recording!");
+  await saveAndShareCsv(csvContent, fileName);
 }
 
 Future<void> exportRecordingsSetToCSV(
     List<RecordingCard> recordings, SettingsModel settings) async {
-  final path = (await getApplicationDocumentsDirectory()).path;
   String dateTime =
       dateTimeForExport(recordings.first.recordingModel.startingTime);
   String fileName =
-      "$path/Export_${dateTime}_${recordings.first.recordingModel.fromGroup.replaceAll(" ", "")}.csv";
-  final file = File(fileName);
+      "Export_${dateTime}_${recordings.first.recordingModel.fromGroup.replaceAll(" ", "")}.csv";
 
   List<List<String>> data = [];
   data.add([
@@ -50,11 +45,10 @@ Future<void> exportRecordingsSetToCSV(
     data.addAll(recordingToList(recording.recordingModel, settings.timeFormat));
   }
 
-  file.writeAsString(
-      ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
-          .convert(data));
+  String csvContent = ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
+      .convert(data);
 
-  Share.shareXFiles([XFile(fileName)], text: "Here is your recording!");
+  await saveAndShareCsv(csvContent, fileName);
 }
 
 List<List<String>> recordingToList(
