@@ -41,35 +41,56 @@ git branch -M main
 git push -u origin main
 ```
 
-### Step 2: Deploy to Vercel
-
-**Option A: Using Vercel Dashboard (Easiest)**
-
-1. Go to https://vercel.com and sign in with your GitHub account
-2. Click "Add New Project"
-3. Import your GitHub repository
-4. Vercel will auto-detect the settings from `vercel.json`
-5. Click "Deploy"
-6. Wait for the build to complete (first build may take 5-10 minutes)
-7. Your app will be live at `https://your-project-name.vercel.app`
-
-**Option B: Using Vercel CLI**
+### Step 2: Build Your Flutter App Locally
 
 ```bash
-# Install Vercel CLI
+# Build the web app
+flutter build web --release --base-href /
+```
+
+This creates optimized production files in the `build/web` directory.
+
+### Step 3: Deploy to Vercel
+
+**Option A: Using Vercel CLI (Recommended for Flutter)**
+
+```bash
+# Install Vercel CLI (one-time setup)
 npm install -g vercel
 
-# Login to Vercel
+# Login to Vercel (one-time setup)
 vercel login
 
-# Deploy
-vercel
+# Navigate to the build directory
+cd build/web
 
-# For production deployment
+# Deploy to Vercel
 vercel --prod
 ```
 
-### Step 3: Configure Custom Domain (Optional)
+Follow the prompts:
+- Set up and deploy? **Y**
+- Which scope? Select your account
+- Link to existing project? **N** (first time) or **Y** (subsequent deploys)
+- Project name? Enter a name (e.g., `multistopwatches`)
+- Directory? Press Enter (it's already in build/web)
+
+**Option B: Deploy via Vercel Dashboard**
+
+1. Build your app: `flutter build web --release --base-href /`
+2. Go to https://vercel.com and sign in
+3. Click "Add New Project"
+4. Click "Deploy without Git"
+5. Drag and drop the `build/web` folder
+6. Click "Deploy"
+
+**Note for Future Updates:**
+
+After making changes to your code:
+1. Build again: `flutter build web --release --base-href /`
+2. Deploy: `cd build/web && vercel --prod`
+
+### Step 4: Configure Custom Domain (Optional)
 
 1. In your Vercel project dashboard, go to "Settings" > "Domains"
 2. Add your custom domain
