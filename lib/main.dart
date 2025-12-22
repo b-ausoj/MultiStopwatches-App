@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto',
         textTheme: const TextTheme(
-          bodyLarge: TextStyle(fontSize: 14),
-          bodyMedium: TextStyle(fontSize: 14),
+          bodyLarge: TextStyle(fontSize: 18),
+          bodyMedium: TextStyle(fontSize: 16),
         ),
         switchTheme: SwitchThemeData(
           thumbColor: MaterialStateProperty.all(Colors.white),

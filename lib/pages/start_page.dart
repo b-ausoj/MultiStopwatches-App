@@ -127,7 +127,7 @@ class _StartPageState extends State<StartPage> {
                                 child: Text(
                                   "Add a new group",
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 18),
                                 ),
                               ),
                               Icon(Icons.add_to_photos_outlined)

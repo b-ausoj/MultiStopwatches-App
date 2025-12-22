@@ -21,7 +21,7 @@ class AddStopwatchCard extends StatelessWidget {
             children: [
               Text(
                 "Add Stopwatch",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 24),
               ),
               Spacer(),
               Icon(Icons.add)
