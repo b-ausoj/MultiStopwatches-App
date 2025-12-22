@@ -41,7 +41,7 @@ class _StartPageState extends State<StartPage> {
         leading: NavIcon(_startController),
       ),
       drawer: NavDrawer(_startController.allGroups, _startController.settings,
-          _startController, null),
+          _startController, null, _startController.sharedPreferencesKey),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -82,7 +82,8 @@ class _StartPageState extends State<StartPage> {
                                     builder: (context) => StopwatchesPage(
                                         group,
                                         _startController.allGroups,
-                                        _startController.settings)))
+                                        _startController.settings,
+                                        _startController.sharedPreferencesKey)))
                                 .then((value) {
                               _startController.refreshBadgeState();
                               setState(() {});
@@ -113,7 +114,8 @@ class _StartPageState extends State<StartPage> {
                                   builder: (context) => StopwatchesPage(
                                       newGroup,
                                       _startController.allGroups,
-                                      _startController.settings)))
+                                      _startController.settings,
+                                      _startController.sharedPreferencesKey)))
                               .then((value) {
                             _startController.refreshBadgeState();
                             setState(() {});

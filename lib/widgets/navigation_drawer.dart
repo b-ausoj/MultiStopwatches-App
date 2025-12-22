@@ -17,7 +17,9 @@ class NavDrawer extends StatefulWidget {
   // the badge will be updated
   final BadgeController controller;
   final GroupModel? group;
+  final String sharedPreferencesKey;
   const NavDrawer(this.allGroups, this.settings, this.controller, this.group,
+      this.sharedPreferencesKey,
       {super.key});
 
   @override
@@ -71,8 +73,8 @@ class _NavDrawerState extends State<NavDrawer> {
       Navigator.pop(context);
       Navigator.of(context)
           .push(MaterialPageRoute(
-              builder: (context) => StopwatchesPage(
-                  selectedGroup, widget.allGroups, widget.settings)))
+              builder: (context) => StopwatchesPage(selectedGroup,
+                  widget.allGroups, widget.settings, widget.sharedPreferencesKey)))
           .then((value) => widget.controller.refreshBadgeState());
     } else {
       int base = widget.allGroups.length;
@@ -88,8 +90,8 @@ class _NavDrawerState extends State<NavDrawer> {
           widget.allGroups.add(newGroup);
           Navigator.of(context)
               .push(MaterialPageRoute(
-                  builder: (context) => StopwatchesPage(
-                      newGroup, widget.allGroups, widget.settings)))
+                  builder: (context) => StopwatchesPage(newGroup,
+                      widget.allGroups, widget.settings, widget.sharedPreferencesKey)))
               .then((value) => widget.controller.refreshBadgeState());
           break;
         case 1:

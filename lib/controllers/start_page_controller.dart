@@ -23,15 +23,19 @@ class StartController extends BadgeController {
 
   StartController(this.refreshScreen, this.sharedPreferencesKey) {
     loadSettings(settings);
-    appLifecycleListener = AppLifecycleListener(onStateChange: (_) => helper());
+    appLifecycleListener = AppLifecycleListener(
+      onPause: () => _saveState(),
+      onInactive: () => _saveState(),
+      onDetach: () => _saveState(),
+    );
     timer = Timer.periodic(const Duration(seconds: 10), (Timer t) {
       storeData(allGroups, sharedPreferencesKey);
     });
   }
 
-  void helper() {
-    log("before");
-    storeData(allGroups, sharedPreferencesKey).then((value) => log("after"));
+  void _saveState() {
+    log("Saving state due to lifecycle change");
+    storeData(allGroups, sharedPreferencesKey);
   }
 
   @override

@@ -20,9 +20,10 @@ class StopwatchesPageController extends BadgeController {
   final List<String> _oldStopwatchesPage = [];
   final GroupModel groupModel;
   final SettingsModel settings;
+  final String sharedPreferencesKey;
 
-  StopwatchesPageController(
-      this.allGroups, this.context, this.groupModel, this.settings) {
+  StopwatchesPageController(this.allGroups, this.context, this.groupModel,
+      this.settings, this.sharedPreferencesKey) {
     for (var element in groupModel.stopwatches) {
       _stopwatchCards.add(StopwatchCard(
         element,
@@ -56,6 +57,8 @@ class StopwatchesPageController extends BadgeController {
     sortAndListCards(
         _stopwatchCards, groupModel.criterion, groupModel.direction, settings);
     refreshBadgeState();
+    // Save state immediately when stopwatch state changes
+    storeData(allGroups, sharedPreferencesKey);
   }
 
   void deleteAllStopwatches() {

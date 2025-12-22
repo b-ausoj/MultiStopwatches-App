@@ -19,7 +19,10 @@ class StopwatchesPage extends StatefulWidget {
   final GroupModel group;
   final List<GroupModel> allGroups;
   final SettingsModel settings;
-  const StopwatchesPage(this.group, this.allGroups, this.settings, {super.key});
+  final String sharedPreferencesKey;
+  const StopwatchesPage(
+      this.group, this.allGroups, this.settings, this.sharedPreferencesKey,
+      {super.key});
 
   @override
   State<StopwatchesPage> createState() => _StopwatchesPageState();
@@ -68,8 +71,12 @@ class _StopwatchesPageState extends State<StopwatchesPage>
           )
         ],
       ),
-      drawer: NavDrawer(widget.allGroups, widget.settings,
-          _stopwatchesPageController, _stopwatchesPageController.groupModel),
+      drawer: NavDrawer(
+          widget.allGroups,
+          widget.settings,
+          _stopwatchesPageController,
+          _stopwatchesPageController.groupModel,
+          widget.sharedPreferencesKey),
       floatingActionButton: _stopwatchesPageController.isFabActive()
           ? FloatingActionButton.extended(
               foregroundColor: Colors.white,
@@ -109,8 +116,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
   @override
   void initState() {
     super.initState();
-    _stopwatchesPageController = StopwatchesPageController(
-        widget.allGroups, context, _groupModel, widget.settings);
+    _stopwatchesPageController = StopwatchesPageController(widget.allGroups,
+        context, _groupModel, widget.settings, widget.sharedPreferencesKey);
     _ticker = createTicker((elapsed) {
       setState(() {});
       if (!widget.settings.seperateRunningStopped) {
