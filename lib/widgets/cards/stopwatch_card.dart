@@ -88,7 +88,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                             fontSize: 26,
                             fontWeight: FontWeight.w400,
                             letterSpacing: 0,
-                            height: 0),
+                            height: 1),
                         overflow: TextOverflow.ellipsis,
                       ),
                     )),

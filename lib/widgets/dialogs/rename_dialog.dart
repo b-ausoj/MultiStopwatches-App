@@ -1,27 +1,55 @@
 import 'package:flutter/material.dart';
 
-class RenameDialog extends StatelessWidget {
+class RenameDialog extends StatefulWidget {
   final String initialName;
   final void Function(String) onAccept;
 
-  late final TextEditingController _controller =
-      TextEditingController.fromValue(TextEditingValue(
-          text: initialName,
-          selection:
-              TextSelection(baseOffset: 0, extentOffset: initialName.length)));
+  const RenameDialog(this.initialName, this.onAccept, {super.key});
 
-  RenameDialog(this.initialName, this.onAccept, {super.key});
+  @override
+  State<RenameDialog> createState() => _RenameDialogState();
+}
+
+class _RenameDialogState extends State<RenameDialog> {
+  late final TextEditingController _controller;
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialName);
+
+    // Select all text after the widget is built and focused
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+      _controller.selection = TextSelection(
+        baseOffset: 0,
+        extentOffset: widget.initialName.length,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text("Rename stopwatch"),
       content: TextField(
-        autofocus: true,
+        focusNode: _focusNode,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
         ),
         controller: _controller,
+        onSubmitted: (_) {
+          widget.onAccept(_controller.text);
+          Navigator.of(context).pop();
+        },
       ),
       actions: <Widget>[
         TextButton(
@@ -33,7 +61,7 @@ class RenameDialog extends StatelessWidget {
         TextButton(
           child: const Text("OK"),
           onPressed: () {
-            onAccept(_controller.text);
+            widget.onAccept(_controller.text);
             Navigator.of(context).pop();
           },
         ),
