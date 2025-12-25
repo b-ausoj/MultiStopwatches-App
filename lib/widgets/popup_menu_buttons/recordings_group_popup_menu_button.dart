@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:multistopwatches/enums/recordings_set_menu_item.dart';
+import 'package:multistopwatches/enums/recordings_group_menu_item.dart';
 
-class RecordingsSetPopupMenuButton extends StatelessWidget {
-  final Function(RecordingsSetMenuItem) onSelected;
+class RecordingsGroupPopupMenuButton extends StatelessWidget {
+  final Function(RecordingsGroupMenuItem) onSelected;
 
-  const RecordingsSetPopupMenuButton({required this.onSelected, super.key});
+  const RecordingsGroupPopupMenuButton({required this.onSelected, super.key});
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
       onSelected: onSelected,
-      itemBuilder: (BuildContext context) => RecordingsSetMenuItem.values
-          .map<PopupMenuEntry<RecordingsSetMenuItem>>(
-              (RecordingsSetMenuItem menuItem) => PopupMenuItem(
+      itemBuilder: (BuildContext context) => RecordingsGroupMenuItem.values
+          .map<PopupMenuEntry<RecordingsGroupMenuItem>>(
+              (RecordingsGroupMenuItem menuItem) => PopupMenuItem(
                   value: menuItem,
                   child: Row(
                     children: [

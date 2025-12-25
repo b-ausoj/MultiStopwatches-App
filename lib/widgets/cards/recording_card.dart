@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/enums/recording_card_menu_item.dart';
 import 'package:multistopwatches/models/recording_model.dart';
@@ -63,11 +61,9 @@ class _RecordingCardState extends State<RecordingCard> {
                   onSelected: (RecordingCardMenuItem item) {
                     switch (item) {
                       case RecordingCardMenuItem.rename:
-                        log("message");
                         _showRenameDialog();
                         break;
                       case RecordingCardMenuItem.export:
-                        log("exporting");
                         exportRecordingToCSV(_recordingModel, widget.settings);
                         break;
                       case RecordingCardMenuItem.delete:

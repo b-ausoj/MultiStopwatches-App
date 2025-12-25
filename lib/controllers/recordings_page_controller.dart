@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/controllers/badge_controller.dart';
-import 'package:multistopwatches/enums/recordings_set_menu_item.dart';
+import 'package:multistopwatches/enums/recordings_group_menu_item.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
@@ -9,7 +9,7 @@ import 'package:multistopwatches/utils/export_to_csv.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/recordings_group_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/cards/recording_card.dart';
-import 'package:multistopwatches/widgets/text_with_badge/recordings_set_text_with_badge.dart';
+import 'package:multistopwatches/widgets/text_with_badge/recordings_group_text_with_badge.dart';
 
 class RecordingsPageController extends BadgeController {
   BuildContext context;
@@ -45,13 +45,13 @@ class RecordingsPageController extends BadgeController {
             },
             shape: const Border(),
             controlAffinity: ListTileControlAffinity.leading,
-            trailing: RecordingsSetPopupMenuButton(
-                onSelected: (RecordingsSetMenuItem item) {
+            trailing: RecordingsGroupPopupMenuButton(
+                onSelected: (RecordingsGroupMenuItem item) {
               switch (item) {
-                case RecordingsSetMenuItem.deleteAll:
+                case RecordingsGroupMenuItem.deleteAll:
                   deleteRecordingsSet(timeStamp);
                   break;
-                case RecordingsSetMenuItem.exportAll:
+                case RecordingsGroupMenuItem.exportAll:
                   exportRecordingsSetToCSV(
                       recordingCards
                           .where((element) =>
@@ -63,7 +63,7 @@ class RecordingsPageController extends BadgeController {
               //selectedMenu = item;
               refresh();
             }),
-            title: Center(child: RecordingsSetTextWithBadge(list, timeStamp)),
+            title: Center(child: RecordingsGroupTextWithBadge(list, timeStamp)),
             subtitle: Center(
                 child: Text("from ${list.first.recordingModel.fromGroup}")),
             children: list,
@@ -84,13 +84,13 @@ class RecordingsPageController extends BadgeController {
           },
           shape: const Border(),
           controlAffinity: ListTileControlAffinity.leading,
-          trailing: RecordingsSetPopupMenuButton(
-              onSelected: (RecordingsSetMenuItem item) {
+          trailing: RecordingsGroupPopupMenuButton(
+              onSelected: (RecordingsGroupMenuItem item) {
             switch (item) {
-              case RecordingsSetMenuItem.deleteAll:
+              case RecordingsGroupMenuItem.deleteAll:
                 deleteRecordingsSet(last);
                 break;
-              case RecordingsSetMenuItem.exportAll:
+              case RecordingsGroupMenuItem.exportAll:
                 exportRecordingsSetToCSV(
                     recordingCards
                         .where((element) =>
@@ -102,7 +102,7 @@ class RecordingsPageController extends BadgeController {
             //selectedMenu = item;
             refresh();
           }),
-          title: Center(child: RecordingsSetTextWithBadge(list, last)),
+          title: Center(child: RecordingsGroupTextWithBadge(list, last)),
           subtitle: Center(
               child: Text("from ${list.first.recordingModel.fromGroup}")),
           children: list,

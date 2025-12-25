@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/cards/recording_card.dart';
 
-class RecordingsSetTextWithBadge extends StatefulWidget {
+class RecordingsGroupTextWithBadge extends StatefulWidget {
   final List<RecordingCard> list;
   final DateTime timeStamp;
 
-  const RecordingsSetTextWithBadge(this.list, this.timeStamp, {super.key});
+  const RecordingsGroupTextWithBadge(this.list, this.timeStamp, {super.key});
 
   @override
-  State<RecordingsSetTextWithBadge> createState() =>
-      _RecordingsSetTextWithBadgeState();
+  State<RecordingsGroupTextWithBadge> createState() =>
+      _RecordingsGroupTextWithBadgeState();
 }
 
-class _RecordingsSetTextWithBadgeState
-    extends State<RecordingsSetTextWithBadge> {
+class _RecordingsGroupTextWithBadgeState
+    extends State<RecordingsGroupTextWithBadge> {
   @override
   Widget build(BuildContext context) {
     return Badge(
