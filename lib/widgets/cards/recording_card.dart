@@ -50,12 +50,12 @@ class _RecordingCardState extends State<RecordingCard> {
                             fontSize: 26,
                             fontWeight: FontWeight.w400,
                             letterSpacing: 0,
-                            height: 0)),
+                            height: 1)),
                   ),
                 ),
                 Text(durationToString(_recordingModel.totalTime),
                     style: const TextStyle(
-                        fontSize: 28, fontWeight: FontWeight.w600, height: 0)),
+                        fontSize: 28, fontWeight: FontWeight.w600, height: 1)),
                 const Spacer(
                   flex: 1,
                 ),
@@ -86,7 +86,7 @@ class _RecordingCardState extends State<RecordingCard> {
               children: [
                 Text(formatLapCount(_recordingModel.lapTimes),
                     style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w400, height: 0)),
+                        fontSize: 16, fontWeight: FontWeight.w400, height: 1)),
                 const SizedBox(
                   width: 16,
                 ),
@@ -96,12 +96,12 @@ class _RecordingCardState extends State<RecordingCard> {
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            height: 0)),
+                            height: 1)),
                     Text(formatLapTimes(_recordingModel.lapTimes),
                         style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            height: 0)),
+                            height: 1)),
                   ],
                 ),
                 const SizedBox(
@@ -113,12 +113,12 @@ class _RecordingCardState extends State<RecordingCard> {
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            height: 0)),
+                            height: 1)),
                     Text(formatLapTimes(_recordingModel.splitTimes),
                         style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            height: 0)),
+                            height: 1)),
                   ],
                 )
               ],
