@@ -39,6 +39,7 @@ class _StopwatchCardState extends State<StopwatchCard>
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
+            // times column
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
@@ -74,10 +75,12 @@ class _StopwatchCardState extends State<StopwatchCard>
             width: 4, // space between times and name/buttons
           ),
           Expanded(
+            // name and buttons column
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
+                  // name and menu button
                   children: [
                     Expanded(
                         child: InkWell(
@@ -85,6 +88,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                       child: Text(
                         _stopwatchModel.name,
                         style: const TextStyle(
+                            fontFamily: 'Roboto',
                             fontSize: 26,
                             fontWeight: FontWeight.w400,
                             letterSpacing: 0,
@@ -156,7 +160,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 8, 8),
+                  // buttons row
+                  padding: const EdgeInsets.fromLTRB(0, -2, 8, 8),
                   child: Row(
                     children: [
                       switch (_stopwatchModel.state) {
