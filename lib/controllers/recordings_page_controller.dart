@@ -7,7 +7,7 @@ import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/utils/export_to_csv.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
-import 'package:multistopwatches/widgets/popup_menu_buttons/recordings_set_popup_menu_button.dart';
+import 'package:multistopwatches/widgets/popup_menu_buttons/recordings_group_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/cards/recording_card.dart';
 import 'package:multistopwatches/widgets/text_with_badge/recordings_set_text_with_badge.dart';
 
