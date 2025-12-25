@@ -5,6 +5,7 @@ import 'package:multistopwatches/services/launch_url_service.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/widgets/icons/back_icon.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutPage extends StatelessWidget {
   final bool isBadgeVisible;
@@ -16,7 +17,7 @@ class AboutPage extends StatelessWidget {
     final String appBuildNumber = packageInfo.buildNumber;
     if (context.mounted) {
       showShortSnackBar(
-          context, "Your app version is $appVersion+$appBuildNumber");
+          context, AppLocalizations.of(context)!.appVersionMessage(appVersion, appBuildNumber));
     }
   }
 
@@ -24,7 +25,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("About"),
+        title: Text(AppLocalizations.of(context)!.about),
         leading: BackIcon(isBadgeVisible),
       ),
       body: Center(
@@ -41,10 +42,10 @@ class AboutPage extends StatelessWidget {
                     height: 100,
                     image: const AssetImage("assets/images/rect39.png"))),
             const SizedBox(height: 16.0),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Text(
-                "Hello, my name is Josua, and I'm a computer science student. In my free time, I work as a triathlon coach, and I found the need to simultaneously record the times of my athletes during track intervals or swim races. That's why I developed this app. \n\nIf you have any feedback, suggestions for improvement, or encounter any issues, please don't hesitate to let me know! \n\nYour input is greatly appreciated.",
+                AppLocalizations.of(context)!.aboutPageDescription,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -53,7 +54,7 @@ class AboutPage extends StatelessWidget {
             TextButton.icon(
                 onPressed: () => launchMailApp(),
                 icon: const Icon(Icons.rate_review_outlined),
-                label: const Text("Contact me"),
+                label: Text(AppLocalizations.of(context)!.contactMe),
                 style: TextButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: const Color(0xFFEFEFEF),
@@ -61,9 +62,9 @@ class AboutPage extends StatelessWidget {
             const SizedBox(height: 16.0),
             TextButton.icon(
                 onPressed: () => showShortSnackBar(
-                    context, "Please add the app to the store first!"),
+                    context, AppLocalizations.of(context)!.pleaseAddToStore),
                 icon: const Icon(Icons.star_border_outlined),
-                label: const Text("Rate this app"),
+                label: Text(AppLocalizations.of(context)!.rateThisApp),
                 style: TextButton.styleFrom(
                     foregroundColor: Colors.black,
                     backgroundColor: const Color(0xFFEFEFEF),
@@ -73,7 +74,7 @@ class AboutPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
-                  child: const Text("Terms & conditions"),
+                  child: Text(AppLocalizations.of(context)!.termsAndConditions),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const TnCPage()));
@@ -81,7 +82,7 @@ class AboutPage extends StatelessWidget {
                 ),
                 const Text("|"),
                 InkWell(
-                  child: const Text("Privacy policy"),
+                  child: Text(AppLocalizations.of(context)!.privacyPolicy),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const PPPage()));

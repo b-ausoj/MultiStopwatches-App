@@ -57,5 +57,33 @@
         "type": "int"
       }
     }
-  }
+  },
+
+  "exportItem": "Export",
+  "exportAll": "Export all",
+  "deleteAll": "Delete all",
+  "deleteThisGroup": "Delete this group",
+  "saveAll": "Save all",
+  "resetAll": "Reset all",
+  "changeOrder": "Change order",
+  "exportGroup": "Export Group",
+  "deleteGroup": "Delete Group",
+
+  "aboutPageDescription": "Hello, my name is Josua, and I'm a computer science student. In my free time, I work as a triathlon coach, and I found the need to simultaneously record the times of my athletes during track intervals or swim races. That's why I developed this app. \n\nIf you have any feedback, suggestions for improvement, or encounter any issues, please don't hesitate to let me know! \n\nYour input is greatly appreciated.",
+  "contactMe": "Contact me",
+  "rateThisApp": "Rate this app",
+  "termsAndConditions": "Terms & conditions",
+  "privacyPolicy": "Privacy policy",
+  "appVersionMessage": "Your app version is {version}+{buildNumber}",
+  "@appVersionMessage": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "buildNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "pleaseAddToStore": "Please add the app to the store first!"
 }
