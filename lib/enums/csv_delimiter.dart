@@ -1,8 +1,6 @@
 enum CSVDelimiter {
   comma("Comma", ","),
   semicolon("Semicolon", ";"),
-  tab("Tab", "\t"),
-  pipe("Pipe", "|"),
   space("Space", " ");
 
   final String label;
