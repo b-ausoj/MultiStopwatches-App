@@ -161,7 +161,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                 ),
                 Padding(
                   // buttons row
-                  padding: const EdgeInsets.fromLTRB(0, -2, 8, 8),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 8, 8),
                   child: Row(
                     children: [
                       switch (_stopwatchModel.state) {
