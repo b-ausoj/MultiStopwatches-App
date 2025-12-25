@@ -12,6 +12,8 @@ import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/start_page_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/text_with_badge/start_text_with_badge.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/main.dart';
 
 class StartPage extends StatefulWidget {
   final String sharedPreferencesKey;
@@ -29,7 +31,14 @@ class _StartPageState extends State<StartPage> {
     super.initState();
     _startController =
         StartController(() => setState(() {}), widget.sharedPreferencesKey);
-    loadStart(_startController);
+    loadStart(_startController).then((_) {
+      // Apply saved language preference
+      if (_startController.settings.languageCode != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          MyApp.of(context)?.setLocale(Locale(_startController.settings.languageCode!));
+        });
+      }
+    });
   }
 
   @override
@@ -37,7 +46,7 @@ class _StartPageState extends State<StartPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("MultiStopwatches"),
+        title: Text(AppLocalizations.of(context)!.multiStopwatches),
         leading: NavIcon(_startController),
       ),
       drawer: NavDrawer(_startController.allGroups, _startController.settings,
@@ -101,7 +110,7 @@ class _StartPageState extends State<StartPage> {
                         borderRadius: BorderRadius.circular(12.0),
                         onTap: () {
                           GroupModel newGroup = GroupModel(
-                              "Group ${_startController.allGroups.length + 1}",
+                              AppLocalizations.of(context)!.group(_startController.allGroups.length + 1),
                               0,
                               _startController.settings.defaultSortCriterion,
                               _startController.settings.defaultSortDirection,
@@ -121,18 +130,18 @@ class _StartPageState extends State<StartPage> {
                             setState(() {});
                           });
                         },
-                        child: const Padding(
-                          padding: EdgeInsets.all(16.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
                           child: Row(
                             children: [
                               Expanded(
                                 child: Text(
-                                  "Add a new group",
+                                  AppLocalizations.of(context)!.addNewGroup,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18),
                                 ),
                               ),
-                              Icon(Icons.add_to_photos_outlined)
+                              const Icon(Icons.add_to_photos_outlined)
                             ],
                           ),
                         )),

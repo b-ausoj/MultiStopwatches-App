@@ -9,6 +9,7 @@ import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/stopwatch_popup_menu_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StopwatchCard extends StatefulWidget {
   final StopwatchesPageController stopwatchesPageController;
@@ -106,20 +107,20 @@ class _StopwatchCardState extends State<StopwatchCard>
                             switch (_stopwatchModel.state) {
                               case StopwatchState.running:
                                 showShortSnackBar(
-                                    context, "Can't save while running");
+                                    context, AppLocalizations.of(context)!.cantSaveWhileRunning);
                                 break;
                               case StopwatchState.reseted:
                                 showShortSnackBar(
-                                    context, "Can't save empty stopwatch");
+                                    context, AppLocalizations.of(context)!.cantSaveEmptyStopwatch);
                                 break;
                               case StopwatchState.stopped:
                                 saveStopwatch(_stopwatchModel,
                                     widget.stopwatchesPageController.name);
                                 widget.changedState();
                                 showLongSnackBar(context,
-                                    "'${_stopwatchModel.name}' has been saved and reseted",
+                                    AppLocalizations.of(context)!.hasBeenSavedAndReseted(_stopwatchModel.name),
                                     action: SnackBarAction(
-                                        label: "Undo reset",
+                                        label: AppLocalizations.of(context)!.undoReset,
                                         onPressed: () {
                                           _stopwatchModel.restore();
                                           widget.changedState();
@@ -131,7 +132,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                             switch (_stopwatchModel.state) {
                               case StopwatchState.running:
                                 showShortSnackBar(
-                                    context, "Can't reset while running");
+                                    context, AppLocalizations.of(context)!.cantResetWhileRunning);
                                 break;
                               case StopwatchState.reseted:
                                 break;
@@ -139,9 +140,9 @@ class _StopwatchCardState extends State<StopwatchCard>
                                 _stopwatchModel.reset();
                                 widget.changedState();
                                 showLongSnackBar(context,
-                                    "'${_stopwatchModel.name}' has been reseted",
+                                    AppLocalizations.of(context)!.hasBeenReseted(_stopwatchModel.name),
                                     action: SnackBarAction(
-                                        label: "Undo",
+                                        label: AppLocalizations.of(context)!.undo,
                                         onPressed: () {
                                           _stopwatchModel.restore();
                                           widget.changedState();
@@ -172,7 +173,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                               HapticFeedback.lightImpact();
                             },
                             icon: const Icon(Icons.play_arrow),
-                            label: const Text("START"),
+                            label: Text(AppLocalizations.of(context)!.start),
                             style: TextButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor: const Color(0xFF1E7927))),
@@ -183,7 +184,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                               HapticFeedback.lightImpact();
                             },
                             icon: const Icon(Icons.stop),
-                            label: const Text("STOP"),
+                            label: Text(AppLocalizations.of(context)!.stop),
                             style: TextButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor: const Color(0xFFBC2525))),
@@ -194,7 +195,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                               HapticFeedback.lightImpact();
                             },
                             icon: const Icon(Icons.play_arrow_outlined),
-                            label: const Text("RESUME"),
+                            label: Text(AppLocalizations.of(context)!.resume),
                             style: TextButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor: const Color(0xFF259030))),
@@ -210,7 +211,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                                   }
                                 : null,
                         icon: const Icon(Icons.flag),
-                        label: const Text("LAP"),
+                        label: Text(AppLocalizations.of(context)!.lap),
                         style: TextButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: const Color(0xFFE5A426),

@@ -8,6 +8,7 @@ import 'package:multistopwatches/pages/settings_page.dart';
 import 'package:multistopwatches/pages/stopwatches_page.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/text_with_badge/nav_text_with_badge.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavDrawer extends StatefulWidget {
   final List<GroupModel> allGroups;
@@ -41,7 +42,7 @@ class _NavDrawerState extends State<NavDrawer> {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 16, 16, 20),
             child: Text(
-              "MultiStopwatches",
+              AppLocalizations.of(context)!.multiStopwatches,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.titleLarge,
             ),
@@ -52,16 +53,16 @@ class _NavDrawerState extends State<NavDrawer> {
                   label: Flexible(
                       child: NavTextWithBadge(
                           group.name, group, widget.allGroups, false)))),
-          const NavigationDrawerDestination(
-              icon: Icon(Icons.add), label: Text("Add a new group")),
+          NavigationDrawerDestination(
+              icon: const Icon(Icons.add), label: Text(AppLocalizations.of(context)!.addNewGroup)),
           const Divider(),
-          const NavigationDrawerDestination(
-              icon: Icon(Icons.history),
-              label: NavTextWithBadge("Recordings", null, null, true)),
-          const NavigationDrawerDestination(
-              icon: Icon(Icons.settings_outlined), label: Text("Settings")),
-          const NavigationDrawerDestination(
-              icon: Icon(Icons.info_outlined), label: Text("About")),
+          NavigationDrawerDestination(
+              icon: const Icon(Icons.history),
+              label: NavTextWithBadge(AppLocalizations.of(context)!.recordings, null, null, true)),
+          NavigationDrawerDestination(
+              icon: const Icon(Icons.settings_outlined), label: Text(AppLocalizations.of(context)!.settings)),
+          NavigationDrawerDestination(
+              icon: const Icon(Icons.info_outlined), label: Text(AppLocalizations.of(context)!.about)),
         ]);
   }
 
@@ -83,7 +84,7 @@ class _NavDrawerState extends State<NavDrawer> {
           // add group
           Navigator.pop(context);
           GroupModel newGroup = GroupModel(
-              "Group ${widget.allGroups.length + 1}",
+              AppLocalizations.of(context)!.group(widget.allGroups.length + 1),
               0,
               widget.settings.defaultSortCriterion,
               widget.settings.defaultSortDirection, []);

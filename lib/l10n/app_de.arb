@@ -1,0 +1,40 @@
+{
+  "@@locale": "de",
+
+  "start": "START",
+  "stop": "STOPP",
+  "resume": "WEITER",
+  "lap": "RUNDE",
+
+  "rename": "Umbenennen",
+  "save": "Speichern",
+  "reset": "Zurücksetzen",
+  "delete": "Löschen",
+
+  "cantSaveWhileRunning": "Kann nicht speichern während läuft",
+  "cantSaveEmptyStopwatch": "Kann keine leere Stoppuhr speichern",
+  "hasBeenSavedAndReseted": "'{name}' wurde gespeichert und zurückgesetzt",
+  "undoReset": "Zurücksetzen rückgängig",
+  "cantResetWhileRunning": "Kann nicht zurücksetzen während läuft",
+  "hasBeenReseted": "'{name}' wurde zurückgesetzt",
+  "undo": "Rückgängig",
+
+  "settings": "Einstellungen",
+  "seperateRunningStoppedSetting": "Beim Sortierkriterium \"nach längster (Runden-)Zeit\", möchtest du die gestoppten Stoppuhren unten haben?",
+  "defaultSortCriterion": "Standard-Sortierkriterium:",
+  "defaultSortDirection": "Standard-Sortierrichtung:",
+  "timeformatCsvExport": "Zeitformat für .csv Export:",
+  "delimiterCsvFile": "Trennzeichen für .csv Datei:",
+  "language": "Sprache:",
+
+  "languageAuto": "Automatisch (System)",
+  "languageEnglish": "Englisch",
+  "languageGerman": "Deutsch",
+
+  "multiStopwatches": "MultiStopwatches",
+  "addNewGroup": "Neue Gruppe hinzufügen",
+  "recordings": "Aufzeichnungen",
+  "about": "Über",
+
+  "group": "Gruppe {number}"
+}

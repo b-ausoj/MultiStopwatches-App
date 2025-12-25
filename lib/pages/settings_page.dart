@@ -6,6 +6,8 @@ import 'package:multistopwatches/enums/time_format.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/widgets/icons/back_icon.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/main.dart';
 
 class SettingsPage extends StatefulWidget {
   final bool isBadgeVisible;
@@ -21,7 +23,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Settings"),
+          title: Text(AppLocalizations.of(context)!.settings),
           leading: BackIcon(widget.isBadgeVisible),
         ),
         body: Column(
@@ -30,10 +32,10 @@ class _SettingsPageState extends State<SettingsPage> {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                       child: Text(
-                    "In sort criterion \"by longest (lap) time\", do you want to have the stopped stopwatches at the bottom?",
-                    style: TextStyle(fontSize: 16),
+                    AppLocalizations.of(context)!.seperateRunningStoppedSetting,
+                    style: const TextStyle(fontSize: 16),
                   )),
                   const SizedBox(
                     width: 16.0,
@@ -59,10 +61,10 @@ class _SettingsPageState extends State<SettingsPage> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(children: [
-                const Expanded(
+                Expanded(
                     child: Text(
-                  "Default sort criterion:",
-                  style: TextStyle(fontSize: 16),
+                  AppLocalizations.of(context)!.defaultSortCriterion,
+                  style: const TextStyle(fontSize: 16),
                 )),
                 const SizedBox(
                   width: 16.0,
@@ -91,10 +93,10 @@ class _SettingsPageState extends State<SettingsPage> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(children: [
-                const Expanded(
+                Expanded(
                     child: Text(
-                  "Default sort direction:",
-                  style: TextStyle(fontSize: 16),
+                  AppLocalizations.of(context)!.defaultSortDirection,
+                  style: const TextStyle(fontSize: 16),
                 )),
                 const SizedBox(
                   width: 16.0,
@@ -127,10 +129,10 @@ class _SettingsPageState extends State<SettingsPage> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(children: [
-                const Expanded(
+                Expanded(
                     child: Text(
-                  "Timeformat for .csv export:",
-                  style: TextStyle(fontSize: 16),
+                  AppLocalizations.of(context)!.timeformatCsvExport,
+                  style: const TextStyle(fontSize: 16),
                 )),
                 const SizedBox(
                   width: 16.0,
@@ -159,10 +161,10 @@ class _SettingsPageState extends State<SettingsPage> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(children: [
-                const Expanded(
+                Expanded(
                     child: Text(
-                  "Delimiter for .csv file:",
-                  style: TextStyle(fontSize: 16),
+                  AppLocalizations.of(context)!.delimiterCsvFile,
+                  style: const TextStyle(fontSize: 16),
                 )),
                 const SizedBox(
                   width: 16.0,
@@ -191,6 +193,48 @@ class _SettingsPageState extends State<SettingsPage> {
             const Divider(
               indent: 16.0,
               endIndent: 16.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(children: [
+                Expanded(
+                    child: Text(
+                  AppLocalizations.of(context)!.language,
+                  style: const TextStyle(fontSize: 16),
+                )),
+                const SizedBox(
+                  width: 16.0,
+                ),
+                DropdownMenu<String?>(
+                  initialSelection: widget.settings.languageCode,
+                  onSelected: (String? languageCode) {
+                    setState(() {
+                      widget.settings.languageCode = languageCode;
+                    });
+                    storeSettings(widget.settings);
+                    // Update the app locale
+                    Locale? newLocale;
+                    if (languageCode != null) {
+                      newLocale = Locale(languageCode);
+                    }
+                    MyApp.of(context)?.setLocale(newLocale);
+                  },
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry<String?>(
+                      value: null,
+                      label: AppLocalizations.of(context)!.languageAuto,
+                    ),
+                    DropdownMenuEntry<String?>(
+                      value: 'en',
+                      label: AppLocalizations.of(context)!.languageEnglish,
+                    ),
+                    DropdownMenuEntry<String?>(
+                      value: 'de',
+                      label: AppLocalizations.of(context)!.languageGerman,
+                    ),
+                  ],
+                )
+              ]),
             ),
           ],
         ));

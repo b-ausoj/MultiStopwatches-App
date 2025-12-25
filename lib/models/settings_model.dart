@@ -11,6 +11,7 @@ class SettingsModel {
   bool seperateRunningStopped = true;
   CSVDelimiter csvDelimiter = CSVDelimiter.semicolon;
   TimeFormat timeFormat = TimeFormat.hhmmss;
+  String? languageCode; // null = auto (system), 'en' = English, 'de' = German
 
   SettingsModel();
 
@@ -21,6 +22,7 @@ class SettingsModel {
     seperateRunningStopped = other.seperateRunningStopped;
     csvDelimiter = other.csvDelimiter;
     timeFormat = other.timeFormat;
+    languageCode = other.languageCode;
   }
 
   factory SettingsModel.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,7 @@ class SettingsModel {
     settingsModel.seperateRunningStopped = json["seperateRunningStopped"];
     settingsModel.csvDelimiter = CSVDelimiter.values[json["csvDelimiter"]];
     settingsModel.timeFormat = TimeFormat.values[json["timeFormat"]];
+    settingsModel.languageCode = json["languageCode"];
     return settingsModel;
   }
 
@@ -41,5 +44,6 @@ class SettingsModel {
         "seperateRunningStopped": seperateRunningStopped,
         "csvDelimiter": csvDelimiter.index,
         "timeFormat": timeFormat.index,
+        "languageCode": languageCode,
       };
 }
