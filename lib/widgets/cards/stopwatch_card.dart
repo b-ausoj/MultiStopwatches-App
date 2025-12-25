@@ -51,20 +51,20 @@ class _StopwatchCardState extends State<StopwatchCard>
                   Text(durationToString(_stopwatchModel.elapsedTime),
                       style: const TextStyle(
                           fontFamily: 'Roboto',
-                          fontSize: 32,
+                          fontSize: 36,
                           fontWeight: FontWeight.w600,
                           height: 1.0)),
                   Text(
                       "${_stopwatchModel.lapCount < 9 ? "0${_stopwatchModel.lapCount + 1}" : "${_stopwatchModel.lapCount + 1}"} ${durationToString(_stopwatchModel.elapsedLapTime)}",
                       style: const TextStyle(
                           fontFamily: 'Roboto',
-                          fontSize: 20,
+                          fontSize: 24,
                           fontWeight: FontWeight.w600,
                           height: 1.0)),
                   Text(formatPastLaps(_stopwatchModel.lapList, showAllLaps),
                       style: const TextStyle(
                           fontFamily: 'Roboto',
-                          fontSize: 20,
+                          fontSize: 24,
                           fontWeight: FontWeight.w400,
                           height: 1.0)),
                 ],
@@ -161,7 +161,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                 ),
                 Padding(
                   // buttons row
-                  padding: const EdgeInsets.fromLTRB(0, 0, 8, 8),
+                  padding: const EdgeInsets.fromLTRB(0, -4, 8, 8),
                   child: Row(
                     children: [
                       switch (_stopwatchModel.state) {
@@ -175,8 +175,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                             label: const Text("START"),
                             style: TextButton.styleFrom(
                                 foregroundColor: Colors.white,
-                                backgroundColor: const Color(0xFF1E7927),
-                                visualDensity: VisualDensity.compact)),
+                                backgroundColor: const Color(0xFF1E7927))),
                         StopwatchState.running => TextButton.icon(
                             onPressed: () {
                               _stopwatchModel.stop();
