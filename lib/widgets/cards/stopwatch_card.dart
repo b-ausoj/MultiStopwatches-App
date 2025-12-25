@@ -175,7 +175,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                             label: const Text("START"),
                             style: TextButton.styleFrom(
                                 foregroundColor: Colors.white,
-                                backgroundColor: const Color(0xFF1E7927))),
+                                backgroundColor: const Color(0xFF1E7927),
+                                visualDensity: VisualDensity.compact)),
                         StopwatchState.running => TextButton.icon(
                             onPressed: () {
                               _stopwatchModel.stop();
