@@ -88,5 +88,9 @@
   "pleaseAddToStore": "Please add the app to the store first!",
 
   "welcomeMessage": "Welcome to the MultiStopwatches app by Josua",
-  "startAll": "START ALL"
+  "startAll": "START ALL",
+  "addStopwatch": "Add Stopwatch",
+
+  "lapTime": "Lap time",
+  "splitTime": "Split time"
 }

@@ -57,5 +57,9 @@
   "pleaseAddToStore": "Bitte füge die App zuerst zum Store hinzu!",
 
   "welcomeMessage": "Willkommen zur MultiStopwatches App von Josua",
-  "startAll": "ALLE STARTEN"
+  "startAll": "ALLE STARTEN",
+  "addStopwatch": "Stoppuhr hinzufügen",
+
+  "lapTime": "Rundenzeit",
+  "splitTime": "Zwischenzeit"
 }

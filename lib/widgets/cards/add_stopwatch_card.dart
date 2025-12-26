@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddStopwatchCard extends StatelessWidget {
   final void Function() addStopwatch;
@@ -15,16 +16,16 @@ class AddStopwatchCard extends StatelessWidget {
         onTap: () {
           addStopwatch();
         },
-        child: const Padding(
-          padding: EdgeInsets.all(20.0),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Row(
             children: [
               Text(
-                "Add Stopwatch",
-                style: TextStyle(fontSize: 24),
+                AppLocalizations.of(context)!.addStopwatch,
+                style: const TextStyle(fontSize: 24),
               ),
-              Spacer(),
-              Icon(Icons.add)
+              const Spacer(),
+              const Icon(Icons.add)
             ],
           ),
         ),

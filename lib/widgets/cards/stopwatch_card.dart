@@ -107,20 +107,28 @@ class _StopwatchCardState extends State<StopwatchCard>
                             switch (_stopwatchModel.state) {
                               case StopwatchState.running:
                                 showShortSnackBar(
-                                    context, AppLocalizations.of(context)!.cantSaveWhileRunning);
+                                    context,
+                                    AppLocalizations.of(context)!
+                                        .cantSaveWhileRunning);
                                 break;
                               case StopwatchState.reseted:
                                 showShortSnackBar(
-                                    context, AppLocalizations.of(context)!.cantSaveEmptyStopwatch);
+                                    context,
+                                    AppLocalizations.of(context)!
+                                        .cantSaveEmptyStopwatch);
                                 break;
                               case StopwatchState.stopped:
                                 saveStopwatch(_stopwatchModel,
                                     widget.stopwatchesPageController.name);
                                 widget.changedState();
-                                showLongSnackBar(context,
-                                    AppLocalizations.of(context)!.hasBeenSavedAndReseted(_stopwatchModel.name),
+                                showLongSnackBar(
+                                    context,
+                                    AppLocalizations.of(context)!
+                                        .hasBeenSavedAndReseted(
+                                            _stopwatchModel.name),
                                     action: SnackBarAction(
-                                        label: AppLocalizations.of(context)!.undoReset,
+                                        label: AppLocalizations.of(context)!
+                                            .undoReset,
                                         onPressed: () {
                                           _stopwatchModel.restore();
                                           widget.changedState();
@@ -132,17 +140,22 @@ class _StopwatchCardState extends State<StopwatchCard>
                             switch (_stopwatchModel.state) {
                               case StopwatchState.running:
                                 showShortSnackBar(
-                                    context, AppLocalizations.of(context)!.cantResetWhileRunning);
+                                    context,
+                                    AppLocalizations.of(context)!
+                                        .cantResetWhileRunning);
                                 break;
                               case StopwatchState.reseted:
                                 break;
                               case StopwatchState.stopped:
                                 _stopwatchModel.reset();
                                 widget.changedState();
-                                showLongSnackBar(context,
-                                    AppLocalizations.of(context)!.hasBeenReseted(_stopwatchModel.name),
+                                showLongSnackBar(
+                                    context,
+                                    AppLocalizations.of(context)!
+                                        .hasBeenReseted(_stopwatchModel.name),
                                     action: SnackBarAction(
-                                        label: AppLocalizations.of(context)!.undo,
+                                        label:
+                                            AppLocalizations.of(context)!.undo,
                                         onPressed: () {
                                           _stopwatchModel.restore();
                                           widget.changedState();
@@ -240,8 +253,7 @@ class _StopwatchCardState extends State<StopwatchCard>
   void initState() {
     super.initState();
     _ticker = createTicker((elapsed) {
-      assert(widget.stopwatchModel.id ==
-          _stopwatchModel.id); // TODO: remove for deployment
+      // assert(widget.stopwatchModel.id == _stopwatchModel.id); // remove for deployment
       setState(() {});
     });
     _ticker.start();

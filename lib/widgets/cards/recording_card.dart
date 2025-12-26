@@ -7,6 +7,7 @@ import 'package:multistopwatches/utils/export_to_csv.dart';
 import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/recording_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RecordingCard extends StatefulWidget {
   final Map<String, dynamic> json;
@@ -88,8 +89,8 @@ class _RecordingCardState extends State<RecordingCard> {
                 ),
                 Column(
                   children: [
-                    const Text("Lap time",
-                        style: TextStyle(
+                    Text(AppLocalizations.of(context)!.lapTime,
+                        style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                             height: 1)),
@@ -105,8 +106,8 @@ class _RecordingCardState extends State<RecordingCard> {
                 ),
                 Column(
                   children: [
-                    const Text("Split time",
-                        style: TextStyle(
+                    Text(AppLocalizations.of(context)!.splitTime,
+                        style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                             height: 1)),
