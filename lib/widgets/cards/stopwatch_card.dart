@@ -9,7 +9,7 @@ import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/stopwatch_popup_menu_button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class StopwatchCard extends StatefulWidget {
   final StopwatchesPageController stopwatchesPageController;

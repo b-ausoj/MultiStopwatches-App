@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/enums/stopwatch_card_menu_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class StopwatchPopupMenuButton extends StatelessWidget {
   final Function(StopwatchCardMenuItem) onSelected;
 
   const StopwatchPopupMenuButton({required this.onSelected, super.key});
 
-  String _getLocalizedLabel(BuildContext context, StopwatchCardMenuItem menuItem) {
+  String _getLocalizedLabel(
+      BuildContext context, StopwatchCardMenuItem menuItem) {
     final l10n = AppLocalizations.of(context)!;
     switch (menuItem) {
       case StopwatchCardMenuItem.rename:

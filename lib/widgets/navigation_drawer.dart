@@ -8,7 +8,7 @@ import 'package:multistopwatches/pages/settings_page.dart';
 import 'package:multistopwatches/pages/stopwatches_page.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/text_with_badge/nav_text_with_badge.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class NavDrawer extends StatefulWidget {
   final List<GroupModel> allGroups;
@@ -54,15 +54,19 @@ class _NavDrawerState extends State<NavDrawer> {
                       child: NavTextWithBadge(
                           group.name, group, widget.allGroups, false)))),
           NavigationDrawerDestination(
-              icon: const Icon(Icons.add), label: Text(AppLocalizations.of(context)!.addNewGroup)),
+              icon: const Icon(Icons.add),
+              label: Text(AppLocalizations.of(context)!.addNewGroup)),
           const Divider(),
           NavigationDrawerDestination(
               icon: const Icon(Icons.history),
-              label: NavTextWithBadge(AppLocalizations.of(context)!.recordings, null, null, true)),
+              label: NavTextWithBadge(
+                  AppLocalizations.of(context)!.recordings, null, null, true)),
           NavigationDrawerDestination(
-              icon: const Icon(Icons.settings_outlined), label: Text(AppLocalizations.of(context)!.settings)),
+              icon: const Icon(Icons.settings_outlined),
+              label: Text(AppLocalizations.of(context)!.settings)),
           NavigationDrawerDestination(
-              icon: const Icon(Icons.info_outlined), label: Text(AppLocalizations.of(context)!.about)),
+              icon: const Icon(Icons.info_outlined),
+              label: Text(AppLocalizations.of(context)!.about)),
         ]);
   }
 
@@ -74,8 +78,11 @@ class _NavDrawerState extends State<NavDrawer> {
       Navigator.pop(context);
       Navigator.of(context)
           .push(MaterialPageRoute(
-              builder: (context) => StopwatchesPage(selectedGroup,
-                  widget.allGroups, widget.settings, widget.sharedPreferencesKey)))
+              builder: (context) => StopwatchesPage(
+                  selectedGroup,
+                  widget.allGroups,
+                  widget.settings,
+                  widget.sharedPreferencesKey)))
           .then((value) => widget.controller.refreshBadgeState());
     } else {
       int base = widget.allGroups.length;
@@ -91,8 +98,11 @@ class _NavDrawerState extends State<NavDrawer> {
           widget.allGroups.add(newGroup);
           Navigator.of(context)
               .push(MaterialPageRoute(
-                  builder: (context) => StopwatchesPage(newGroup,
-                      widget.allGroups, widget.settings, widget.sharedPreferencesKey)))
+                  builder: (context) => StopwatchesPage(
+                      newGroup,
+                      widget.allGroups,
+                      widget.settings,
+                      widget.sharedPreferencesKey)))
               .then((value) => widget.controller.refreshBadgeState());
           break;
         case 1:

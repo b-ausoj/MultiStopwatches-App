@@ -7,7 +7,7 @@ import 'package:multistopwatches/utils/export_to_csv.dart';
 import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/recording_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class RecordingCard extends StatefulWidget {
   final Map<String, dynamic> json;
@@ -71,7 +71,6 @@ class _RecordingCardState extends State<RecordingCard> {
                         widget.deleteRecording(
                             _recordingModel.id, _recordingModel.name);
                         break;
-                      default:
                     }
                   },
                 )

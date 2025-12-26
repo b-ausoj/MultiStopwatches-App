@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/enums/stopwatches_page_menu_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class StopwatchesPagePopupMenuButton extends StatelessWidget {
   final String name;
@@ -9,7 +9,8 @@ class StopwatchesPagePopupMenuButton extends StatelessWidget {
   const StopwatchesPagePopupMenuButton(this.name,
       {required this.onSelected, super.key});
 
-  String _getLocalizedLabel(BuildContext context, StopwatchesPageMenuItem menuItem) {
+  String _getLocalizedLabel(
+      BuildContext context, StopwatchesPageMenuItem menuItem) {
     final l10n = AppLocalizations.of(context)!;
     switch (menuItem) {
       case StopwatchesPageMenuItem.rename:

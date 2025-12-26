@@ -5,7 +5,7 @@ import 'package:multistopwatches/services/launch_url_service.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/widgets/icons/back_icon.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class AboutPage extends StatelessWidget {
   final bool isBadgeVisible;
@@ -17,7 +17,9 @@ class AboutPage extends StatelessWidget {
     final String appBuildNumber = packageInfo.buildNumber;
     if (context.mounted) {
       showShortSnackBar(
-          context, AppLocalizations.of(context)!.appVersionMessage(appVersion, appBuildNumber));
+          context,
+          AppLocalizations.of(context)!
+              .appVersionMessage(appVersion, appBuildNumber));
     }
   }
 

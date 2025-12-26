@@ -12,7 +12,7 @@ import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/start_page_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/text_with_badge/start_text_with_badge.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class StartPage extends StatefulWidget {
   final String sharedPreferencesKey;
@@ -102,7 +102,8 @@ class _StartPageState extends State<StartPage> {
                         borderRadius: BorderRadius.circular(12.0),
                         onTap: () {
                           GroupModel newGroup = GroupModel(
-                              AppLocalizations.of(context)!.group(_startController.allGroups.length + 1),
+                              AppLocalizations.of(context)!
+                                  .group(_startController.allGroups.length + 1),
                               0,
                               _startController.settings.defaultSortCriterion,
                               _startController.settings.defaultSortDirection,

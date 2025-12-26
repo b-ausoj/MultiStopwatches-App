@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:multistopwatches/pages/start_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 
@@ -93,7 +93,7 @@ class _MyAppState extends State<MyApp> {
           color: Color(0xFFDFDFDF),
           surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
         ),
-        dialogTheme: const DialogTheme(
+        dialogTheme: const DialogThemeData(
           backgroundColor: Color(0xFFDFDFDF),
           surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
         ),

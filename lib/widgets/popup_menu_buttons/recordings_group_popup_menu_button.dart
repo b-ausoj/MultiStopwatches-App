@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/enums/recordings_group_menu_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class RecordingsGroupPopupMenuButton extends StatelessWidget {
   final Function(RecordingsGroupMenuItem) onSelected;
 
   const RecordingsGroupPopupMenuButton({required this.onSelected, super.key});
 
-  String _getLocalizedLabel(BuildContext context, RecordingsGroupMenuItem menuItem) {
+  String _getLocalizedLabel(
+      BuildContext context, RecordingsGroupMenuItem menuItem) {
     final l10n = AppLocalizations.of(context)!;
     switch (menuItem) {
       case RecordingsGroupMenuItem.exportAll:
