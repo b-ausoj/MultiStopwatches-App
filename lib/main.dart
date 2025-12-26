@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:multistopwatches/pages/start_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/services/shared_preferences_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +32,22 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedLocale();
+  }
+
+  Future<void> _loadSavedLocale() async {
+    final settings = SettingsModel();
+    await loadSettings(settings);
+    if (settings.languageCode != null) {
+      setState(() {
+        _locale = Locale(settings.languageCode!);
+      });
+    }
+  }
 
   void setLocale(Locale? locale) {
     setState(() {

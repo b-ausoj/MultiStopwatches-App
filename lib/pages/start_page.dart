@@ -13,7 +13,6 @@ import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/start_page_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/text_with_badge/start_text_with_badge.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:multistopwatches/main.dart';
 
 class StartPage extends StatefulWidget {
   final String sharedPreferencesKey;
@@ -31,14 +30,7 @@ class _StartPageState extends State<StartPage> {
     super.initState();
     _startController =
         StartController(() => setState(() {}), widget.sharedPreferencesKey);
-    loadStart(_startController).then((_) {
-      // Apply saved language preference
-      if (_startController.settings.languageCode != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          MyApp.of(context)?.setLocale(Locale(_startController.settings.languageCode!));
-        });
-      }
-    });
+    loadStart(_startController);
   }
 
   @override
