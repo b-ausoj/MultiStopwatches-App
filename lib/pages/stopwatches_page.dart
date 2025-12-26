@@ -14,6 +14,7 @@ import 'package:multistopwatches/widgets/dialogs/sort_dialog.dart';
 import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/stopwatches_page_popup_menu_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StopwatchesPage extends StatefulWidget {
   final GroupModel group;
@@ -85,7 +86,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
                 _stopwatchesPageController.startAllStopwatches();
                 HapticFeedback.lightImpact();
               },
-              label: const Text("START ALL"),
+              label: Text(AppLocalizations.of(context)!.startAll),
               icon: const Icon(Icons.play_arrow),
             )
           : null,

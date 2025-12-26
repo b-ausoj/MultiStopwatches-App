@@ -85,5 +85,8 @@
       }
     }
   },
-  "pleaseAddToStore": "Please add the app to the store first!"
+  "pleaseAddToStore": "Please add the app to the store first!",
+
+  "welcomeMessage": "Welcome to the MultiStopwatches app by Josua",
+  "startAll": "START ALL"
 }

@@ -54,5 +54,8 @@
   "termsAndConditions": "Allgemeine Geschäftsbedingungen",
   "privacyPolicy": "Datenschutzerklärung",
   "appVersionMessage": "Deine App-Version ist {version}+{buildNumber}",
-  "pleaseAddToStore": "Bitte füge die App zuerst zum Store hinzu!"
+  "pleaseAddToStore": "Bitte füge die App zuerst zum Store hinzu!",
+
+  "welcomeMessage": "Willkommen zur MultiStopwatches App von Josua",
+  "startAll": "ALLE STARTEN"
 }

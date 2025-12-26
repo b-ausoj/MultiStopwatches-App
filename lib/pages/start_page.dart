@@ -47,7 +47,7 @@ class _StartPageState extends State<StartPage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const Text("Welcome to the MultiStopwatches app by Josua"),
+            Text(AppLocalizations.of(context)!.welcomeMessage),
             const SizedBox(
               height: 10,
             ),
