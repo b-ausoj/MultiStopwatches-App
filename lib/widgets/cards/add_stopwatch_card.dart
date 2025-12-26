@@ -22,7 +22,8 @@ class AddStopwatchCard extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context)!.addStopwatch,
-                style: const TextStyle(fontSize: 24),
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 18),
               ),
               const Spacer(),
               const Icon(Icons.add)
