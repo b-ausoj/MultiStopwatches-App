@@ -26,39 +26,49 @@ class _SortDialogState extends State<SortDialog> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            ...SortCriterion.values
-                .map((SortCriterion criterion) => RadioListTile(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    title: Text(criterion.label),
-                    value: criterion,
-                    groupValue: _selectedCriterion,
-                    onChanged: (SortCriterion? value) {
-                      if (value == null) return;
-                      setState(() {
-                        _selectedCriterion = value;
-                      });
-                      widget.onValueChange(
-                          _selectedCriterion, _selectedDirection);
-                    })),
+            RadioGroup<SortCriterion>(
+              groupValue: _selectedCriterion,
+              onChanged: (SortCriterion? value) {
+                if (value == null) return;
+                setState(() {
+                  _selectedCriterion = value;
+                });
+                widget.onValueChange(_selectedCriterion, _selectedDirection);
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: SortCriterion.values
+                    .map((SortCriterion criterion) => RadioListTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        title: Text(criterion.label),
+                        value: criterion))
+                    .toList(),
+              ),
+            ),
             const Divider(),
-            ...SortDirection.values
-                .map((SortDirection direction) => RadioListTile(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    title: Text(direction.label),
-                    value: direction,
-                    groupValue: _selectedDirection,
-                    onChanged: (SortDirection? value) {
-                      if (value == null) return;
-                      setState(() {
-                        _selectedDirection = value;
-                      });
-                      widget.onValueChange(
-                          _selectedCriterion, _selectedDirection);
-                    })),
+            RadioGroup<SortDirection>(
+              groupValue: _selectedDirection,
+              onChanged: (SortDirection? value) {
+                if (value == null) return;
+                setState(() {
+                  _selectedDirection = value;
+                });
+                widget.onValueChange(_selectedCriterion, _selectedDirection);
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: SortDirection.values
+                    .map((SortDirection direction) => RadioListTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        title: Text(direction.label),
+                        value: direction))
+                    .toList(),
+              ),
+            ),
           ],
         ));
   }

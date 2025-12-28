@@ -80,10 +80,10 @@ class MyAppState extends State<MyApp> {
           bodyMedium: TextStyle(fontSize: 16),
         ),
         switchTheme: SwitchThemeData(
-          thumbColor: MaterialStateProperty.all(Colors.white),
-          trackColor: MaterialStateProperty.all(Colors.black),
+          thumbColor: WidgetStateProperty.all(Colors.white),
+          trackColor: WidgetStateProperty.all(Colors.black),
         ),
-        appBarTheme: const AppBarTheme(color: Colors.white),
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.white,
