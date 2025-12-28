@@ -30,7 +30,7 @@ Future<void> _loadData(List<GroupModel> groups, String key) async {
 }
 
 // This function is a wrapper around the loadData (without the release build doesn't work)
-loadStart(StartController startController) async {
+Future<void> loadStart(StartController startController) async {
   _loadData(startController.allGroups, startController.sharedPreferencesKey)
       .then((value) => startController.refreshBadgeState());
 }
@@ -59,10 +59,11 @@ Future<void> loadRecordings(
   final prefs = await SharedPreferences.getInstance();
   List<String> recordings = prefs.getStringList("recordings") ?? [];
   for (String entry in recordings.reversed) {
+    RecordingModel model = RecordingModel.fromJson(jsonDecode(entry));
     recordingsPageController.recordingCards.add(RecordingCard(
+      model,
       recordingsPageController.deleteRecoding,
       recordingsPageController.settings,
-      json: jsonDecode(entry),
       key: Key(entry),
     ));
   }

@@ -10,15 +10,12 @@ import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class RecordingCard extends StatefulWidget {
-  final Map<String, dynamic> json;
+  final RecordingModel recordingModel;
   final void Function(int id, String name) deleteRecording;
   final SettingsModel settings;
-  late final RecordingModel recordingModel = (json.isEmpty)
-      ? RecordingModel(0, "bla", DateTime.now(), false, "test",
-          Duration.zero) // TODO: schöner/korrekt machen
-      : RecordingModel.fromJson(json);
-  RecordingCard(this.deleteRecording, this.settings,
-      {super.key, this.json = const {}});
+
+  const RecordingCard(this.recordingModel, this.deleteRecording, this.settings,
+      {super.key});
 
   @override
   State<RecordingCard> createState() => _RecordingCardState();
