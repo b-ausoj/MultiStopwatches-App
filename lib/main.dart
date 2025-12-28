@@ -13,9 +13,7 @@ void main() {
 // TODO: reorganize recordings page
 // TODO: decide on a default order and orientation
 // TODO: decide on order or sorting as a text
-// TODO: write about page mit feedback, contact, rate us page
-// TODO: write privacy policy
-// TODO: write terms of service
+// TODO: add donation link
 // TODO: write help page
 // TODO: write tutorial page
 // TODO: add introduction screen
