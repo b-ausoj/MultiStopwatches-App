@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class AddStopwatchCard extends StatelessWidget {
-  final void Function() addStopwatch;
+  final VoidCallback addStopwatch;
 
   const AddStopwatchCard(this.addStopwatch, {super.key});
 
