@@ -7,7 +7,8 @@ import 'package:multistopwatches/pages/recordings_page.dart';
 import 'package:multistopwatches/pages/settings_page.dart';
 import 'package:multistopwatches/pages/stopwatches_page.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
-import 'package:multistopwatches/widgets/text_with_badge/nav_text_with_badge.dart';
+import 'package:multistopwatches/widgets/text_with_badge/group_nav_text_with_badge.dart';
+import 'package:multistopwatches/widgets/text_with_badge/recordings_nav_text_with_badge.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class NavDrawer extends StatefulWidget {
@@ -51,16 +52,18 @@ class _NavDrawerState extends State<NavDrawer> {
               NavigationDrawerDestination(
                   icon: const Icon(Icons.timer_outlined),
                   label: Flexible(
-                      child: NavTextWithBadge(
-                          group.name, group, widget.allGroups, false)))),
+                      child: GroupNavTextWithBadge(
+                          name: group.name,
+                          group: group,
+                          allGroups: widget.allGroups)))),
           NavigationDrawerDestination(
               icon: const Icon(Icons.add),
               label: Text(AppLocalizations.of(context)!.addNewGroup)),
           const Divider(),
           NavigationDrawerDestination(
               icon: const Icon(Icons.history),
-              label: NavTextWithBadge(
-                  AppLocalizations.of(context)!.recordings, null, null, true)),
+              label: RecordingsNavTextWithBadge(
+                  name: AppLocalizations.of(context)!.recordings)),
           NavigationDrawerDestination(
               icon: const Icon(Icons.settings_outlined),
               label: Text(AppLocalizations.of(context)!.settings)),
