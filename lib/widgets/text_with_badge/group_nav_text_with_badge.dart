@@ -20,8 +20,8 @@ class GroupNavTextWithBadge extends StatelessWidget {
 
     return Badge(
       isLabelVisible: badgeVisible,
-      alignment: Alignment.topRight,
-      offset: const Offset(8, 0),
+      alignment: Alignment.centerRight,
+      offset: const Offset(8, 8),
       smallSize: 8.0,
       child: Padding(
         padding: const EdgeInsets.only(right: 16.0),
