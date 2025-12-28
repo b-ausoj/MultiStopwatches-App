@@ -36,71 +36,74 @@ class _StartPageState extends State<StartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.multiStopwatches),
-        leading: NavIcon(_startController),
-      ),
-      drawer: NavDrawer(_startController.allGroups, _startController.settings,
-          _startController, null, _startController.sharedPreferencesKey),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Text(AppLocalizations.of(context)!.welcomeMessage),
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  ..._startController.allGroups.map((GroupModel group) => Card(
-                        clipBehavior: Clip.antiAlias,
-                        color: const Color(0xFFEFEFEF),
-                        elevation: 0,
-                        child: ListTile(
-                          contentPadding:
-                              const EdgeInsets.only(left: 16.0, right: 8.0),
-                          leading: const Icon(Icons.timer_outlined),
-                          title: Center(
-                              child: StartTextWithBadge(_startController,
-                                  _startController.allGroups.indexOf(group))),
-                          trailing: StartPagePopupMenuButton(
-                              onSelected: (StartPageCardMenuItem item) {
-                            switch (item) {
-                              case StartPageCardMenuItem.rename:
-                                _showRenameDialog(group);
-                                break;
-                              case StartPageCardMenuItem.delete:
-                                _showDeleteGroupDialog(group);
-                                break;
-                            }
-                          }),
-                          onTap: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(
-                                    builder: (context) => StopwatchesPage(
-                                        group,
-                                        _startController.allGroups,
-                                        _startController.settings,
-                                        _startController.sharedPreferencesKey)))
-                                .then((value) {
-                              _startController.refreshBadgeState();
-                              setState(() {});
-                            });
-                          },
-                        ),
-                      )),
-                  AddGroupCard(
-                    startController: _startController,
-                    onGroupAdded: () => setState(() {}),
-                  ),
-                ],
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.multiStopwatches),
+          leading: NavIcon(_startController),
+        ),
+        drawer: NavDrawer(_startController.allGroups, _startController.settings,
+            _startController, null, _startController.sharedPreferencesKey),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Text(AppLocalizations.of(context)!.welcomeMessage),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ],
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    ..._startController.allGroups.map((GroupModel group) => Card(
+                          clipBehavior: Clip.antiAlias,
+                          color: const Color(0xFFEFEFEF),
+                          elevation: 0,
+                          child: ListTile(
+                            contentPadding:
+                                const EdgeInsets.only(left: 16.0, right: 8.0),
+                            leading: const Icon(Icons.timer_outlined),
+                            title: Center(
+                                child: StartTextWithBadge(_startController,
+                                    _startController.allGroups.indexOf(group))),
+                            trailing: StartPagePopupMenuButton(
+                                onSelected: (StartPageCardMenuItem item) {
+                              switch (item) {
+                                case StartPageCardMenuItem.rename:
+                                  _showRenameDialog(group);
+                                  break;
+                                case StartPageCardMenuItem.delete:
+                                  _showDeleteGroupDialog(group);
+                                  break;
+                              }
+                            }),
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(
+                                      builder: (context) => StopwatchesPage(
+                                          group,
+                                          _startController.allGroups,
+                                          _startController.settings,
+                                          _startController.sharedPreferencesKey)))
+                                  .then((value) {
+                                _startController.refreshBadgeState();
+                                setState(() {});
+                              });
+                            },
+                          ),
+                        )),
+                    AddGroupCard(
+                      startController: _startController,
+                      onGroupAdded: () => setState(() {}),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

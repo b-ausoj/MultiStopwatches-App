@@ -26,21 +26,21 @@ class _RecordingsPageState extends State<RecordingsPage>
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.recordings),
         leading: BackIcon(recordingsPageController.badgeVisible),
-        /* Removed because confusing for my dad
-        actions: [
-          RecordingsPagePopupMenuButton(
-              onSelected: (RecordingsPageMenuItem item) {
-            switch (item) {
-              case RecordingsPageMenuItem.deleteAll:
-                recordingsPageController.deleteAllRecordings();
-                break;
-              case RecordingsPageMenuItem.exportAll:
-                log("export all");
-                break;
-            }
-          })
-        ],
-        */
+          /* Removed because confusing for my dad
+          actions: [
+            RecordingsPagePopupMenuButton(
+                onSelected: (RecordingsPageMenuItem item) {
+              switch (item) {
+                case RecordingsPageMenuItem.deleteAll:
+                  recordingsPageController.deleteAllRecordings();
+                  break;
+                case RecordingsPageMenuItem.exportAll:
+                  log("export all");
+                  break;
+              }
+            })
+          ],
+          */
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
