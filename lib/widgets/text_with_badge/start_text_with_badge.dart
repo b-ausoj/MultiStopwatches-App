@@ -16,7 +16,7 @@ class _StartTextWithBadgeState extends State<StartTextWithBadge> {
   Widget build(BuildContext context) {
     return Badge(
       isLabelVisible: widget.controller.isGroupBadgeVisibleList[widget.index],
-      alignment: Alignment.centerRight,
+      alignment: Alignment.topRight,
       offset: const Offset(8, 0),
       smallSize: 8.0,
       child: Padding(

@@ -18,7 +18,7 @@ class _RecordingsGroupTextWithBadgeState
   @override
   Widget build(BuildContext context) {
     return Badge(
-      alignment: Alignment.centerRight,
+      alignment: Alignment.topRight,
       offset: const Offset(24, 0),
       isLabelVisible: !widget.list.first.recordingModel.viewed,
       label: Text("${widget.list.length}"),
