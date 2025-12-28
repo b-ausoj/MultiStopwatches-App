@@ -1,14 +1,28 @@
+import 'dart:convert';
 import 'package:csv/csv.dart';
 import 'package:multistopwatches/enums/time_format.dart';
 import 'package:multistopwatches/models/recording_model.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/cards/recording_card.dart';
+import 'package:share_plus/share_plus.dart';
 
-// Conditional imports for platform-specific code
-import 'export_to_csv_stub.dart'
-    if (dart.library.io) 'export_to_csv_mobile.dart'
-    if (dart.library.html) 'export_to_csv_web.dart';
+Future<void> saveAndShareCsv(String csvContent, String fileName) async {
+  final bytes = utf8.encode(csvContent);
+
+  await SharePlus.instance.share(
+    ShareParams(
+      files: [
+        XFile.fromData(
+          bytes,
+          name: fileName,
+          mimeType: 'text/csv',
+        ),
+      ],
+      text: "Here is your recording!",
+    ),
+  );
+}
 
 Future<void> exportRecordingToCSV(
     RecordingModel recording, SettingsModel settings) async {
