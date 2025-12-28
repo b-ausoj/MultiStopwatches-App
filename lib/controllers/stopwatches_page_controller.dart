@@ -35,10 +35,10 @@ class StopwatchesPageController extends BadgeController {
     changedState();
   }
 
-  get direction => groupModel.direction;
+  SortDirection get direction => groupModel.direction;
   String get name => groupModel.name;
   set name(String value) => groupModel.name = value;
-  get criterion => groupModel.criterion;
+  SortCriterion get criterion => groupModel.criterion;
   List<StopwatchCard> get stopwatchCards => _stopwatchCards;
 
   Future<void> addStopwatch() async {

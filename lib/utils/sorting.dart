@@ -3,7 +3,9 @@ import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/widgets/cards/stopwatch_card.dart';
 
-buildSort(SortCriterion criterion, SortDirection direction,
+int Function(StopwatchCard a, StopwatchCard b) buildSort(
+        SortCriterion criterion,
+        SortDirection direction,
         SettingsModel settings) =>
     ((StopwatchCard a, StopwatchCard b) {
       int sign = direction == SortDirection.ascending ? 1 : -1;
