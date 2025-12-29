@@ -289,10 +289,14 @@ class _StopwatchCardState extends State<StopwatchCard>
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return RenameDialog(_stopwatchModel.name, (String text) {
-          _stopwatchModel.name = text;
-          widget.changedState();
-        });
+        return RenameDialog(
+          initialName: _stopwatchModel.name,
+          title: AppLocalizations.of(context)!.renameStopwatch,
+          onAccept: (String text) {
+            _stopwatchModel.name = text;
+            widget.changedState();
+          },
+        );
       },
     );
   }

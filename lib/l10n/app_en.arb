@@ -7,6 +7,9 @@
   "lap": "LAP",
 
   "rename": "Rename",
+  "renameStopwatch": "Rename stopwatch",
+  "renameGroup": "Rename group",
+  "renameRecording": "Rename recording",
   "save": "Save",
   "reset": "Reset",
   "delete": "Delete",
@@ -115,6 +118,7 @@
   "areYouSureCannotUndo": "Are you sure? This can not be undone",
   "youHaveToCheckBox": "You have to check the box",
   "cancel": "CANCEL",
+  "ok": "OK",
   "confirm": "CONFIRM",
   "changeSorting": "Change sorting",
   "sortByName": "Name",
@@ -123,6 +127,7 @@
   "sortByCustom": "Custom",
   "sortAscending": "Ascending",
   "sortDescending": "Descending",
+  "customSortExplanation": "Drag stopwatches to reorder them manually",
   "athleteNumber": "Athlete {number}",
   "@athleteNumber": {
     "placeholders": {

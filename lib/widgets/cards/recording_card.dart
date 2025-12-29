@@ -127,12 +127,16 @@ class _RecordingCardState extends State<RecordingCard> {
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return RenameDialog(_recordingModel.name, (String text) {
-          setState(() {
-            _recordingModel.name = text;
-          });
-          storeRecordingState(_recordingModel);
-        });
+        return RenameDialog(
+          initialName: _recordingModel.name,
+          title: AppLocalizations.of(context)!.renameRecording,
+          onAccept: (String text) {
+            setState(() {
+              _recordingModel.name = text;
+            });
+            storeRecordingState(_recordingModel);
+          },
+        );
       },
     );
   }

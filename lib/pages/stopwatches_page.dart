@@ -165,11 +165,15 @@ class _StopwatchesPageState extends State<StopwatchesPage>
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return RenameDialog(oldName, (String newName) {
-          setState(() {
-            _stopwatchesPageController.name = newName;
-          });
-        });
+        return RenameDialog(
+          initialName: oldName,
+          title: AppLocalizations.of(context)!.renameGroup,
+          onAccept: (String newName) {
+            setState(() {
+              _stopwatchesPageController.name = newName;
+            });
+          },
+        );
       },
     );
   }

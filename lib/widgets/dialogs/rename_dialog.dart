@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
-// TODO: Localize strings
-// TODO: this dialog is used for renaming stopwatches and groups, but text says "Rename stopwatch" only. Fix that (pass the title as parameter? or make two classes?)
 // TODO: add validation (non-empty name, unique name?)
 class RenameDialog extends StatefulWidget {
   final String initialName;
+  final String title;
   final void Function(String) onAccept;
 
-  const RenameDialog(this.initialName, this.onAccept, {super.key});
+  const RenameDialog(
+      {required this.initialName,
+      required this.title,
+      required this.onAccept,
+      super.key});
 
   @override
   State<RenameDialog> createState() => _RenameDialogState();
@@ -42,7 +46,7 @@ class _RenameDialogState extends State<RenameDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Rename stopwatch"),
+      title: Text(widget.title),
       content: TextField(
         focusNode: _focusNode,
         decoration: const InputDecoration(
@@ -56,13 +60,13 @@ class _RenameDialogState extends State<RenameDialog> {
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text("CANCEL"),
+          child: Text(AppLocalizations.of(context)!.cancel),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         TextButton(
-          child: const Text("OK"),
+          child: Text(AppLocalizations.of(context)!.ok),
           onPressed: () {
             widget.onAccept(_controller.text);
             Navigator.of(context).pop();

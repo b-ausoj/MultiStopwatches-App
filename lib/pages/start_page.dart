@@ -130,10 +130,14 @@ class _StartPageState extends State<StartPage> {
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
-        return RenameDialog(groupModel.name, (String newName) {
-          groupModel.name = newName;
-          setState(() {});
-        });
+        return RenameDialog(
+          initialName: groupModel.name,
+          title: AppLocalizations.of(context)!.renameGroup,
+          onAccept: (String newName) {
+            groupModel.name = newName;
+            setState(() {});
+          },
+        );
       },
     );
   }
