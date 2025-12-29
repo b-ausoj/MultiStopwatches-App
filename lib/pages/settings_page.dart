@@ -90,38 +90,52 @@ class _SettingsPageState extends State<SettingsPage> {
                 )
               ]),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(children: [
-                Expanded(
-                    child: Text(
-                  AppLocalizations.of(context)!.defaultSortDirection,
-                  style: const TextStyle(fontSize: 16),
-                )),
-                const SizedBox(
-                  width: 16.0,
+            if (widget.settings.defaultSortCriterion !=
+                SortCriterion.customReordable)
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(children: [
+                  Expanded(
+                      child: Text(
+                    AppLocalizations.of(context)!.defaultSortDirection,
+                    style: const TextStyle(fontSize: 16),
+                  )),
+                  const SizedBox(
+                    width: 16.0,
+                  ),
+                  DropdownMenu<SortDirection>(
+                    initialSelection: widget.settings.defaultSortDirection,
+                    onSelected: (SortDirection? direction) {
+                      if (direction != null) {
+                        setState(() {
+                          widget.settings.defaultSortDirection = direction;
+                        });
+                        storeSettings(widget.settings);
+                      }
+                    },
+                    dropdownMenuEntries: SortDirection.values
+                        .map<DropdownMenuEntry<SortDirection>>(
+                            (SortDirection direction) {
+                      return DropdownMenuEntry<SortDirection>(
+                        value: direction,
+                        label: direction.label(context),
+                      );
+                    }).toList(),
+                  )
+                ]),
+              )
+            else
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  AppLocalizations.of(context)!.customSortExplanation,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey[600],
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                DropdownMenu<SortDirection>(
-                  initialSelection: widget.settings.defaultSortDirection,
-                  onSelected: (SortDirection? direction) {
-                    if (direction != null) {
-                      setState(() {
-                        widget.settings.defaultSortDirection = direction;
-                      });
-                      storeSettings(widget.settings);
-                    }
-                  },
-                  dropdownMenuEntries: SortDirection.values
-                      .map<DropdownMenuEntry<SortDirection>>(
-                          (SortDirection direction) {
-                    return DropdownMenuEntry<SortDirection>(
-                      value: direction,
-                      label: direction.label(context),
-                    );
-                  }).toList(),
-                )
-              ]),
-            ),
+              ),
             const Divider(
               indent: 16.0,
               endIndent: 16.0,

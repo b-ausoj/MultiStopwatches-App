@@ -34,7 +34,7 @@ class StartController extends BadgeController {
   }
 
   void _saveState() {
-    log("Saving state due to lifecycle change");
+    //log("Saving state due to lifecycle change");
     storeData(allGroups, sharedPreferencesKey);
   }
 
