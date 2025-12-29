@@ -12,7 +12,6 @@ void main() {
 // TODO: at renaming stopwatches / saved stopwatches / groups, ensure that there is at least one character
 // TODO: reorganize recordings page
 // TODO: could change the radio buttons when custim sorting is selected
-// TODO: add small v below lap times (stopwatch card) so that users get a hint that they can expand it (HCI)
 // TODO: decide on a default order and orientation
 // TODO: decide on order or sorting as a text
 // TODO: add donation link

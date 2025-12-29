@@ -49,25 +49,37 @@ class _StopwatchCardState extends State<StopwatchCard>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  // main elapsed time
                   Text(durationToString(_stopwatchModel.elapsedTime),
                       style: const TextStyle(
                           fontFamily: 'Roboto',
-                          fontSize: 36,
+                          fontSize: 34,
                           fontWeight: FontWeight.w600,
                           height: 1.0)),
+                  // lap time
                   Text(
                       "${_stopwatchModel.lapCount < 9 ? "0${_stopwatchModel.lapCount + 1}" : "${_stopwatchModel.lapCount + 1}"} ${durationToString(_stopwatchModel.elapsedLapTime)}",
                       style: const TextStyle(
                           fontFamily: 'Roboto',
-                          fontSize: 24,
+                          fontSize: 22,
                           fontWeight: FontWeight.w600,
                           height: 1.0)),
-                  Text(formatPastLaps(_stopwatchModel.lapList, showAllLaps),
-                      style: const TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 24,
-                          fontWeight: FontWeight.w400,
-                          height: 1.0)),
+                  // past lap times
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(formatPastLaps(_stopwatchModel.lapList, showAllLaps),
+                          style: const TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                              fontWeight: FontWeight.w400,
+                              height: 1.0)),
+                      Icon(
+                        showAllLaps ? Icons.expand_less : Icons.expand_more,
+                        size: 18,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
