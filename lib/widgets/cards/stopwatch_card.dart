@@ -41,7 +41,7 @@ class _StopwatchCardState extends State<StopwatchCard>
         children: [
           Padding(
             // times column
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
             child: InkWell(
               onTap: () {
                 if (_stopwatchModel.lapList.length > 1) {
@@ -79,8 +79,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                               fontWeight: FontWeight.w400,
                               height: 1.0)),
                       if (_stopwatchModel.lapList.length > 1)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0, bottom: 0),
+                        SizedBox(
+                          height: 12,
                           child: Icon(
                             showAllLaps ? Icons.expand_less : Icons.expand_more,
                             size: 16,
