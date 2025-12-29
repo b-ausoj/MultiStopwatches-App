@@ -71,13 +71,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get seperateRunningStoppedSetting =>
-      'Beim Sortierkriterium \"nach längster (Runden-)Zeit\", möchtest du die gestoppten Stoppuhren unten haben?';
+      'Beim Sortierkriterium nach \"Längste Zeit/Rundenzeit\", möchtest du die gestoppten Stoppuhren zu unterst haben?';
 
   @override
-  String get defaultSortCriterion => 'Standard-Sortierkriterium:';
+  String get defaultSortCriterion => 'Standard Sortierkriterium:';
 
   @override
-  String get defaultSortDirection => 'Standard-Sortierrichtung:';
+  String get defaultSortDirection => 'Standard Sortierrichtung:';
 
   @override
   String get timeformatCsvExport => 'Zeitformat für .csv Export:';
@@ -152,7 +152,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rateThisApp => 'Bewerte diese App';
 
   @override
-  String get termsAndConditions => 'Allgemeine Geschäftsbedingungen';
+  String get termsAndConditions => 'AGBs';
 
   @override
   String get privacyPolicy => 'Datenschutzerklärung';
@@ -273,4 +273,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get nameAlreadyExists => 'Name existiert bereits';
+
+  @override
+  String get delimiterComma => 'Komma ,';
+
+  @override
+  String get delimiterSemicolon => 'Semikolon ;';
+
+  @override
+  String get delimiterSpace => 'Leerzeichen';
 }

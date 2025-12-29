@@ -198,7 +198,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           (CSVDelimiter csvDelimiter) {
                     return DropdownMenuEntry<CSVDelimiter>(
                       value: csvDelimiter,
-                      label: csvDelimiter.label,
+                      label: csvDelimiter.label(context),
                     );
                   }).toList(),
                 )

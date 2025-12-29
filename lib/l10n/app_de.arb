@@ -23,9 +23,9 @@
   "undo": "Rückgängig",
 
   "settings": "Einstellungen",
-  "seperateRunningStoppedSetting": "Beim Sortierkriterium \"nach längster (Runden-)Zeit\", möchtest du die gestoppten Stoppuhren unten haben?",
-  "defaultSortCriterion": "Standard-Sortierkriterium:",
-  "defaultSortDirection": "Standard-Sortierrichtung:",
+  "seperateRunningStoppedSetting": "Beim Sortierkriterium nach \"Längste Zeit/Rundenzeit\", möchtest du die gestoppten Stoppuhren zu unterst haben?",
+  "defaultSortCriterion": "Standard Sortierkriterium:",
+  "defaultSortDirection": "Standard Sortierrichtung:",
   "timeformatCsvExport": "Zeitformat für .csv Export:",
   "delimiterCsvFile": "Trennzeichen für .csv Datei:",
   "language": "Sprache:",
@@ -54,7 +54,7 @@
   "aboutPageDescription": "Hallo, mein Name ist Josua und ich bin Informatik-Student. In meiner Freizeit arbeite ich als Triathlon-Trainer und hatte das Bedürfnis, die Zeiten meiner Athleten bei Bahnintervallen oder Schwimmwettkämpfen gleichzeitig aufzuzeichnen. Deshalb habe ich diese App entwickelt. \n\nWenn du Feedback, Verbesserungsvorschläge hast oder auf Probleme stösst, zögere bitte nicht, mir Bescheid zu geben! \n\nDeine Rückmeldung wird sehr geschätzt.",
   "contactMe": "Kontaktiere mich",
   "rateThisApp": "Bewerte diese App",
-  "termsAndConditions": "Allgemeine Geschäftsbedingungen",
+  "termsAndConditions": "AGBs",
   "privacyPolicy": "Datenschutzerklärung",
   "appVersionMessage": "Deine App-Version ist {version}+{buildNumber}",
   "pleaseAddToStore": "Bitte füge die App zuerst zum Store hinzu!",
@@ -94,5 +94,9 @@
   "lapNo": "Runde Nr.",
 
   "nameCannotBeEmpty": "Name darf nicht leer sein",
-  "nameAlreadyExists": "Name existiert bereits"
+  "nameAlreadyExists": "Name existiert bereits",
+
+  "delimiterComma": "Komma ,",
+  "delimiterSemicolon": "Semikolon ;",
+  "delimiterSpace": "Leerzeichen"
 }

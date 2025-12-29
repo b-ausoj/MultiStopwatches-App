@@ -71,7 +71,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get seperateRunningStoppedSetting =>
-      'In sort criterion \"by longest (lap) time\", do you want to have the stopped stopwatches at the bottom?';
+      'In sort criterion by \"Longest Time / Lap Time\", do you want to have the stopped stopwatches at the bottom?';
 
   @override
   String get defaultSortCriterion => 'Default sort criterion:';
@@ -272,4 +272,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nameAlreadyExists => 'Name already exists';
+
+  @override
+  String get delimiterComma => 'Comma ,';
+
+  @override
+  String get delimiterSemicolon => 'Semicolon ;';
+
+  @override
+  String get delimiterSpace => 'Space';
 }

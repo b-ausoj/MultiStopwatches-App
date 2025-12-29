@@ -215,7 +215,7 @@ abstract class AppLocalizations {
   /// No description provided for @seperateRunningStoppedSetting.
   ///
   /// In en, this message translates to:
-  /// **'In sort criterion \"by longest (lap) time\", do you want to have the stopped stopwatches at the bottom?'**
+  /// **'In sort criterion by \"Longest Time / Lap Time\", do you want to have the stopped stopwatches at the bottom?'**
   String get seperateRunningStoppedSetting;
 
   /// No description provided for @defaultSortCriterion.
@@ -589,6 +589,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Name already exists'**
   String get nameAlreadyExists;
+
+  /// No description provided for @delimiterComma.
+  ///
+  /// In en, this message translates to:
+  /// **'Comma ,'**
+  String get delimiterComma;
+
+  /// No description provided for @delimiterSemicolon.
+  ///
+  /// In en, this message translates to:
+  /// **'Semicolon ;'**
+  String get delimiterSemicolon;
+
+  /// No description provided for @delimiterSpace.
+  ///
+  /// In en, this message translates to:
+  /// **'Space'**
+  String get delimiterSpace;
 }
 
 class _AppLocalizationsDelegate
