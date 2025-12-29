@@ -122,5 +122,25 @@
   "sortByLongestLapTime": "Longest Lap Time",
   "sortByCustom": "Custom",
   "sortAscending": "Ascending",
-  "sortDescending": "Descending"
+  "sortDescending": "Descending",
+  "athleteNumber": "Athlete {number}",
+  "@athleteNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "cantDeleteWhileRunning": "Can't delete while running",
+  "allStopwatchesRemoved": "All stopwatches have been removed",
+  "stopwatchRemoved": "'{name}' has been removed",
+  "@stopwatchRemoved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cantResetWhileRunning": "Can't reset while running",
+  "allStopwatchesReseted": "All stopwatches have been reseted"
 }

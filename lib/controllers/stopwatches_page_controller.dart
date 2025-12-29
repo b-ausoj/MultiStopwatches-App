@@ -12,6 +12,7 @@ import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/utils/sorting.dart';
 import 'package:multistopwatches/widgets/cards/stopwatch_card.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class StopwatchesPageController extends BadgeController {
   BuildContext context;
@@ -46,7 +47,7 @@ class StopwatchesPageController extends BadgeController {
     int id = StopwatchModel.nextId++;
 
     StopwatchModel model =
-        StopwatchModel("Athlete ${_stopwatchCards.length + 1}", id);
+        StopwatchModel(AppLocalizations.of(context)!.athleteNumber(_stopwatchCards.length + 1), id);
     _stopwatchCards.add(StopwatchCard(model, changedState,
         key: Key("$id"), stopwatchesPageController: this));
     groupModel.stopwatches.add(model);
@@ -66,16 +67,16 @@ class StopwatchesPageController extends BadgeController {
 
     for (StopwatchCard card in _stopwatchCards) {
       if (card.stopwatchModel.state == StopwatchState.running) {
-        showShortSnackBar(context, "Can't delete while running");
+        showShortSnackBar(context, AppLocalizations.of(context)!.cantDeleteWhileRunning);
         return;
       }
       _oldStopwatchesPage.add(jsonEncode(card.stopwatchModel));
     }
     groupModel.stopwatches.clear();
     _stopwatchCards.clear();
-    showLongSnackBar(context, "All stopwatches have been removed",
+    showLongSnackBar(context, AppLocalizations.of(context)!.allStopwatchesRemoved,
         action: SnackBarAction(
-            label: "Undo",
+            label: AppLocalizations.of(context)!.undo,
             onPressed: () {
               restoreAllStopwatches(_oldStopwatchesPage);
               changedState();
@@ -89,14 +90,14 @@ class StopwatchesPageController extends BadgeController {
     int index2 =
         groupModel.stopwatches.indexWhere((element) => element.id == id);
     if (index == -1) {
-      showShortSnackBar(context, "Can't delete while running");
+      showShortSnackBar(context, AppLocalizations.of(context)!.cantDeleteWhileRunning);
       return;
     }
     StopwatchCard deleted = _stopwatchCards.removeAt(index);
     StopwatchModel deletedModel = groupModel.stopwatches.removeAt(index2);
-    showLongSnackBar(context, "'$name' has been removed",
+    showLongSnackBar(context, AppLocalizations.of(context)!.stopwatchRemoved(name),
         action: SnackBarAction(
-            label: "Undo",
+            label: AppLocalizations.of(context)!.undo,
             onPressed: () {
               _stopwatchCards.add(deleted);
               groupModel.stopwatches.insert(index2, deletedModel);
@@ -123,16 +124,16 @@ class StopwatchesPageController extends BadgeController {
     // if undo then delete list and load json
     for (StopwatchCard card in _stopwatchCards) {
       if (card.stopwatchModel.state == StopwatchState.running) {
-        showShortSnackBar(context, "Can't reset while running");
+        showShortSnackBar(context, AppLocalizations.of(context)!.cantResetWhileRunning);
         return;
       }
     }
     for (StopwatchCard card in _stopwatchCards) {
       card.stopwatchModel.reset();
     }
-    showLongSnackBar(context, "All stopwatches has been reseted",
+    showLongSnackBar(context, AppLocalizations.of(context)!.allStopwatchesReseted,
         action: SnackBarAction(
-            label: "Undo",
+            label: AppLocalizations.of(context)!.undo,
             onPressed: () {
               for (var element in _stopwatchCards) {
                 element.stopwatchModel.restore();

@@ -223,4 +223,23 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get sortDescending => 'Absteigend';
+
+  @override
+  String athleteNumber(int number) {
+    return 'Athlet $number';
+  }
+
+  @override
+  String get cantDeleteWhileRunning => 'Kann nicht löschen während läuft';
+
+  @override
+  String get allStopwatchesRemoved => 'Alle Stoppuhren wurden entfernt';
+
+  @override
+  String stopwatchRemoved(String name) {
+    return '\'$name\' wurde entfernt';
+  }
+
+  @override
+  String get allStopwatchesReseted => 'Alle Stoppuhren wurden zurückgesetzt';
 }

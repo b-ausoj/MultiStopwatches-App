@@ -77,5 +77,11 @@
   "sortByLongestLapTime": "Längste Rundenzeit",
   "sortByCustom": "Benutzerdefiniert",
   "sortAscending": "Aufsteigend",
-  "sortDescending": "Absteigend"
+  "sortDescending": "Absteigend",
+  "athleteNumber": "Athlet {number}",
+  "cantDeleteWhileRunning": "Kann nicht löschen während läuft",
+  "allStopwatchesRemoved": "Alle Stoppuhren wurden entfernt",
+  "stopwatchRemoved": "'{name}' wurde entfernt",
+  "cantResetWhileRunning": "Kann nicht zurücksetzen während läuft",
+  "allStopwatchesReseted": "Alle Stoppuhren wurden zurückgesetzt"
 }

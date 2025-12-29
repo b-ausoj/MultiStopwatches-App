@@ -499,6 +499,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Descending'**
   String get sortDescending;
+
+  /// No description provided for @athleteNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Athlete {number}'**
+  String athleteNumber(int number);
+
+  /// No description provided for @cantDeleteWhileRunning.
+  ///
+  /// In en, this message translates to:
+  /// **'Can\'t delete while running'**
+  String get cantDeleteWhileRunning;
+
+  /// No description provided for @allStopwatchesRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'All stopwatches have been removed'**
+  String get allStopwatchesRemoved;
+
+  /// No description provided for @stopwatchRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'\'{name}\' has been removed'**
+  String stopwatchRemoved(String name);
+
+  /// No description provided for @allStopwatchesReseted.
+  ///
+  /// In en, this message translates to:
+  /// **'All stopwatches have been reseted'**
+  String get allStopwatchesReseted;
 }
 
 class _AppLocalizationsDelegate
