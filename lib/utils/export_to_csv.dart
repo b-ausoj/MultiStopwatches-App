@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:js_interop';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:multistopwatches/enums/time_format.dart';
 import 'package:multistopwatches/models/recording_model.dart';
 import 'package:multistopwatches/models/settings_model.dart';
@@ -8,22 +10,35 @@ import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/cards/recording_card.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
+import 'package:web/web.dart' as web;
 
 Future<void> saveAndShareCsv(String csvContent, String fileName, BuildContext context) async {
   final bytes = utf8.encode(csvContent);
 
-  await SharePlus.instance.share(
-    ShareParams(
-      files: [
-        XFile.fromData(
-          bytes,
-          name: fileName,
-          mimeType: 'text/csv',
-        ),
-      ],
-      text: AppLocalizations.of(context)!.hereIsYourRecording,
-    ),
-  );
+  // On web (desktop), auto-download the file
+  if (kIsWeb) {
+    final blob = web.Blob([bytes.toJS].toJS, web.BlobPropertyBag(type: 'text/csv'));
+    final url = web.URL.createObjectURL(blob);
+    final anchor = web.document.createElement('a') as web.HTMLAnchorElement
+      ..href = url
+      ..download = fileName
+      ..click();
+    web.URL.revokeObjectURL(url);
+  } else {
+    // On mobile, use the share dialog
+    await SharePlus.instance.share(
+      ShareParams(
+        files: [
+          XFile.fromData(
+            bytes,
+            name: fileName,
+            mimeType: 'text/csv',
+          ),
+        ],
+        text: AppLocalizations.of(context)!.hereIsYourRecording,
+      ),
+    );
+  }
 }
 
 Future<void> exportRecordingToCSV(

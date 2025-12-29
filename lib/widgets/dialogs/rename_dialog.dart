@@ -23,6 +23,7 @@ class RenameDialog extends StatefulWidget {
 class _RenameDialogState extends State<RenameDialog> {
   late final TextEditingController _controller;
   final FocusNode _focusNode = FocusNode();
+  final isIOS = !kIsWeb && Platform.isIOS;
   String? _errorMessage;
 
   @override
@@ -30,16 +31,13 @@ class _RenameDialogState extends State<RenameDialog> {
     super.initState();
     _controller = TextEditingController(text: widget.initialName);
 
-    // Run initial validation
     _errorMessage = _validateName(widget.initialName);
 
     // Select all text after the widget is built and focused
-    // Skip auto selection on iOS due to Flutter bugs with keyboard and selection
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode.requestFocus();
 
-      // Only auto-select on non-iOS platforms
-      final isIOS = !kIsWeb && Platform.isIOS;
+      // Only auto-select on non-iOS platforms because of Flutter bug on iOS:
       if (!isIOS) {
         _controller.selection = TextSelection(
           baseOffset: 0,
@@ -56,7 +54,6 @@ class _RenameDialogState extends State<RenameDialog> {
       return AppLocalizations.of(context)!.nameCannotBeEmpty;
     }
 
-    // Case-insensitive uniqueness check, excluding current name
     if (widget.existingNames.any((name) =>
         name.toLowerCase() == trimmed.toLowerCase() &&
         name.toLowerCase() != widget.initialName.toLowerCase())) {
@@ -86,7 +83,7 @@ class _RenameDialogState extends State<RenameDialog> {
       title: Text(widget.title),
       content: TextField(
         focusNode: _focusNode,
-        autofocus: true,
+        autofocus: !isIOS,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
           errorText: _errorMessage,

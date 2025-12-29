@@ -11,11 +11,9 @@ void main() {
 
 // TODO: reorganize recordings page
 // TODO: add donation link
-// TODO: update the terms&conditions and privacy policy with web app and free usage
 // TODO: write help page
 // TODO: write tutorial page
 // TODO: add introduction screen
-// TODO: current export isn't nice on windows
 // TODO: current export exports two files because of the text
 
 class MyApp extends StatefulWidget {
