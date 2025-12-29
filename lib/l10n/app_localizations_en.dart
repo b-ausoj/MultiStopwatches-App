@@ -170,4 +170,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get splitTime => 'Split time';
+
+  @override
+  String fromGroup(String groupName) {
+    return 'from $groupName';
+  }
 }

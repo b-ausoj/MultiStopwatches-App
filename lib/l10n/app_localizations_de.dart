@@ -170,4 +170,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get splitTime => 'Zwischenzeit';
+
+  @override
+  String fromGroup(String groupName) {
+    return 'von $groupName';
+  }
 }

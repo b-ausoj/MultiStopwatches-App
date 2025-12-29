@@ -10,6 +10,7 @@ import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/recordings_group_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/cards/recording_card.dart';
 import 'package:multistopwatches/widgets/text_with_badge/recordings_group_text_with_badge.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class RecordingsPageController extends BadgeController {
   BuildContext context;
@@ -65,7 +66,7 @@ class RecordingsPageController extends BadgeController {
             }),
             title: Center(child: RecordingsGroupTextWithBadge(list, timeStamp)),
             subtitle: Center(
-                child: Text("from ${list.first.recordingModel.fromGroup}")),
+                child: Text(AppLocalizations.of(context)!.fromGroup(list.first.recordingModel.fromGroup))),
             children: list,
           ),
         ));
@@ -104,7 +105,7 @@ class RecordingsPageController extends BadgeController {
           }),
           title: Center(child: RecordingsGroupTextWithBadge(list, last)),
           subtitle: Center(
-              child: Text("from ${list.first.recordingModel.fromGroup}")),
+              child: Text(AppLocalizations.of(context)!.fromGroup(list.first.recordingModel.fromGroup))),
           children: list,
         ),
       ));

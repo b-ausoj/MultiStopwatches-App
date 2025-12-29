@@ -92,5 +92,13 @@
   "addStopwatch": "Add Stopwatch",
 
   "lapTime": "Lap time",
-  "splitTime": "Split time"
+  "splitTime": "Split time",
+  "fromGroup": "from {groupName}",
+  "@fromGroup": {
+    "placeholders": {
+      "groupName": {
+        "type": "String"
+      }
+    }
+  }
 }

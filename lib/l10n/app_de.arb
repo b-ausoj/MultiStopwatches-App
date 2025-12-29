@@ -61,5 +61,6 @@
   "addStopwatch": "Stoppuhr hinzufügen",
 
   "lapTime": "Rundenzeit",
-  "splitTime": "Zwischenzeit"
+  "splitTime": "Zwischenzeit",
+  "fromGroup": "von {groupName}"
 }

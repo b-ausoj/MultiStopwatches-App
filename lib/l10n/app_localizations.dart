@@ -403,6 +403,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Split time'**
   String get splitTime;
+
+  /// No description provided for @fromGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'from {groupName}'**
+  String fromGroup(String groupName);
 }
 
 class _AppLocalizationsDelegate
