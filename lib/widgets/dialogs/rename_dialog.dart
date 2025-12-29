@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// TODO: Localize strings
+// TODO: this dialog is used for renaming stopwatches and groups, but text says "Rename stopwatch" only. Fix that (pass the title as parameter? or make two classes?)
+// TODO: add validation (non-empty name, unique name?)
 class RenameDialog extends StatefulWidget {
   final String initialName;
   final void Function(String) onAccept;
