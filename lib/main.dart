@@ -17,6 +17,8 @@ void main() {
 // TODO: write help page
 // TODO: write tutorial page
 // TODO: add introduction screen
+// TODO: current export isn't nice on windows
+// TODO: current export exports two files because of the text
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
