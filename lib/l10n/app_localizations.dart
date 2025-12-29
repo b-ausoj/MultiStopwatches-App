@@ -607,6 +607,258 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Space'**
   String get delimiterSpace;
+
+  /// No description provided for @tncTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms and Conditions for MultiStopwatches'**
+  String get tncTitle;
+
+  /// No description provided for @tncLastUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated: 29.12.2025'**
+  String get tncLastUpdated;
+
+  /// No description provided for @tncIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read these terms and conditions (\"terms\") carefully before using the MultiStopwatches web application (\"service\") operated by Josua B. (\"us\", \"we\", or \"our\").'**
+  String get tncIntro;
+
+  /// No description provided for @tncTermsOfUseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use'**
+  String get tncTermsOfUseTitle;
+
+  /// No description provided for @tncTermsOfUse.
+  ///
+  /// In en, this message translates to:
+  /// **'By accessing or using the web application, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You\'re not allowed to copy or modify the app, any part of the app, or our trademarks in any way. You\'re not allowed to make derivative versions of the app. The app itself, and all the trademarks, copyright, and other intellectual property rights related to it, belong to Josua B.'**
+  String get tncTermsOfUse;
+
+  /// No description provided for @tncServicePricingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Service and Pricing'**
+  String get tncServicePricingTitle;
+
+  /// No description provided for @tncServicePricing.
+  ///
+  /// In en, this message translates to:
+  /// **'MultiStopwatches is currently provided free of charge as a web application. We reserve the right to introduce optional donation features or change the pricing model in the future, with prior notice to users.'**
+  String get tncServicePricing;
+
+  /// No description provided for @tncYourResponsibilitiesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Responsibilities'**
+  String get tncYourResponsibilitiesTitle;
+
+  /// No description provided for @tncYourResponsibilities.
+  ///
+  /// In en, this message translates to:
+  /// **'You are responsible for ensuring that your browser is compatible with the web application. An internet connection is required to initially load the application. If you install the app as a Progressive Web App (PWA), it can be used offline after the initial load. All your data is stored locally in your browser\'s storage and is your responsibility to backup if needed.'**
+  String get tncYourResponsibilities;
+
+  /// No description provided for @tncDataStorageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Storage'**
+  String get tncDataStorageTitle;
+
+  /// No description provided for @tncDataStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'All application data is stored exclusively in your browser\'s local storage. No data is transmitted to or stored on our servers. You are responsible for your own data management, including backups. Clearing your browser data will delete all application data.'**
+  String get tncDataStorage;
+
+  /// No description provided for @tncLimitationLiabilityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Limitation of Liability'**
+  String get tncLimitationLiabilityTitle;
+
+  /// No description provided for @tncLimitationLiability.
+  ///
+  /// In en, this message translates to:
+  /// **'Josua B is not responsible for any direct, indirect, incidental, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service. We do not warrant that:'**
+  String get tncLimitationLiability;
+
+  /// No description provided for @tncLimitationLiabilityPoint1.
+  ///
+  /// In en, this message translates to:
+  /// **'•the service will function uninterrupted, secure or available at any particular time or location;'**
+  String get tncLimitationLiabilityPoint1;
+
+  /// No description provided for @tncLimitationLiabilityPoint2.
+  ///
+  /// In en, this message translates to:
+  /// **'•any errors or defects will be corrected;'**
+  String get tncLimitationLiabilityPoint2;
+
+  /// No description provided for @tncLimitationLiabilityPoint3.
+  ///
+  /// In en, this message translates to:
+  /// **'•the service is free of viruses or other harmful components;'**
+  String get tncLimitationLiabilityPoint3;
+
+  /// No description provided for @tncLimitationLiabilityPoint4.
+  ///
+  /// In en, this message translates to:
+  /// **'•your data stored in browser storage will be preserved (you are responsible for backups).'**
+  String get tncLimitationLiabilityPoint4;
+
+  /// No description provided for @tncGoverningLawTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Governing Law'**
+  String get tncGoverningLawTitle;
+
+  /// No description provided for @tncGoverningLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'These terms shall be governed by and construed in accordance with the laws of Switzerland, without regard to its conflict of law provisions.'**
+  String get tncGoverningLaw;
+
+  /// No description provided for @tncChangesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes to These Terms and Conditions'**
+  String get tncChangesTitle;
+
+  /// No description provided for @tncChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'We reserve the right to modify these terms at any time. We will notify you of any changes by updating the \"Last updated\" date. Your continued use of the app after any such changes constitutes your acceptance of the new terms.'**
+  String get tncChanges;
+
+  /// No description provided for @tncContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Us'**
+  String get tncContactTitle;
+
+  /// No description provided for @tncContact.
+  ///
+  /// In en, this message translates to:
+  /// **'If you have any questions about these Terms and Conditions, please contact us at:'**
+  String get tncContact;
+
+  /// No description provided for @ppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy for MultiStopwatches'**
+  String get ppTitle;
+
+  /// No description provided for @ppLastUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated: 29.12.2025'**
+  String get ppLastUpdated;
+
+  /// No description provided for @ppIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for choosing to use MultiStopwatches. We take your privacy seriously and are committed to protecting it. This privacy policy explains how we handle information in relation to the MultiStopwatches web application.'**
+  String get ppIntro;
+
+  /// No description provided for @ppInfoCollectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Information We Collect and Store'**
+  String get ppInfoCollectTitle;
+
+  /// No description provided for @ppInfoCollect.
+  ///
+  /// In en, this message translates to:
+  /// **'MultiStopwatches does not collect, transmit, or store any personal data on external servers. The application stores all user data (including stopwatch configurations, recordings, and settings) exclusively in your browser\'s local storage (localStorage/IndexedDB). This data never leaves your device and is not transmitted to us or any third party.'**
+  String get ppInfoCollect;
+
+  /// No description provided for @ppInternetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet Connection'**
+  String get ppInternetTitle;
+
+  /// No description provided for @ppInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'An internet connection is required only to initially load the web application. Once loaded, or if installed as a Progressive Web App (PWA), the application can function completely offline. No data is transmitted during usage, whether online or offline.'**
+  String get ppInternet;
+
+  /// No description provided for @ppCookiesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cookies and Tracking'**
+  String get ppCookiesTitle;
+
+  /// No description provided for @ppCookies.
+  ///
+  /// In en, this message translates to:
+  /// **'MultiStopwatches does not use cookies, analytics, tracking scripts, or any other data collection technologies. We do not track your usage or collect any information about how you use the application.'**
+  String get ppCookies;
+
+  /// No description provided for @ppDataSecurityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Security and Control'**
+  String get ppDataSecurityTitle;
+
+  /// No description provided for @ppDataSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Your data is stored locally in your browser\'s storage and remains under your complete control. You can delete all application data at any time by clearing your browser\'s storage or cache. We recommend backing up important data, as we have no access to or copies of your data and cannot recover it if lost.'**
+  String get ppDataSecurity;
+
+  /// No description provided for @ppYourRightsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rights'**
+  String get ppYourRightsTitle;
+
+  /// No description provided for @ppYourRights.
+  ///
+  /// In en, this message translates to:
+  /// **'Since all data is stored locally on your device and no data is collected by us, you have complete control over your information. You can access, modify, export, or delete your data at any time through the application or your browser settings. We do not process any personal data, so GDPR data subject requests are not applicable.'**
+  String get ppYourRights;
+
+  /// No description provided for @ppThirdPartyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Third-Party Services'**
+  String get ppThirdPartyTitle;
+
+  /// No description provided for @ppThirdParty.
+  ///
+  /// In en, this message translates to:
+  /// **'MultiStopwatches does not integrate with or share data with any third-party services, analytics platforms, or external APIs.'**
+  String get ppThirdParty;
+
+  /// No description provided for @ppChangesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes to This Privacy Policy'**
+  String get ppChangesTitle;
+
+  /// No description provided for @ppChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'We may update our Privacy Policy from time to time. We will notify you of any changes by updating the \"Last updated\" date on this page. You are advised to review this Privacy Policy periodically for any changes.'**
+  String get ppChanges;
+
+  /// No description provided for @ppContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Us'**
+  String get ppContactTitle;
+
+  /// No description provided for @ppContact.
+  ///
+  /// In en, this message translates to:
+  /// **'If you have any questions about this Privacy Policy, please contact us at:'**
+  String get ppContact;
 }
 
 class _AppLocalizationsDelegate
