@@ -65,7 +65,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                           fontWeight: FontWeight.w600,
                           height: 1.0)),
                   // past lap times
-                  Row(
+                  Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(formatPastLaps(_stopwatchModel.lapList, showAllLaps),
@@ -74,10 +74,11 @@ class _StopwatchCardState extends State<StopwatchCard>
                               fontSize: 22,
                               fontWeight: FontWeight.w400,
                               height: 1.0)),
-                      Icon(
-                        showAllLaps ? Icons.expand_less : Icons.expand_more,
-                        size: 18,
-                      ),
+                      if (_stopwatchModel.lapList.isNotEmpty)
+                        Icon(
+                          showAllLaps ? Icons.expand_less : Icons.expand_more,
+                          size: 18,
+                        ),
                     ],
                   ),
                 ],
