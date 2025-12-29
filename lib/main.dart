@@ -9,12 +9,11 @@ void main() {
   runApp(const MyApp());
 }
 
-// TODO: reorganize recordings page
 // TODO: add donation link
 // TODO: write help page
 // TODO: write tutorial page
 // TODO: add introduction screen
-// TODO: current export exports two files because of the text
+// TODO: reorganize recordings page, resolved?
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

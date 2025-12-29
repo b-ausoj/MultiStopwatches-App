@@ -35,7 +35,6 @@ Future<void> saveAndShareCsv(String csvContent, String fileName, BuildContext co
             mimeType: 'text/csv',
           ),
         ],
-        text: AppLocalizations.of(context)!.hereIsYourRecording,
       ),
     );
   }
