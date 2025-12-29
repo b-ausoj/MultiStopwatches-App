@@ -79,10 +79,10 @@ class _StopwatchCardState extends State<StopwatchCard>
                               fontWeight: FontWeight.w400,
                               height: 1.0)),
                       if (_stopwatchModel.lapList.length > 1)
-                        SizedBox(
-                          height: 12,
-                          child: Transform.translate(
-                            offset: const Offset(0, -2),
+                        Transform.translate(
+                          offset: const Offset(0, -2),
+                          child: SizedBox(
+                            height: 12,
                             child: Icon(
                               showAllLaps
                                   ? Icons.expand_less
