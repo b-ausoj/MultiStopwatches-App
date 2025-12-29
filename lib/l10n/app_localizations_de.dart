@@ -242,4 +242,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get allStopwatchesReseted => 'Alle Stoppuhren wurden zurückgesetzt';
+
+  @override
+  String get hereIsYourRecording => 'Hier ist deine Aufzeichnung!';
+
+  @override
+  String get totalTime => 'Gesamtzeit';
+
+  @override
+  String get lapNo => 'Runde Nr.';
 }

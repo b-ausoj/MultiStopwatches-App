@@ -529,6 +529,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All stopwatches have been reseted'**
   String get allStopwatchesReseted;
+
+  /// No description provided for @hereIsYourRecording.
+  ///
+  /// In en, this message translates to:
+  /// **'Here is your recording!'**
+  String get hereIsYourRecording;
+
+  /// No description provided for @totalTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Time'**
+  String get totalTime;
+
+  /// No description provided for @lapNo.
+  ///
+  /// In en, this message translates to:
+  /// **'Lap No.'**
+  String get lapNo;
 }
 
 class _AppLocalizationsDelegate

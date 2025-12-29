@@ -83,5 +83,8 @@
   "allStopwatchesRemoved": "Alle Stoppuhren wurden entfernt",
   "stopwatchRemoved": "'{name}' wurde entfernt",
   "cantResetWhileRunning": "Kann nicht zurücksetzen während läuft",
-  "allStopwatchesReseted": "Alle Stoppuhren wurden zurückgesetzt"
+  "allStopwatchesReseted": "Alle Stoppuhren wurden zurückgesetzt",
+  "hereIsYourRecording": "Hier ist deine Aufzeichnung!",
+  "totalTime": "Gesamtzeit",
+  "lapNo": "Runde Nr."
 }

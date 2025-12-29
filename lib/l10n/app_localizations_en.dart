@@ -241,4 +241,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get allStopwatchesReseted => 'All stopwatches have been reseted';
+
+  @override
+  String get hereIsYourRecording => 'Here is your recording!';
+
+  @override
+  String get totalTime => 'Total Time';
+
+  @override
+  String get lapNo => 'Lap No.';
 }

@@ -62,7 +62,7 @@ class _RecordingCardState extends State<RecordingCard> {
                         _showRenameDialog();
                         break;
                       case RecordingCardMenuItem.export:
-                        exportRecordingToCSV(_recordingModel, widget.settings);
+                        exportRecordingToCSV(_recordingModel, widget.settings, context);
                         break;
                       case RecordingCardMenuItem.delete:
                         widget.deleteRecording(

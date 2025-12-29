@@ -58,7 +58,8 @@ class RecordingsPageController extends BadgeController {
                           .where((element) =>
                               element.recordingModel.startingTime == timeStamp)
                           .toList(),
-                      settings);
+                      settings,
+                      context);
                   break;
               }
               //selectedMenu = item;
@@ -97,7 +98,8 @@ class RecordingsPageController extends BadgeController {
                         .where((element) =>
                             element.recordingModel.startingTime == last)
                         .toList(),
-                    settings);
+                    settings,
+                    context);
                 break;
             }
             //selectedMenu = item;

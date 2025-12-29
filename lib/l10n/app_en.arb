@@ -142,5 +142,8 @@
     }
   },
   "cantResetWhileRunning": "Can't reset while running",
-  "allStopwatchesReseted": "All stopwatches have been reseted"
+  "allStopwatchesReseted": "All stopwatches have been reseted",
+  "hereIsYourRecording": "Here is your recording!",
+  "totalTime": "Total Time",
+  "lapNo": "Lap No."
 }
