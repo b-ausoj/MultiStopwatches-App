@@ -24,66 +24,70 @@ class _SortDialogState extends State<SortDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
         title: Text(AppLocalizations.of(context)!.changeSorting),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            RadioGroup<SortCriterion>(
-              groupValue: _selectedCriterion,
-              onChanged: (SortCriterion? value) {
-                if (value == null) return;
-                setState(() {
-                  _selectedCriterion = value;
-                });
-                widget.onValueChange(_selectedCriterion, _selectedDirection);
-              },
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: SortCriterion.values
-                    .map((SortCriterion criterion) => RadioListTile(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        title: Text(criterion.label(context)),
-                        value: criterion))
-                    .toList(),
-              ),
-            ),
-            if (_selectedCriterion != SortCriterion.customReordable) ...[
-              const Divider(),
-              RadioGroup<SortDirection>(
-                groupValue: _selectedDirection,
-                onChanged: (SortDirection? value) {
+        content: IntrinsicWidth(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              RadioGroup<SortCriterion>(
+                groupValue: _selectedCriterion,
+                onChanged: (SortCriterion? value) {
                   if (value == null) return;
                   setState(() {
-                    _selectedDirection = value;
+                    _selectedCriterion = value;
                   });
                   widget.onValueChange(_selectedCriterion, _selectedDirection);
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: SortDirection.values
-                      .map((SortDirection direction) => RadioListTile(
+                  children: SortCriterion.values
+                      .map((SortCriterion criterion) => RadioListTile(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40),
                           ),
-                          title: Text(direction.label(context)),
-                          value: direction))
+                          title: Text(criterion.label(context)),
+                          value: criterion))
                       .toList(),
                 ),
               ),
-            ] else
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  AppLocalizations.of(context)!.customSortExplanation,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey[600],
+              if (_selectedCriterion != SortCriterion.customReordable) ...[
+                const Divider(),
+                RadioGroup<SortDirection>(
+                  groupValue: _selectedDirection,
+                  onChanged: (SortDirection? value) {
+                    if (value == null) return;
+                    setState(() {
+                      _selectedDirection = value;
+                    });
+                    widget.onValueChange(_selectedCriterion, _selectedDirection);
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: SortDirection.values
+                        .map((SortDirection direction) => RadioListTile(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                            title: Text(direction.label(context)),
+                            value: direction))
+                        .toList(),
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
-          ],
+              ] else
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    AppLocalizations.of(context)!.customSortExplanation,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[600],
+                    ),
+                    textAlign: TextAlign.center,
+                    softWrap: true,
+                  ),
+                ),
+            ],
+          ),
         ));
   }
 }

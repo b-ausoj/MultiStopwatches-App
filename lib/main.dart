@@ -15,6 +15,7 @@ void main() {
 // TODO: decide on a default order and orientation
 // TODO: decide on order or sorting as a text
 // TODO: add donation link
+// TODO: update the terms&conditions and privacy policy with web app and free usage
 // TODO: write help page
 // TODO: write tutorial page
 // TODO: add introduction screen

@@ -267,4 +267,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get lapNo => 'Runde Nr.';
+
+  @override
+  String get nameCannotBeEmpty => 'Name darf nicht leer sein';
+
+  @override
+  String get nameAlreadyExists => 'Name existiert bereits';
 }

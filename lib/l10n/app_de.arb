@@ -91,5 +91,8 @@
   "allStopwatchesReseted": "Alle Stoppuhren wurden zurückgesetzt",
   "hereIsYourRecording": "Hier ist deine Aufzeichnung!",
   "totalTime": "Gesamtzeit",
-  "lapNo": "Runde Nr."
+  "lapNo": "Runde Nr.",
+
+  "nameCannotBeEmpty": "Name darf nicht leer sein",
+  "nameAlreadyExists": "Name existiert bereits"
 }

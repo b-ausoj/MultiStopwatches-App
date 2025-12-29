@@ -577,6 +577,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Lap No.'**
   String get lapNo;
+
+  /// No description provided for @nameCannotBeEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Name cannot be empty'**
+  String get nameCannotBeEmpty;
+
+  /// No description provided for @nameAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'Name already exists'**
+  String get nameAlreadyExists;
 }
 
 class _AppLocalizationsDelegate

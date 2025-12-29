@@ -150,5 +150,8 @@
   "allStopwatchesReseted": "All stopwatches have been reseted",
   "hereIsYourRecording": "Here is your recording!",
   "totalTime": "Total Time",
-  "lapNo": "Lap No."
+  "lapNo": "Lap No.",
+
+  "nameCannotBeEmpty": "Name cannot be empty",
+  "nameAlreadyExists": "Name already exists"
 }

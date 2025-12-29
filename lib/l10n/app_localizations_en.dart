@@ -266,4 +266,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lapNo => 'Lap No.';
+
+  @override
+  String get nameCannotBeEmpty => 'Name cannot be empty';
+
+  @override
+  String get nameAlreadyExists => 'Name already exists';
 }
