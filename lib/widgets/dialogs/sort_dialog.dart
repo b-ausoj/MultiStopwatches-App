@@ -48,28 +48,41 @@ class _SortDialogState extends State<SortDialog> {
                     .toList(),
               ),
             ),
-            const Divider(),
-            RadioGroup<SortDirection>(
-              groupValue: _selectedDirection,
-              onChanged: (SortDirection? value) {
-                if (value == null) return;
-                setState(() {
-                  _selectedDirection = value;
-                });
-                widget.onValueChange(_selectedCriterion, _selectedDirection);
-              },
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: SortDirection.values
-                    .map((SortDirection direction) => RadioListTile(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        title: Text(direction.label(context)),
-                        value: direction))
-                    .toList(),
+            if (_selectedCriterion != SortCriterion.customReordable) ...[
+              const Divider(),
+              RadioGroup<SortDirection>(
+                groupValue: _selectedDirection,
+                onChanged: (SortDirection? value) {
+                  if (value == null) return;
+                  setState(() {
+                    _selectedDirection = value;
+                  });
+                  widget.onValueChange(_selectedCriterion, _selectedDirection);
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: SortDirection.values
+                      .map((SortDirection direction) => RadioListTile(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          title: Text(direction.label(context)),
+                          value: direction))
+                      .toList(),
+                ),
               ),
-            ),
+            ] else
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  AppLocalizations.of(context)!.customSortExplanation,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey[600],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
           ],
         ));
   }
