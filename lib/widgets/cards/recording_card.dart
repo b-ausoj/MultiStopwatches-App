@@ -130,6 +130,7 @@ class _RecordingCardState extends State<RecordingCard> {
         return RenameDialog(
           initialName: _recordingModel.name,
           title: AppLocalizations.of(context)!.renameRecording,
+          existingNames: const [],
           onAccept: (String text) {
             setState(() {
               _recordingModel.name = text;

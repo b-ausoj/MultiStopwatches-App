@@ -133,6 +133,7 @@ class _StartPageState extends State<StartPage> {
         return RenameDialog(
           initialName: groupModel.name,
           title: AppLocalizations.of(context)!.renameGroup,
+          existingNames: const [],
           onAccept: (String newName) {
             groupModel.name = newName;
             setState(() {});

@@ -168,6 +168,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
         return RenameDialog(
           initialName: oldName,
           title: AppLocalizations.of(context)!.renameGroup,
+          existingNames: const [],
           onAccept: (String newName) {
             setState(() {
               _stopwatchesPageController.name = newName;

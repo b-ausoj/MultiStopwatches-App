@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
-// TODO: add validation (non-empty name, unique name in current context/group?)
 class RenameDialog extends StatefulWidget {
   final String initialName;
   final String title;
   final void Function(String) onAccept;
+  final List<String> existingNames;
 
   const RenameDialog(
       {required this.initialName,
       required this.title,
       required this.onAccept,
+      this.existingNames = const [],
       super.key});
 
   @override
@@ -20,11 +21,15 @@ class RenameDialog extends StatefulWidget {
 class _RenameDialogState extends State<RenameDialog> {
   late final TextEditingController _controller;
   final FocusNode _focusNode = FocusNode();
+  String? _errorMessage;
 
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController(text: widget.initialName);
+
+    // Run initial validation
+    _errorMessage = _validateName(widget.initialName);
 
     // Select all text after the widget is built and focused
     // TODO: is this causing issues in iOS?
@@ -35,6 +40,30 @@ class _RenameDialogState extends State<RenameDialog> {
         extentOffset: widget.initialName.length,
       );
     });
+  }
+
+  String? _validateName(String value) {
+    final trimmed = value.trim();
+
+    if (trimmed.isEmpty) {
+      return AppLocalizations.of(context)!.nameCannotBeEmpty;
+    }
+
+    // Case-insensitive uniqueness check, excluding current name
+    if (widget.existingNames.any((name) =>
+        name.toLowerCase() == trimmed.toLowerCase() &&
+        name.toLowerCase() != widget.initialName.toLowerCase())) {
+      return AppLocalizations.of(context)!.nameAlreadyExists;
+    }
+
+    return null;
+  }
+
+  void _handleAccept() {
+    if (_errorMessage == null) {
+      widget.onAccept(_controller.text.trim());
+      Navigator.of(context).pop();
+    }
   }
 
   @override
@@ -50,14 +79,17 @@ class _RenameDialogState extends State<RenameDialog> {
       title: Text(widget.title),
       content: TextField(
         focusNode: _focusNode,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
+        decoration: InputDecoration(
+          border: const OutlineInputBorder(),
+          errorText: _errorMessage,
         ),
         controller: _controller,
-        onSubmitted: (_) {
-          widget.onAccept(_controller.text);
-          Navigator.of(context).pop();
+        onChanged: (text) {
+          setState(() {
+            _errorMessage = _validateName(text);
+          });
         },
+        onSubmitted: (_) => _handleAccept(),
       ),
       actions: <Widget>[
         TextButton(
@@ -67,11 +99,8 @@ class _RenameDialogState extends State<RenameDialog> {
           },
         ),
         TextButton(
+          onPressed: _errorMessage == null ? _handleAccept : null,
           child: Text(AppLocalizations.of(context)!.ok),
-          onPressed: () {
-            widget.onAccept(_controller.text);
-            Navigator.of(context).pop();
-          },
         ),
       ],
     );

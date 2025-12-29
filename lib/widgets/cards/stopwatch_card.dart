@@ -285,6 +285,12 @@ class _StopwatchCardState extends State<StopwatchCard>
   }
 
   Future<String?> _showRenameDialog() async {
+    // Get list of all stopwatch names in this group except current one
+    final existingNames = widget.stopwatchesPageController.groupModel.stopwatches
+        .where((sw) => sw.id != _stopwatchModel.id)
+        .map((sw) => sw.name)
+        .toList();
+
     return showDialog<String>(
       context: context,
       barrierDismissible: true,
@@ -292,6 +298,7 @@ class _StopwatchCardState extends State<StopwatchCard>
         return RenameDialog(
           initialName: _stopwatchModel.name,
           title: AppLocalizations.of(context)!.renameStopwatch,
+          existingNames: existingNames,
           onAccept: (String text) {
             _stopwatchModel.name = text;
             widget.changedState();
