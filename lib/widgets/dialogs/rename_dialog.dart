@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
@@ -32,13 +34,18 @@ class _RenameDialogState extends State<RenameDialog> {
     _errorMessage = _validateName(widget.initialName);
 
     // Select all text after the widget is built and focused
-    // TODO: is this causing issues in iOS?
+    // Skip auto selection on iOS due to Flutter bugs with keyboard and selection
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode.requestFocus();
-      _controller.selection = TextSelection(
-        baseOffset: 0,
-        extentOffset: widget.initialName.length,
-      );
+
+      // Only auto-select on non-iOS platforms
+      final isIOS = !kIsWeb && Platform.isIOS;
+      if (!isIOS) {
+        _controller.selection = TextSelection(
+          baseOffset: 0,
+          extentOffset: widget.initialName.length,
+        );
+      }
     });
   }
 
@@ -79,6 +86,7 @@ class _RenameDialogState extends State<RenameDialog> {
       title: Text(widget.title),
       content: TextField(
         focusNode: _focusNode,
+        autofocus: true,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
           errorText: _errorMessage,
