@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
-// TODO: add validation (non-empty name, unique name?)
+// TODO: add validation (non-empty name, unique name in current context/group?)
 class RenameDialog extends StatefulWidget {
   final String initialName;
   final String title;
@@ -27,6 +27,7 @@ class _RenameDialogState extends State<RenameDialog> {
     _controller = TextEditingController(text: widget.initialName);
 
     // Select all text after the widget is built and focused
+    // TODO: is this causing issues in iOS?
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode.requestFocus();
       _controller.selection = TextSelection(

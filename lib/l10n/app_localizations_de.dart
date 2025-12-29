@@ -24,6 +24,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rename => 'Umbenennen';
 
   @override
+  String get renameStopwatch => 'Stoppuhr umbenennen';
+
+  @override
+  String get renameGroup => 'Gruppe umbenennen';
+
+  @override
+  String get renameRecording => 'Aufzeichnung umbenennen';
+
+  @override
   String get save => 'Speichern';
 
   @override
@@ -201,6 +210,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cancel => 'ABBRECHEN';
 
   @override
+  String get ok => 'OK';
+
+  @override
   String get confirm => 'BESTÄTIGEN';
 
   @override
@@ -223,6 +235,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get sortDescending => 'Absteigend';
+
+  @override
+  String get customSortExplanation =>
+      'Ziehe Stoppuhren, um sie manuell neu anzuordnen';
 
   @override
   String athleteNumber(int number) {

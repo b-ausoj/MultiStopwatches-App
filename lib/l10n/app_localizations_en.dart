@@ -24,6 +24,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rename => 'Rename';
 
   @override
+  String get renameStopwatch => 'Rename stopwatch';
+
+  @override
+  String get renameGroup => 'Rename group';
+
+  @override
+  String get renameRecording => 'Rename recording';
+
+  @override
   String get save => 'Save';
 
   @override
@@ -200,6 +209,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'CANCEL';
 
   @override
+  String get ok => 'OK';
+
+  @override
   String get confirm => 'CONFIRM';
 
   @override
@@ -222,6 +234,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sortDescending => 'Descending';
+
+  @override
+  String get customSortExplanation =>
+      'Drag stopwatches to reorder them manually';
 
   @override
   String athleteNumber(int number) {

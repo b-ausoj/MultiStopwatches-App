@@ -128,6 +128,24 @@ abstract class AppLocalizations {
   /// **'Rename'**
   String get rename;
 
+  /// No description provided for @renameStopwatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename stopwatch'**
+  String get renameStopwatch;
+
+  /// No description provided for @renameGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename group'**
+  String get renameGroup;
+
+  /// No description provided for @renameRecording.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename recording'**
+  String get renameRecording;
+
   /// No description provided for @save.
   ///
   /// In en, this message translates to:
@@ -452,6 +470,12 @@ abstract class AppLocalizations {
   /// **'CANCEL'**
   String get cancel;
 
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
   /// No description provided for @confirm.
   ///
   /// In en, this message translates to:
@@ -499,6 +523,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Descending'**
   String get sortDescending;
+
+  /// No description provided for @customSortExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag stopwatches to reorder them manually'**
+  String get customSortExplanation;
 
   /// No description provided for @athleteNumber.
   ///
