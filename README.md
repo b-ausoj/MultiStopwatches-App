@@ -1,6 +1,6 @@
 # MultiStopwatches
 
-A lightweight Progressive Web App (PWA) built with Flutter that lets you run multiple stopwatches simultaneously. Perfect for interval training, time tracking, or any scenario where you need to monitor multiple timers at once.
+A lightweight Web App built with Flutter that lets you run multiple stopwatches simultaneously. Perfect for interval training, time tracking, or any scenario where you need to monitor multiple timers at once.
 
 **Live App:** [multistopwatches.vercel.app](https://multistopwatches.vercel.app)
 
@@ -44,7 +44,7 @@ Once installed, the app works offline and launches like a native application.
 
 All data is stored locally in your browser using localStorage. No data is sent to any server, and your recordings remain completely private on your device.
 
-## Development
+## Technology
 
 Built with Flutter for web deployment. Hosted on Vercel.
 
