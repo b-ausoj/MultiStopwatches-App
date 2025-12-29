@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multistopwatches/config/app_config.dart';
 
 class PPPage extends StatelessWidget {
   const PPPage({super.key});
@@ -52,7 +53,7 @@ class PPPage extends StatelessWidget {
               ),
               Text(
                   "If you have any questions about this Privacy Policy, please contact us at:"),
-              SelectableText("josua.bu@gmail.com"),
+              SelectableText(AppConfig.contactEmail),
               SizedBox(height: 40.0),
             ],
           ),

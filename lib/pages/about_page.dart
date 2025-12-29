@@ -6,6 +6,7 @@ import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/widgets/icons/back_icon.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
+import 'package:multistopwatches/config/app_config.dart';
 
 class AboutPage extends StatelessWidget {
   final bool isBadgeVisible;
@@ -51,7 +52,7 @@ class AboutPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            const SelectableText("josua.bu@gmail.com"),
+            SelectableText(AppConfig.contactEmail),
             const SizedBox(height: 16.0),
             TextButton.icon(
                 onPressed: () => launchMailApp(),

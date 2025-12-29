@@ -1,8 +1,9 @@
 import 'package:url_launcher/url_launcher.dart';
+import '../config/app_config.dart';
 
 final Uri contactUri = Uri(
   scheme: "mailto",
-  path: "josua.bu@gmail.com",
+  path: AppConfig.contactEmail,
   query: encodeQueryParameters(<String, String>{
     "subject": "[Feedback] MultiStopwatches App",
   }),

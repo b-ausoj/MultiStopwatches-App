@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multistopwatches/config/app_config.dart';
 
 class TnCPage extends StatelessWidget {
   const TnCPage({super.key});
@@ -67,7 +68,7 @@ class TnCPage extends StatelessWidget {
               ),
               Text(
                   "If you have any questions about this Privacy Policy, please contact us at:"),
-              SelectableText("josua.bu@gmail.com"),
+              SelectableText(AppConfig.contactEmail),
               SizedBox(height: 40.0)
             ],
           ),
