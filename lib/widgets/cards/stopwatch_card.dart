@@ -44,7 +44,11 @@ class _StopwatchCardState extends State<StopwatchCard>
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                showAllLaps = !showAllLaps;
+                if (_stopwatchModel.lapList.length > 1) {
+                  setState(() {
+                    showAllLaps = !showAllLaps;
+                  });
+                }
               },
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -74,10 +78,13 @@ class _StopwatchCardState extends State<StopwatchCard>
                               fontSize: 22,
                               fontWeight: FontWeight.w400,
                               height: 1.0)),
-                      if (_stopwatchModel.lapList.isNotEmpty)
-                        Icon(
-                          showAllLaps ? Icons.expand_less : Icons.expand_more,
-                          size: 18,
+                      if (_stopwatchModel.lapList.length > 1)
+                        Transform.translate(
+                          offset: const Offset(0, -4),
+                          child: Icon(
+                            showAllLaps ? Icons.expand_less : Icons.expand_more,
+                            size: 18,
+                          ),
                         ),
                     ],
                   ),

@@ -6,7 +6,6 @@ void showLongSnackBar(BuildContext context, String message,
     content: Text(message),
     duration: const Duration(seconds: 4),
     action: action,
-    behavior: SnackBarBehavior.floating,
     persist: false,
   ));
 }
@@ -15,6 +14,5 @@ void showShortSnackBar(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text(message),
     duration: const Duration(seconds: 2),
-    behavior: SnackBarBehavior.floating,
   ));
 }
