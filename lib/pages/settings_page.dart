@@ -84,7 +84,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           (SortCriterion criterion) {
                     return DropdownMenuEntry<SortCriterion>(
                       value: criterion,
-                      label: criterion.label,
+                      label: criterion.label(context),
                     );
                   }).toList(),
                 )
@@ -116,7 +116,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           (SortDirection direction) {
                     return DropdownMenuEntry<SortDirection>(
                       value: direction,
-                      label: direction.label,
+                      label: direction.label(context),
                     );
                   }).toList(),
                 )

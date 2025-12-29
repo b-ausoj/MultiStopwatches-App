@@ -100,5 +100,27 @@
         "type": "String"
       }
     }
-  }
+  },
+  "allRecordingsDeleted": "All recordings have been deleted",
+  "recordingDeleted": "Recording have been deleted",
+  "recordingsDeleted": "Recordings have been deleted",
+  "deleteGroupTitle": "Delete {name}",
+  "@deleteGroupTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "areYouSureCannotUndo": "Are you sure? This can not be undone",
+  "youHaveToCheckBox": "You have to check the box",
+  "cancel": "CANCEL",
+  "confirm": "CONFIRM",
+  "changeSorting": "Change sorting",
+  "sortByName": "Name",
+  "sortByLongestTime": "Longest Time",
+  "sortByLongestLapTime": "Longest Lap Time",
+  "sortByCustom": "Custom",
+  "sortAscending": "Ascending",
+  "sortDescending": "Descending"
 }

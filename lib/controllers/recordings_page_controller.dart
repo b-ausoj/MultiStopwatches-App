@@ -119,9 +119,9 @@ class RecordingsPageController extends BadgeController {
     createRecordingList();
     storeRecordingsState(this);
     refresh();
-    showLongSnackBar(context, "All recordings have been deleted",
+    showLongSnackBar(context, AppLocalizations.of(context)!.allRecordingsDeleted,
         action: SnackBarAction(
-            label: "Undo",
+            label: AppLocalizations.of(context)!.undo,
             onPressed: () {
               recordingCards.addAll(deletedCards);
               createRecordingList();
@@ -141,9 +141,9 @@ class RecordingsPageController extends BadgeController {
     storeRecordingsState(this);
     refresh();
     if (deletedCard != null) {
-      showLongSnackBar(context, "Recording have been deleted",
+      showLongSnackBar(context, AppLocalizations.of(context)!.recordingDeleted,
           action: SnackBarAction(
-              label: "Undo",
+              label: AppLocalizations.of(context)!.undo,
               onPressed: () {
                 recordingCards.add(deletedCard!);
                 createRecordingList();
@@ -163,9 +163,9 @@ class RecordingsPageController extends BadgeController {
     createRecordingList();
     storeRecordingsState(this);
     refresh();
-    showLongSnackBar(context, "Recordings have been deleted",
+    showLongSnackBar(context, AppLocalizations.of(context)!.recordingsDeleted,
         action: SnackBarAction(
-            label: "Undo",
+            label: AppLocalizations.of(context)!.undo,
             onPressed: () {
               recordingCards.addAll(deletedCards);
               createRecordingList();

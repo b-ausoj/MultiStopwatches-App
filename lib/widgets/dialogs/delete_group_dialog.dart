@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class DeleteGroupDialog extends StatefulWidget {
   final void Function() onAccept;
@@ -17,7 +18,7 @@ class _DeleteGroupDialogState extends State<DeleteGroupDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Delete ${widget.name}"),
+      title: Text(AppLocalizations.of(context)!.deleteGroupTitle(widget.name)),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -30,18 +31,18 @@ class _DeleteGroupDialogState extends State<DeleteGroupDialog> {
                   setState(() {});
                 },
               ),
-              const SizedBox(
+              SizedBox(
                 width: 180,
                 child: Text(
-                  "Are you sure? This can not be undone",
+                  AppLocalizations.of(context)!.areYouSureCannotUndo,
                 ),
               )
             ],
           ),
           red
-              ? const Text(
-                  "You have to check the box",
-                  style: TextStyle(color: Colors.red),
+              ? Text(
+                  AppLocalizations.of(context)!.youHaveToCheckBox,
+                  style: const TextStyle(color: Colors.red),
                 )
               : Container(),
           //Container(),
@@ -49,13 +50,13 @@ class _DeleteGroupDialogState extends State<DeleteGroupDialog> {
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text("CANCEL"),
+          child: Text(AppLocalizations.of(context)!.cancel),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         TextButton(
-          child: const Text("CONFIRM"),
+          child: Text(AppLocalizations.of(context)!.confirm),
           onPressed: () {
             if (confirmed) {
               widget.onAccept();

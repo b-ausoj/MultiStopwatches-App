@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/enums/sort_criterion.dart';
 import 'package:multistopwatches/enums/sort_direction.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class SortDialog extends StatefulWidget {
   final SortCriterion initialCriterion;
@@ -22,7 +23,7 @@ class _SortDialogState extends State<SortDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        title: const Text("Change sorting"),
+        title: Text(AppLocalizations.of(context)!.changeSorting),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -42,7 +43,7 @@ class _SortDialogState extends State<SortDialog> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40),
                         ),
-                        title: Text(criterion.label),
+                        title: Text(criterion.label(context)),
                         value: criterion))
                     .toList(),
               ),
@@ -64,7 +65,7 @@ class _SortDialogState extends State<SortDialog> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40),
                         ),
-                        title: Text(direction.label),
+                        title: Text(direction.label(context)),
                         value: direction))
                     .toList(),
               ),

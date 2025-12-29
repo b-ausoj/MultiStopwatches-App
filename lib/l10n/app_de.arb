@@ -62,5 +62,20 @@
 
   "lapTime": "Rundenzeit",
   "splitTime": "Zwischenzeit",
-  "fromGroup": "von {groupName}"
+  "fromGroup": "von {groupName}",
+  "allRecordingsDeleted": "Alle Aufzeichnungen wurden gelöscht",
+  "recordingDeleted": "Aufzeichnung wurde gelöscht",
+  "recordingsDeleted": "Aufzeichnungen wurden gelöscht",
+  "deleteGroupTitle": "{name} löschen",
+  "areYouSureCannotUndo": "Bist du sicher? Das kann nicht rückgängig gemacht werden",
+  "youHaveToCheckBox": "Du musst das Kästchen ankreuzen",
+  "cancel": "ABBRECHEN",
+  "confirm": "BESTÄTIGEN",
+  "changeSorting": "Sortierung ändern",
+  "sortByName": "Name",
+  "sortByLongestTime": "Längste Zeit",
+  "sortByLongestLapTime": "Längste Rundenzeit",
+  "sortByCustom": "Benutzerdefiniert",
+  "sortAscending": "Aufsteigend",
+  "sortDescending": "Absteigend"
 }

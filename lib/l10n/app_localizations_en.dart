@@ -175,4 +175,51 @@ class AppLocalizationsEn extends AppLocalizations {
   String fromGroup(String groupName) {
     return 'from $groupName';
   }
+
+  @override
+  String get allRecordingsDeleted => 'All recordings have been deleted';
+
+  @override
+  String get recordingDeleted => 'Recording have been deleted';
+
+  @override
+  String get recordingsDeleted => 'Recordings have been deleted';
+
+  @override
+  String deleteGroupTitle(String name) {
+    return 'Delete $name';
+  }
+
+  @override
+  String get areYouSureCannotUndo => 'Are you sure? This can not be undone';
+
+  @override
+  String get youHaveToCheckBox => 'You have to check the box';
+
+  @override
+  String get cancel => 'CANCEL';
+
+  @override
+  String get confirm => 'CONFIRM';
+
+  @override
+  String get changeSorting => 'Change sorting';
+
+  @override
+  String get sortByName => 'Name';
+
+  @override
+  String get sortByLongestTime => 'Longest Time';
+
+  @override
+  String get sortByLongestLapTime => 'Longest Lap Time';
+
+  @override
+  String get sortByCustom => 'Custom';
+
+  @override
+  String get sortAscending => 'Ascending';
+
+  @override
+  String get sortDescending => 'Descending';
 }

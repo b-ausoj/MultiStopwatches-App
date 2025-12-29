@@ -1,9 +1,22 @@
-enum SortCriterion {
-  name("Name"),
-  longestTime("Longest Time"),
-  longestLapTime("Longest Lap Time"),
-  customReordable("Custom");
+import 'package:flutter/material.dart';
+import 'package:multistopwatches/l10n/app_localizations.dart';
 
-  final String label;
-  const SortCriterion(this.label);
+enum SortCriterion {
+  name,
+  longestTime,
+  longestLapTime,
+  customReordable;
+
+  String label(BuildContext context) {
+    switch (this) {
+      case SortCriterion.name:
+        return AppLocalizations.of(context)!.sortByName;
+      case SortCriterion.longestTime:
+        return AppLocalizations.of(context)!.sortByLongestTime;
+      case SortCriterion.longestLapTime:
+        return AppLocalizations.of(context)!.sortByLongestLapTime;
+      case SortCriterion.customReordable:
+        return AppLocalizations.of(context)!.sortByCustom;
+    }
+  }
 }

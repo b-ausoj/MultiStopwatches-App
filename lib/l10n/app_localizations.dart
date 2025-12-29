@@ -409,6 +409,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'from {groupName}'**
   String fromGroup(String groupName);
+
+  /// No description provided for @allRecordingsDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'All recordings have been deleted'**
+  String get allRecordingsDeleted;
+
+  /// No description provided for @recordingDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Recording have been deleted'**
+  String get recordingDeleted;
+
+  /// No description provided for @recordingsDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Recordings have been deleted'**
+  String get recordingsDeleted;
+
+  /// No description provided for @deleteGroupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {name}'**
+  String deleteGroupTitle(String name);
+
+  /// No description provided for @areYouSureCannotUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure? This can not be undone'**
+  String get areYouSureCannotUndo;
+
+  /// No description provided for @youHaveToCheckBox.
+  ///
+  /// In en, this message translates to:
+  /// **'You have to check the box'**
+  String get youHaveToCheckBox;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'CANCEL'**
+  String get cancel;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'CONFIRM'**
+  String get confirm;
+
+  /// No description provided for @changeSorting.
+  ///
+  /// In en, this message translates to:
+  /// **'Change sorting'**
+  String get changeSorting;
+
+  /// No description provided for @sortByName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get sortByName;
+
+  /// No description provided for @sortByLongestTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest Time'**
+  String get sortByLongestTime;
+
+  /// No description provided for @sortByLongestLapTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest Lap Time'**
+  String get sortByLongestLapTime;
+
+  /// No description provided for @sortByCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get sortByCustom;
+
+  /// No description provided for @sortAscending.
+  ///
+  /// In en, this message translates to:
+  /// **'Ascending'**
+  String get sortAscending;
+
+  /// No description provided for @sortDescending.
+  ///
+  /// In en, this message translates to:
+  /// **'Descending'**
+  String get sortDescending;
 }
 
 class _AppLocalizationsDelegate
