@@ -2,23 +2,23 @@
 
 A lightweight Web App built with Flutter that lets you run multiple stopwatches simultaneously. Perfect for interval training, time tracking, or any scenario where you need to monitor multiple timers at once.
 
-**Live App:** [multistopwatches.vercel.app](https://multistopwatches.vercel.app)
+**Live App:** [multistopwatches.app](https://multistopwatches.app)
 
 ## Getting Started
 
 ### Web Access
-Simply visit [multistopwatches.vercel.app](https://multistopwatches.vercel.app) in your browser and start using the app immediately.
+Simply visit [multistopwatches.app](https://multistopwatches.app) in your browser and start using the app immediately.
 
 ### Install as PWA
 For the best experience, install the app on your device:
 
 **On Mobile (iOS/Android):**
-1. Open [multistopwatches.vercel.app](https://multistopwatches.vercel.app) in your browser
+1. Open [multistopwatches.app](https://multistopwatches.app) in your browser
 2. **iOS (Safari):** Tap the Share button, then "Add to Home Screen"
 3. **Android (Chrome):** Tap the menu (⋮), then "Add to Home Screen" or "Install App"
 
 **On Desktop:**
-1. Open [multistopwatches.vercel.app](https://multistopwatches.vercel.app) in Chrome, Edge, or other supported browser
+1. Open [multistopwatches.app](https://multistopwatches.app) in Chrome, Edge, or other supported browser
 2. Look for the install icon in the address bar or browser menu
 3. Click "Install" to add the app to your applications
 
