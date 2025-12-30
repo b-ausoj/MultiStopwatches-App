@@ -49,7 +49,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
             _stopwatchesPageController.name,
             onSelected: (StopwatchesPageMenuItem item) {
               switch (item) {
-                case StopwatchesPageMenuItem.rename:
+                case StopwatchesPageMenuItem.renameGroup:
                   _showRenameDialog();
                   break;
                 case StopwatchesPageMenuItem.deleteGroup:

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
 enum StopwatchesPageMenuItem {
-  rename(Icons.edit_outlined),
+  renameGroup(Icons.edit_outlined),
   deleteGroup(Icons.delete_forever_outlined),
   saveAll(Icons.save_outlined),
   resetAll(Icons.refresh),
@@ -15,8 +15,8 @@ enum StopwatchesPageMenuItem {
 
   String label(BuildContext context) {
     switch (this) {
-      case StopwatchesPageMenuItem.rename:
-        return AppLocalizations.of(context)!.rename;
+      case StopwatchesPageMenuItem.renameGroup:
+        return AppLocalizations.of(context)!.renameGroup;
       case StopwatchesPageMenuItem.deleteGroup:
         return AppLocalizations.of(context)!.deleteThisGroup;
       case StopwatchesPageMenuItem.saveAll:
