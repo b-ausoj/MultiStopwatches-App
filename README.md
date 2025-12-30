@@ -54,6 +54,7 @@ The core application, including all features, UI/UX design, state management, an
 
 - Migrating the app from Android-only to web deployment
 - Resolving Flutter framework and package compatibility issues after version updates
-- Implementing internationalization and localization support
+- Implementing localization support
+- Adding dark mode support
 
 The fundamental architecture, feature implementation, and the majority of the codebase represent my independent work.
