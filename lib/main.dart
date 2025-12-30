@@ -109,6 +109,8 @@ class MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Colors.white,
         cardTheme: const CardThemeData(
           color: Color(0xFFEFEFEF),
+          shadowColor: Colors.transparent,
+          surfaceTintColor: Color(0xFFDFDFDF),
           elevation: 0,
         ),
         popupMenuTheme: const PopupMenuThemeData(
@@ -118,6 +120,10 @@ class MyAppState extends State<MyApp> {
         dialogTheme: const DialogThemeData(
           backgroundColor: Color(0xFFDFDFDF),
           surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
+        ),
+        navigationDrawerTheme: NavigationDrawerThemeData(
+          backgroundColor: Color(0xFFDFDFDF),
+          indicatorColor: Color(0xFFBFBFBF),
         ),
         // navigationDrawerTheme: const NavigationDrawerThemeData(
         //   labelTextStyle: WidgetStatePropertyAll(

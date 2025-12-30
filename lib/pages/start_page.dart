@@ -57,9 +57,9 @@ class _StartPageState extends State<StartPage> {
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                    ..._startController.allGroups.map((GroupModel group) => Card(
+                    ..._startController.allGroups.map((GroupModel group) =>
+                        Card(
                           clipBehavior: Clip.antiAlias,
-                          color: Theme.of(context).colorScheme.surfaceContainerHighest,
                           elevation: 0,
                           child: ListTile(
                             contentPadding:
@@ -86,7 +86,8 @@ class _StartPageState extends State<StartPage> {
                                           group,
                                           _startController.allGroups,
                                           _startController.settings,
-                                          _startController.sharedPreferencesKey)))
+                                          _startController
+                                              .sharedPreferencesKey)))
                                   .then((value) {
                                 _startController.refreshBadgeState();
                                 setState(() {});

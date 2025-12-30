@@ -37,7 +37,6 @@ class RecordingsPageController extends BadgeController {
         var timeStamp = last.copyWith();
         recordingsList.add(Card(
           clipBehavior: Clip.antiAlias,
-          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           elevation: 0,
           child: ExpansionTile(
             onExpansionChanged: (value) {
@@ -67,7 +66,8 @@ class RecordingsPageController extends BadgeController {
             }),
             title: Center(child: RecordingsGroupTextWithBadge(list, timeStamp)),
             subtitle: Center(
-                child: Text(AppLocalizations.of(context)!.fromGroup(list.first.recordingModel.fromGroup))),
+                child: Text(AppLocalizations.of(context)!
+                    .fromGroup(list.first.recordingModel.fromGroup))),
             children: list,
           ),
         ));
@@ -78,7 +78,6 @@ class RecordingsPageController extends BadgeController {
     if (list.isNotEmpty) {
       recordingsList.add(Card(
         elevation: 0,
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         child: ExpansionTile(
           onExpansionChanged: (value) {
             if (!value) return; // only change if opens and not on close
@@ -107,7 +106,8 @@ class RecordingsPageController extends BadgeController {
           }),
           title: Center(child: RecordingsGroupTextWithBadge(list, last)),
           subtitle: Center(
-              child: Text(AppLocalizations.of(context)!.fromGroup(list.first.recordingModel.fromGroup))),
+              child: Text(AppLocalizations.of(context)!
+                  .fromGroup(list.first.recordingModel.fromGroup))),
           children: list,
         ),
       ));
@@ -121,7 +121,8 @@ class RecordingsPageController extends BadgeController {
     createRecordingList();
     storeRecordingsState(this);
     refresh();
-    showLongSnackBar(context, AppLocalizations.of(context)!.allRecordingsDeleted,
+    showLongSnackBar(
+        context, AppLocalizations.of(context)!.allRecordingsDeleted,
         action: SnackBarAction(
             label: AppLocalizations.of(context)!.undo,
             onPressed: () {

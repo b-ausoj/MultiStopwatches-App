@@ -34,7 +34,6 @@ class _StopwatchCardState extends State<StopwatchCard>
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: Theme.of(context).colorScheme.surfaceContainerHighest,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -254,7 +253,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                           foregroundColor: Colors.white,
                           backgroundColor: const Color(0xFFE5A426),
                           disabledForegroundColor: Colors.white,
-                          disabledBackgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
+                          disabledBackgroundColor: const Color(0xFFBFBFBF),
                         ),
                       )
                     ],
@@ -286,7 +285,8 @@ class _StopwatchCardState extends State<StopwatchCard>
 
   Future<String?> _showRenameDialog() async {
     // Get list of all stopwatch names in this group except current one
-    final existingNames = widget.stopwatchesPageController.groupModel.stopwatches
+    final existingNames = widget
+        .stopwatchesPageController.groupModel.stopwatches
         .where((sw) => sw.id != _stopwatchModel.id)
         .map((sw) => sw.name)
         .toList();

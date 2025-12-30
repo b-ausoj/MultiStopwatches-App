@@ -37,8 +37,6 @@ class _NavDrawerState extends State<NavDrawer> {
     return NavigationDrawer(
         onDestinationSelected: handleGroupChanged,
         selectedIndex: _selectedIndex,
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-        indicatorColor: Theme.of(context).colorScheme.surfaceContainerHigh,
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 16, 16, 20),

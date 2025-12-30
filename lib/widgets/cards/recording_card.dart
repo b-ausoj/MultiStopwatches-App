@@ -27,8 +27,7 @@ class _RecordingCardState extends State<RecordingCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0,
-      color: Theme.of(context).colorScheme.surfaceContainer,
+      elevation: 1,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 0, 0, 8),
         child: Column(
@@ -62,7 +61,8 @@ class _RecordingCardState extends State<RecordingCard> {
                         _showRenameDialog();
                         break;
                       case RecordingCardMenuItem.export:
-                        exportRecordingToCSV(_recordingModel, widget.settings, context);
+                        exportRecordingToCSV(
+                            _recordingModel, widget.settings, context);
                         break;
                       case RecordingCardMenuItem.delete:
                         widget.deleteRecording(
