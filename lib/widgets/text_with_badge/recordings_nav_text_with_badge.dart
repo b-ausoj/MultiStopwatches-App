@@ -30,7 +30,7 @@ class _RecordingsNavTextWithBadgeState
   Widget build(BuildContext context) {
     return Badge(
       isLabelVisible: badgeLabel > 0,
-      label: badgeLabel > 0 ? Text("$badgeLabel") : null,
+      label: badgeLabel > 0 ? Text(badgeLabel.toString()) : null,
       alignment: Alignment.topRight,
       offset: const Offset(8, 0),
       smallSize: 8.0,

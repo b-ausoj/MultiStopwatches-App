@@ -21,7 +21,7 @@ class _RecordingsGroupTextWithBadgeState
       alignment: Alignment.topRight,
       offset: const Offset(24, 0),
       isLabelVisible: !widget.list.first.recordingModel.viewed,
-      label: Text("${widget.list.length}"),
+      label: Text(widget.list.length.toString()),
       child: Text(dateTimeToString(widget.timeStamp)),
     );
   }

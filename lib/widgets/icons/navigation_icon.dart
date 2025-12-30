@@ -17,7 +17,7 @@ class _NavIconState extends State<NavIcon> with SingleTickerProviderStateMixin {
       icon: Badge(
         isLabelVisible: widget.stopwatchesPageController.badgeVisible,
         label: widget.stopwatchesPageController.badgeLabel > 0
-            ? Text("${widget.stopwatchesPageController.badgeLabel}")
+            ? Text(widget.stopwatchesPageController.badgeLabel.toString())
             : null,
         smallSize: 8.0,
         child: const Icon(Icons.menu),
