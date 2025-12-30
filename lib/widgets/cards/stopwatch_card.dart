@@ -62,7 +62,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                           height: 1.0)),
                   // lap time
                   Text(
-                      "${_stopwatchModel.lapCount < 9 ? "0${_stopwatchModel.lapCount + 1}" : "${_stopwatchModel.lapCount + 1}"} ${durationToString(_stopwatchModel.elapsedLapTime)}",
+                      "${(_stopwatchModel.lapCount + 1).toString().padLeft(2, '0')} ${durationToString(_stopwatchModel.elapsedLapTime)}",
                       style: const TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 22,

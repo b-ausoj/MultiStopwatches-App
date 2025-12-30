@@ -2,24 +2,22 @@ import 'package:multistopwatches/enums/time_format.dart';
 import 'package:multistopwatches/models/lap_model.dart';
 
 String dateTimeToString(DateTime dateTime) {
-  String d = dateTime.day < 10 ? "0${dateTime.day}" : "${dateTime.day}";
-  String m = dateTime.month < 10 ? "0${dateTime.month}" : "${dateTime.month}";
-  String y = "${dateTime.year}";
-  String h = dateTime.hour < 10 ? "0${dateTime.hour}" : "${dateTime.hour}";
-  String min =
-      dateTime.minute < 10 ? "0${dateTime.minute}" : "${dateTime.minute}";
-  //String sec = dateTime.second < 10 ? "0${dateTime.second}" : "${dateTime.second}";
+  String d = dateTime.day.toString().padLeft(2, '0');
+  String m = dateTime.month.toString().padLeft(2, '0');
+  String y = dateTime.year.toString();
+  String h = dateTime.hour.toString().padLeft(2, '0');
+  String min = dateTime.minute.toString().padLeft(2, '0');
+  //String sec = dateTime.second.toString().padLeft(2, '0');
   return "$h:$min $d.$m.$y";
 }
 
 String dateTimeForExport(DateTime dateTime) {
-  String d = dateTime.day < 10 ? "0${dateTime.day}" : "${dateTime.day}";
-  String m = dateTime.month < 10 ? "0${dateTime.month}" : "${dateTime.month}";
-  String y = "${dateTime.year}";
-  String h = dateTime.hour < 10 ? "0${dateTime.hour}" : "${dateTime.hour}";
-  String min =
-      dateTime.minute < 10 ? "0${dateTime.minute}" : "${dateTime.minute}";
-  //String sec = dateTime.second < 10 ? "0${dateTime.second}" : "${dateTime.second}";
+  String d = dateTime.day.toString().padLeft(2, '0');
+  String m = dateTime.month.toString().padLeft(2, '0');
+  String y = dateTime.year.toString();
+  String h = dateTime.hour.toString().padLeft(2, '0');
+  String min = dateTime.minute.toString().padLeft(2, '0');
+  //String sec = dateTime.second.toString().padLeft(2, '0');
   return "$y$m${d}_$h$min";
 }
 
@@ -29,7 +27,7 @@ String durationToString(Duration duration) {
   int seconds = duration.inSeconds % 60;
   int dSeconds = duration.inMilliseconds ~/ 100 % 10;
   // int hSeconds = duration.inMilliseconds ~/ 10 % 100;
-  return "${hours > 0 ? "$hours:" : ""}${minutes < 10 ? "0$minutes" : "$minutes"}:${seconds < 10 ? "0$seconds" : "$seconds"}.$dSeconds";
+  return "${hours > 0 ? "$hours:" : ""}${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}.$dSeconds";
 }
 
 String durationToStringExport(Duration duration, TimeFormat timeFormat) {
@@ -37,13 +35,13 @@ String durationToStringExport(Duration duration, TimeFormat timeFormat) {
   int hours = duration.inHours;
   int minutes = duration.inMinutes % 60;
   int seconds = duration.inSeconds % 60;
-  return "${hours < 10 ? "0$hours" : "$hours"}:${minutes < 10 ? "0$minutes" : "$minutes"}:${seconds < 10 ? "0$seconds" : "$seconds"}";
+  return "${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}";
 }
 
 String formatLapCount(List<LapModel> lapTimes) {
   StringBuffer result = StringBuffer();
   for (LapModel lap in lapTimes) {
-    result.write("\n${lap.id < 10 ? "0${lap.id}" : "${lap.id}"}");
+    result.write("\n${lap.id.toString().padLeft(2, '0')}");
   }
   return result.toString();
 }
@@ -64,11 +62,11 @@ String formatPastLaps(List<LapModel> lapList, bool showAllLaps) {
     StringBuffer result = StringBuffer();
     for (LapModel lap in lapList.reversed) {
       result.write(
-          "${lap.id < 10 ? "0${lap.id}" : "${lap.id}"} ${durationToString(lap.lapTime)}${lap.id == 1 ? "" : "\n"}");
+          "${lap.id.toString().padLeft(2, '0')} ${durationToString(lap.lapTime)}${lap.id == 1 ? "" : "\n"}");
     }
     return result.toString();
   } else {
     LapModel lap = lapList.last;
-    return "${lap.id < 10 ? "0${lap.id}" : "${lap.id}"} ${durationToString(lap.lapTime)}";
+    return "${lap.id.toString().padLeft(2, '0')} ${durationToString(lap.lapTime)}";
   }
 }
