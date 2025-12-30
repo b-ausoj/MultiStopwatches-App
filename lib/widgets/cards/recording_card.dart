@@ -27,7 +27,7 @@ class _RecordingCardState extends State<RecordingCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4,
+      elevation: 3,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 0, 0, 8),
         child: Column(

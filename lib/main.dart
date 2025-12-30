@@ -86,16 +86,16 @@ class MyAppState extends State<MyApp> {
         cardTheme: const CardThemeData(
           color: Color(0xFFEFEFEF),
           shadowColor: Colors.transparent,
-          surfaceTintColor: Color.fromARGB(255, 0, 0, 0),
+          surfaceTintColor: Colors.black,
           elevation: 0,
         ),
         popupMenuTheme: const PopupMenuThemeData(
           color: Color(0xFFDFDFDF),
-          surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
+          surfaceTintColor: Colors.white,
         ),
         dialogTheme: const DialogThemeData(
           backgroundColor: Color(0xFFDFDFDF),
-          surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
+          surfaceTintColor: Colors.white,
         ),
         navigationDrawerTheme: NavigationDrawerThemeData(
           backgroundColor: Color(0xFFDFDFDF),
@@ -104,6 +104,7 @@ class MyAppState extends State<MyApp> {
         dropdownMenuTheme: const DropdownMenuThemeData(
           menuStyle: MenuStyle(
             backgroundColor: WidgetStatePropertyAll<Color>(Color(0xFFDFDFDF)),
+            surfaceTintColor: WidgetStatePropertyAll<Color>(Colors.white),
           ),
         ),
       ),
