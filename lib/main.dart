@@ -13,7 +13,6 @@ void main() {
 // TODO: write help page
 // TODO: write tutorial page
 // TODO: add introduction screen
-// TODO: reorganize recordings page, resolved?
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

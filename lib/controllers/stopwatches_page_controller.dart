@@ -43,11 +43,11 @@ class StopwatchesPageController extends BadgeController {
   List<StopwatchCard> get stopwatchCards => _stopwatchCards;
 
   Future<void> addStopwatch() async {
-    // TODO: not taking the card count but the highest number a stopwatch has in "Athlete X" or cardsCount (whatever is bigger)
     int id = StopwatchModel.nextId++;
 
-    StopwatchModel model =
-        StopwatchModel(AppLocalizations.of(context)!.athleteNumber(_stopwatchCards.length + 1), id);
+    StopwatchModel model = StopwatchModel(
+        AppLocalizations.of(context)!.athleteNumber(_stopwatchCards.length + 1),
+        id);
     _stopwatchCards.add(StopwatchCard(model, changedState,
         key: Key("$id"), stopwatchesPageController: this));
     groupModel.stopwatches.add(model);
@@ -67,14 +67,16 @@ class StopwatchesPageController extends BadgeController {
 
     for (StopwatchCard card in _stopwatchCards) {
       if (card.stopwatchModel.state == StopwatchState.running) {
-        showShortSnackBar(context, AppLocalizations.of(context)!.cantDeleteWhileRunning);
+        showShortSnackBar(
+            context, AppLocalizations.of(context)!.cantDeleteWhileRunning);
         return;
       }
       _oldStopwatchesPage.add(jsonEncode(card.stopwatchModel));
     }
     groupModel.stopwatches.clear();
     _stopwatchCards.clear();
-    showLongSnackBar(context, AppLocalizations.of(context)!.allStopwatchesRemoved,
+    showLongSnackBar(
+        context, AppLocalizations.of(context)!.allStopwatchesRemoved,
         action: SnackBarAction(
             label: AppLocalizations.of(context)!.undo,
             onPressed: () {
@@ -90,12 +92,14 @@ class StopwatchesPageController extends BadgeController {
     int index2 =
         groupModel.stopwatches.indexWhere((element) => element.id == id);
     if (index == -1) {
-      showShortSnackBar(context, AppLocalizations.of(context)!.cantDeleteWhileRunning);
+      showShortSnackBar(
+          context, AppLocalizations.of(context)!.cantDeleteWhileRunning);
       return;
     }
     StopwatchCard deleted = _stopwatchCards.removeAt(index);
     StopwatchModel deletedModel = groupModel.stopwatches.removeAt(index2);
-    showLongSnackBar(context, AppLocalizations.of(context)!.stopwatchRemoved(name),
+    showLongSnackBar(
+        context, AppLocalizations.of(context)!.stopwatchRemoved(name),
         action: SnackBarAction(
             label: AppLocalizations.of(context)!.undo,
             onPressed: () {
@@ -124,14 +128,16 @@ class StopwatchesPageController extends BadgeController {
     // if undo then delete list and load json
     for (StopwatchCard card in _stopwatchCards) {
       if (card.stopwatchModel.state == StopwatchState.running) {
-        showShortSnackBar(context, AppLocalizations.of(context)!.cantResetWhileRunning);
+        showShortSnackBar(
+            context, AppLocalizations.of(context)!.cantResetWhileRunning);
         return;
       }
     }
     for (StopwatchCard card in _stopwatchCards) {
       card.stopwatchModel.reset();
     }
-    showLongSnackBar(context, AppLocalizations.of(context)!.allStopwatchesReseted,
+    showLongSnackBar(
+        context, AppLocalizations.of(context)!.allStopwatchesReseted,
         action: SnackBarAction(
             label: AppLocalizations.of(context)!.undo,
             onPressed: () {

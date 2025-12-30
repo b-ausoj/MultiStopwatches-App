@@ -8,7 +8,6 @@ class StopwatchesPagePopupMenuButton extends StatelessWidget {
   const StopwatchesPagePopupMenuButton(this.name,
       {required this.onSelected, super.key});
 
-  // TODO: should improve this menu, not sure if it is intuitive and clear
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
