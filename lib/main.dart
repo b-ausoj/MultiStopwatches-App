@@ -77,40 +77,16 @@ class MyAppState extends State<MyApp> {
           thumbColor: WidgetStateProperty.all(Colors.white),
           trackColor: WidgetStateProperty.all(Colors.black),
         ),
-        // switchTheme: SwitchThemeData(
-        //   thumbColor: WidgetStateProperty.resolveWith((states) {
-        //     if (states.contains(WidgetState.selected)) {
-        //       return Colors.white;
-        //     }
-        //     return Colors.grey;
-        //   }),
-        //   trackColor: WidgetStateProperty.resolveWith((states) {
-        //     if (states.contains(WidgetState.selected)) {
-        //       return Colors.black;
-        //     }
-        //     return Colors.white;
-        //   }),
-        // ),
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.white,
             primary: Colors.black,
             surfaceTint: Colors.white),
-        // colorScheme: const ColorScheme.light(
-        //   primary: Colors.black,
-        //   surface: Colors.white,
-        //   surfaceTint: Colors.transparent, // No tint on surfaces
-        //   surfaceContainerHighest: Color(0xFFEFEFEF), // Card backgrounds
-        //   surfaceContainer: Color(0xFFDFDFDF), // Dialog/menu backgrounds
-        //   surfaceContainerHigh: Color(0xFFBFBFBF), // Disabled/inactive elements
-        //   onSurfaceVariant: Color(0xFF757575), // Grey text (Colors.grey[600])
-        //   onSurface: Colors.black, // Default text color
-        // ),
         appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
         scaffoldBackgroundColor: Colors.white,
         cardTheme: const CardThemeData(
           color: Color(0xFFEFEFEF),
           shadowColor: Colors.transparent,
-          surfaceTintColor: Color(0xFFDFDFDF),
+          surfaceTintColor: Color.fromARGB(255, 0, 0, 0),
           elevation: 0,
         ),
         popupMenuTheme: const PopupMenuThemeData(
@@ -125,15 +101,6 @@ class MyAppState extends State<MyApp> {
           backgroundColor: Color(0xFFDFDFDF),
           indicatorColor: Color(0xFFBFBFBF),
         ),
-        // navigationDrawerTheme: const NavigationDrawerThemeData(
-        //   labelTextStyle: WidgetStatePropertyAll(
-        //     TextStyle(color: Colors.black),
-        //   ),
-        //   iconTheme: WidgetStatePropertyAll(
-        //     IconThemeData(color: Colors.black),
-        //   ),
-        // ),
-        // iconTheme: const IconThemeData(color: Colors.black),
       ),
       home: const StartPage(
         sharedPreferencesKey: "key_v5",
