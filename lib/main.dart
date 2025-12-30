@@ -87,19 +87,21 @@ class MyAppState extends State<MyApp> {
             return Colors.white;
           }),
         ),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.white,
+        colorScheme: const ColorScheme.light(
           primary: Colors.black,
           surface: Colors.white,
-          surfaceContainerHighest: const Color(0xFFEFEFEF), // Card backgrounds
-          surfaceContainer: const Color(0xFFDFDFDF), // Dialog/menu backgrounds
-          surfaceContainerHigh: const Color(0xFFBFBFBF), // Disabled/inactive elements
-          onSurfaceVariant: const Color(0xFF757575), // Grey text (Colors.grey[600])
+          surfaceTint: Colors.transparent, // No tint on surfaces
+          surfaceContainerHighest: Color(0xFFEFEFEF), // Card backgrounds
+          surfaceContainer: Color(0xFFDFDFDF), // Dialog/menu backgrounds
+          surfaceContainerHigh: Color(0xFFBFBFBF), // Disabled/inactive elements
+          onSurfaceVariant: Color(0xFF757575), // Grey text (Colors.grey[600])
+          onSurface: Colors.black, // Default text color
         ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: ColorScheme.fromSeed(seedColor: Colors.white).surface,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
         ),
-        scaffoldBackgroundColor: ColorScheme.fromSeed(seedColor: Colors.white).surface,
+        scaffoldBackgroundColor: Colors.white,
         cardTheme: const CardThemeData(
           color: Color(0xFFEFEFEF),
           elevation: 0,
