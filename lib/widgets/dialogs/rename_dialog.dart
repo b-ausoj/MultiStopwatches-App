@@ -33,18 +33,19 @@ class _RenameDialogState extends State<RenameDialog> {
 
     _errorMessage = _validateName(widget.initialName);
 
-    // Select all text after the widget is built and focused
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _focusNode.requestFocus();
+    // TODO: unsure if this Claude logic is good here or if we should revert the changes
 
-      // Only auto-select on non-iOS platforms because of Flutter bug on iOS:
-      if (!isIOS) {
+    // Select all text after the widget is built and focused
+    // Skip on iOS due to Flutter bugs with keyboard and selection
+    if (!isIOS) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _focusNode.requestFocus();
         _controller.selection = TextSelection(
           baseOffset: 0,
           extentOffset: widget.initialName.length,
         );
-      }
-    });
+      });
+    }
   }
 
   String? _validateName(String value) {
@@ -54,10 +55,14 @@ class _RenameDialogState extends State<RenameDialog> {
       return AppLocalizations.of(context)!.nameCannotBeEmpty;
     }
 
-    if (widget.existingNames.any((name) =>
-        name.toLowerCase() == trimmed.toLowerCase() &&
-        name.toLowerCase() != widget.initialName.toLowerCase())) {
-      return AppLocalizations.of(context)!.nameAlreadyExists;
+    // Check if name already exists in the list
+    // Only allow the name if it's unchanged from the initial name
+    if (widget.existingNames
+        .any((name) => name.toLowerCase() == trimmed.toLowerCase())) {
+      // Allow if the name is unchanged
+      if (trimmed.toLowerCase() != widget.initialName.toLowerCase()) {
+        return AppLocalizations.of(context)!.nameAlreadyExists;
+      }
     }
 
     return null;
