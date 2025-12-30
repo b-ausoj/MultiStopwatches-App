@@ -59,8 +59,8 @@ class AboutPage extends StatelessWidget {
                 icon: const Icon(Icons.rate_review_outlined),
                 label: Text(AppLocalizations.of(context)!.contactMe),
                 style: TextButton.styleFrom(
-                    foregroundColor: Theme.of(context).colorScheme.primary,
-                    backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+                    foregroundColor: Colors.black, // TODO: use theme
+                    backgroundColor: Theme.of(context).cardColor,
                     padding: const EdgeInsets.symmetric(horizontal: 16.0))),
             // const SizedBox(height: 16.0),
             // TextButton.icon(

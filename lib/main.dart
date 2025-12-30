@@ -101,6 +101,11 @@ class MyAppState extends State<MyApp> {
           backgroundColor: Color(0xFFDFDFDF),
           indicatorColor: Color(0xFFBFBFBF),
         ),
+        dropdownMenuTheme: const DropdownMenuThemeData(
+          menuStyle: MenuStyle(
+            backgroundColor: WidgetStatePropertyAll<Color>(Color(0xFFDFDFDF)),
+          ),
+        ),
       ),
       home: const StartPage(
         sharedPreferencesKey: "key_v5",
