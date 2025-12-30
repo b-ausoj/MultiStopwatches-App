@@ -74,33 +74,38 @@ class MyAppState extends State<MyApp> {
           bodyMedium: TextStyle(fontSize: 16),
         ),
         switchTheme: SwitchThemeData(
-          thumbColor: WidgetStateProperty.resolveWith((states) {
-            if (states.contains(WidgetState.selected)) {
-              return Colors.white;
-            }
-            return Colors.grey;
-          }),
-          trackColor: WidgetStateProperty.resolveWith((states) {
-            if (states.contains(WidgetState.selected)) {
-              return Colors.black;
-            }
-            return Colors.white;
-          }),
+          thumbColor: WidgetStateProperty.all(Colors.white),
+          trackColor: WidgetStateProperty.all(Colors.black),
         ),
-        colorScheme: const ColorScheme.light(
-          primary: Colors.black,
-          surface: Colors.white,
-          surfaceTint: Colors.transparent, // No tint on surfaces
-          surfaceContainerHighest: Color(0xFFEFEFEF), // Card backgrounds
-          surfaceContainer: Color(0xFFDFDFDF), // Dialog/menu backgrounds
-          surfaceContainerHigh: Color(0xFFBFBFBF), // Disabled/inactive elements
-          onSurfaceVariant: Color(0xFF757575), // Grey text (Colors.grey[600])
-          onSurface: Colors.black, // Default text color
-        ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.transparent,
-        ),
+        // switchTheme: SwitchThemeData(
+        //   thumbColor: WidgetStateProperty.resolveWith((states) {
+        //     if (states.contains(WidgetState.selected)) {
+        //       return Colors.white;
+        //     }
+        //     return Colors.grey;
+        //   }),
+        //   trackColor: WidgetStateProperty.resolveWith((states) {
+        //     if (states.contains(WidgetState.selected)) {
+        //       return Colors.black;
+        //     }
+        //     return Colors.white;
+        //   }),
+        // ),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.white,
+            primary: Colors.black,
+            surfaceTint: Colors.white),
+        // colorScheme: const ColorScheme.light(
+        //   primary: Colors.black,
+        //   surface: Colors.white,
+        //   surfaceTint: Colors.transparent, // No tint on surfaces
+        //   surfaceContainerHighest: Color(0xFFEFEFEF), // Card backgrounds
+        //   surfaceContainer: Color(0xFFDFDFDF), // Dialog/menu backgrounds
+        //   surfaceContainerHigh: Color(0xFFBFBFBF), // Disabled/inactive elements
+        //   onSurfaceVariant: Color(0xFF757575), // Grey text (Colors.grey[600])
+        //   onSurface: Colors.black, // Default text color
+        // ),
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
         scaffoldBackgroundColor: Colors.white,
         cardTheme: const CardThemeData(
           color: Color(0xFFEFEFEF),
@@ -108,12 +113,21 @@ class MyAppState extends State<MyApp> {
         ),
         popupMenuTheme: const PopupMenuThemeData(
           color: Color(0xFFDFDFDF),
-          surfaceTintColor: Colors.transparent,
+          surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
         ),
         dialogTheme: const DialogThemeData(
           backgroundColor: Color(0xFFDFDFDF),
-          surfaceTintColor: Colors.transparent,
+          surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
         ),
+        // navigationDrawerTheme: const NavigationDrawerThemeData(
+        //   labelTextStyle: WidgetStatePropertyAll(
+        //     TextStyle(color: Colors.black),
+        //   ),
+        //   iconTheme: WidgetStatePropertyAll(
+        //     IconThemeData(color: Colors.black),
+        //   ),
+        // ),
+        // iconTheme: const IconThemeData(color: Colors.black),
       ),
       home: const StartPage(
         sharedPreferencesKey: "key_v5",
