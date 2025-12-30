@@ -12,17 +12,19 @@ import 'package:share_plus/share_plus.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:web/web.dart' as web;
 
-Future<void> saveAndShareCsv(String csvContent, String fileName, BuildContext context) async {
+Future<void> saveAndShareCsv(
+    String csvContent, String fileName, BuildContext context) async {
   final bytes = utf8.encode(csvContent);
 
   // On web (desktop), auto-download the file
   if (kIsWeb) {
-    final blob = web.Blob([bytes.toJS].toJS, web.BlobPropertyBag(type: 'text/csv'));
+    final blob =
+        web.Blob([bytes.toJS].toJS, web.BlobPropertyBag(type: 'text/csv'));
     final url = web.URL.createObjectURL(blob);
-    final anchor = web.document.createElement('a') as web.HTMLAnchorElement
-      ..href = url
-      ..download = fileName
-      ..click();
+    (web.document.createElement('a') as web.HTMLAnchorElement
+          ..href = url
+          ..download = fileName)
+        .click();
     web.URL.revokeObjectURL(url);
   } else {
     // On mobile, use the share dialog
@@ -40,8 +42,8 @@ Future<void> saveAndShareCsv(String csvContent, String fileName, BuildContext co
   }
 }
 
-Future<void> exportRecordingToCSV(
-    RecordingModel recording, SettingsModel settings, BuildContext context) async {
+Future<void> exportRecordingToCSV(RecordingModel recording,
+    SettingsModel settings, BuildContext context) async {
   String dateTime = dateTimeForExport(recording.startingTime);
   String fileName =
       "Export_${dateTime}_${recording.name.replaceAll(" ", "")}.csv";
@@ -51,14 +53,15 @@ Future<void> exportRecordingToCSV(
   data.add(["", "", ""]);
   data.addAll(recordingToList(recording, settings.timeFormat, context));
 
-  String csvContent = ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
-      .convert(data);
+  String csvContent =
+      ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
+          .convert(data);
 
   await saveAndShareCsv(csvContent, fileName, context);
 }
 
-Future<void> exportRecordingsSetToCSV(
-    List<RecordingCard> recordings, SettingsModel settings, BuildContext context) async {
+Future<void> exportRecordingsSetToCSV(List<RecordingCard> recordings,
+    SettingsModel settings, BuildContext context) async {
   String dateTime =
       dateTimeForExport(recordings.first.recordingModel.startingTime);
   String fileName =
@@ -72,11 +75,13 @@ Future<void> exportRecordingsSetToCSV(
   ]);
   for (RecordingCard recording in recordings) {
     data.add(["", "", ""]);
-    data.addAll(recordingToList(recording.recordingModel, settings.timeFormat, context));
+    data.addAll(recordingToList(
+        recording.recordingModel, settings.timeFormat, context));
   }
 
-  String csvContent = ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
-      .convert(data);
+  String csvContent =
+      ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
+          .convert(data);
 
   await saveAndShareCsv(csvContent, fileName, context);
 }
