@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multistopwatches/config/app_themes.dart';
 import 'package:multistopwatches/pages/pp_page.dart';
 import 'package:multistopwatches/pages/tnc_page.dart';
 import 'package:multistopwatches/services/launch_url_service.dart';
@@ -59,7 +60,8 @@ class AboutPage extends StatelessWidget {
                 label: Text(AppLocalizations.of(context)!.contactMe),
                 style: TextButton.styleFrom(
                     foregroundColor: Theme.of(context).colorScheme.primary,
-                    backgroundColor: Theme.of(context).cardColor,
+                    backgroundColor: AppColors.disabledButtonBg(
+                        Theme.of(context).brightness == Brightness.dark),
                     padding: const EdgeInsets.symmetric(horizontal: 16.0))),
             // const SizedBox(height: 16.0),
             // TextButton.icon(

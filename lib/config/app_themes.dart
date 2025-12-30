@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Simple static class for button colors
 class AppColors {
   // Light theme button colors
-  static const startButtonLightBg = Color(0xFF1E7927);
+  static const startButtonLightBg = Color(0xFF1D7226);
   static const stopButtonLightBg = Color(0xFFBC2525);
   static const resumeButtonLightBg = Color(0xFF259030);
   static const lapButtonLightBg = Color(0xFFE5A426);
@@ -13,7 +13,7 @@ class AppColors {
   // Dark theme button colors
   static const startButtonDarkBg = Color(0xFF2E9B3A);
   static const stopButtonDarkBg = Color(0xFFE53935);
-  static const resumeButtonDarkBg = Color(0xFF35B044);
+  static const resumeButtonDarkBg = Color(0xFF36B745);
   static const lapButtonDarkBg = Color(0xFFFFC107);
   static const disabledButtonDarkBg = Color(0xFF505050);
   static const buttonDarkFg = Colors.black;
