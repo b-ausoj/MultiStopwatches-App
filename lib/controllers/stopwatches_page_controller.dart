@@ -29,7 +29,7 @@ class StopwatchesPageController extends BadgeController {
       _stopwatchCards.add(StopwatchCard(
         element,
         changedState,
-        key: Key("${element.id}"),
+        key: ValueKey<int>(element.id),
         stopwatchesPageController: this,
       ));
     }
@@ -49,7 +49,7 @@ class StopwatchesPageController extends BadgeController {
         AppLocalizations.of(context)!.athleteNumber(_stopwatchCards.length + 1),
         id);
     _stopwatchCards.add(StopwatchCard(model, changedState,
-        key: Key("$id"), stopwatchesPageController: this));
+        key: ValueKey<int>(id), stopwatchesPageController: this));
     groupModel.stopwatches.add(model);
     changedState();
   }
@@ -164,7 +164,7 @@ class StopwatchesPageController extends BadgeController {
       _stopwatchCards.add(StopwatchCard(
         stopwatch,
         changedState,
-        key: Key("${json["id"]}"),
+        key: ValueKey<int>(json["id"]),
         stopwatchesPageController: this,
       ));
       groupModel.stopwatches.add(stopwatch);

@@ -64,7 +64,7 @@ Future<void> loadRecordings(
       model,
       recordingsPageController.deleteRecoding,
       recordingsPageController.settings,
-      key: Key(entry),
+      key: ValueKey<int>(model.id),
     ));
   }
   recordingsPageController.recordingCards.sort(
