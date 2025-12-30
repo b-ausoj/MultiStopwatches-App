@@ -4,6 +4,7 @@ import 'package:multistopwatches/pages/start_page.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/config/app_themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,26 +27,32 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   Locale? _locale;
+  ThemeMode _themeMode = ThemeMode.system;
 
   @override
   void initState() {
     super.initState();
-    _loadSavedLocale();
+    _loadSettings();
   }
 
-  Future<void> _loadSavedLocale() async {
+  Future<void> _loadSettings() async {
     final settings = SettingsModel();
     await loadSettings(settings);
-    if (settings.languageCode != null) {
-      setState(() {
-        _locale = Locale(settings.languageCode!);
-      });
-    }
+    setState(() {
+      _locale = settings.locale.toLocale();
+      _themeMode = settings.themeMode.toThemeMode();
+    });
   }
 
   void setLocale(Locale? locale) {
     setState(() {
       _locale = locale;
+    });
+  }
+
+  void setThemeMode(ThemeMode themeMode) {
+    setState(() {
+      _themeMode = themeMode;
     });
   }
 
@@ -66,48 +73,9 @@ class MyAppState extends State<MyApp> {
         Locale('en', ''), // English
         Locale('de', ''), // German
       ],
-      theme: ThemeData(
-        useMaterial3: true,
-        fontFamily: 'Roboto',
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(fontSize: 18),
-          bodyMedium: TextStyle(fontSize: 16),
-        ),
-        switchTheme: SwitchThemeData(
-          thumbColor: WidgetStateProperty.all(Colors.white),
-          trackColor: WidgetStateProperty.all(Colors.black),
-        ),
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.white,
-            primary: Colors.black,
-            surfaceTint: Colors.white),
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
-        scaffoldBackgroundColor: Colors.white,
-        cardTheme: const CardThemeData(
-          color: Color(0xFFEFEFEF),
-          shadowColor: Colors.transparent,
-          surfaceTintColor: Colors.black,
-          elevation: 0,
-        ),
-        popupMenuTheme: const PopupMenuThemeData(
-          color: Color(0xFFDFDFDF),
-          surfaceTintColor: Colors.white,
-        ),
-        dialogTheme: const DialogThemeData(
-          backgroundColor: Color(0xFFDFDFDF),
-          surfaceTintColor: Colors.white,
-        ),
-        navigationDrawerTheme: NavigationDrawerThemeData(
-          backgroundColor: Color(0xFFDFDFDF),
-          indicatorColor: Color(0xFFBFBFBF),
-        ),
-        dropdownMenuTheme: const DropdownMenuThemeData(
-          menuStyle: MenuStyle(
-            backgroundColor: WidgetStatePropertyAll<Color>(Color(0xFFDFDFDF)),
-            surfaceTintColor: WidgetStatePropertyAll<Color>(Colors.white),
-          ),
-        ),
-      ),
+      theme: getLightTheme(),
+      darkTheme: getDarkTheme(),
+      themeMode: _themeMode,
       home: const StartPage(
         sharedPreferencesKey: "key_v5",
       ),

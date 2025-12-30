@@ -98,6 +98,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get languageGerman => 'Deutsch';
 
   @override
+  String get themeMode => 'Design:';
+
+  @override
+  String get themeModeSystem => 'Automatisch (System)';
+
+  @override
+  String get themeModeLight => 'Hell';
+
+  @override
+  String get themeModeDark => 'Dunkel';
+
+  @override
   String get multiStopwatches => 'MultiStopwatches';
 
   @override

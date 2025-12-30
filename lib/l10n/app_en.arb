@@ -48,6 +48,11 @@
   "languageEnglish": "English",
   "languageGerman": "German",
 
+  "themeMode": "Theme:",
+  "themeModeSystem": "Auto (System)",
+  "themeModeLight": "Light",
+  "themeModeDark": "Dark",
+
   "multiStopwatches": "MultiStopwatches",
   "addNewGroup": "Add a new group",
   "recordings": "Recordings",

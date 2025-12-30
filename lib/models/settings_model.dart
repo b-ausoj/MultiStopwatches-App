@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:multistopwatches/enums/csv_delimiter.dart';
+import 'package:multistopwatches/enums/locale_setting.dart';
 import 'package:multistopwatches/enums/sort_criterion.dart';
 import 'package:multistopwatches/enums/sort_direction.dart';
+import 'package:multistopwatches/enums/theme_mode_setting.dart';
 import 'package:multistopwatches/enums/time_format.dart';
 
 class SettingsModel {
@@ -11,7 +13,8 @@ class SettingsModel {
   bool seperateRunningStopped = true;
   CSVDelimiter csvDelimiter = CSVDelimiter.semicolon;
   TimeFormat timeFormat = TimeFormat.hhmmss;
-  String? languageCode; // null = auto (system), 'en' = English, 'de' = German
+  LocaleSetting locale = LocaleSetting.auto;
+  ThemeModeSetting themeMode = ThemeModeSetting.system;
 
   SettingsModel();
 
@@ -22,7 +25,8 @@ class SettingsModel {
     seperateRunningStopped = other.seperateRunningStopped;
     csvDelimiter = other.csvDelimiter;
     timeFormat = other.timeFormat;
-    languageCode = other.languageCode;
+    locale = other.locale;
+    themeMode = other.themeMode;
   }
 
   factory SettingsModel.fromJson(Map<String, dynamic> json) {
@@ -34,7 +38,23 @@ class SettingsModel {
     settingsModel.seperateRunningStopped = json["seperateRunningStopped"];
     settingsModel.csvDelimiter = CSVDelimiter.values[json["csvDelimiter"]];
     settingsModel.timeFormat = TimeFormat.values[json["timeFormat"]];
-    settingsModel.languageCode = json["languageCode"];
+    // Handle migration from old languageCode string to new locale enum
+    if (json.containsKey("locale")) {
+      settingsModel.locale = LocaleSetting.values[json["locale"]];
+    } else if (json.containsKey("languageCode")) {
+      // Migrate old languageCode to new locale enum
+      String? languageCode = json["languageCode"];
+      if (languageCode == null) {
+        settingsModel.locale = LocaleSetting.auto;
+      } else if (languageCode == 'en') {
+        settingsModel.locale = LocaleSetting.english;
+      } else if (languageCode == 'de') {
+        settingsModel.locale = LocaleSetting.german;
+      } else {
+        settingsModel.locale = LocaleSetting.auto;
+      }
+    }
+    settingsModel.themeMode = ThemeModeSetting.values[json["themeMode"] ?? 0];
     return settingsModel;
   }
 
@@ -44,6 +64,7 @@ class SettingsModel {
         "seperateRunningStopped": seperateRunningStopped,
         "csvDelimiter": csvDelimiter.index,
         "timeFormat": timeFormat.index,
-        "languageCode": languageCode,
+        "locale": locale.index,
+        "themeMode": themeMode.index,
       };
 }

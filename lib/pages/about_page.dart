@@ -38,7 +38,6 @@ class AboutPage extends StatelessWidget {
             InkWell(
                 borderRadius: BorderRadius.circular(12.0),
                 onTap: () => getVersionNumber(context),
-                splashColor: Colors.white10,
                 child: Ink.image(
                     fit: BoxFit.cover,
                     width: 100,
@@ -59,7 +58,7 @@ class AboutPage extends StatelessWidget {
                 icon: const Icon(Icons.rate_review_outlined),
                 label: Text(AppLocalizations.of(context)!.contactMe),
                 style: TextButton.styleFrom(
-                    foregroundColor: Colors.black, // TODO: use theme
+                    foregroundColor: Theme.of(context).colorScheme.primary,
                     backgroundColor: Theme.of(context).cardColor,
                     padding: const EdgeInsets.symmetric(horizontal: 16.0))),
             // const SizedBox(height: 16.0),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/enums/csv_delimiter.dart';
+import 'package:multistopwatches/enums/locale_setting.dart';
 import 'package:multistopwatches/enums/sort_criterion.dart';
 import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/enums/time_format.dart';
@@ -8,6 +9,7 @@ import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/widgets/icons/back_icon.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/main.dart';
+import 'package:multistopwatches/enums/theme_mode_setting.dart';
 
 class SettingsPage extends StatefulWidget {
   final bool isBadgeVisible;
@@ -217,34 +219,64 @@ class _SettingsPageState extends State<SettingsPage> {
                 const SizedBox(
                   width: 16.0,
                 ),
-                DropdownMenu<String?>(
-                  initialSelection: widget.settings.languageCode,
-                  onSelected: (String? languageCode) {
-                    setState(() {
-                      widget.settings.languageCode = languageCode;
-                    });
-                    storeSettings(widget.settings);
-                    // Update the app locale
-                    Locale? newLocale;
-                    if (languageCode != null) {
-                      newLocale = Locale(languageCode);
+                DropdownMenu<LocaleSetting>(
+                  initialSelection: widget.settings.locale,
+                  onSelected: (LocaleSetting? locale) {
+                    if (locale != null) {
+                      setState(() {
+                        widget.settings.locale = locale;
+                      });
+                      storeSettings(widget.settings);
+                      // Update the app locale
+                      MyApp.of(context)?.setLocale(locale.toLocale());
                     }
-                    MyApp.of(context)?.setLocale(newLocale);
                   },
-                  dropdownMenuEntries: [
-                    DropdownMenuEntry<String?>(
-                      value: null,
-                      label: AppLocalizations.of(context)!.languageAuto,
-                    ),
-                    DropdownMenuEntry<String?>(
-                      value: 'en',
-                      label: AppLocalizations.of(context)!.languageEnglish,
-                    ),
-                    DropdownMenuEntry<String?>(
-                      value: 'de',
-                      label: AppLocalizations.of(context)!.languageGerman,
-                    ),
-                  ],
+                  dropdownMenuEntries: LocaleSetting.values
+                      .map<DropdownMenuEntry<LocaleSetting>>(
+                          (LocaleSetting locale) {
+                    return DropdownMenuEntry<LocaleSetting>(
+                      value: locale,
+                      label: locale.label(context),
+                    );
+                  }).toList(),
+                )
+              ]),
+            ),
+            const Divider(
+              indent: 16.0,
+              endIndent: 16.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(children: [
+                Expanded(
+                    child: Text(
+                  AppLocalizations.of(context)!.themeMode,
+                  style: const TextStyle(fontSize: 16),
+                )),
+                const SizedBox(
+                  width: 16.0,
+                ),
+                DropdownMenu<ThemeModeSetting>(
+                  initialSelection: widget.settings.themeMode,
+                  onSelected: (ThemeModeSetting? themeMode) {
+                    if (themeMode != null) {
+                      setState(() {
+                        widget.settings.themeMode = themeMode;
+                      });
+                      storeSettings(widget.settings);
+                      // Update the app theme mode
+                      MyApp.of(context)?.setThemeMode(themeMode.toThemeMode());
+                    }
+                  },
+                  dropdownMenuEntries: ThemeModeSetting.values
+                      .map<DropdownMenuEntry<ThemeModeSetting>>(
+                          (ThemeModeSetting themeMode) {
+                    return DropdownMenuEntry<ThemeModeSetting>(
+                      value: themeMode,
+                      label: themeMode.label(context),
+                    );
+                  }).toList(),
                 )
               ]),
             ),

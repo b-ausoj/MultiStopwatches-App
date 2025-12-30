@@ -10,6 +10,7 @@ import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/stopwatch_popup_menu_button.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
+import 'package:multistopwatches/config/app_themes.dart';
 
 class StopwatchCard extends StatefulWidget {
   final StopwatchesPageController stopwatchesPageController;
@@ -32,6 +33,7 @@ class _StopwatchCardState extends State<StopwatchCard>
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Card(
       elevation: 0,
       child: Row(
@@ -212,8 +214,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                             icon: const Icon(Icons.play_arrow),
                             label: Text(AppLocalizations.of(context)!.start),
                             style: TextButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: const Color(0xFF1E7927))),
+                                foregroundColor: AppColors.buttonFg(isDark),
+                                backgroundColor: AppColors.startButtonBg(isDark))),
                         StopwatchState.running => TextButton.icon(
                             onPressed: () {
                               _stopwatchModel.stop();
@@ -223,8 +225,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                             icon: const Icon(Icons.stop),
                             label: Text(AppLocalizations.of(context)!.stop),
                             style: TextButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: const Color(0xFFBC2525))),
+                                foregroundColor: AppColors.buttonFg(isDark),
+                                backgroundColor: AppColors.stopButtonBg(isDark))),
                         StopwatchState.stopped => TextButton.icon(
                             onPressed: () {
                               _stopwatchModel.resume();
@@ -234,8 +236,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                             icon: const Icon(Icons.play_arrow_outlined),
                             label: Text(AppLocalizations.of(context)!.resume),
                             style: TextButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: const Color(0xFF259030))),
+                                foregroundColor: AppColors.buttonFg(isDark),
+                                backgroundColor: AppColors.resumeButtonBg(isDark))),
                       },
                       const Spacer(),
                       TextButton.icon(
@@ -250,10 +252,10 @@ class _StopwatchCardState extends State<StopwatchCard>
                         icon: const Icon(Icons.flag),
                         label: Text(AppLocalizations.of(context)!.lap),
                         style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: const Color(0xFFE5A426),
-                          disabledForegroundColor: Colors.white,
-                          disabledBackgroundColor: const Color(0xFFBFBFBF),
+                          foregroundColor: AppColors.buttonFg(isDark),
+                          backgroundColor: AppColors.lapButtonBg(isDark),
+                          disabledForegroundColor: AppColors.buttonFg(isDark),
+                          disabledBackgroundColor: AppColors.disabledButtonBg(isDark),
                         ),
                       )
                     ],

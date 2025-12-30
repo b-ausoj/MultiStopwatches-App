@@ -15,6 +15,7 @@ import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/stopwatches_page_popup_menu_button.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
+import 'package:multistopwatches/config/app_themes.dart';
 
 class StopwatchesPage extends StatefulWidget {
   final GroupModel group;
@@ -37,6 +38,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         title: InkWell(
@@ -79,8 +81,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
           widget.sharedPreferencesKey),
       floatingActionButton: _stopwatchesPageController.isFabActive()
           ? FloatingActionButton.extended(
-              foregroundColor: Colors.white,
-              backgroundColor: const Color(0xFF1E7927),
+              foregroundColor: AppColors.buttonFg(isDark),
+              backgroundColor: AppColors.startButtonBg(isDark),
               onPressed: () {
                 _stopwatchesPageController.startAllStopwatches();
                 HapticFeedback.lightImpact();
