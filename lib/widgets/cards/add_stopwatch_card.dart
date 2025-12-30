@@ -10,7 +10,7 @@ class AddStopwatchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: const Color(0xFFEFEFEF),
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
       margin: const EdgeInsets.symmetric(horizontal: 70, vertical: 4),
       child: InkWell(
         onTap: () {

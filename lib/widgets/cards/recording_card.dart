@@ -28,7 +28,7 @@ class _RecordingCardState extends State<RecordingCard> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: const Color(0xFFDFDFDF),
+      color: Theme.of(context).colorScheme.surfaceContainer,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 0, 0, 8),
         child: Column(

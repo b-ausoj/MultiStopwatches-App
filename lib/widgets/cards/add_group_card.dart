@@ -18,7 +18,7 @@ class AddGroupCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
-      color: const Color(0xFFEFEFEF),
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
       elevation: 0,
       child: InkWell(
         borderRadius: BorderRadius.circular(12.0),

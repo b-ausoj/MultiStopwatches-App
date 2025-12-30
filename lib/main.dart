@@ -74,22 +74,43 @@ class MyAppState extends State<MyApp> {
           bodyMedium: TextStyle(fontSize: 16),
         ),
         switchTheme: SwitchThemeData(
-          thumbColor: WidgetStateProperty.all(Colors.white),
-          trackColor: WidgetStateProperty.all(Colors.black),
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return Colors.white;
+            }
+            return Colors.grey;
+          }),
+          trackColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return Colors.black;
+            }
+            return Colors.white;
+          }),
         ),
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
-        scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.white,
-            primary: Colors.black,
-            surfaceTint: Colors.white),
+          seedColor: Colors.white,
+          primary: Colors.black,
+          surface: Colors.white,
+          surfaceContainerHighest: const Color(0xFFEFEFEF), // Card backgrounds
+          surfaceContainer: const Color(0xFFDFDFDF), // Dialog/menu backgrounds
+          surfaceContainerHigh: const Color(0xFFBFBFBF), // Disabled/inactive elements
+          onSurfaceVariant: const Color(0xFF757575), // Grey text (Colors.grey[600])
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: ColorScheme.fromSeed(seedColor: Colors.white).surface,
+        ),
+        scaffoldBackgroundColor: ColorScheme.fromSeed(seedColor: Colors.white).surface,
+        cardTheme: const CardThemeData(
+          color: Color(0xFFEFEFEF),
+          elevation: 0,
+        ),
         popupMenuTheme: const PopupMenuThemeData(
           color: Color(0xFFDFDFDF),
-          surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
+          surfaceTintColor: Colors.transparent,
         ),
         dialogTheme: const DialogThemeData(
           backgroundColor: Color(0xFFDFDFDF),
-          surfaceTintColor: Color.fromARGB(255, 255, 255, 255),
+          surfaceTintColor: Colors.transparent,
         ),
       ),
       home: const StartPage(

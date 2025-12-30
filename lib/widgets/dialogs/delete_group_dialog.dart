@@ -42,7 +42,7 @@ class _DeleteGroupDialogState extends State<DeleteGroupDialog> {
           red
               ? Text(
                   AppLocalizations.of(context)!.youHaveToCheckBox,
-                  style: const TextStyle(color: Colors.red),
+                  style: TextStyle(color: Theme.of(context).colorScheme.error),
                 )
               : Container(),
           //Container(),

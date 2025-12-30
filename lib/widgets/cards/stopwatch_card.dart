@@ -34,7 +34,7 @@ class _StopwatchCardState extends State<StopwatchCard>
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: const Color(0xFFEFEFEF),
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -254,7 +254,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                           foregroundColor: Colors.white,
                           backgroundColor: const Color(0xFFE5A426),
                           disabledForegroundColor: Colors.white,
-                          disabledBackgroundColor: const Color(0xFFBFBFBF),
+                          disabledBackgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
                         ),
                       )
                     ],

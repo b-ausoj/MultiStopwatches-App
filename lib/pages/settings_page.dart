@@ -41,8 +41,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     width: 16.0,
                   ),
                   Switch(
-                    inactiveThumbColor: Colors.grey,
-                    inactiveTrackColor: Colors.white,
                     value: widget.settings.seperateRunningStopped,
                     onChanged: (value) {
                       setState(() {
@@ -131,7 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   AppLocalizations.of(context)!.customSortExplanation,
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.grey[600],
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   textAlign: TextAlign.center,
                 ),

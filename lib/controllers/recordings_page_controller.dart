@@ -37,7 +37,7 @@ class RecordingsPageController extends BadgeController {
         var timeStamp = last.copyWith();
         recordingsList.add(Card(
           clipBehavior: Clip.antiAlias,
-          color: const Color(0xFFEFEFEF),
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           elevation: 0,
           child: ExpansionTile(
             onExpansionChanged: (value) {
@@ -78,7 +78,7 @@ class RecordingsPageController extends BadgeController {
     if (list.isNotEmpty) {
       recordingsList.add(Card(
         elevation: 0,
-        color: const Color(0xFFEFEFEF),
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         child: ExpansionTile(
           onExpansionChanged: (value) {
             if (!value) return; // only change if opens and not on close

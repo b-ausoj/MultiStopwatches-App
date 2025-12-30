@@ -39,7 +39,6 @@ class _StartPageState extends State<StartPage> {
     return PopScope(
       canPop: false,
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.multiStopwatches),
           leading: NavIcon(_startController),
@@ -60,7 +59,7 @@ class _StartPageState extends State<StartPage> {
                   children: [
                     ..._startController.allGroups.map((GroupModel group) => Card(
                           clipBehavior: Clip.antiAlias,
-                          color: const Color(0xFFEFEFEF),
+                          color: Theme.of(context).colorScheme.surfaceContainerHighest,
                           elevation: 0,
                           child: ListTile(
                             contentPadding:

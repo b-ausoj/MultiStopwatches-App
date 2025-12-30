@@ -38,7 +38,6 @@ class _StopwatchesPageState extends State<StopwatchesPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: InkWell(
             onTap: _showRenameDialog,
