@@ -62,16 +62,16 @@ class AboutPage extends StatelessWidget {
                     foregroundColor: Colors.black,
                     backgroundColor: const Color(0xFFEFEFEF),
                     padding: const EdgeInsets.symmetric(horizontal: 16.0))),
-            const SizedBox(height: 16.0),
-            TextButton.icon(
-                onPressed: () => showShortSnackBar(
-                    context, AppLocalizations.of(context)!.pleaseAddToStore),
-                icon: const Icon(Icons.star_border_outlined),
-                label: Text(AppLocalizations.of(context)!.rateThisApp),
-                style: TextButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: const Color(0xFFEFEFEF),
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0))),
+            // const SizedBox(height: 16.0),
+            // TextButton.icon(
+            //     onPressed: () => showShortSnackBar(
+            //         context, AppLocalizations.of(context)!.pleaseAddToStore),
+            //     icon: const Icon(Icons.star_border_outlined),
+            //     label: Text(AppLocalizations.of(context)!.rateThisApp),
+            //     style: TextButton.styleFrom(
+            //         foregroundColor: Colors.black,
+            //         backgroundColor: const Color(0xFFEFEFEF),
+            //         padding: const EdgeInsets.symmetric(horizontal: 16.0))),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
