@@ -242,10 +242,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 )
               ]),
             ),
-            const Divider(
-              indent: 16.0,
-              endIndent: 16.0,
-            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(children: [

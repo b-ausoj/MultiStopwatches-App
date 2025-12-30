@@ -5,6 +5,7 @@ import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/config/app_themes.dart';
+import 'package:multistopwatches/enums/locale_setting.dart';
 
 void main() {
   runApp(const MyApp());
@@ -69,10 +70,7 @@ class MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en', ''), // English
-        Locale('de', ''), // German
-      ],
+      supportedLocales: LocaleSetting.supportedLocales,
       theme: getLightTheme(),
       darkTheme: getDarkTheme(),
       themeMode: _themeMode,

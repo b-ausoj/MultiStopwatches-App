@@ -39,4 +39,12 @@ enum LocaleSetting {
         return LocaleSetting.auto;
     }
   }
+
+  /// Get all supported locales (excluding auto)
+  static List<Locale> get supportedLocales {
+    return LocaleSetting.values
+        .where((setting) => setting != LocaleSetting.auto)
+        .map((setting) => setting.toLocale()!)
+        .toList();
+  }
 }
