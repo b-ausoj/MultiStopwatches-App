@@ -36,7 +36,7 @@ int Function(StopwatchCard a, StopwatchCard b) buildSort(
           return sign *
               a.stopwatchModel.elapsedLapTimeRounded
                   .compareTo(b.stopwatchModel.elapsedLapTimeRounded);
-        default: // i dont know yet what to do if custom/reordable
+        default:
           return 0;
       }
     });
