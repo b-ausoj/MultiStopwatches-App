@@ -78,9 +78,7 @@ class _SortDialogState extends State<SortDialog> {
                   AppLocalizations.of(context)!.customSortExplanation,
                   style: TextStyle(
                     fontSize: 15,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurfaceVariant, // TODO: check if correct color
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   textAlign: TextAlign.center,
                 ),
