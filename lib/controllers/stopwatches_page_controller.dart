@@ -10,7 +10,7 @@ import 'package:multistopwatches/models/stopwatch_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
-import 'package:multistopwatches/utils/sorting.dart';
+import 'package:multistopwatches/utils/sorting_utils.dart';
 import 'package:multistopwatches/widgets/cards/stopwatch_card.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
