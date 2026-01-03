@@ -61,27 +61,14 @@ class StopwatchModel {
           ? DateTime.now().difference(_startedLapTime)
           : Duration.zero) +
       _savedLapTime;
+  int get elapsedLapTimeRounded => elapsedLapTime.inMilliseconds ~/ 100;
 
-  int get elapsedLapTimeRounded =>
-      ((state == StopwatchState.running
-                  ? DateTime.now().difference(_startedLapTime)
-                  : Duration.zero) +
-              _savedLapTime)
-          .inMilliseconds ~/
-      100;
   Duration get elapsedTime =>
       (state == StopwatchState.running
           ? DateTime.now().difference(_startedTime)
           : Duration.zero) +
       _savedTime;
-
-  int get elapsedTimeRounded =>
-      ((state == StopwatchState.running
-                  ? DateTime.now().difference(_startedTime)
-                  : Duration.zero) +
-              _savedTime)
-          .inMilliseconds ~/
-      100;
+  int get elapsedTimeRounded => elapsedTime.inMilliseconds ~/ 100;
 
   bool get isRunning => state == StopwatchState.running;
 
