@@ -40,6 +40,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: InkWell(
             onTap: _showRenameDialog,

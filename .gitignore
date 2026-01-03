@@ -52,4 +52,8 @@ app.*.map.json
 # Environment variables
 .env
 
+# Custom scripts
 *.bat
+
+# Documentation for now
+documentation/

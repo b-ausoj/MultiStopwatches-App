@@ -24,6 +24,7 @@ class _RecordingsPageState extends State<RecordingsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.recordings),
         leading: BackIcon(recordingsPageController.badgeVisible),

@@ -45,6 +45,7 @@ class _StartPageState extends State<StartPage> {
     return PopScope(
       canPop: false,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.multiStopwatches),
           leading: NavIcon(_startController),
