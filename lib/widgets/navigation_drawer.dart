@@ -74,20 +74,14 @@ class _NavDrawerState extends State<NavDrawer> {
     if (selectedGroup != null) {
       // Navigate to a stopwatches page
       Navigator.pop(context);
-      if (widget.isStartPage) {
-        Navigator.of(context)
-            .push(MaterialPageRoute(
-                builder: (context) => StopwatchesPage(
-                    selectedGroup,
-                    widget.allGroups,
-                    widget.settings,
-                    widget.sharedPreferencesKey)))
-            .then((value) => widget.onNavigationComplete?.call());
-      } else {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => StopwatchesPage(selectedGroup,
-                widget.allGroups, widget.settings, widget.sharedPreferencesKey)));
-      }
+      Navigator.of(context)
+          .push(MaterialPageRoute(
+              builder: (context) => StopwatchesPage(
+                  selectedGroup,
+                  widget.allGroups,
+                  widget.settings,
+                  widget.sharedPreferencesKey)))
+          .then((value) => widget.onNavigationComplete?.call());
     } else {
       int base = widget.allGroups.length;
       switch (selectedIndex - base) {
@@ -99,61 +93,41 @@ class _NavDrawerState extends State<NavDrawer> {
               widget.settings.defaultSortCriterion,
               widget.settings.defaultSortDirection, []);
           widget.allGroups.add(newGroup);
-          if (widget.isStartPage) {
-            Navigator.of(context)
-                .push(MaterialPageRoute(
-                    builder: (context) => StopwatchesPage(
-                        newGroup,
-                        widget.allGroups,
-                        widget.settings,
-                        widget.sharedPreferencesKey)))
-                .then((value) => widget.onNavigationComplete?.call());
-          } else {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => StopwatchesPage(newGroup, widget.allGroups,
-                    widget.settings, widget.sharedPreferencesKey)));
-          }
+          Navigator.of(context)
+              .push(MaterialPageRoute(
+                  builder: (context) => StopwatchesPage(
+                      newGroup,
+                      widget.allGroups,
+                      widget.settings,
+                      widget.sharedPreferencesKey)))
+              .then((value) => widget.onNavigationComplete?.call());
           break;
         case 1:
           // recordings
           Navigator.pop(context);
-          if (widget.isStartPage) {
-            Navigator.of(context)
-                .push(MaterialPageRoute(
-                    builder: (context) => RecordingsPage(widget.allGroups,
-                        widget.settings, widget.sharedPreferencesKey)))
-                .then((value) => widget.onNavigationComplete?.call());
-          } else {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => RecordingsPage(widget.allGroups,
-                    widget.settings, widget.sharedPreferencesKey)));
-          }
+          Navigator.of(context)
+              .push(MaterialPageRoute(
+                  builder: (context) => RecordingsPage(widget.allGroups,
+                      widget.settings, widget.sharedPreferencesKey)))
+              .then((value) => widget.onNavigationComplete?.call());
           break;
         case 2:
           // settings
           Navigator.pop(context);
-          if (widget.isStartPage) {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => SettingsPage(widget.allGroups,
-                    widget.settings, widget.sharedPreferencesKey)));
-          } else {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => SettingsPage(widget.allGroups,
-                    widget.settings, widget.sharedPreferencesKey)));
-          }
+          Navigator.of(context)
+              .push(MaterialPageRoute(
+                  builder: (context) => SettingsPage(widget.allGroups,
+                      widget.settings, widget.sharedPreferencesKey)))
+              .then((value) => widget.onNavigationComplete?.call());
           break;
         case 3:
           // about
           Navigator.pop(context);
-          if (widget.isStartPage) {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => AboutPage(widget.allGroups,
-                    widget.settings, widget.sharedPreferencesKey)));
-          } else {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => AboutPage(widget.allGroups,
-                    widget.settings, widget.sharedPreferencesKey)));
-          }
+          Navigator.of(context)
+              .push(MaterialPageRoute(
+                  builder: (context) => AboutPage(widget.allGroups,
+                      widget.settings, widget.sharedPreferencesKey)))
+              .then((value) => widget.onNavigationComplete?.call());
           break;
         default:
           throw Exception("Invalid selectedGroup state");

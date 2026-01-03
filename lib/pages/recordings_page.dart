@@ -8,6 +8,7 @@ import 'package:multistopwatches/widgets/dialogs/data_error_dialog.dart';
 import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
+import 'package:multistopwatches/main.dart' as main;
 
 class RecordingsPage extends StatefulWidget {
   final List<GroupModel> allGroups;
@@ -22,7 +23,7 @@ class RecordingsPage extends StatefulWidget {
 }
 
 class _RecordingsPageState extends State<RecordingsPage>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, RouteAware {
   late final RecordingsPageController recordingsPageController;
   bool _badgeVisible = false;
 
@@ -92,6 +93,29 @@ class _RecordingsPageState extends State<RecordingsPage>
       }
     });
 
-    _badgeVisible = isBackBadgeRequired(widget.allGroups);
+    _loadBadgeState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    main.routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
+  }
+
+  @override
+  void didPopNext() {
+    _loadBadgeState();
+  }
+
+  @override
+  void dispose() {
+    main.routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+
+  void _loadBadgeState() {
+    setState(() {
+      _badgeVisible = isBackBadgeRequired(widget.allGroups);
+    });
   }
 }

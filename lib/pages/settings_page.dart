@@ -11,7 +11,7 @@ import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
-import 'package:multistopwatches/main.dart';
+import 'package:multistopwatches/main.dart' as main;
 import 'package:multistopwatches/enums/theme_mode_setting.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -24,7 +24,7 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _SettingsPageState extends State<SettingsPage> with RouteAware {
   bool _badgeVisible = false;
   int _badgeLabel = 0;
 
@@ -32,6 +32,23 @@ class _SettingsPageState extends State<SettingsPage> {
   void initState() {
     super.initState();
     _loadBadgeState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    main.routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
+  }
+
+  @override
+  void didPopNext() {
+    _loadBadgeState();
+  }
+
+  @override
+  void dispose() {
+    main.routeObserver.unsubscribe(this);
+    super.dispose();
   }
 
   Future<void> _loadBadgeState() async {
@@ -258,7 +275,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       });
                       storeSettings(widget.settings);
                       // Update the app locale
-                      MyApp.of(context)?.setLocale(locale.toLocale());
+                      main.MyApp.of(context)?.setLocale(locale.toLocale());
                     }
                   },
                   dropdownMenuEntries: LocaleSetting.values
@@ -292,7 +309,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       });
                       storeSettings(widget.settings);
                       // Update the app theme mode
-                      MyApp.of(context)?.setThemeMode(themeMode.toThemeMode());
+                      main.MyApp.of(context)?.setThemeMode(themeMode.toThemeMode());
                     }
                   },
                   dropdownMenuEntries: ThemeModeSetting.values

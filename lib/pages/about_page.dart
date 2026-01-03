@@ -12,6 +12,7 @@ import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/config/app_config.dart';
+import 'package:multistopwatches/main.dart' as main;
 
 class AboutPage extends StatefulWidget {
   final List<GroupModel> allGroups;
@@ -23,7 +24,7 @@ class AboutPage extends StatefulWidget {
   State<AboutPage> createState() => _AboutPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _AboutPageState extends State<AboutPage> with RouteAware {
   bool _badgeVisible = false;
   int _badgeLabel = 0;
 
@@ -31,6 +32,23 @@ class _AboutPageState extends State<AboutPage> {
   void initState() {
     super.initState();
     _loadBadgeState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    main.routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
+  }
+
+  @override
+  void didPopNext() {
+    _loadBadgeState();
+  }
+
+  @override
+  void dispose() {
+    main.routeObserver.unsubscribe(this);
+    super.dispose();
   }
 
   Future<void> _loadBadgeState() async {

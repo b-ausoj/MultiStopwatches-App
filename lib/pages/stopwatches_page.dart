@@ -17,6 +17,7 @@ import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/stopwatches_page_popup_menu_button.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/config/app_themes.dart';
+import 'package:multistopwatches/main.dart' as main;
 
 class StopwatchesPage extends StatefulWidget {
   final GroupModel group;
@@ -32,7 +33,7 @@ class StopwatchesPage extends StatefulWidget {
 }
 
 class _StopwatchesPageState extends State<StopwatchesPage>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, RouteAware {
   late final Ticker _ticker;
   late final StopwatchesPageController _stopwatchesPageController;
   late final GroupModel _groupModel = widget.group;
@@ -113,6 +114,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
 
   @override
   void dispose() {
+    main.routeObserver.unsubscribe(this);
     _ticker.dispose();
     super.dispose();
   }
@@ -130,6 +132,17 @@ class _StopwatchesPageState extends State<StopwatchesPage>
       }
     });
     _ticker.start();
+    _loadBadgeState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    main.routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
+  }
+
+  @override
+  void didPopNext() {
     _loadBadgeState();
   }
 
