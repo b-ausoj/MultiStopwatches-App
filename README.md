@@ -56,5 +56,6 @@ The core application, including all features, UI/UX design, state management, an
 - Resolving Flutter framework and package compatibility issues after version updates
 - Implementing localization support
 - Adding dark mode support
+- Checking code for potential performance issues and suggesting optimizations
 
 The fundamental architecture, feature implementation, and the majority of the codebase represent my independent work.

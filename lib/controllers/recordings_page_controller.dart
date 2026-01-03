@@ -184,19 +184,16 @@ class RecordingsPageController extends BadgeController {
   }
 
   void setViewedToTrue(DateTime timestamp) {
-    bool changed = false;
-    for (RecordingCard card in recordingCards) {
-      if (card.recordingModel.startingTime == timestamp &&
-          !card.recordingModel.viewed) {
-        card.recordingModel.viewed = true;
-        changed = true;
-      }
+    final matchingCards = recordingCards.where((card) =>
+        card.recordingModel.startingTime == timestamp &&
+        !card.recordingModel.viewed);
+
+    if (matchingCards.isEmpty) return;
+
+    for (final card in matchingCards) {
+      card.recordingModel.viewed = true;
     }
-    if (changed) {
-      // only recreate list and store state if something changed
-      createRecordingList();
-      storeRecordingsState(this);
-      refresh();
-    }
+
+    storeRecordingsState(this);
   }
 }
