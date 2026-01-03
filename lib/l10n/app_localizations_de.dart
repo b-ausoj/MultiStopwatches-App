@@ -48,7 +48,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cantSaveEmptyStopwatch => 'Kann keine leere Stoppuhr speichern';
 
   @override
-  String hasBeenSavedAndReseted(String name) {
+  String hasBeenSavedAndReset(String name) {
     return '\'$name\' wurde gespeichert und zurückgesetzt';
   }
 
@@ -59,7 +59,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cantResetWhileRunning => 'Kann nicht zurücksetzen während läuft';
 
   @override
-  String hasBeenReseted(String name) {
+  String hasBeenReset(String name) {
     return '\'$name\' wurde zurückgesetzt';
   }
 
@@ -269,7 +269,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get allStopwatchesReseted => 'Alle Stoppuhren wurden zurückgesetzt';
+  String get allStopwatchesReset => 'Alle Stoppuhren wurden zurückgesetzt';
 
   @override
   String get hereIsYourRecording => 'Hier ist deine Aufzeichnung!';

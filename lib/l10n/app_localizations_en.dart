@@ -48,8 +48,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cantSaveEmptyStopwatch => 'Can\'t save empty stopwatch';
 
   @override
-  String hasBeenSavedAndReseted(String name) {
-    return '\'$name\' has been saved and reseted';
+  String hasBeenSavedAndReset(String name) {
+    return '\'$name\' has been saved and reset';
   }
 
   @override
@@ -59,8 +59,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cantResetWhileRunning => 'Can\'t reset while running';
 
   @override
-  String hasBeenReseted(String name) {
-    return '\'$name\' has been reseted';
+  String hasBeenReset(String name) {
+    return '\'$name\' has been reset';
   }
 
   @override
@@ -268,7 +268,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get allStopwatchesReseted => 'All stopwatches have been reseted';
+  String get allStopwatchesReset => 'All stopwatches have been reset';
 
   @override
   String get hereIsYourRecording => 'Here is your recording!';

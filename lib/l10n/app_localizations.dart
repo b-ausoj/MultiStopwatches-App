@@ -176,11 +176,11 @@ abstract class AppLocalizations {
   /// **'Can\'t save empty stopwatch'**
   String get cantSaveEmptyStopwatch;
 
-  /// No description provided for @hasBeenSavedAndReseted.
+  /// No description provided for @hasBeenSavedAndReset.
   ///
   /// In en, this message translates to:
-  /// **'\'{name}\' has been saved and reseted'**
-  String hasBeenSavedAndReseted(String name);
+  /// **'\'{name}\' has been saved and reset'**
+  String hasBeenSavedAndReset(String name);
 
   /// No description provided for @undoReset.
   ///
@@ -194,11 +194,11 @@ abstract class AppLocalizations {
   /// **'Can\'t reset while running'**
   String get cantResetWhileRunning;
 
-  /// No description provided for @hasBeenReseted.
+  /// No description provided for @hasBeenReset.
   ///
   /// In en, this message translates to:
-  /// **'\'{name}\' has been reseted'**
-  String hasBeenReseted(String name);
+  /// **'\'{name}\' has been reset'**
+  String hasBeenReset(String name);
 
   /// No description provided for @undo.
   ///
@@ -578,11 +578,11 @@ abstract class AppLocalizations {
   /// **'\'{name}\' has been removed'**
   String stopwatchRemoved(String name);
 
-  /// No description provided for @allStopwatchesReseted.
+  /// No description provided for @allStopwatchesReset.
   ///
   /// In en, this message translates to:
-  /// **'All stopwatches have been reseted'**
-  String get allStopwatchesReseted;
+  /// **'All stopwatches have been reset'**
+  String get allStopwatchesReset;
 
   /// No description provided for @hereIsYourRecording.
   ///

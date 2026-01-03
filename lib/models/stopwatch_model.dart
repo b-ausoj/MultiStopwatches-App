@@ -24,7 +24,7 @@ class StopwatchModel {
   String oldStopwatch = "";
 
   StopwatchModel(this.name, this.id,
-      {this.state = StopwatchState.reseted,
+      {this.state = StopwatchState.reset,
       Duration savedTime = Duration.zero,
       Duration savedLapTime = Duration.zero})
       : _savedLapTime = savedLapTime,
@@ -36,8 +36,8 @@ class StopwatchModel {
       json["id"],
       state: json["state"] == "${StopwatchState.running}"
           ? StopwatchState.running
-          : json["state"] == "${StopwatchState.reseted}"
-              ? StopwatchState.reseted
+          : json["state"] == "${StopwatchState.reset}"
+              ? StopwatchState.reset
               : StopwatchState.stopped,
       savedTime: Duration(milliseconds: json["savedTime"]),
       savedLapTime: Duration(milliseconds: json["savedLapTime"]),
@@ -83,7 +83,7 @@ class StopwatchModel {
   void reset() {
     if (state == StopwatchState.running) return;
     oldStopwatch = jsonEncode(this); // save stopwatch for an undo
-    state = StopwatchState.reseted;
+    state = StopwatchState.reset;
     _savedTime = Duration.zero;
     _savedLapTime = Duration.zero;
     _startTimestamp = DateTime.now();
@@ -100,8 +100,8 @@ class StopwatchModel {
     name = json["name"];
     state = json["state"] == "${StopwatchState.running}"
         ? StopwatchState.running
-        : json["state"] == "${StopwatchState.reseted}"
-            ? StopwatchState.reseted
+        : json["state"] == "${StopwatchState.reset}"
+            ? StopwatchState.reset
             : StopwatchState.stopped;
     _savedTime = Duration(milliseconds: json["savedTime"]);
     _savedLapTime = Duration(milliseconds: json["savedLapTime"]);
@@ -169,4 +169,4 @@ class StopwatchModel {
   }
 }
 
-enum StopwatchState { running, stopped, reseted }
+enum StopwatchState { running, stopped, reset }

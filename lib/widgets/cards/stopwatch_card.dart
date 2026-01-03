@@ -134,7 +134,7 @@ class _StopwatchCardState extends State<StopwatchCard> {
                                     AppLocalizations.of(context)!
                                         .cantSaveWhileRunning);
                                 break;
-                              case StopwatchState.reseted:
+                              case StopwatchState.reset:
                                 showShortSnackBar(
                                     context,
                                     AppLocalizations.of(context)!
@@ -147,7 +147,7 @@ class _StopwatchCardState extends State<StopwatchCard> {
                                 showLongSnackBar(
                                     context,
                                     AppLocalizations.of(context)!
-                                        .hasBeenSavedAndReseted(
+                                        .hasBeenSavedAndReset(
                                             _stopwatchModel.name),
                                     action: SnackBarAction(
                                         label: AppLocalizations.of(context)!
@@ -167,7 +167,7 @@ class _StopwatchCardState extends State<StopwatchCard> {
                                     AppLocalizations.of(context)!
                                         .cantResetWhileRunning);
                                 break;
-                              case StopwatchState.reseted:
+                              case StopwatchState.reset:
                                 break;
                               case StopwatchState.stopped:
                                 _stopwatchModel.reset();
@@ -175,7 +175,7 @@ class _StopwatchCardState extends State<StopwatchCard> {
                                 showLongSnackBar(
                                     context,
                                     AppLocalizations.of(context)!
-                                        .hasBeenReseted(_stopwatchModel.name),
+                                        .hasBeenReset(_stopwatchModel.name),
                                     action: SnackBarAction(
                                         label:
                                             AppLocalizations.of(context)!.undo,
@@ -203,7 +203,7 @@ class _StopwatchCardState extends State<StopwatchCard> {
                   child: Row(
                     children: [
                       switch (_stopwatchModel.state) {
-                        StopwatchState.reseted => TextButton.icon(
+                        StopwatchState.reset => TextButton.icon(
                             onPressed: () {
                               _stopwatchModel.start();
                               widget.changedState();

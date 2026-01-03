@@ -112,8 +112,8 @@ class StopwatchesPageController extends BadgeController {
 
   bool isFabActive() {
     return stopwatchCards.isNotEmpty &&
-        stopwatchCards.every((element) =>
-            element.stopwatchModel.state == StopwatchState.reseted);
+        stopwatchCards.every(
+            (element) => element.stopwatchModel.state == StopwatchState.reset);
   }
 
   @override
@@ -137,8 +137,7 @@ class StopwatchesPageController extends BadgeController {
     for (StopwatchCard card in _stopwatchCards) {
       card.stopwatchModel.reset();
     }
-    showLongSnackBar(
-        context, AppLocalizations.of(context)!.allStopwatchesReseted,
+    showLongSnackBar(context, AppLocalizations.of(context)!.allStopwatchesReset,
         action: SnackBarAction(
             label: AppLocalizations.of(context)!.undo,
             onPressed: () {

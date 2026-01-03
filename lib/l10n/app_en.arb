@@ -16,8 +16,8 @@
 
   "cantSaveWhileRunning": "Can't save while running",
   "cantSaveEmptyStopwatch": "Can't save empty stopwatch",
-  "hasBeenSavedAndReseted": "'{name}' has been saved and reseted",
-  "@hasBeenSavedAndReseted": {
+  "hasBeenSavedAndReset": "'{name}' has been saved and reset",
+  "@hasBeenSavedAndReset": {
     "placeholders": {
       "name": {
         "type": "String"
@@ -26,8 +26,8 @@
   },
   "undoReset": "Undo reset",
   "cantResetWhileRunning": "Can't reset while running",
-  "hasBeenReseted": "'{name}' has been reseted",
-  "@hasBeenReseted": {
+  "hasBeenReset": "'{name}' has been reset",
+  "@hasBeenReset": {
     "placeholders": {
       "name": {
         "type": "String"
@@ -152,7 +152,7 @@
     }
   },
   "cantResetWhileRunning": "Can't reset while running",
-  "allStopwatchesReseted": "All stopwatches have been reseted",
+  "allStopwatchesReset": "All stopwatches have been reset",
   "hereIsYourRecording": "Here is your recording!",
   "totalTime": "Total Time",
   "lapNo": "Lap No.",

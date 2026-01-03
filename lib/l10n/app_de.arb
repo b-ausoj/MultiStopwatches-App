@@ -16,10 +16,10 @@
 
   "cantSaveWhileRunning": "Kann nicht speichern während läuft",
   "cantSaveEmptyStopwatch": "Kann keine leere Stoppuhr speichern",
-  "hasBeenSavedAndReseted": "'{name}' wurde gespeichert und zurückgesetzt",
+  "hasBeenSavedAndReset": "'{name}' wurde gespeichert und zurückgesetzt",
   "undoReset": "Zurücksetzen rückgängig",
   "cantResetWhileRunning": "Kann nicht zurücksetzen während läuft",
-  "hasBeenReseted": "'{name}' wurde zurückgesetzt",
+  "hasBeenReset": "'{name}' wurde zurückgesetzt",
   "undo": "Rückgängig",
 
   "settings": "Einstellungen",
@@ -93,7 +93,7 @@
   "allStopwatchesRemoved": "Alle Stoppuhren wurden entfernt",
   "stopwatchRemoved": "'{name}' wurde entfernt",
   "cantResetWhileRunning": "Kann nicht zurücksetzen während läuft",
-  "allStopwatchesReseted": "Alle Stoppuhren wurden zurückgesetzt",
+  "allStopwatchesReset": "Alle Stoppuhren wurden zurückgesetzt",
   "hereIsYourRecording": "Hier ist deine Aufzeichnung!",
   "totalTime": "Gesamtzeit",
   "lapNo": "Runde Nr.",
