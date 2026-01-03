@@ -1,20 +1,18 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:multistopwatches/controllers/badge_controller.dart';
 import 'package:multistopwatches/enums/sort_criterion.dart';
 import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/models/stopwatch_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
-import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/utils/sorting_utils.dart';
 import 'package:multistopwatches/widgets/cards/stopwatch_card.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
-class StopwatchesPageController extends BadgeController {
+class StopwatchesPageController {
   final List<GroupModel> allGroups;
   final List<StopwatchCard> _stopwatchCards = [];
   final List<String> _oldStopwatchesPage = [];
@@ -53,7 +51,6 @@ class StopwatchesPageController extends BadgeController {
   void changedState({bool saveImmediately = true}) {
     sortAndListCards(
         _stopwatchCards, groupModel.criterion, groupModel.direction, settings);
-    refreshBadgeState();
     // Save state immediately when stopwatch state changes
     if (saveImmediately) {
       storeData(allGroups, sharedPreferencesKey);
@@ -111,13 +108,6 @@ class StopwatchesPageController extends BadgeController {
     return stopwatchCards.isNotEmpty &&
         stopwatchCards.every(
             (element) => element.stopwatchModel.state == StopwatchState.reset);
-  }
-
-  @override
-  void refreshBadgeState() {
-    isMenuBadgeRequired(allGroups, groupModel)
-        .then((value) => badgeVisible = value);
-    getUnseenRecordingsCount().then((value) => badgeLabel = value);
   }
 
   void resetAllStopwatches(BuildContext context) {

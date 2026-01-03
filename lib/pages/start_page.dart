@@ -6,6 +6,7 @@ import 'package:multistopwatches/enums/start_page_card_menu_item.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/pages/stopwatches_page.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/cards/add_group_card.dart';
 import 'package:multistopwatches/widgets/dialogs/delete_group_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
@@ -25,13 +26,30 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   late final StartController _startController;
+  bool _badgeVisible = false;
+  int _badgeLabel = 0;
 
   @override
   void initState() {
     super.initState();
     _startController =
         StartController(() => setState(() {}), widget.sharedPreferencesKey);
-    loadStart(_startController);
+    loadStart(_startController).then((_) => _loadBadgeState());
+  }
+
+  Future<void> _loadBadgeState() async {
+    final results = await Future.wait([
+      isMenuBadgeRequired(_startController.allGroups, null),
+      getUnseenRecordingsCount(),
+    ]);
+
+    if (mounted) {
+      setState(() {
+        _badgeVisible = results[0] as bool;
+        _badgeLabel = results[1] as int;
+        _startController.updateGroupBadges();
+      });
+    }
   }
 
   @override
@@ -42,75 +60,74 @@ class _StartPageState extends State<StartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.multiStopwatches),
-          leading: NavIcon(_startController),
-        ),
-        drawer: NavDrawer(_startController.allGroups, _startController.settings,
-            _startController, null, _startController.sharedPreferencesKey),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Text(AppLocalizations.of(context)!.welcomeMessage),
-              const SizedBox(
-                height: 10,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.multiStopwatches),
+        leading: NavIcon(_badgeVisible, _badgeLabel),
+      ),
+      drawer: NavDrawer(
+          _startController.allGroups,
+          _startController.settings,
+          null,
+          _startController.sharedPreferencesKey,
+          isStartPage: true,
+          onNavigationComplete: _loadBadgeState),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Text(AppLocalizations.of(context)!.welcomeMessage),
+            const SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  ..._startController.allGroups.map((GroupModel group) =>
+                      Card(
+                        clipBehavior: Clip.antiAlias,
+                        elevation: 0,
+                        child: ListTile(
+                          contentPadding:
+                              const EdgeInsets.only(left: 16.0, right: 8.0),
+                          leading: const Icon(Icons.timer_outlined),
+                          title: Center(
+                              child: StartTextWithBadge(_startController,
+                                  _startController.allGroups.indexOf(group))),
+                          trailing: StartPagePopupMenuButton(
+                              onSelected: (StartPageCardMenuItem item) {
+                            switch (item) {
+                              case StartPageCardMenuItem.rename:
+                                _showRenameDialog(group);
+                                break;
+                              case StartPageCardMenuItem.delete:
+                                _showDeleteGroupDialog(group);
+                                break;
+                            }
+                          }),
+                          onTap: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(
+                                    builder: (context) => StopwatchesPage(
+                                        group,
+                                        _startController.allGroups,
+                                        _startController.settings,
+                                        _startController
+                                            .sharedPreferencesKey)))
+                                .then((value) => _loadBadgeState());
+                          },
+                        ),
+                      )),
+                  AddGroupCard(
+                    startController: _startController,
+                    onGroupAdded: () => setState(() {}),
+                  ),
+                ],
               ),
-              Expanded(
-                child: ListView(
-                  shrinkWrap: true,
-                  children: [
-                    ..._startController.allGroups.map((GroupModel group) =>
-                        Card(
-                          clipBehavior: Clip.antiAlias,
-                          elevation: 0,
-                          child: ListTile(
-                            contentPadding:
-                                const EdgeInsets.only(left: 16.0, right: 8.0),
-                            leading: const Icon(Icons.timer_outlined),
-                            title: Center(
-                                child: StartTextWithBadge(_startController,
-                                    _startController.allGroups.indexOf(group))),
-                            trailing: StartPagePopupMenuButton(
-                                onSelected: (StartPageCardMenuItem item) {
-                              switch (item) {
-                                case StartPageCardMenuItem.rename:
-                                  _showRenameDialog(group);
-                                  break;
-                                case StartPageCardMenuItem.delete:
-                                  _showDeleteGroupDialog(group);
-                                  break;
-                              }
-                            }),
-                            onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(
-                                      builder: (context) => StopwatchesPage(
-                                          group,
-                                          _startController.allGroups,
-                                          _startController.settings,
-                                          _startController
-                                              .sharedPreferencesKey)))
-                                  .then((value) {
-                                _startController.refreshBadgeState();
-                                setState(() {});
-                              });
-                            },
-                          ),
-                        )),
-                    AddGroupCard(
-                      startController: _startController,
-                      onGroupAdded: () => setState(() {}),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -125,7 +142,7 @@ class _StartPageState extends State<StartPage> {
           groupModel.name,
           onAccept: () {
             _startController.removeGroup(groupModel);
-            setState(() {});
+            _loadBadgeState();
           },
         );
       },

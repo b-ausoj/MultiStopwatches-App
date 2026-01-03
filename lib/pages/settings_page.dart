@@ -5,30 +5,59 @@ import 'package:multistopwatches/enums/sort_criterion.dart';
 import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/enums/time_format.dart';
 import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
-import 'package:multistopwatches/widgets/icons/back_icon.dart';
+import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
+import 'package:multistopwatches/widgets/navigation_drawer.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/main.dart';
 import 'package:multistopwatches/enums/theme_mode_setting.dart';
 
 class SettingsPage extends StatefulWidget {
-  final bool isBadgeVisible;
+  final List<GroupModel> allGroups;
   final SettingsModel settings;
-  const SettingsPage(this.isBadgeVisible, this.settings, {super.key});
+  final String sharedPreferencesKey;
+  const SettingsPage(this.allGroups, this.settings, this.sharedPreferencesKey, {super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  bool _badgeVisible = false;
+  int _badgeLabel = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadBadgeState();
+  }
+
+  Future<void> _loadBadgeState() async {
+    final results = await Future.wait([
+      isMenuBadgeRequired(widget.allGroups, null),
+      getUnseenRecordingsCount(),
+    ]);
+
+    if (mounted) {
+      setState(() {
+        _badgeVisible = results[0] as bool;
+        _badgeLabel = results[1] as int;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.settings),
-          leading: BackIcon(widget.isBadgeVisible),
+          leading: NavIcon(_badgeVisible, _badgeLabel),
         ),
+        drawer: NavDrawer(
+            widget.allGroups, widget.settings, null, widget.sharedPreferencesKey),
         body: Column(
           children: [
             Padding(

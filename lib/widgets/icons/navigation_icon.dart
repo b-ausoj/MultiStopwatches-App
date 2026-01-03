@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:multistopwatches/controllers/badge_controller.dart';
 
-class NavIcon extends StatefulWidget {
-  final BadgeController stopwatchesPageController;
+class NavIcon extends StatelessWidget {
+  final bool badgeVisible;
+  final int badgeLabel;
 
-  const NavIcon(this.stopwatchesPageController, {super.key});
+  const NavIcon(this.badgeVisible, this.badgeLabel, {super.key});
 
-  @override
-  State<NavIcon> createState() => _NavIconState();
-}
-
-class _NavIconState extends State<NavIcon> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return IconButton(
       icon: Badge(
-        isLabelVisible: widget.stopwatchesPageController.badgeVisible,
-        label: widget.stopwatchesPageController.badgeLabel > 0
-            ? Text(widget.stopwatchesPageController.badgeLabel.toString())
-            : null,
+        isLabelVisible: badgeVisible,
+        label: badgeLabel > 0 ? Text(badgeLabel.toString()) : null,
         smallSize: 8.0,
         child: const Icon(Icons.menu),
       ),

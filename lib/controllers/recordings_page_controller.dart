@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:multistopwatches/controllers/badge_controller.dart';
 import 'package:multistopwatches/enums/recordings_group_menu_item.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
-import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/utils/export_to_csv.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/recordings_group_popup_menu_button.dart';
@@ -12,7 +10,7 @@ import 'package:multistopwatches/widgets/cards/recording_card.dart';
 import 'package:multistopwatches/widgets/text_with_badge/recordings_group_text_with_badge.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
-class RecordingsPageController extends BadgeController {
+class RecordingsPageController {
   void Function() refresh;
   final List<RecordingCard> recordingCards = [];
   final List<Widget> recordingsList = [];
@@ -175,11 +173,6 @@ class RecordingsPageController extends BadgeController {
               storeRecordingsState(this);
               refresh();
             }));
-  }
-
-  @override
-  void refreshBadgeState() {
-    badgeVisible = isBackBadgeRequired(allGroups);
   }
 
   void setViewedToTrue(DateTime timestamp, BuildContext context) {

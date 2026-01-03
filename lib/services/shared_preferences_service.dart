@@ -36,8 +36,7 @@ Future<void> _loadData(List<GroupModel> groups, String key) async {
 
 // This function is a wrapper around the loadData (without the release build doesn't work)
 Future<void> loadStart(StartController startController) async {
-  _loadData(startController.allGroups, startController.sharedPreferencesKey)
-      .then((value) => startController.refreshBadgeState());
+  await _loadData(startController.allGroups, startController.sharedPreferencesKey);
 }
 
 // This function is only executed once per app lifecycle namely for the initialization

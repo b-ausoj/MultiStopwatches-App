@@ -4,14 +4,48 @@ import 'package:multistopwatches/pages/pp_page.dart';
 import 'package:multistopwatches/pages/tnc_page.dart';
 import 'package:multistopwatches/services/launch_url_service.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
-import 'package:multistopwatches/widgets/icons/back_icon.dart';
+import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
+import 'package:multistopwatches/widgets/navigation_drawer.dart';
+import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/models/group_model.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/config/app_config.dart';
 
-class AboutPage extends StatelessWidget {
-  final bool isBadgeVisible;
-  const AboutPage(this.isBadgeVisible, {super.key});
+class AboutPage extends StatefulWidget {
+  final List<GroupModel> allGroups;
+  final SettingsModel settings;
+  final String sharedPreferencesKey;
+  const AboutPage(this.allGroups, this.settings, this.sharedPreferencesKey, {super.key});
+
+  @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
+  bool _badgeVisible = false;
+  int _badgeLabel = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadBadgeState();
+  }
+
+  Future<void> _loadBadgeState() async {
+    final results = await Future.wait([
+      isMenuBadgeRequired(widget.allGroups, null),
+      getUnseenRecordingsCount(),
+    ]);
+
+    if (mounted) {
+      setState(() {
+        _badgeVisible = results[0] as bool;
+        _badgeLabel = results[1] as int;
+      });
+    }
+  }
 
   Future<void> getVersionNumber(BuildContext context) async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -31,8 +65,10 @@ class AboutPage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.about),
-        leading: BackIcon(isBadgeVisible),
+        leading: NavIcon(_badgeVisible, _badgeLabel),
       ),
+      drawer: NavDrawer(
+          widget.allGroups, widget.settings, null, widget.sharedPreferencesKey),
       body: Center(
         child: Column(
           children: [

@@ -3,15 +3,19 @@ import 'package:multistopwatches/controllers/recordings_page_controller.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/dialogs/data_error_dialog.dart';
-import 'package:multistopwatches/widgets/icons/back_icon.dart';
+import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
+import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class RecordingsPage extends StatefulWidget {
   final List<GroupModel> allGroups;
   final SettingsModel settings;
+  final String sharedPreferencesKey;
 
-  const RecordingsPage(this.allGroups, this.settings, {super.key});
+  const RecordingsPage(this.allGroups, this.settings, this.sharedPreferencesKey,
+      {super.key});
 
   @override
   State<RecordingsPage> createState() => _RecordingsPageState();
@@ -20,6 +24,7 @@ class RecordingsPage extends StatefulWidget {
 class _RecordingsPageState extends State<RecordingsPage>
     with SingleTickerProviderStateMixin {
   late final RecordingsPageController recordingsPageController;
+  bool _badgeVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class _RecordingsPageState extends State<RecordingsPage>
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.recordings),
-        leading: BackIcon(recordingsPageController.badgeVisible),
+        leading: NavIcon(_badgeVisible, 0),
         /* Removed because confusing for my dad
           actions: [
             RecordingsPagePopupMenuButton(
@@ -44,6 +49,8 @@ class _RecordingsPageState extends State<RecordingsPage>
           ],
           */
       ),
+      drawer: NavDrawer(
+          widget.allGroups, widget.settings, null, widget.sharedPreferencesKey),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
@@ -85,8 +92,6 @@ class _RecordingsPageState extends State<RecordingsPage>
       }
     });
 
-    setState(() {
-      recordingsPageController.refreshBadgeState();
-    });
+    _badgeVisible = isBackBadgeRequired(widget.allGroups);
   }
 }

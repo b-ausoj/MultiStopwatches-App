@@ -29,7 +29,6 @@ class AddGroupCard extends StatelessWidget {
               startController.settings.defaultSortDirection,
               []);
           startController.allGroups.add(newGroup);
-          startController.refreshBadgeState();
           onGroupAdded();
           Navigator.of(context)
               .push(MaterialPageRoute(
@@ -38,10 +37,7 @@ class AddGroupCard extends StatelessWidget {
                       startController.allGroups,
                       startController.settings,
                       startController.sharedPreferencesKey)))
-              .then((value) {
-            startController.refreshBadgeState();
-            onGroupAdded();
-          });
+              .then((value) => onGroupAdded());
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),

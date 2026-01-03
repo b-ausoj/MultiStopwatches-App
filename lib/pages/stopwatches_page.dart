@@ -7,6 +7,7 @@ import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/enums/stopwatches_page_menu_item.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
+import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/cards/add_stopwatch_card.dart';
 import 'package:multistopwatches/widgets/dialogs/delete_group_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
@@ -35,6 +36,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
   late final Ticker _ticker;
   late final StopwatchesPageController _stopwatchesPageController;
   late final GroupModel _groupModel = widget.group;
+  bool _badgeVisible = false;
+  int _badgeLabel = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
         title: InkWell(
             onTap: _showRenameDialog,
             child: Text(_stopwatchesPageController.name)),
-        leading: NavIcon(_stopwatchesPageController),
+        leading: NavIcon(_badgeVisible, _badgeLabel),
         actions: [
           StopwatchesPagePopupMenuButton(
             _stopwatchesPageController.name,
@@ -74,12 +77,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
           )
         ],
       ),
-      drawer: NavDrawer(
-          widget.allGroups,
-          widget.settings,
-          _stopwatchesPageController,
-          _stopwatchesPageController.groupModel,
-          widget.sharedPreferencesKey),
+      drawer: NavDrawer(widget.allGroups, widget.settings,
+          _stopwatchesPageController.groupModel, widget.sharedPreferencesKey),
       floatingActionButton: _stopwatchesPageController.isFabActive()
           ? FloatingActionButton.extended(
               foregroundColor: AppColors.buttonFg(isDark),
@@ -129,7 +128,21 @@ class _StopwatchesPageState extends State<StopwatchesPage>
       }
     });
     _ticker.start();
-    _stopwatchesPageController.refreshBadgeState();
+    _loadBadgeState();
+  }
+
+  Future<void> _loadBadgeState() async {
+    final results = await Future.wait([
+      isMenuBadgeRequired(widget.allGroups, _groupModel),
+      getUnseenRecordingsCount(),
+    ]);
+
+    if (mounted) {
+      setState(() {
+        _badgeVisible = results[0] as bool;
+        _badgeLabel = results[1] as int;
+      });
+    }
   }
 
   Future<void> _showDeleteGroupDialog() async {

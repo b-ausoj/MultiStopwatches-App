@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:multistopwatches/controllers/badge_controller.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/pages/about_page.dart';
 import 'package:multistopwatches/pages/recordings_page.dart';
 import 'package:multistopwatches/pages/settings_page.dart';
 import 'package:multistopwatches/pages/stopwatches_page.dart';
-import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/text_with_badge/group_nav_text_with_badge.dart';
 import 'package:multistopwatches/widgets/text_with_badge/recordings_nav_text_with_badge.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
@@ -14,15 +12,14 @@ import 'package:multistopwatches/l10n/app_localizations.dart';
 class NavDrawer extends StatefulWidget {
   final List<GroupModel> allGroups;
   final SettingsModel settings;
-  // add list of startControllers so that if we open the drawer from start page and
-  // then navigate to a group and go back per arrows (back wishing)
-  // the badge will be updated
-  final BadgeController controller;
   final GroupModel? group;
   final String sharedPreferencesKey;
-  const NavDrawer(this.allGroups, this.settings, this.controller, this.group,
+  final bool isStartPage;
+  final VoidCallback? onNavigationComplete;
+
+  const NavDrawer(this.allGroups, this.settings, this.group,
       this.sharedPreferencesKey,
-      {super.key});
+      {this.isStartPage = false, this.onNavigationComplete, super.key});
 
   @override
   State<NavDrawer> createState() => _NavDrawerState();
@@ -75,16 +72,22 @@ class _NavDrawerState extends State<NavDrawer> {
     GroupModel? selectedGroup = widget.allGroups.elementAtOrNull(selectedIndex);
 
     if (selectedGroup != null) {
-      // group x
+      // Navigate to a stopwatches page
       Navigator.pop(context);
-      Navigator.of(context)
-          .push(MaterialPageRoute(
-              builder: (context) => StopwatchesPage(
-                  selectedGroup,
-                  widget.allGroups,
-                  widget.settings,
-                  widget.sharedPreferencesKey)))
-          .then((value) => widget.controller.refreshBadgeState());
+      if (widget.isStartPage) {
+        Navigator.of(context)
+            .push(MaterialPageRoute(
+                builder: (context) => StopwatchesPage(
+                    selectedGroup,
+                    widget.allGroups,
+                    widget.settings,
+                    widget.sharedPreferencesKey)))
+            .then((value) => widget.onNavigationComplete?.call());
+      } else {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => StopwatchesPage(selectedGroup,
+                widget.allGroups, widget.settings, widget.sharedPreferencesKey)));
+      }
     } else {
       int base = widget.allGroups.length;
       switch (selectedIndex - base) {
@@ -96,38 +99,61 @@ class _NavDrawerState extends State<NavDrawer> {
               widget.settings.defaultSortCriterion,
               widget.settings.defaultSortDirection, []);
           widget.allGroups.add(newGroup);
-          Navigator.of(context)
-              .push(MaterialPageRoute(
-                  builder: (context) => StopwatchesPage(
-                      newGroup,
-                      widget.allGroups,
-                      widget.settings,
-                      widget.sharedPreferencesKey)))
-              .then((value) => widget.controller.refreshBadgeState());
+          if (widget.isStartPage) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+                    builder: (context) => StopwatchesPage(
+                        newGroup,
+                        widget.allGroups,
+                        widget.settings,
+                        widget.sharedPreferencesKey)))
+                .then((value) => widget.onNavigationComplete?.call());
+          } else {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => StopwatchesPage(newGroup, widget.allGroups,
+                    widget.settings, widget.sharedPreferencesKey)));
+          }
           break;
         case 1:
           // recordings
           Navigator.pop(context);
-          Navigator.of(context)
-              .push(MaterialPageRoute(
-                  builder: (context) =>
-                      RecordingsPage(widget.allGroups, widget.settings)))
-              .then((value) => widget.controller.refreshBadgeState());
+          if (widget.isStartPage) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+                    builder: (context) => RecordingsPage(widget.allGroups,
+                        widget.settings, widget.sharedPreferencesKey)))
+                .then((value) => widget.onNavigationComplete?.call());
+          } else {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => RecordingsPage(widget.allGroups,
+                    widget.settings, widget.sharedPreferencesKey)));
+          }
           break;
         case 2:
           // settings
           Navigator.pop(context);
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SettingsPage(
-                  isBackBadgeRequired(widget.allGroups), widget.settings)));
+          if (widget.isStartPage) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SettingsPage(widget.allGroups,
+                    widget.settings, widget.sharedPreferencesKey)));
+          } else {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => SettingsPage(widget.allGroups,
+                    widget.settings, widget.sharedPreferencesKey)));
+          }
           break;
         case 3:
           // about
           Navigator.pop(context);
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  AboutPage(isBackBadgeRequired(widget.allGroups))));
-
+          if (widget.isStartPage) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => AboutPage(widget.allGroups,
+                    widget.settings, widget.sharedPreferencesKey)));
+          } else {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => AboutPage(widget.allGroups,
+                    widget.settings, widget.sharedPreferencesKey)));
+          }
           break;
         default:
           throw Exception("Invalid selectedGroup state");
