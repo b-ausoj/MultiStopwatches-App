@@ -218,5 +218,11 @@
     }
   },
   "dataLoadErrorContactDev": "If this problem persists, please contact the developer:",
-  "emailCopied": "Email copied to clipboard"
+  "emailCopied": "Email copied to clipboard",
+
+  "exportFailed": "Export failed. Please try again.",
+  "exportFailedBrowser": "Export failed. Browser blocked the download.",
+  "exportFailedShare": "Export failed. Could not share the file.",
+  "exportFailedEncoding": "Export failed. Data could not be encoded.",
+  "exportCancelled": "Export was cancelled."
 }

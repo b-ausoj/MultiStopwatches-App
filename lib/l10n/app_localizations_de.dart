@@ -459,4 +459,22 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get emailCopied => 'E-Mail in Zwischenablage kopiert';
+
+  @override
+  String get exportFailed => 'Export fehlgeschlagen. Bitte versuche es erneut.';
+
+  @override
+  String get exportFailedBrowser =>
+      'Export fehlgeschlagen. Browser hat den Download blockiert.';
+
+  @override
+  String get exportFailedShare =>
+      'Export fehlgeschlagen. Datei konnte nicht geteilt werden.';
+
+  @override
+  String get exportFailedEncoding =>
+      'Export fehlgeschlagen. Daten konnten nicht kodiert werden.';
+
+  @override
+  String get exportCancelled => 'Export wurde abgebrochen.';
 }

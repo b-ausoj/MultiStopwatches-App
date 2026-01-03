@@ -907,6 +907,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Email copied to clipboard'**
   String get emailCopied;
+
+  /// No description provided for @exportFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed. Please try again.'**
+  String get exportFailed;
+
+  /// No description provided for @exportFailedBrowser.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed. Browser blocked the download.'**
+  String get exportFailedBrowser;
+
+  /// No description provided for @exportFailedShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed. Could not share the file.'**
+  String get exportFailedShare;
+
+  /// No description provided for @exportFailedEncoding.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed. Data could not be encoded.'**
+  String get exportFailedEncoding;
+
+  /// No description provided for @exportCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Export was cancelled.'**
+  String get exportCancelled;
 }
 
 class _AppLocalizationsDelegate

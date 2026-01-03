@@ -456,4 +456,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get emailCopied => 'Email copied to clipboard';
+
+  @override
+  String get exportFailed => 'Export failed. Please try again.';
+
+  @override
+  String get exportFailedBrowser =>
+      'Export failed. Browser blocked the download.';
+
+  @override
+  String get exportFailedShare => 'Export failed. Could not share the file.';
+
+  @override
+  String get exportFailedEncoding =>
+      'Export failed. Data could not be encoded.';
+
+  @override
+  String get exportCancelled => 'Export was cancelled.';
 }

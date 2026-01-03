@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:multistopwatches/enums/time_format.dart';
 import 'package:multistopwatches/models/recording_model.dart';
 import 'package:multistopwatches/models/settings_model.dart';
+import 'package:multistopwatches/utils/snackbar_utils.dart';
 import 'package:multistopwatches/utils/times_formatting_utils.dart';
 import 'package:multistopwatches/widgets/cards/recording_card.dart';
 import 'package:share_plus/share_plus.dart';
@@ -14,10 +15,26 @@ import 'package:web/web.dart' as web;
 
 Future<void> saveAndShareCsv(
     String csvContent, String fileName, BuildContext context) async {
-  final bytes = utf8.encode(csvContent);
+  try {
+    final bytes = utf8.encode(csvContent);
 
+    if (kIsWeb) {
+      await _downloadOnWeb(bytes, fileName, context);
+    } else {
+      await _shareOnMobile(bytes, fileName, context);
+    }
+  } on FormatException catch (_) {
+    if (context.mounted) {
+      showShortSnackBar(
+          context, AppLocalizations.of(context)!.exportFailedEncoding);
+    }
+  }
+}
+
+Future<void> _downloadOnWeb(
+    Uint8List bytes, String fileName, BuildContext context) async {
   // On web (desktop), auto-download the file
-  if (kIsWeb) {
+  try {
     final blob =
         web.Blob([bytes.toJS].toJS, web.BlobPropertyBag(type: 'text/csv'));
     final url = web.URL.createObjectURL(blob);
@@ -26,9 +43,19 @@ Future<void> saveAndShareCsv(
           ..download = fileName)
         .click();
     web.URL.revokeObjectURL(url);
-  } else {
-    // On mobile, use the share dialog
-    await SharePlus.instance.share(
+  } catch (e) {
+    if (context.mounted) {
+      showShortSnackBar(
+          context, AppLocalizations.of(context)!.exportFailedBrowser);
+    }
+  }
+}
+
+Future<void> _shareOnMobile(
+    Uint8List bytes, String fileName, BuildContext context) async {
+  // On mobile, use the share dialog
+  try {
+    final result = await SharePlus.instance.share(
       ShareParams(
         files: [
           XFile.fromData(
@@ -39,6 +66,15 @@ Future<void> saveAndShareCsv(
         ],
       ),
     );
+
+    if (result.status == ShareResultStatus.dismissed && context.mounted) {
+      showShortSnackBar(context, AppLocalizations.of(context)!.exportCancelled);
+    }
+  } catch (e) {
+    if (context.mounted) {
+      showShortSnackBar(
+          context, AppLocalizations.of(context)!.exportFailedShare);
+    }
   }
 }
 

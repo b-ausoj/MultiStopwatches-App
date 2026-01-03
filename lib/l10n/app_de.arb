@@ -159,5 +159,11 @@
     }
   },
   "dataLoadErrorContactDev": "Falls dieses Problem weiterhin besteht, kontaktiere bitte den Entwickler:",
-  "emailCopied": "E-Mail in Zwischenablage kopiert"
+  "emailCopied": "E-Mail in Zwischenablage kopiert",
+
+  "exportFailed": "Export fehlgeschlagen. Bitte versuche es erneut.",
+  "exportFailedBrowser": "Export fehlgeschlagen. Browser hat den Download blockiert.",
+  "exportFailedShare": "Export fehlgeschlagen. Datei konnte nicht geteilt werden.",
+  "exportFailedEncoding": "Export fehlgeschlagen. Daten konnten nicht kodiert werden.",
+  "exportCancelled": "Export wurde abgebrochen."
 }
