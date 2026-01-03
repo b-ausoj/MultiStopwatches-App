@@ -23,7 +23,7 @@
   "undo": "Rückgängig",
 
   "settings": "Einstellungen",
-  "seperateRunningStoppedSetting": "Beim Sortierkriterium nach \"Längste Zeit/Rundenzeit\", möchtest du die gestoppten Stoppuhren zu unterst haben?",
+  "separateRunningStoppedSetting": "Beim Sortierkriterium nach \"Längste Zeit/Rundenzeit\", möchtest du die gestoppten Stoppuhren zu unterst haben?",
   "defaultSortCriterion": "Standard Sortierkriterium:",
   "defaultSortDirection": "Standard Sortierrichtung:",
   "timeformatCsvExport": "Zeitformat für .csv Export:",

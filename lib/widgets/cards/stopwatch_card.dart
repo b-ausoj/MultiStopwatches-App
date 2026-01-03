@@ -192,7 +192,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                           case StopwatchCardMenuItem.delete:
                             widget.stopwatchesPageController.deleteStopwatch(
                                 widget.stopwatchModel.id,
-                                widget.stopwatchModel.name);
+                                widget.stopwatchModel.name,
+                                context);
                             break;
                         }
                       },
@@ -215,7 +216,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                             label: Text(AppLocalizations.of(context)!.start),
                             style: TextButton.styleFrom(
                                 foregroundColor: AppColors.buttonFg(isDark),
-                                backgroundColor: AppColors.startButtonBg(isDark))),
+                                backgroundColor:
+                                    AppColors.startButtonBg(isDark))),
                         StopwatchState.running => TextButton.icon(
                             onPressed: () {
                               _stopwatchModel.stop();
@@ -226,7 +228,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                             label: Text(AppLocalizations.of(context)!.stop),
                             style: TextButton.styleFrom(
                                 foregroundColor: AppColors.buttonFg(isDark),
-                                backgroundColor: AppColors.stopButtonBg(isDark))),
+                                backgroundColor:
+                                    AppColors.stopButtonBg(isDark))),
                         StopwatchState.stopped => TextButton.icon(
                             onPressed: () {
                               _stopwatchModel.resume();
@@ -237,7 +240,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                             label: Text(AppLocalizations.of(context)!.resume),
                             style: TextButton.styleFrom(
                                 foregroundColor: AppColors.buttonFg(isDark),
-                                backgroundColor: AppColors.resumeButtonBg(isDark))),
+                                backgroundColor:
+                                    AppColors.resumeButtonBg(isDark))),
                       },
                       const Spacer(),
                       TextButton.icon(
@@ -255,7 +259,8 @@ class _StopwatchCardState extends State<StopwatchCard>
                           foregroundColor: AppColors.buttonFg(isDark),
                           backgroundColor: AppColors.lapButtonBg(isDark),
                           disabledForegroundColor: AppColors.buttonFg(isDark),
-                          disabledBackgroundColor: AppColors.disabledButtonBg(isDark),
+                          disabledBackgroundColor:
+                              AppColors.disabledButtonBg(isDark),
                         ),
                       )
                     ],

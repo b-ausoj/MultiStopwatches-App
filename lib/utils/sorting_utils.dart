@@ -13,7 +13,7 @@ int Function(StopwatchCard a, StopwatchCard b) buildSort(
         case SortCriterion.name:
           return sign * a.stopwatchModel.name.compareTo(b.stopwatchModel.name);
         case SortCriterion.longestTime:
-          if (settings.seperateRunningStopped) {
+          if (settings.separateRunningStopped) {
             if (a.stopwatchModel.isRunning && !b.stopwatchModel.isRunning) {
               return -1;
             }
@@ -25,7 +25,7 @@ int Function(StopwatchCard a, StopwatchCard b) buildSort(
               a.stopwatchModel.elapsedTimeRounded
                   .compareTo(b.stopwatchModel.elapsedTimeRounded);
         case SortCriterion.longestLapTime:
-          if (settings.seperateRunningStopped) {
+          if (settings.separateRunningStopped) {
             if (a.stopwatchModel.isRunning && !b.stopwatchModel.isRunning) {
               return -1;
             }

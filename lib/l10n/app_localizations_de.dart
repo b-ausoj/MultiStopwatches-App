@@ -70,7 +70,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settings => 'Einstellungen';
 
   @override
-  String get seperateRunningStoppedSetting =>
+  String get separateRunningStoppedSetting =>
       'Beim Sortierkriterium nach \"Längste Zeit/Rundenzeit\", möchtest du die gestoppten Stoppuhren zu unterst haben?';
 
   @override

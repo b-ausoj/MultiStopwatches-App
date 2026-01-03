@@ -10,7 +10,7 @@ import 'package:multistopwatches/enums/time_format.dart';
 class SettingsModel {
   SortCriterion defaultSortCriterion = SortCriterion.customReordable;
   SortDirection defaultSortDirection = SortDirection.ascending;
-  bool seperateRunningStopped = true;
+  bool separateRunningStopped = true;
   CSVDelimiter csvDelimiter = CSVDelimiter.semicolon;
   TimeFormat timeFormat = TimeFormat.hhmmss;
   LocaleSetting locale = LocaleSetting.auto;
@@ -22,7 +22,7 @@ class SettingsModel {
     SettingsModel other = SettingsModel.fromJson(jsonDecode(json));
     defaultSortCriterion = other.defaultSortCriterion;
     defaultSortDirection = other.defaultSortDirection;
-    seperateRunningStopped = other.seperateRunningStopped;
+    separateRunningStopped = other.separateRunningStopped;
     csvDelimiter = other.csvDelimiter;
     timeFormat = other.timeFormat;
     locale = other.locale;
@@ -35,7 +35,7 @@ class SettingsModel {
         SortCriterion.values[json["defaultSortCriterion"]];
     settingsModel.defaultSortDirection =
         SortDirection.values[json["defaultSortDirection"]];
-    settingsModel.seperateRunningStopped = json["seperateRunningStopped"];
+    settingsModel.separateRunningStopped = json["separateRunningStopped"];
     settingsModel.csvDelimiter = CSVDelimiter.values[json["csvDelimiter"]];
     settingsModel.timeFormat = TimeFormat.values[json["timeFormat"]];
     // Handle migration from old languageCode string to new locale enum
@@ -61,7 +61,7 @@ class SettingsModel {
   Map<String, dynamic> toJson() => {
         "defaultSortCriterion": defaultSortCriterion.index,
         "defaultSortDirection": defaultSortDirection.index,
-        "seperateRunningStopped": seperateRunningStopped,
+        "separateRunningStopped": separateRunningStopped,
         "csvDelimiter": csvDelimiter.index,
         "timeFormat": timeFormat.index,
         "locale": locale.index,

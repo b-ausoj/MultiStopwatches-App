@@ -212,11 +212,11 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settings;
 
-  /// No description provided for @seperateRunningStoppedSetting.
+  /// No description provided for @separateRunningStoppedSetting.
   ///
   /// In en, this message translates to:
   /// **'In sort criterion by \"Longest Time / Lap Time\", do you want to have the stopped stopwatches at the bottom?'**
-  String get seperateRunningStoppedSetting;
+  String get separateRunningStoppedSetting;
 
   /// No description provided for @defaultSortCriterion.
   ///

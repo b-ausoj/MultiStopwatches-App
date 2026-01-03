@@ -70,7 +70,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
-  String get seperateRunningStoppedSetting =>
+  String get separateRunningStoppedSetting =>
       'In sort criterion by \"Longest Time / Lap Time\", do you want to have the stopped stopwatches at the bottom?';
 
   @override

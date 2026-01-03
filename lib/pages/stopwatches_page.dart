@@ -123,7 +123,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
         _groupModel, widget.settings, widget.sharedPreferencesKey);
     _ticker = createTicker((elapsed) {
       setState(() {});
-      if (!widget.settings.seperateRunningStopped) {
+      if (!widget.settings.separateRunningStopped) {
         _stopwatchesPageController.changedState();
       }
     });

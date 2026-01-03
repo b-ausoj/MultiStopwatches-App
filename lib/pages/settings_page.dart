@@ -36,17 +36,17 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   Expanded(
                       child: Text(
-                    AppLocalizations.of(context)!.seperateRunningStoppedSetting,
+                    AppLocalizations.of(context)!.separateRunningStoppedSetting,
                     style: const TextStyle(fontSize: 16),
                   )),
                   const SizedBox(
                     width: 16.0,
                   ),
                   Switch(
-                    value: widget.settings.seperateRunningStopped,
+                    value: widget.settings.separateRunningStopped,
                     onChanged: (value) {
                       setState(() {
-                        widget.settings.seperateRunningStopped = value;
+                        widget.settings.separateRunningStopped = value;
                       });
                       storeSettings(widget.settings);
                     },
