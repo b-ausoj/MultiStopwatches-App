@@ -15,11 +15,12 @@ import 'package:multistopwatches/config/app_themes.dart';
 class StopwatchCard extends StatefulWidget {
   final StopwatchesPageController stopwatchesPageController;
   final void Function() changedState;
+  final VoidCallback? onStopwatchSaved;
 
   final StopwatchModel stopwatchModel;
 
   const StopwatchCard(this.stopwatchModel, this.changedState,
-      {super.key, required this.stopwatchesPageController});
+      {super.key, required this.stopwatchesPageController, this.onStopwatchSaved});
 
   @override
   State createState() => _StopwatchCardState();
@@ -146,6 +147,7 @@ class _StopwatchCardState extends State<StopwatchCard>
                               case StopwatchState.stopped:
                                 saveStopwatch(_stopwatchModel,
                                     widget.stopwatchesPageController.name);
+                                widget.onStopwatchSaved?.call();
                                 widget.changedState();
                                 showLongSnackBar(
                                     context,

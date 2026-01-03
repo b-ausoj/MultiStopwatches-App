@@ -62,6 +62,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
                   break;
                 case StopwatchesPageMenuItem.saveAll:
                   _stopwatchesPageController.saveAllStopwatches();
+                  _loadBadgeState();
                   break;
                 case StopwatchesPageMenuItem.resetAll:
                   _stopwatchesPageController.resetAllStopwatches(context);
@@ -119,8 +120,9 @@ class _StopwatchesPageState extends State<StopwatchesPage>
   @override
   void initState() {
     super.initState();
-    _stopwatchesPageController = StopwatchesPageController(widget.allGroups,
-        _groupModel, widget.settings, widget.sharedPreferencesKey);
+    _stopwatchesPageController = StopwatchesPageController(
+        widget.allGroups, _groupModel, widget.settings, widget.sharedPreferencesKey,
+        onStopwatchSaved: _loadBadgeState);
     _ticker = createTicker((elapsed) {
       setState(() {});
       if (!widget.settings.separateRunningStopped) {

@@ -19,15 +19,17 @@ class StopwatchesPageController {
   final GroupModel groupModel;
   final SettingsModel settings;
   final String sharedPreferencesKey;
+  final VoidCallback? onStopwatchSaved;
 
   StopwatchesPageController(this.allGroups, this.groupModel, this.settings,
-      this.sharedPreferencesKey) {
+      this.sharedPreferencesKey, {this.onStopwatchSaved}) {
     for (var element in groupModel.stopwatches) {
       _stopwatchCards.add(StopwatchCard(
         element,
         changedState,
         key: ValueKey<String>(element.id),
         stopwatchesPageController: this,
+        onStopwatchSaved: onStopwatchSaved,
       ));
     }
     changedState();
@@ -43,7 +45,9 @@ class StopwatchesPageController {
     StopwatchModel model = StopwatchModel.create(
         AppLocalizations.of(context)!.athleteNumber(_stopwatchCards.length + 1));
     _stopwatchCards.add(StopwatchCard(model, changedState,
-        key: ValueKey<String>(model.id), stopwatchesPageController: this));
+        key: ValueKey<String>(model.id),
+        stopwatchesPageController: this,
+        onStopwatchSaved: onStopwatchSaved));
     groupModel.stopwatches.add(model);
     changedState();
   }
@@ -153,6 +157,7 @@ class StopwatchesPageController {
         changedState,
         key: ValueKey<String>(json["id"]),
         stopwatchesPageController: this,
+        onStopwatchSaved: onStopwatchSaved,
       ));
       groupModel.stopwatches.add(stopwatch);
     }
