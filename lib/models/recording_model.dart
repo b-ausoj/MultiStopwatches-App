@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:multistopwatches/models/lap_model.dart';
 import 'package:uuid/uuid.dart';
 
@@ -52,8 +50,8 @@ class RecordingModel {
         "viewed": viewed,
         "fromGroup": fromGroup,
         "totalTime": totalTime.inMilliseconds,
-        "lapTimes": jsonEncode(getListJson(lapTimes)),
-        "splitTimes": jsonEncode(getListJson(splitTimes))
+        "lapTimes": getListJson(lapTimes),
+        "splitTimes": getListJson(splitTimes)
       };
 
   Map<String, dynamic> getListJson(List<LapModel> list) {
