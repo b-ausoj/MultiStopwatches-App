@@ -49,8 +49,7 @@ class StopwatchModel {
     model._startTimestamp =
         DateTime.fromMillisecondsSinceEpoch(json["startTimestamp"]);
     model.lapCount = json["lapCount"];
-    Map<String, dynamic> lapList = jsonDecode(json["lapList"]);
-    lapList.forEach((key, value) {
+    json["lapList"].forEach((key, value) {
       model.lapList
           .add(LapModel(int.parse(key), Duration(milliseconds: value)));
     });
@@ -111,7 +110,7 @@ class StopwatchModel {
     _startedLapTime =
         DateTime.fromMillisecondsSinceEpoch(json["startedLapTime"]);
     lapCount = json["lapCount"];
-    jsonDecode(json["lapList"]).forEach((key, value) {
+    json["lapList"].forEach((key, value) {
       lapList.add(LapModel(int.parse(key), Duration(milliseconds: value)));
     });
   }
@@ -147,7 +146,7 @@ class StopwatchModel {
         'savedLapTime': _savedLapTime.inMilliseconds,
         'startTimestamp': _startTimestamp.millisecondsSinceEpoch,
         'lapCount': lapCount,
-        'lapList': jsonEncode(_getLapsJson()),
+        'lapList': _getLapsJson(),
       };
 
   @override

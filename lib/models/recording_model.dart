@@ -28,13 +28,11 @@ class RecordingModel {
         json["viewed"],
         json["fromGroup"],
         Duration(milliseconds: json["totalTime"]));
-    Map<String, dynamic> lapTimes = jsonDecode(json["lapTimes"]);
-    lapTimes.forEach((key, value) {
+    json["lapTimes"].forEach((key, value) {
       model.lapTimes
           .add(LapModel(int.parse(key), Duration(milliseconds: value)));
     });
-    Map<String, dynamic> splitTimes = jsonDecode(json["splitTimes"]);
-    splitTimes.forEach((key, value) {
+    json["splitTimes"].forEach((key, value) {
       model.splitTimes
           .add(LapModel(int.parse(key), Duration(milliseconds: value)));
     });
