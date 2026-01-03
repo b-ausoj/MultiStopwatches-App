@@ -15,6 +15,7 @@ import 'package:multistopwatches/widgets/navigation_drawer.dart';
 import 'package:multistopwatches/widgets/popup_menu_buttons/start_page_popup_menu_button.dart';
 import 'package:multistopwatches/widgets/text_with_badge/start_text_with_badge.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
+import 'package:multistopwatches/main.dart' as main;
 
 class StartPage extends StatefulWidget {
   final String sharedPreferencesKey;
@@ -24,7 +25,7 @@ class StartPage extends StatefulWidget {
   State<StartPage> createState() => _StartPageState();
 }
 
-class _StartPageState extends State<StartPage> {
+class _StartPageState extends State<StartPage> with RouteAware {
   late final StartController _startController;
   bool _badgeVisible = false;
   int _badgeLabel = 0;
@@ -35,6 +36,17 @@ class _StartPageState extends State<StartPage> {
     _startController =
         StartController(() => setState(() {}), widget.sharedPreferencesKey);
     loadStart(_startController).then((_) => _loadBadgeState());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    main.routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
+  }
+
+  @override
+  void didPopNext() {
+    _loadBadgeState();
   }
 
   Future<void> _loadBadgeState() async {
@@ -54,6 +66,7 @@ class _StartPageState extends State<StartPage> {
 
   @override
   void dispose() {
+    main.routeObserver.unsubscribe(this);
     _startController.dispose();
     super.dispose();
   }
@@ -66,13 +79,9 @@ class _StartPageState extends State<StartPage> {
         title: Text(AppLocalizations.of(context)!.multiStopwatches),
         leading: NavIcon(_badgeVisible, _badgeLabel),
       ),
-      drawer: NavDrawer(
-          _startController.allGroups,
-          _startController.settings,
-          null,
-          _startController.sharedPreferencesKey,
-          isStartPage: true,
-          onNavigationComplete: _loadBadgeState),
+      drawer: NavDrawer(_startController.allGroups, _startController.settings,
+          null, _startController.sharedPreferencesKey,
+          isStartPage: true, onNavigationComplete: _loadBadgeState),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -85,8 +94,7 @@ class _StartPageState extends State<StartPage> {
               child: ListView(
                 shrinkWrap: true,
                 children: [
-                  ..._startController.allGroups.map((GroupModel group) =>
-                      Card(
+                  ..._startController.allGroups.map((GroupModel group) => Card(
                         clipBehavior: Clip.antiAlias,
                         elevation: 0,
                         child: ListTile(
@@ -114,8 +122,7 @@ class _StartPageState extends State<StartPage> {
                                         group,
                                         _startController.allGroups,
                                         _startController.settings,
-                                        _startController
-                                            .sharedPreferencesKey)))
+                                        _startController.sharedPreferencesKey)))
                                 .then((value) => _loadBadgeState());
                           },
                         ),

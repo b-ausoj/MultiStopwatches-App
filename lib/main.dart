@@ -7,6 +7,8 @@ import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/config/app_themes.dart';
 import 'package:multistopwatches/enums/locale_setting.dart';
 
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
 void main() {
   runApp(const MyApp());
 }
@@ -68,6 +70,7 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       title: "MultiStopwatches",
       locale: _locale,
+      navigatorObservers: [routeObserver],
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
