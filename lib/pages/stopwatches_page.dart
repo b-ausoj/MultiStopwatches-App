@@ -124,7 +124,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
     _ticker = createTicker((elapsed) {
       setState(() {});
       if (!widget.settings.separateRunningStopped) {
-        _stopwatchesPageController.changedState();
+        _stopwatchesPageController.changedState(saveImmediately: false);
       }
     });
     _ticker.start();

@@ -53,12 +53,14 @@ class StopwatchesPageController extends BadgeController {
     changedState();
   }
 
-  void changedState() {
+  void changedState({bool saveImmediately = true}) {
     sortAndListCards(
         _stopwatchCards, groupModel.criterion, groupModel.direction, settings);
     refreshBadgeState();
     // Save state immediately when stopwatch state changes
-    storeData(allGroups, sharedPreferencesKey);
+    if (saveImmediately) {
+      storeData(allGroups, sharedPreferencesKey);
+    }
   }
 
   void deleteAllStopwatches(BuildContext context) {
