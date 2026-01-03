@@ -60,10 +60,10 @@ class _StopwatchesPageState extends State<StopwatchesPage>
                   _stopwatchesPageController.saveAllStopwatches();
                   break;
                 case StopwatchesPageMenuItem.resetAll:
-                  _stopwatchesPageController.resetAllStopwatches();
+                  _stopwatchesPageController.resetAllStopwatches(context);
                   break;
                 case StopwatchesPageMenuItem.deleteAll:
-                  _stopwatchesPageController.deleteAllStopwatches();
+                  _stopwatchesPageController.deleteAllStopwatches(context);
                   break;
                 case StopwatchesPageMenuItem.changeOrder:
                   _showOrderDialog();
@@ -96,7 +96,8 @@ class _StopwatchesPageState extends State<StopwatchesPage>
         child: ReorderableListView(
           buildDefaultDragHandles: _stopwatchesPageController.criterion ==
               SortCriterion.customReordable,
-          footer: AddStopwatchCard(_stopwatchesPageController.addStopwatch),
+          footer: AddStopwatchCard(
+              () => _stopwatchesPageController.addStopwatch(context)),
           children: _stopwatchesPageController.stopwatchCards,
           onReorder: (int oldIndex, int newIndex) {
             if (oldIndex < newIndex) {
@@ -119,7 +120,7 @@ class _StopwatchesPageState extends State<StopwatchesPage>
   void initState() {
     super.initState();
     _stopwatchesPageController = StopwatchesPageController(widget.allGroups,
-        context, _groupModel, widget.settings, widget.sharedPreferencesKey);
+        _groupModel, widget.settings, widget.sharedPreferencesKey);
     _ticker = createTicker((elapsed) {
       setState(() {});
       if (!widget.settings.seperateRunningStopped) {

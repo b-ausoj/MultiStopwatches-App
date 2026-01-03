@@ -15,7 +15,6 @@ import 'package:multistopwatches/widgets/cards/stopwatch_card.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class StopwatchesPageController extends BadgeController {
-  BuildContext context;
   final List<GroupModel> allGroups;
   final List<StopwatchCard> _stopwatchCards = [];
   final List<String> _oldStopwatchesPage = [];
@@ -23,8 +22,8 @@ class StopwatchesPageController extends BadgeController {
   final SettingsModel settings;
   final String sharedPreferencesKey;
 
-  StopwatchesPageController(this.allGroups, this.context, this.groupModel,
-      this.settings, this.sharedPreferencesKey) {
+  StopwatchesPageController(this.allGroups, this.groupModel, this.settings,
+      this.sharedPreferencesKey) {
     for (var element in groupModel.stopwatches) {
       _stopwatchCards.add(StopwatchCard(
         element,
@@ -42,7 +41,7 @@ class StopwatchesPageController extends BadgeController {
   SortCriterion get criterion => groupModel.criterion;
   List<StopwatchCard> get stopwatchCards => _stopwatchCards;
 
-  Future<void> addStopwatch() async {
+  Future<void> addStopwatch(BuildContext context) async {
     int id = StopwatchModel.nextId++;
 
     StopwatchModel model = StopwatchModel(
@@ -62,7 +61,7 @@ class StopwatchesPageController extends BadgeController {
     storeData(allGroups, sharedPreferencesKey);
   }
 
-  void deleteAllStopwatches() {
+  void deleteAllStopwatches(BuildContext context) {
     _oldStopwatchesPage.clear();
 
     for (StopwatchCard card in _stopwatchCards) {
@@ -85,7 +84,7 @@ class StopwatchesPageController extends BadgeController {
             }));
   }
 
-  void deleteStopwatch(int id, String name) {
+  void deleteStopwatch(int id, String name, BuildContext context) {
     int index = _stopwatchCards.indexWhere((element) =>
         element.stopwatchModel.id == id &&
         element.stopwatchModel.state != StopwatchState.running);
@@ -122,7 +121,7 @@ class StopwatchesPageController extends BadgeController {
     getUnseenRecordingsCount().then((value) => badgeLabel = value);
   }
 
-  void resetAllStopwatches() {
+  void resetAllStopwatches(BuildContext context) {
     // save all in json string list
     // call everyone to reset itself
     // if undo then delete list and load json
