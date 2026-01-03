@@ -20,10 +20,17 @@ Future<void> _loadData(List<GroupModel> groups, String key) async {
   // loades the groups with their stopwatchs
   List<String> jsons = prefs.getStringList(key) ?? [];
   for (String json in jsons) {
-    GroupModel loaded = GroupModel.fromJson(jsonDecode(json));
-    GroupModel group = GroupModel(loaded.name, loaded.id, loaded.criterion,
-        loaded.direction, loaded.stopwatches);
-    groups.add(group);
+    try {
+      GroupModel loaded = GroupModel.fromJson(jsonDecode(json));
+      GroupModel group = GroupModel(loaded.name, loaded.id, loaded.criterion,
+          loaded.direction, loaded.stopwatches);
+      groups.add(group);
+    } catch (e) {
+      // log("Failed to load group: $e");
+      // Skip corrupted group for now but continue loading others
+      // This could also crash when there is a corrupted stopwatch inside the group but only catched here
+      // TODO: should I implement error reporting here..
+    }
   }
 }
 
@@ -56,15 +63,29 @@ Future<void> loadRecordings(
     RecordingsPageController recordingsPageController) async {
   final prefs = await SharedPreferences.getInstance();
   List<String> recordings = prefs.getStringList("recordings") ?? [];
+  List<String> corruptedRecordings = [];
+
   for (String entry in recordings.reversed) {
-    RecordingModel model = RecordingModel.fromJson(jsonDecode(entry));
-    recordingsPageController.recordingCards.add(RecordingCard(
-      model,
-      recordingsPageController.deleteRecoding,
-      recordingsPageController.settings,
-      key: ValueKey<String>(model.id),
-    ));
+    try {
+      RecordingModel model = RecordingModel.fromJson(jsonDecode(entry));
+      recordingsPageController.recordingCards.add(RecordingCard(
+        model,
+        recordingsPageController.deleteRecoding,
+        recordingsPageController.settings,
+        key: ValueKey<String>(model.id),
+      ));
+    } catch (e) {
+      // log("Failed to load recording: $e");
+      corruptedRecordings.add(entry);
+    }
   }
+
+  // Store information about corrupted recordings for error reporting
+  if (corruptedRecordings.isNotEmpty) {
+    recordingsPageController.corruptedRecordingsCount =
+        corruptedRecordings.length;
+  }
+
   recordingsPageController.recordingCards.sort(
     (a, b) =>
         -a.recordingModel.startingTime.compareTo(b.recordingModel.startingTime),

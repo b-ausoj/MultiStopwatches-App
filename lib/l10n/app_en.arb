@@ -206,5 +206,17 @@
   "ppChangesTitle": "Changes to This Privacy Policy",
   "ppChanges": "We may update our Privacy Policy from time to time. We will notify you of any changes by updating the \"Last updated\" date on this page. You are advised to review this Privacy Policy periodically for any changes.",
   "ppContactTitle": "Contact Us",
-  "ppContact": "If you have any questions about this Privacy Policy, please contact us at:"
+  "ppContact": "If you have any questions about this Privacy Policy, please contact us at:",
+
+  "dataLoadErrorTitle": "Data Loading Error",
+  "dataLoadErrorMessage": "Could not load {count} recording(s) due to corrupted data. These recordings have been skipped and won't appear in your list.",
+  "@dataLoadErrorMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dataLoadErrorContactDev": "If this problem persists, please contact the developer:",
+  "emailCopied": "Email copied to clipboard"
 }

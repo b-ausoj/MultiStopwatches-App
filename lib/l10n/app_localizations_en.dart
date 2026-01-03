@@ -441,4 +441,19 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ppContact =>
       'If you have any questions about this Privacy Policy, please contact us at:';
+
+  @override
+  String get dataLoadErrorTitle => 'Data Loading Error';
+
+  @override
+  String dataLoadErrorMessage(int count) {
+    return 'Could not load $count recording(s) due to corrupted data. These recordings have been skipped and won\'t appear in your list.';
+  }
+
+  @override
+  String get dataLoadErrorContactDev =>
+      'If this problem persists, please contact the developer:';
+
+  @override
+  String get emailCopied => 'Email copied to clipboard';
 }

@@ -3,6 +3,7 @@ import 'package:multistopwatches/controllers/recordings_page_controller.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
+import 'package:multistopwatches/widgets/dialogs/data_error_dialog.dart';
 import 'package:multistopwatches/widgets/icons/back_icon.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
@@ -56,9 +57,26 @@ class _RecordingsPageState extends State<RecordingsPage>
   @override
   void initState() {
     super.initState();
-    loadRecordings(recordingsPageController = RecordingsPageController(
-            context, () => setState(() {}), widget.allGroups, widget.settings))
-        .then((value) => null);
+    recordingsPageController = RecordingsPageController(
+        context, () => setState(() {}), widget.allGroups, widget.settings);
+    loadRecordings(recordingsPageController).then((value) {
+      // Show error dialog if there were corrupted recordings
+      if (recordingsPageController.corruptedRecordingsCount > 0) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return DataErrorDialog(
+                  corruptedRecordingsCount:
+                      recordingsPageController.corruptedRecordingsCount,
+                );
+              },
+            );
+          }
+        });
+      }
+    });
     recordingsPageController.refreshBadgeState();
     setState(() {});
   }

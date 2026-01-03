@@ -883,6 +883,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If you have any questions about this Privacy Policy, please contact us at:'**
   String get ppContact;
+
+  /// No description provided for @dataLoadErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Loading Error'**
+  String get dataLoadErrorTitle;
+
+  /// No description provided for @dataLoadErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load {count} recording(s) due to corrupted data. These recordings have been skipped and won\'t appear in your list.'**
+  String dataLoadErrorMessage(int count);
+
+  /// No description provided for @dataLoadErrorContactDev.
+  ///
+  /// In en, this message translates to:
+  /// **'If this problem persists, please contact the developer:'**
+  String get dataLoadErrorContactDev;
+
+  /// No description provided for @emailCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Email copied to clipboard'**
+  String get emailCopied;
 }
 
 class _AppLocalizationsDelegate

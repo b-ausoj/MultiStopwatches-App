@@ -444,4 +444,19 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get ppContact =>
       'Wenn du Fragen zu dieser Datenschutzerklärung hast, kontaktiere uns bitte unter:';
+
+  @override
+  String get dataLoadErrorTitle => 'Fehler beim Laden der Daten';
+
+  @override
+  String dataLoadErrorMessage(int count) {
+    return '$count Aufzeichnung(en) konnten aufgrund beschädigter Daten nicht geladen werden. Diese Aufzeichnungen wurden übersprungen und erscheinen nicht in deiner Liste.';
+  }
+
+  @override
+  String get dataLoadErrorContactDev =>
+      'Falls dieses Problem weiterhin besteht, kontaktiere bitte den Entwickler:';
+
+  @override
+  String get emailCopied => 'E-Mail in Zwischenablage kopiert';
 }

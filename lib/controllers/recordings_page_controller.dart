@@ -19,6 +19,7 @@ class RecordingsPageController extends BadgeController {
   final List<Widget> recordingsList = [];
   final List<GroupModel> allGroups;
   final SettingsModel settings;
+  int corruptedRecordingsCount = 0;
 
   RecordingsPageController(
       this.context, this.refresh, this.allGroups, this.settings);

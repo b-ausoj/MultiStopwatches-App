@@ -147,5 +147,17 @@
   "ppChangesTitle": "Änderungen dieser Datenschutzerklärung",
   "ppChanges": "Wir können unsere Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir werden dich über Änderungen informieren, indem wir das Datum \"Letzte Aktualisierung\" auf dieser Seite aktualisieren. Es wird empfohlen, diese Datenschutzerklärung regelmäßig auf Änderungen zu überprüfen.",
   "ppContactTitle": "Kontakt",
-  "ppContact": "Wenn du Fragen zu dieser Datenschutzerklärung hast, kontaktiere uns bitte unter:"
+  "ppContact": "Wenn du Fragen zu dieser Datenschutzerklärung hast, kontaktiere uns bitte unter:",
+
+  "dataLoadErrorTitle": "Fehler beim Laden der Daten",
+  "dataLoadErrorMessage": "{count} Aufzeichnung(en) konnten aufgrund beschädigter Daten nicht geladen werden. Diese Aufzeichnungen wurden übersprungen und erscheinen nicht in deiner Liste.",
+  "@dataLoadErrorMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dataLoadErrorContactDev": "Falls dieses Problem weiterhin besteht, kontaktiere bitte den Entwickler:",
+  "emailCopied": "E-Mail in Zwischenablage kopiert"
 }
