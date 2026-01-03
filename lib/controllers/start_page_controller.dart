@@ -55,4 +55,9 @@ class StartController extends BadgeController {
     refreshScreen();
     refreshBadgeState();
   }
+
+  void dispose() {
+    timer.cancel();
+    appLifecycleListener.dispose();
+  }
 }

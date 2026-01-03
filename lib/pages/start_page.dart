@@ -35,6 +35,12 @@ class _StartPageState extends State<StartPage> {
   }
 
   @override
+  void dispose() {
+    _startController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
