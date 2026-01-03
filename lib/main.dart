@@ -16,6 +16,8 @@ void main() {
 // TODO: write tutorial page
 // TODO: add introduction screen
 
+// TODO: maybe could use AnimationWidgets and Listeners to optimize the live updates of the stopwatch time display
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
