@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:js_interop';
+import 'dart:typed_data';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:multistopwatches/enums/time_format.dart';
+import 'package:multistopwatches/models/lap_model.dart';
 import 'package:multistopwatches/models/recording_model.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/utils/snackbar_utils.dart';
@@ -80,67 +82,79 @@ Future<void> _shareOnMobile(
 
 Future<void> exportRecordingToCSV(RecordingModel recording,
     SettingsModel settings, BuildContext context) async {
-  String dateTime = dateTimeForExport(recording.startingTime);
-  String fileName =
+  final String dateTime = dateTimeForExport(recording.startingTime);
+  final String fileName =
       "Export_${dateTime}_${recording.name.replaceAll(" ", "")}.csv";
 
-  List<List<String>> data = [];
-  data.add(["", recording.fromGroup, dateTimeToString(recording.startingTime)]);
-  data.add(["", "", ""]);
-  data.addAll(recordingToList(recording, settings.timeFormat, context));
+  final List<List<String>> data = <List<String>>[
+    ["", recording.fromGroup, dateTimeToString(recording.startingTime)],
+    ["", "", ""],
+    ...recordingToList(recording, settings.timeFormat, context),
+  ];
 
-  String csvContent =
-      ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
-          .convert(data);
-
+  final String csvContent = _convertToCsv(data, settings);
   await saveAndShareCsv(csvContent, fileName, context);
 }
 
 Future<void> exportRecordingsGroupToCSV(List<RecordingCard> recordings,
     SettingsModel settings, BuildContext context) async {
-  String dateTime =
-      dateTimeForExport(recordings.first.recordingModel.startingTime);
-  String fileName =
-      "Export_${dateTime}_${recordings.first.recordingModel.fromGroup.replaceAll(" ", "")}.csv";
+  if (recordings.isEmpty) return;
 
-  List<List<String>> data = [];
-  data.add([
-    "",
-    recordings.first.recordingModel.fromGroup,
-    dateTimeToString(recordings.first.recordingModel.startingTime)
-  ]);
-  for (RecordingCard recording in recordings) {
+  final RecordingModel firstRecording = recordings.first.recordingModel;
+  final String dateTime = dateTimeForExport(firstRecording.startingTime);
+  final String fileName =
+      "Export_${dateTime}_${firstRecording.fromGroup.replaceAll(" ", "")}.csv";
+
+  final List<List<String>> data = <List<String>>[
+    [
+      "",
+      firstRecording.fromGroup,
+      dateTimeToString(firstRecording.startingTime)
+    ],
+  ];
+
+  for (final recording in recordings) {
     data.add(["", "", ""]);
     data.addAll(recordingToList(
         recording.recordingModel, settings.timeFormat, context));
   }
 
-  String csvContent =
-      ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
-          .convert(data);
-
+  final csvContent = _convertToCsv(data, settings);
   await saveAndShareCsv(csvContent, fileName, context);
+}
+
+String _convertToCsv(List<List<String>> data, SettingsModel settings) {
+  return ListToCsvConverter(fieldDelimiter: settings.csvDelimiter.delimiter)
+      .convert(data);
 }
 
 List<List<String>> recordingToList(
     RecordingModel recording, TimeFormat timeFormat, BuildContext context) {
-  List<List<String>> data = [];
-  data.add([
-    recording.name,
-    AppLocalizations.of(context)!.totalTime,
-    durationToStringExport(recording.totalTime, timeFormat)
-  ]);
-  data.add([
-    AppLocalizations.of(context)!.lapNo,
-    AppLocalizations.of(context)!.lapTime,
-    AppLocalizations.of(context)!.splitTime
-  ]);
-  for (int i = 0; i < recording.lapTimes.length; i++) {
+  final AppLocalizations localizations = AppLocalizations.of(context)!;
+
+  final List<List<String>> data = <List<String>>[
+    [
+      recording.name,
+      localizations.totalTime,
+      durationToStringExport(recording.totalTime, timeFormat),
+    ],
+    [
+      localizations.lapNo,
+      localizations.lapTime,
+      localizations.splitTime,
+    ],
+  ];
+
+  for (var i = 0; i < recording.lapTimes.length; i++) {
+    final LapModel lap = recording.lapTimes[i];
+    final LapModel split = recording.splitTimes[i];
+
     data.add([
-      (i + 1).toString(),
-      durationToStringExport(recording.lapTimes[i].lapTime, timeFormat),
-      durationToStringExport(recording.splitTimes[i].lapTime, timeFormat)
+      lap.id.toString(),
+      durationToStringExport(lap.lapTime, timeFormat),
+      durationToStringExport(split.lapTime, timeFormat),
     ]);
   }
+
   return data;
 }
