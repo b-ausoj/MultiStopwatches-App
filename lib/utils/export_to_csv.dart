@@ -60,7 +60,7 @@ Future<void> exportRecordingToCSV(RecordingModel recording,
   await saveAndShareCsv(csvContent, fileName, context);
 }
 
-Future<void> exportRecordingsSetToCSV(List<RecordingCard> recordings,
+Future<void> exportRecordingsGroupToCSV(List<RecordingCard> recordings,
     SettingsModel settings, BuildContext context) async {
   String dateTime =
       dateTimeForExport(recordings.first.recordingModel.startingTime);

@@ -48,10 +48,10 @@ class RecordingsPageController extends BadgeController {
                 onSelected: (RecordingsGroupMenuItem item) {
               switch (item) {
                 case RecordingsGroupMenuItem.deleteAll:
-                  deleteRecordingsSet(timeStamp, context);
+                  deleteRecordingsGroup(timeStamp, context);
                   break;
                 case RecordingsGroupMenuItem.exportAll:
-                  exportRecordingsSetToCSV(
+                  exportRecordingsGroupToCSV(
                       recordingCards
                           .where((element) =>
                               element.recordingModel.startingTime == timeStamp)
@@ -88,10 +88,10 @@ class RecordingsPageController extends BadgeController {
               onSelected: (RecordingsGroupMenuItem item) {
             switch (item) {
               case RecordingsGroupMenuItem.deleteAll:
-                deleteRecordingsSet(last, context);
+                deleteRecordingsGroup(last, context);
                 break;
               case RecordingsGroupMenuItem.exportAll:
-                exportRecordingsSetToCSV(
+                exportRecordingsGroupToCSV(
                     recordingCards
                         .where((element) =>
                             element.recordingModel.startingTime == last)
@@ -156,7 +156,7 @@ class RecordingsPageController extends BadgeController {
     }
   }
 
-  void deleteRecordingsSet(DateTime timestamp, BuildContext context) {
+  void deleteRecordingsGroup(DateTime timestamp, BuildContext context) {
     List<RecordingCard> deletedCards = [];
     recordingCards.removeWhere((element) {
       bool remove = element.recordingModel.startingTime == timestamp;
