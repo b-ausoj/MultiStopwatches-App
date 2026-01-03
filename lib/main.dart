@@ -16,7 +16,10 @@ void main() {
 // TODO: write tutorial page
 // TODO: add introduction screen
 
+// TODO: add info popup dialog on how to add the app to homescreen (PWA)
 // TODO: maybe could use AnimationWidgets and Listeners to optimize the live updates of the stopwatch time display
+// TODO: Add error message also with corrupted groups and stopwatches
+// TODO: error handling for exporting to CSV necessary?
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
