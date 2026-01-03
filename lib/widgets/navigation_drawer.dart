@@ -91,9 +91,8 @@ class _NavDrawerState extends State<NavDrawer> {
         case 0:
           // add group
           Navigator.pop(context);
-          GroupModel newGroup = GroupModel(
+          GroupModel newGroup = GroupModel.create(
               AppLocalizations.of(context)!.group(widget.allGroups.length + 1),
-              0,
               widget.settings.defaultSortCriterion,
               widget.settings.defaultSortDirection, []);
           widget.allGroups.add(newGroup);

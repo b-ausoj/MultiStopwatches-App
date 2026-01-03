@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:multistopwatches/models/lap_model.dart';
+import 'package:uuid/uuid.dart';
 
 class StopwatchModel {
-  static int nextId = 1;
-  final int id;
+  static const _uuid = Uuid();
+  final String id;
 
   String name;
 
@@ -29,6 +30,14 @@ class StopwatchModel {
       Duration savedLapTime = Duration.zero})
       : _savedLapTime = savedLapTime,
         _savedTime = savedTime;
+
+  factory StopwatchModel.create(String name,
+      {StopwatchState state = StopwatchState.reset,
+      Duration savedTime = Duration.zero,
+      Duration savedLapTime = Duration.zero}) {
+    return StopwatchModel(name, _uuid.v7(),
+        state: state, savedTime: savedTime, savedLapTime: savedLapTime);
+  }
 
   factory StopwatchModel.fromJson(Map<String, dynamic> json) {
     StopwatchModel model = StopwatchModel(

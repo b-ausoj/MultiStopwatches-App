@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:multistopwatches/enums/sort_criterion.dart';
 import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/models/stopwatch_model.dart';
+import 'package:uuid/uuid.dart';
 
 // idea is, that this is the model that can be saved and loaded from the shared preferences
 // it contains the group of the stopwatches (previously screen)
@@ -11,8 +12,8 @@ import 'package:multistopwatches/models/stopwatch_model.dart';
 // the controller only has the cards and the model
 // every screen has an unique id and criterion and direction
 class GroupModel {
-  static int nextId = 1;
-  final int id; // not needed
+  static const _uuid = Uuid();
+  final String id;
 
   String name;
 
@@ -24,7 +25,11 @@ class GroupModel {
   GroupModel(
       this.name, this.id, this.criterion, this.direction, this.stopwatches);
 
-  // TODO: Should write tests for that
+  factory GroupModel.create(String name, SortCriterion criterion,
+      SortDirection direction, List<StopwatchModel> stopwatches) {
+    return GroupModel(name, _uuid.v7(), criterion, direction, stopwatches);
+  }
+
   factory GroupModel.fromJson(Map<String, dynamic> json) {
     List<StopwatchModel> stopwatches = [];
     for (var stopwatchJson in jsonDecode(json["stopwatches"])) {

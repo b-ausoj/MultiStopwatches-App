@@ -28,7 +28,7 @@ class StopwatchesPageController extends BadgeController {
       _stopwatchCards.add(StopwatchCard(
         element,
         changedState,
-        key: ValueKey<int>(element.id),
+        key: ValueKey<String>(element.id),
         stopwatchesPageController: this,
       ));
     }
@@ -42,13 +42,10 @@ class StopwatchesPageController extends BadgeController {
   List<StopwatchCard> get stopwatchCards => _stopwatchCards;
 
   Future<void> addStopwatch(BuildContext context) async {
-    int id = StopwatchModel.nextId++;
-
-    StopwatchModel model = StopwatchModel(
-        AppLocalizations.of(context)!.athleteNumber(_stopwatchCards.length + 1),
-        id);
+    StopwatchModel model = StopwatchModel.create(
+        AppLocalizations.of(context)!.athleteNumber(_stopwatchCards.length + 1));
     _stopwatchCards.add(StopwatchCard(model, changedState,
-        key: ValueKey<int>(id), stopwatchesPageController: this));
+        key: ValueKey<String>(model.id), stopwatchesPageController: this));
     groupModel.stopwatches.add(model);
     changedState();
   }
@@ -86,7 +83,7 @@ class StopwatchesPageController extends BadgeController {
             }));
   }
 
-  void deleteStopwatch(int id, String name, BuildContext context) {
+  void deleteStopwatch(String id, String name, BuildContext context) {
     int index = _stopwatchCards.indexWhere((element) =>
         element.stopwatchModel.id == id &&
         element.stopwatchModel.state != StopwatchState.running);

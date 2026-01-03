@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:multistopwatches/models/lap_model.dart';
+import 'package:uuid/uuid.dart';
 
 class RecordingModel {
   // fields
-  static int nextId = 1;
-  final int id;
+  static const _uuid = Uuid();
+  final String id;
 
   String name;
   DateTime startingTime;
@@ -16,9 +17,14 @@ class RecordingModel {
   List<LapModel> lapTimes = [];
   List<LapModel> splitTimes = [];
 
-  // constructor
   RecordingModel(this.id, this.name, this.startingTime, this.viewed,
       this.fromGroup, this.totalTime);
+
+  factory RecordingModel.create(String name, DateTime startingTime, bool viewed,
+      String fromGroup, Duration totalTime) {
+    return RecordingModel(
+        _uuid.v7(), name, startingTime, viewed, fromGroup, totalTime);
+  }
 
   factory RecordingModel.fromJson(Map<String, dynamic> json) {
     RecordingModel model = RecordingModel(

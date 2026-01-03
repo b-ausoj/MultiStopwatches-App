@@ -22,10 +22,9 @@ class AddGroupCard extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(12.0),
         onTap: () {
-          GroupModel newGroup = GroupModel(
+          GroupModel newGroup = GroupModel.create(
               AppLocalizations.of(context)!
                   .group(startController.allGroups.length + 1),
-              0,
               startController.settings.defaultSortCriterion,
               startController.settings.defaultSortDirection,
               []);

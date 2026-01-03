@@ -17,8 +17,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 // and loades all the data i.e. the groups with their stopwatches
 Future<void> _loadData(List<GroupModel> groups, String key) async {
   final prefs = await SharedPreferences.getInstance();
-  // loades the next stopwatch id (so it is unique)
-  StopwatchModel.nextId = prefs.getInt("nextStopwatchId") ?? 1;
   // loades the groups with their stopwatchs
   List<String> jsons = prefs.getStringList(key) ?? [];
   for (String json in jsons) {
@@ -64,7 +62,7 @@ Future<void> loadRecordings(
       model,
       recordingsPageController.deleteRecoding,
       recordingsPageController.settings,
-      key: ValueKey<int>(model.id),
+      key: ValueKey<String>(model.id),
     ));
   }
   recordingsPageController.recordingCards.sort(
@@ -97,9 +95,7 @@ Future<void> resetSharedPreferences() async {
 Future<void> saveStopwatch(
     StopwatchModel stopwatchModel, String groupName) async {
   final prefs = await SharedPreferences.getInstance();
-  RecordingModel.nextId = prefs.getInt("nextRecordingId") ?? 1;
-  RecordingModel model = RecordingModel(
-      RecordingModel.nextId++,
+  RecordingModel model = RecordingModel.create(
       stopwatchModel.name,
       stopwatchModel.startTimestamp,
       false,
@@ -115,16 +111,13 @@ Future<void> saveStopwatch(
   List<String> recordings = prefs.getStringList("recordings") ?? [];
   recordings.add(jsonEncode(model));
   prefs.setStringList("recordings", recordings);
-  prefs.setInt("nextRecordingId", RecordingModel.nextId);
   stopwatchModel.reset();
 }
 
-// This function stores the data i.e. next stopwatch id and all the groups
+// This function stores the data i.e. all the groups
 // with their stopwatchs into shared preferences, can get executed periodically
 Future<void> storeData(List<GroupModel> groups, String key) async {
   final prefs = await SharedPreferences.getInstance();
-  // stores the next stopwatch id (so it is unique)
-  prefs.setInt("nextStopwatchId", StopwatchModel.nextId);
   // stores the groups with their stopwatchs
   List<String> jsons = [];
   for (GroupModel groupModel in groups) {

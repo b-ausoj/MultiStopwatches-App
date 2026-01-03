@@ -133,7 +133,7 @@ class RecordingsPageController extends BadgeController {
             }));
   }
 
-  Future<void> deleteRecoding(int id, String name) async {
+  Future<void> deleteRecoding(String id, String name) async {
     RecordingCard? deletedCard;
     recordingCards.removeWhere((element) {
       bool remove = element.recordingModel.id == id;
