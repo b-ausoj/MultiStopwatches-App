@@ -284,9 +284,7 @@ class _StopwatchCardState extends State<StopwatchCard>
   void initState() {
     super.initState();
     _ticker = createTicker((elapsed) {
-      if (_stopwatchModel.isRunning) {
-        setState(() {});
-      }
+      setState(() {});
     });
     _ticker.start();
   }
