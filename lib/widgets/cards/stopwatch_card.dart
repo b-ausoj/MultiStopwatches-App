@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:multistopwatches/controllers/stopwatches_page_controller.dart';
 import 'package:multistopwatches/enums/stopwatch_card_menu_item.dart';
@@ -24,8 +25,10 @@ class StopwatchCard extends StatefulWidget {
   State createState() => _StopwatchCardState();
 }
 
-class _StopwatchCardState extends State<StopwatchCard> {
+class _StopwatchCardState extends State<StopwatchCard>
+    with SingleTickerProviderStateMixin {
   late final StopwatchModel _stopwatchModel = widget.stopwatchModel;
+  late final Ticker _ticker;
   bool showAllLaps = false;
 
   @override
@@ -271,7 +274,25 @@ class _StopwatchCardState extends State<StopwatchCard> {
     );
   }
 
+  @override
+  void dispose() {
+    _ticker.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _ticker = createTicker((elapsed) {
+      if (_stopwatchModel.isRunning) {
+        setState(() {});
+      }
+    });
+    _ticker.start();
+  }
+
   Future<String?> _showRenameDialog() async {
+    // TODO: check if this makes sense
     // Get list of all stopwatch names in this group except current one
     final existingNames = widget
         .stopwatchesPageController.groupModel.stopwatches
