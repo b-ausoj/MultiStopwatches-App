@@ -34,11 +34,7 @@ class StopwatchModel {
     StopwatchModel model = StopwatchModel(
       json["name"],
       json["id"],
-      state: json["state"] == "${StopwatchState.running}"
-          ? StopwatchState.running
-          : json["state"] == "${StopwatchState.reset}"
-              ? StopwatchState.reset
-              : StopwatchState.stopped,
+      state: _parseState(json["state"]),
       savedTime: Duration(milliseconds: json["savedTime"]),
       savedLapTime: Duration(milliseconds: json["savedLapTime"]),
     );
@@ -97,11 +93,7 @@ class StopwatchModel {
           "Restore without reset"); // only call restore form snackbar when shortly before reset was called
     }
     name = json["name"];
-    state = json["state"] == "${StopwatchState.running}"
-        ? StopwatchState.running
-        : json["state"] == "${StopwatchState.reset}"
-            ? StopwatchState.reset
-            : StopwatchState.stopped;
+    state = _parseState(json["state"]);
     _savedTime = Duration(milliseconds: json["savedTime"]);
     _savedLapTime = Duration(milliseconds: json["savedLapTime"]);
     _startTimestamp =
@@ -165,6 +157,18 @@ class StopwatchModel {
       json["${lap.id}"] = lap.lapTime.inMilliseconds;
     }
     return json;
+  }
+
+  static StopwatchState _parseState(String stateString) {
+    if (stateString == StopwatchState.running.toString()) {
+      return StopwatchState.running;
+    } else if (stateString == StopwatchState.reset.toString()) {
+      return StopwatchState.reset;
+    } else if (stateString == StopwatchState.stopped.toString()) {
+      return StopwatchState.stopped;
+    } else {
+      throw Exception("Invalid StopwatchState string: $stateString");
+    }
   }
 }
 
