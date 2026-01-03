@@ -194,6 +194,13 @@ class RecordingsPageController extends BadgeController {
       card.recordingModel.viewed = true;
     }
 
+    // Must rebuild the list to update badge visibility
+    // Alternative approaches would require:
+    // - ValueNotifier/ChangeNotifier on RecordingModel
+    // - Provider/Riverpod state management
+    // - Bloc pattern
+    // Current approach is simplest for this app size
+    createRecordingList();
     storeRecordingsState(this);
     refresh();
   }
