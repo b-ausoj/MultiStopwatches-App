@@ -11,7 +11,8 @@ import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class RecordingCard extends StatefulWidget {
   final RecordingModel recordingModel;
-  final void Function(String id, String name) deleteRecording;
+  final void Function(String id, String name, BuildContext context)
+      deleteRecording;
   final SettingsModel settings;
 
   const RecordingCard(this.recordingModel, this.deleteRecording, this.settings,
@@ -66,7 +67,7 @@ class _RecordingCardState extends State<RecordingCard> {
                         break;
                       case RecordingCardMenuItem.delete:
                         widget.deleteRecording(
-                            _recordingModel.id, _recordingModel.name);
+                            _recordingModel.id, _recordingModel.name, context);
                         break;
                     }
                   },

@@ -28,7 +28,7 @@ class _RecordingsPageState extends State<RecordingsPage>
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.recordings),
         leading: BackIcon(recordingsPageController.badgeVisible),
-          /* Removed because confusing for my dad
+        /* Removed because confusing for my dad
           actions: [
             RecordingsPagePopupMenuButton(
                 onSelected: (RecordingsPageMenuItem item) {
@@ -59,8 +59,14 @@ class _RecordingsPageState extends State<RecordingsPage>
   void initState() {
     super.initState();
     recordingsPageController = RecordingsPageController(
-        context, () => setState(() {}), widget.allGroups, widget.settings);
+        () => setState(() {}), widget.allGroups, widget.settings);
+
     loadRecordings(recordingsPageController).then((value) {
+      if (!mounted) return;
+
+      recordingsPageController.createRecordingList(context);
+      recordingsPageController.refresh();
+
       // Show error dialog if there were corrupted recordings
       if (recordingsPageController.corruptedRecordingsCount > 0) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -78,7 +84,9 @@ class _RecordingsPageState extends State<RecordingsPage>
         });
       }
     });
-    recordingsPageController.refreshBadgeState();
-    setState(() {});
+
+    setState(() {
+      recordingsPageController.refreshBadgeState();
+    });
   }
 }

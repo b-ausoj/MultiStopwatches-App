@@ -57,10 +57,8 @@ Future<void> storeSettings(SettingsModel settings) async {
 }
 
 // This function gets executed everytime a user opens the recordings page
-// and loades all the recordings and then calls the function so it creates
-// the set of cards to be displayed
-Future<void> loadRecordings(
-    RecordingsPageController recordingsPageController) async {
+// and loades all the recordings
+Future<void> loadRecordings(RecordingsPageController recordingsPageController) async {
   final prefs = await SharedPreferences.getInstance();
   List<String> recordings = prefs.getStringList("recordings") ?? [];
   List<String> corruptedRecordings = [];
@@ -70,7 +68,7 @@ Future<void> loadRecordings(
       RecordingModel model = RecordingModel.fromJson(jsonDecode(entry));
       recordingsPageController.recordingCards.add(RecordingCard(
         model,
-        recordingsPageController.deleteRecoding,
+        recordingsPageController.deleteRecording,
         recordingsPageController.settings,
         key: ValueKey<String>(model.id),
       ));
@@ -90,8 +88,6 @@ Future<void> loadRecordings(
     (a, b) =>
         -a.recordingModel.startingTime.compareTo(b.recordingModel.startingTime),
   );
-  recordingsPageController.createRecordingList();
-  recordingsPageController.refresh();
 }
 
 // Only for debugging

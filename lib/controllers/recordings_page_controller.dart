@@ -13,7 +13,6 @@ import 'package:multistopwatches/widgets/text_with_badge/recordings_group_text_w
 import 'package:multistopwatches/l10n/app_localizations.dart';
 
 class RecordingsPageController extends BadgeController {
-  BuildContext context;
   void Function() refresh;
   final List<RecordingCard> recordingCards = [];
   final List<Widget> recordingsList = [];
@@ -21,10 +20,9 @@ class RecordingsPageController extends BadgeController {
   final SettingsModel settings;
   int corruptedRecordingsCount = 0;
 
-  RecordingsPageController(
-      this.context, this.refresh, this.allGroups, this.settings);
+  RecordingsPageController(this.refresh, this.allGroups, this.settings);
 
-  void createRecordingList() {
+  void createRecordingList(BuildContext context) {
     recordingsList.clear();
     if (recordingCards.isEmpty) return;
 
@@ -42,7 +40,7 @@ class RecordingsPageController extends BadgeController {
           child: ExpansionTile(
             onExpansionChanged: (value) {
               if (!value) return; // only change if opens and not on close
-              setViewedToTrue(timeStamp);
+              setViewedToTrue(timeStamp, context);
             },
             shape: const Border(),
             controlAffinity: ListTileControlAffinity.leading,
@@ -50,7 +48,7 @@ class RecordingsPageController extends BadgeController {
                 onSelected: (RecordingsGroupMenuItem item) {
               switch (item) {
                 case RecordingsGroupMenuItem.deleteAll:
-                  deleteRecordingsSet(timeStamp);
+                  deleteRecordingsSet(timeStamp, context);
                   break;
                 case RecordingsGroupMenuItem.exportAll:
                   exportRecordingsSetToCSV(
@@ -82,7 +80,7 @@ class RecordingsPageController extends BadgeController {
         child: ExpansionTile(
           onExpansionChanged: (value) {
             if (!value) return; // only change if opens and not on close
-            setViewedToTrue(last);
+            setViewedToTrue(last, context);
           },
           shape: const Border(),
           controlAffinity: ListTileControlAffinity.leading,
@@ -90,7 +88,7 @@ class RecordingsPageController extends BadgeController {
               onSelected: (RecordingsGroupMenuItem item) {
             switch (item) {
               case RecordingsGroupMenuItem.deleteAll:
-                deleteRecordingsSet(last);
+                deleteRecordingsSet(last, context);
                 break;
               case RecordingsGroupMenuItem.exportAll:
                 exportRecordingsSetToCSV(
@@ -115,11 +113,11 @@ class RecordingsPageController extends BadgeController {
     }
   }
 
-  void deleteAllRecordings() {
+  void deleteAllRecordings(BuildContext context) {
     List<RecordingCard> deletedCards = [];
     deletedCards.addAll(recordingCards);
     recordingCards.clear();
-    createRecordingList();
+    createRecordingList(context);
     storeRecordingsState(this);
     refresh();
     showLongSnackBar(
@@ -128,20 +126,21 @@ class RecordingsPageController extends BadgeController {
             label: AppLocalizations.of(context)!.undo,
             onPressed: () {
               recordingCards.addAll(deletedCards);
-              createRecordingList();
+              createRecordingList(context);
               storeRecordingsState(this);
               refresh();
             }));
   }
 
-  Future<void> deleteRecoding(String id, String name) async {
+  Future<void> deleteRecording(
+      String id, String name, BuildContext context) async {
     RecordingCard? deletedCard;
     recordingCards.removeWhere((element) {
       bool remove = element.recordingModel.id == id;
       if (remove) deletedCard = element;
       return remove;
     });
-    createRecordingList();
+    createRecordingList(context);
     storeRecordingsState(this);
     refresh();
     if (deletedCard != null) {
@@ -150,21 +149,21 @@ class RecordingsPageController extends BadgeController {
               label: AppLocalizations.of(context)!.undo,
               onPressed: () {
                 recordingCards.add(deletedCard!);
-                createRecordingList();
+                createRecordingList(context);
                 storeRecordingsState(this);
                 refresh();
               }));
     }
   }
 
-  void deleteRecordingsSet(DateTime timestamp) {
+  void deleteRecordingsSet(DateTime timestamp, BuildContext context) {
     List<RecordingCard> deletedCards = [];
     recordingCards.removeWhere((element) {
       bool remove = element.recordingModel.startingTime == timestamp;
       if (remove) deletedCards.add(element);
       return remove;
     });
-    createRecordingList();
+    createRecordingList(context);
     storeRecordingsState(this);
     refresh();
     showLongSnackBar(context, AppLocalizations.of(context)!.recordingsDeleted,
@@ -172,7 +171,7 @@ class RecordingsPageController extends BadgeController {
             label: AppLocalizations.of(context)!.undo,
             onPressed: () {
               recordingCards.addAll(deletedCards);
-              createRecordingList();
+              createRecordingList(context);
               storeRecordingsState(this);
               refresh();
             }));
@@ -183,7 +182,7 @@ class RecordingsPageController extends BadgeController {
     badgeVisible = isBackBadgeRequired(allGroups);
   }
 
-  void setViewedToTrue(DateTime timestamp) {
+  void setViewedToTrue(DateTime timestamp, BuildContext context) {
     final matchingCards = recordingCards.where((card) =>
         card.recordingModel.startingTime == timestamp &&
         !card.recordingModel.viewed);
@@ -194,13 +193,7 @@ class RecordingsPageController extends BadgeController {
       card.recordingModel.viewed = true;
     }
 
-    // Must rebuild the list to update badge visibility
-    // Alternative approaches would require:
-    // - ValueNotifier/ChangeNotifier on RecordingModel
-    // - Provider/Riverpod state management
-    // - Bloc pattern
-    // Current approach is simplest for this app size
-    createRecordingList();
+    createRecordingList(context);
     storeRecordingsState(this);
     refresh();
   }
