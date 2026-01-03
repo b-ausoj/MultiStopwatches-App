@@ -195,5 +195,6 @@ class RecordingsPageController extends BadgeController {
     }
 
     storeRecordingsState(this);
+    refresh();
   }
 }
