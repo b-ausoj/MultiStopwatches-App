@@ -7,6 +7,7 @@ import 'package:multistopwatches/enums/sort_direction.dart';
 import 'package:multistopwatches/enums/stopwatches_page_menu_item.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
+import 'package:multistopwatches/models/stopwatch_model.dart';
 import 'package:multistopwatches/widgets/cards/add_stopwatch_card.dart';
 import 'package:multistopwatches/widgets/dialogs/delete_group_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
@@ -122,13 +123,20 @@ class _StopwatchesPageState extends State<StopwatchesPage>
     _stopwatchesPageController = StopwatchesPageController(widget.allGroups,
         _groupModel, widget.settings, widget.sharedPreferencesKey);
     _ticker = createTicker((elapsed) {
-      setState(() {});
-      if (!widget.settings.separateRunningStopped) {
-        _stopwatchesPageController.changedState(saveImmediately: false);
+      if (_hasRunningStopwatches()) {
+        setState(() {});
+        if (!widget.settings.separateRunningStopped) {
+          _stopwatchesPageController.changedState(saveImmediately: false);
+        }
       }
     });
     _ticker.start();
     _stopwatchesPageController.refreshBadgeState();
+  }
+
+  bool _hasRunningStopwatches() {
+    return _stopwatchesPageController.stopwatchCards
+        .any((card) => card.stopwatchModel.state == StopwatchState.running);
   }
 
   Future<void> _showDeleteGroupDialog() async {
