@@ -55,6 +55,21 @@
 
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter_bootstrap.js" async></script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    window.addEventListener('load', function () {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=1')
+          .then(function (registration) {
+            console.log('Service Worker registered successfully:', registration.scope);
+          })
+          .catch(function (error) {
+            console.log('Service Worker registration failed:', error);
+          });
+      }
+    });
+  </script>
 </head>
 
 <body>
