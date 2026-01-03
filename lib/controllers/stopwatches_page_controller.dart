@@ -161,7 +161,7 @@ class StopwatchesPageController extends BadgeController {
       _stopwatchCards.add(StopwatchCard(
         stopwatch,
         changedState,
-        key: ValueKey<int>(json["id"]),
+        key: ValueKey<String>(json["id"]),
         stopwatchesPageController: this,
       ));
       groupModel.stopwatches.add(stopwatch);
