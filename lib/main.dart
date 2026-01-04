@@ -17,8 +17,6 @@ void main() {
 // TODO: write tutorial page => done with info cards on start page
 // TODO: add introduction screen => done with info cards on start page
 
-// TODO: SEO also in german
-
 // TODO: add info popup dialog on how to add the app to homescreen (PWA)
 // TODO: maybe could use AnimationWidgets and Listeners to optimize the live updates of the stopwatch time display
 // TODO: Add error message also with corrupted groups and stopwatches
