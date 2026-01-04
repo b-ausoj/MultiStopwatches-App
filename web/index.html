@@ -46,6 +46,10 @@
     content="Run unlimited stopwatches simultaneously with lap tracking, history saving, and CSV export. Perfect for productivity, sports, and time management. Free and works offline.">
   <meta property="twitter:image" content="https://multistopwatches.app/icons/Icon-512.png">
 
+  <!-- Preload critical resources -->
+  <link rel="preload" href="flutter_bootstrap.js" as="script">
+  <link rel="preload" href="main.dart.js" as="script">
+
   <!-- Load Roboto font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,8 +149,38 @@
       opacity: 0.6;
     }
 
+    .dots::after {
+      content: '';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dots {
+
+      0%,
+      25% {
+        content: '';
+      }
+
+      26%,
+      50% {
+        content: '.';
+      }
+
+      51%,
+      75% {
+        content: '..';
+      }
+
+      76%,
+      100% {
+        content: '...';
+      }
     }
   </style>
 
@@ -183,7 +217,7 @@
   <!-- Loading indicator -->
   <div id="loading">
     <div class="spinner"></div>
-    <div class="loading-text">Loading MultiStopwatches...</div>
+    <div class="loading-text">Loading MultiStopwatches App<span class="dots"></span></div>
   </div>
 
   <!-- Hidden SEO Content for Search Engines - Not visible to users -->
@@ -218,7 +252,8 @@
       <li><strong>Rename & Customize:</strong> Give custom names to your stopwatches and groups for easy identification.
       </li>
       <li><strong>Sorting Options:</strong> Sort your stopwatches by various criteria for better organization.</li>
-      <li><strong>Cross-Platform:</strong> Works on desktop, tablet, and mobile devices including iPhone, Android, and Samsung - any platform with a web browser.</li>
+      <li><strong>Cross-Platform:</strong> Works on desktop, tablet, and mobile devices including iPhone, Android, and
+        Samsung - any platform with a web browser.</li>
     </ul>
 
     <h3>Use Cases:</h3>
