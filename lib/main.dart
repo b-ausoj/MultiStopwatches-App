@@ -14,13 +14,25 @@ void main() {
 }
 
 // TODO: add donation link
-// TODO: write help page
-// TODO: write tutorial page
-// TODO: add introduction screen
+// TODO: write help page => collection of info cards and some FAQ => add separate page for it
+// TODO: write tutorial page => done with info cards on start page
+// TODO: add introduction screen => done with info cards on start page
+
+// TODO: SEO also in german
 
 // TODO: add info popup dialog on how to add the app to homescreen (PWA)
 // TODO: maybe could use AnimationWidgets and Listeners to optimize the live updates of the stopwatch time display
 // TODO: Add error message also with corrupted groups and stopwatches
+// TODO: let user select font size for stopwatch display (i.e. total time and lap times (easiest: both coupled together)) via a slider in settings
+
+// TODO: Advanced feature: add keyboard shortcuts for web on desktop to control the stopwatches start/lap/stop
+// TODO: let user decide which keys to use for the shortcuts, but easiest would be space for start all, and a single key for a stopwatch start/lap (user has to define it) and shift + that key for stop
+
+// TODO: add tests for all the data persistence so when I change something at the data models, I can be sure that it is backward compatible
+// TODO: add tests for shared preferences service (maybe is same as above?)
+
+// TODO: add these improvements/features/suggestions to the readme
+// TODO: add changelog to the readme with each release (version number, date, changes made)
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

@@ -44,6 +44,17 @@ Once installed, the app works offline and launches like a native application.
 
 All data is stored locally in your browser using localStorage. No data is sent to any server, and your recordings remain completely private on your device.
 
+## Planned Features
+
+The following enhancements are planned for future releases:
+
+- [ ] **Font Size Customization**: Adjustable font sizes for stopwatch display via settings slider
+- [ ] **Keyboard Shortcuts**: Advanced feature for web/desktop users to control stopwatches with customizable keyboard shortcuts (space for start all, custom keys for individual stopwatch control)
+- [ ] **Help Center**: Comprehensive help page with FAQ and information cards
+- [ ] **Performance Optimizations**: Enhanced live update rendering using AnimationWidgets and Listeners
+- [ ] **Donation Support**: Add a way for users to support the project
+- [ ] **German SEO**: Localized search engine optimization for German-speaking users
+
 ## Technology
 
 Built with Flutter for web deployment. Hosted on Vercel.
