@@ -63,11 +63,13 @@ class _HelpPageState extends State<HelpPage> with RouteAware {
   Widget _buildSectionHeader(String text) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+      child: Center(
+        child: Text(
+          text,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+        ),
       ),
     );
   }
