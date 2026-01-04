@@ -24,6 +24,7 @@ void main() {
 // TODO: maybe could use AnimationWidgets and Listeners to optimize the live updates of the stopwatch time display
 // TODO: Add error message also with corrupted groups and stopwatches
 // TODO: let user select font size for stopwatch display (i.e. total time and lap times (easiest: both coupled together)) via a slider in settings
+// TODO: let user rename recording groups (which would also name the exported files accordingly))
 
 // TODO: Advanced feature: add keyboard shortcuts for web on desktop to control the stopwatches start/lap/stop
 // TODO: let user decide which keys to use for the shortcuts, but easiest would be space for start all, and a single key for a stopwatch start/lap (user has to define it) and shift + that key for stop
