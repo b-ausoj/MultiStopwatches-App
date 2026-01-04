@@ -2,19 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:multistopwatches/controllers/start_page_controller.dart';
-import 'package:multistopwatches/enums/start_page_card_menu_item.dart';
 import 'package:multistopwatches/models/group_model.dart';
-import 'package:multistopwatches/pages/stopwatches_page.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/cards/add_group_card.dart';
+import 'package:multistopwatches/widgets/cards/group_card.dart';
 import 'package:multistopwatches/widgets/cards/info_card.dart';
-import 'package:multistopwatches/widgets/dialogs/delete_group_dialog.dart';
-import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
-import 'package:multistopwatches/widgets/popup_menu_buttons/start_page_popup_menu_button.dart';
-import 'package:multistopwatches/widgets/text_with_badge/start_text_with_badge.dart';
 import 'package:multistopwatches/l10n/app_localizations.dart';
 import 'package:multistopwatches/main.dart' as main;
 
@@ -99,39 +94,12 @@ class _StartPageState extends State<StartPage> with RouteAware {
                     InfoCard(
                       message: AppLocalizations.of(context)!.noGroupsHint,
                     ),
-                  ..._startController.allGroups.map((GroupModel group) => Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 0,
-                        child: ListTile(
-                          contentPadding:
-                              const EdgeInsets.only(left: 16.0, right: 8.0),
-                          leading: const Icon(Icons.timer_outlined),
-                          title: Center(
-                              child: StartTextWithBadge(_startController,
-                                  _startController.allGroups.indexOf(group))),
-                          trailing: StartPagePopupMenuButton(
-                              onSelected: (StartPageCardMenuItem item) {
-                            switch (item) {
-                              case StartPageCardMenuItem.rename:
-                                _showRenameDialog(group);
-                                break;
-                              case StartPageCardMenuItem.delete:
-                                _showDeleteGroupDialog(group);
-                                break;
-                            }
-                          }),
-                          onTap: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(
-                                    builder: (context) => StopwatchesPage(
-                                        group,
-                                        _startController.allGroups,
-                                        _startController.settings,
-                                        _startController.sharedPreferencesKey)))
-                                .then((value) => _loadBadgeState());
-                          },
-                        ),
-                      )),
+                  ..._startController.allGroups
+                      .map((GroupModel group) => GroupCard(
+                            group: group,
+                            startController: _startController,
+                            onStateChanged: _loadBadgeState,
+                          )),
                   AddGroupCard(
                     startController: _startController,
                     onGroupAdded: () => setState(() {}),
@@ -142,40 +110,6 @@ class _StartPageState extends State<StartPage> with RouteAware {
           ],
         ),
       ),
-    );
-  }
-
-  Future<void> _showDeleteGroupDialog(GroupModel groupModel) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context) {
-        return DeleteGroupDialog(
-          groupModel.name,
-          onAccept: () {
-            _startController.removeGroup(groupModel);
-            _loadBadgeState();
-          },
-        );
-      },
-    );
-  }
-
-  Future<String?> _showRenameDialog(GroupModel groupModel) async {
-    return showDialog<String>(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context) {
-        return RenameDialog(
-          initialName: groupModel.name,
-          title: AppLocalizations.of(context)!.renameGroup,
-          existingNames: const [],
-          onAccept: (String newName) {
-            groupModel.name = newName;
-            setState(() {});
-          },
-        );
-      },
     );
   }
 }
