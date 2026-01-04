@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multistopwatches/config/app_themes.dart';
 import 'package:multistopwatches/pages/pp_page.dart';
 import 'package:multistopwatches/pages/tnc_page.dart';
 import 'package:multistopwatches/services/launch_url_service.dart';
@@ -115,8 +114,7 @@ class _AboutPageState extends State<AboutPage> with RouteAware {
                 label: Text(AppLocalizations.of(context)!.contactMe),
                 style: TextButton.styleFrom(
                     foregroundColor: Theme.of(context).colorScheme.primary,
-                    backgroundColor: AppColors.disabledButtonBg(
-                        Theme.of(context).brightness == Brightness.dark),
+                    backgroundColor: Theme.of(context).cardTheme.color,
                     padding: const EdgeInsets.symmetric(horizontal: 16.0))),
             // const SizedBox(height: 16.0),
             // TextButton.icon(
