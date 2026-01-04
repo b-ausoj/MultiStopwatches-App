@@ -6,7 +6,7 @@
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#000000",
-    "description": "Multiple stopwatches app - Run and track multiple timers simultaneously with history saving.",
+    "description": "Run unlimited stopwatches simultaneously with lap tracking, history saving, CSV export, and group organization. Perfect for productivity, sports, cooking, and time management. Free and works offline as a PWA.",
     "orientation": "any",
     "prefer_related_applications": false,
     "categories": ["utilities", "productivity"],
