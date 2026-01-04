@@ -476,5 +476,5 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noGroupsHint =>
-      'To get started, please add a group. You can then create stopwatches within that group.';
+      'Stopwatches are organized in groups. To get started, please add a group. You can then create and start/stop stopwatches within that group.';
 }

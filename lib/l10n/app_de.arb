@@ -167,5 +167,5 @@
   "exportFailedEncoding": "Export fehlgeschlagen. Daten konnten nicht kodiert werden.",
   "exportCancelled": "Export wurde abgebrochen.",
 
-  "noGroupsHint": "Um zu beginnen, füge bitte eine Gruppe hinzu. Danach kannst du Stoppuhren innerhalb dieser Gruppe erstellen."
+  "noGroupsHint": "Stoppuhren werden in Gruppen organisiert. Um zu beginnen, füge bitte eine Gruppe hinzu. Danach kannst du Stoppuhren innerhalb dieser Gruppe erstellen und starten/stoppen."
 }

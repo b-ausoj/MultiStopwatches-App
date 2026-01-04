@@ -13,11 +13,11 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
       elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(
               icon,
@@ -25,11 +25,13 @@ class InfoCard extends StatelessWidget {
             ),
             const SizedBox(width: 16.0),
             Expanded(
-              child: Text(
-                message,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Theme.of(context).colorScheme.onSurface,
+              child: Center(
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
                 ),
               ),
             ),

@@ -480,5 +480,5 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noGroupsHint =>
-      'Um zu beginnen, füge bitte eine Gruppe hinzu. Danach kannst du Stoppuhren innerhalb dieser Gruppe erstellen.';
+      'Stoppuhren werden in Gruppen organisiert. Um zu beginnen, füge bitte eine Gruppe hinzu. Danach kannst du Stoppuhren innerhalb dieser Gruppe erstellen und starten/stoppen.';
 }
