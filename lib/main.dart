@@ -7,12 +7,6 @@ import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/config/app_themes.dart';
 import 'package:multistopwatches/enums/locale_setting.dart';
 
-final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
-
-void main() {
-  runApp(const MyApp());
-}
-
 // TODO: add donation link
 // TODO: write tutorial page => done with info cards on start page => maybe I should add some more info cards
 // TODO: add introduction screen => done with info cards on start page => maybe I should add some more info cards
@@ -29,7 +23,11 @@ void main() {
 // TODO: add tests for all the data persistence so when I change something at the data models, I can be sure that it is backward compatible
 // TODO: add tests for shared preferences service (maybe is same as above?)
 
-// TODO: add changelog to the readme with each release (version number, date, changes made)
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

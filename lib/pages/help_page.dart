@@ -116,6 +116,7 @@ class _HelpPageState extends State<HelpPage> with RouteAware {
             InfoCard(
               message: AppLocalizations.of(context)!.contactHint,
             ),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),
