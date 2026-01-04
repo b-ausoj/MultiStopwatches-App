@@ -38,6 +38,7 @@ ThemeData getLightTheme() {
     useMaterial3: true,
     fontFamily: 'Roboto',
     textTheme: const TextTheme(
+      titleMedium: TextStyle(fontSize: 20),
       bodyLarge: TextStyle(fontSize: 18),
       bodyMedium: TextStyle(fontSize: 16),
     ),
