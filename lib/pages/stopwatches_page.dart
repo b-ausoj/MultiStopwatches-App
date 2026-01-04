@@ -99,26 +99,25 @@ class _StopwatchesPageState extends State<StopwatchesPage>
         child: ReorderableListView(
           buildDefaultDragHandles: _stopwatchesPageController.criterion ==
               SortCriterion.customReordable,
-          footer: AddStopwatchCard(
-              () => _stopwatchesPageController.addStopwatch(context)),
-          children: [
-            if (_stopwatchesPageController.stopwatchCards.isEmpty)
-              InfoCard(
-                key: const ValueKey('info_card_empty'),
-                message: AppLocalizations.of(context)!.noStopwatchesHint,
-              ),
-            if (_stopwatchesPageController.stopwatchCards.isEmpty)
-              InfoCard(
-                key: const ValueKey('info_card_sorting'),
-                message: AppLocalizations.of(context)!.sortingHint,
-              ),
-            if (_stopwatchesPageController.stopwatchCards.isEmpty)
-              InfoCard(
-                key: const ValueKey('info_card_saving'),
-                message: AppLocalizations.of(context)!.savingHint,
-              ),
-            ..._stopwatchesPageController.stopwatchCards,
-          ],
+          footer: Column(
+            children: [
+              if (_stopwatchesPageController.stopwatchCards.isEmpty)
+                InfoCard(
+                  message: AppLocalizations.of(context)!.noStopwatchesHint,
+                ),
+              if (_stopwatchesPageController.stopwatchCards.isEmpty)
+                InfoCard(
+                  message: AppLocalizations.of(context)!.sortingHint,
+                ),
+              if (_stopwatchesPageController.stopwatchCards.isEmpty)
+                InfoCard(
+                  message: AppLocalizations.of(context)!.savingHint,
+                ),
+              AddStopwatchCard(
+                  () => _stopwatchesPageController.addStopwatch(context)),
+            ],
+          ),
+          children: _stopwatchesPageController.stopwatchCards,
           onReorder: (int oldIndex, int newIndex) {
             if (oldIndex < newIndex) {
               newIndex -= 1;
