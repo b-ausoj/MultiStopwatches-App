@@ -84,42 +84,39 @@ class _HelpPageState extends State<HelpPage> with RouteAware {
       ),
       drawer: NavDrawer(
           widget.allGroups, widget.settings, null, widget.sharedPreferencesKey),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              _buildSectionHeader(
-                  AppLocalizations.of(context)!.gettingStartedSection),
-              InfoCard(
-                message: AppLocalizations.of(context)!.noGroupsHint,
-              ),
-              _buildSectionHeader(
-                  AppLocalizations.of(context)!.stopwatchesSection),
-              InfoCard(
-                message: AppLocalizations.of(context)!.noStopwatchesHint,
-              ),
-              InfoCard(
-                message: AppLocalizations.of(context)!.sortingHint,
-              ),
-              InfoCard(
-                message: AppLocalizations.of(context)!.savingHint,
-              ),
-              _buildSectionHeader(
-                  AppLocalizations.of(context)!.recordingsSection),
-              InfoCard(
-                message: AppLocalizations.of(context)!.noRecordingsHint,
-              ),
-              InfoCard(
-                message: AppLocalizations.of(context)!.exportRecordingsHint,
-              ),
-              _buildSectionHeader(AppLocalizations.of(context)!.contactSection),
-              InfoCard(
-                message: AppLocalizations.of(context)!.contactHint,
-              ),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [
+            _buildSectionHeader(
+                AppLocalizations.of(context)!.gettingStartedSection),
+            InfoCard(
+              message: AppLocalizations.of(context)!.noGroupsHint,
+            ),
+            _buildSectionHeader(
+                AppLocalizations.of(context)!.stopwatchesSection),
+            InfoCard(
+              message: AppLocalizations.of(context)!.noStopwatchesHint,
+            ),
+            InfoCard(
+              message: AppLocalizations.of(context)!.sortingHint,
+            ),
+            InfoCard(
+              message: AppLocalizations.of(context)!.savingHint,
+            ),
+            _buildSectionHeader(
+                AppLocalizations.of(context)!.recordingsSection),
+            InfoCard(
+              message: AppLocalizations.of(context)!.noRecordingsHint,
+            ),
+            InfoCard(
+              message: AppLocalizations.of(context)!.exportRecordingsHint,
+            ),
+            _buildSectionHeader(AppLocalizations.of(context)!.contactSection),
+            InfoCard(
+              message: AppLocalizations.of(context)!.contactHint,
+            ),
+          ],
         ),
       ),
     );
