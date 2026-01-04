@@ -50,7 +50,7 @@ Built with Flutter for web deployment. Hosted on Vercel.
 
 ## Development Disclosure
 
-The core application, including all features, UI/UX design, state management, and business logic, was developed independently without AI assistance throughout 2024 and earlier. In late 2025, AI tools (Claude) were used for specific technical tasks:
+The core application, including all features, UI/UX design, state management, and business logic, was developed independently by me without AI assistance in 2024 and earlier. In late 2025, AI tools (Claude) were used for some tasks:
 
 - Migrating the app from Android-only to web deployment
 - Resolving Flutter framework and package compatibility issues after version updates
