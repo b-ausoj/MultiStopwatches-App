@@ -484,5 +484,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noRecordingsHint =>
-      'No recordings saved yet. To save a stopwatch, tap the three dots menu (⋮) on a stopwatch card or at the top of the stopwatch page, then select \'Save\'. Saved recordings will appear here and can be exported via the three dots menu (⋮) on each recording group.';
+      'No recordings saved yet. To save a stopwatch, tap the three dots menu (⋮) on a stopwatch card or at the top of the stopwatch page, then select \'Save\'.';
+
+  @override
+  String get sortingHint =>
+      'Stopwatches are automatically sorted by the selected criterion: \'Name\' (alphabetically), \'Longest Time\' (by total time), \'Longest Lap Time\' (by current lap), or \'Custom\' (manual drag & drop). Change the sorting via the three dots menu (⋮) at the top and select \'Change sorting\'.';
+
+  @override
+  String get savingHint =>
+      'To save a stopwatch, tap the three dots menu (⋮) on a stopwatch card or at the top of the page, then select \'Save\'. This stores the current time and laps as a recording. You can find all saved recordings in the \'Recordings\' page (accessible via the side menu).';
+
+  @override
+  String get exportRecordingsHint =>
+      'Saved recordings can be exported as CSV files via the three dots menu (⋮) on each recording group.';
 }

@@ -61,6 +61,10 @@ class _RecordingsPageState extends State<RecordingsPage>
                   InfoCard(
                     message: AppLocalizations.of(context)!.noRecordingsHint,
                   ),
+                  InfoCard(
+                    message:
+                        AppLocalizations.of(context)!.exportRecordingsHint,
+                  ),
                 ],
               )
             : ListView.builder(

@@ -488,5 +488,17 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noRecordingsHint =>
-      'Noch keine Aufzeichnungen gespeichert. Um eine Stoppuhr zu speichern, tippe auf das Drei-Punkte-Menü (⋮) auf einer Stoppuhr-Karte oder oben auf der Stoppuhrseite und wähle \'Speichern\'. Gespeicherte Aufzeichnungen erscheinen hier und können über das Drei-Punkte-Menü (⋮) jeder Aufzeichnungsgruppe exportiert werden.';
+      'Noch keine Aufzeichnungen gespeichert. Um eine Stoppuhr zu speichern, tippe auf das Drei-Punkte-Menü (⋮) auf einer Stoppuhr-Karte oder oben auf der Stoppuhrseite und wähle \'Speichern\'.';
+
+  @override
+  String get sortingHint =>
+      'Stoppuhren werden automatisch nach dem gewählten Kriterium sortiert: \'Name\' (alphabetisch), \'Längste Zeit\' (nach Gesamtzeit), \'Längste Rundenzeit\' (nach aktueller Runde) oder \'Benutzerdefiniert\' (manuelles Drag & Drop). Ändere die Sortierung über das Drei-Punkte-Menü (⋮) oben und wähle \'Sortierung ändern\'.';
+
+  @override
+  String get savingHint =>
+      'Um eine Stoppuhr zu speichern, tippe auf das Drei-Punkte-Menü (⋮) auf einer Stoppuhr-Karte oder oben auf der Seite und wähle \'Speichern\'. Dies speichert die aktuelle Zeit und Runden als Aufzeichnung. Alle gespeicherten Aufzeichnungen findest du auf der \'Aufzeichnungen\'-Seite (erreichbar über das Seitenmenü).';
+
+  @override
+  String get exportRecordingsHint =>
+      'Gespeicherte Aufzeichnungen können als CSV-Dateien über das Drei-Punkte-Menü (⋮) jeder Aufzeichnungsgruppe exportiert werden.';
 }
