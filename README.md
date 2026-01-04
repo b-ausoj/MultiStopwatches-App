@@ -50,10 +50,11 @@ The following enhancements are planned for future releases:
 
 - [ ] **Font Size Customization**: Adjustable font sizes for stopwatch display via settings slider
 - [ ] **Keyboard Shortcuts**: Advanced feature for web/desktop users to control stopwatches with customizable keyboard shortcuts (space for start all, custom keys for individual stopwatch control)
-- [ ] **Help Center**: Comprehensive help page with FAQ and information cards
+- [ ] **Help Center**: A help page with FAQ and information cards
 - [ ] **Performance Optimizations**: Enhanced live update rendering using AnimationWidgets and Listeners
 - [ ] **Donation Support**: Add a way for users to support the project
 - [ ] **German SEO**: Localized search engine optimization for German-speaking users
+- [ ] **Data Persistence Tests**: Add tests for data persistence and shared preferences (to ensure backward compatibility of the data models)
 
 ## Technology
 

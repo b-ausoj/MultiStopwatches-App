@@ -31,7 +31,6 @@ void main() {
 // TODO: add tests for all the data persistence so when I change something at the data models, I can be sure that it is backward compatible
 // TODO: add tests for shared preferences service (maybe is same as above?)
 
-// TODO: add these improvements/features/suggestions to the readme
 // TODO: add changelog to the readme with each release (version number, date, changes made)
 
 class MyApp extends StatefulWidget {
