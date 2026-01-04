@@ -937,6 +937,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Export was cancelled.'**
   String get exportCancelled;
+
+  /// No description provided for @noGroupsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'To get started, please add a group. You can then create stopwatches within that group.'**
+  String get noGroupsHint;
 }
 
 class _AppLocalizationsDelegate

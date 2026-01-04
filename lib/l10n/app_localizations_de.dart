@@ -477,4 +477,8 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get exportCancelled => 'Export wurde abgebrochen.';
+
+  @override
+  String get noGroupsHint =>
+      'Um zu beginnen, füge bitte eine Gruppe hinzu. Danach kannst du Stoppuhren innerhalb dieser Gruppe erstellen.';
 }

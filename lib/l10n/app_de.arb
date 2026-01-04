@@ -165,5 +165,7 @@
   "exportFailedBrowser": "Export fehlgeschlagen. Browser hat den Download blockiert.",
   "exportFailedShare": "Export fehlgeschlagen. Datei konnte nicht geteilt werden.",
   "exportFailedEncoding": "Export fehlgeschlagen. Daten konnten nicht kodiert werden.",
-  "exportCancelled": "Export wurde abgebrochen."
+  "exportCancelled": "Export wurde abgebrochen.",
+
+  "noGroupsHint": "Um zu beginnen, füge bitte eine Gruppe hinzu. Danach kannst du Stoppuhren innerhalb dieser Gruppe erstellen."
 }

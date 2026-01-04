@@ -8,6 +8,7 @@ import 'package:multistopwatches/pages/stopwatches_page.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/cards/add_group_card.dart';
+import 'package:multistopwatches/widgets/cards/info_card.dart';
 import 'package:multistopwatches/widgets/dialogs/delete_group_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
@@ -94,6 +95,10 @@ class _StartPageState extends State<StartPage> with RouteAware {
               child: ListView(
                 shrinkWrap: true,
                 children: [
+                  if (_startController.allGroups.isEmpty)
+                    InfoCard(
+                      message: AppLocalizations.of(context)!.noGroupsHint,
+                    ),
                   ..._startController.allGroups.map((GroupModel group) => Card(
                         clipBehavior: Clip.antiAlias,
                         elevation: 0,

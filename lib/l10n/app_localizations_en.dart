@@ -473,4 +473,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exportCancelled => 'Export was cancelled.';
+
+  @override
+  String get noGroupsHint =>
+      'To get started, please add a group. You can then create stopwatches within that group.';
 }

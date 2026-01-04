@@ -224,5 +224,7 @@
   "exportFailedBrowser": "Export failed. Browser blocked the download.",
   "exportFailedShare": "Export failed. Could not share the file.",
   "exportFailedEncoding": "Export failed. Data could not be encoded.",
-  "exportCancelled": "Export was cancelled."
+  "exportCancelled": "Export was cancelled.",
+
+  "noGroupsHint": "To get started, please add a group. You can then create stopwatches within that group."
 }
