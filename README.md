@@ -48,9 +48,9 @@ All data is stored locally in your browser using localStorage. No data is sent t
 
 The following enhancements are planned for future releases:
 
+- [x] **Help Center**: A help page with FAQ and information cards
 - [ ] **Font Size Customization**: Adjustable font sizes for stopwatch display via settings slider
 - [ ] **Keyboard Shortcuts**: Advanced feature for web/desktop users to control stopwatches with customizable keyboard shortcuts (space for start all, custom keys for individual stopwatch control)
-- [ ] **Help Center**: A help page with FAQ and information cards
 - [ ] **Performance Optimizations**: Enhanced live update rendering using AnimationWidgets and Listeners
 - [ ] **Donation Support**: Add a way for users to support the project
 - [ ] **German SEO**: Localized search engine optimization for German-speaking users

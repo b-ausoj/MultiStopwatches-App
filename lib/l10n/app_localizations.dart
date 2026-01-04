@@ -973,6 +973,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved recordings can be exported as CSV files via the three dots menu (⋮) on each recording group.'**
   String get exportRecordingsHint;
+
+  /// No description provided for @help.
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get help;
+
+  /// No description provided for @helpPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & FAQ'**
+  String get helpPageTitle;
+
+  /// No description provided for @gettingStartedSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Getting Started'**
+  String get gettingStartedSection;
+
+  /// No description provided for @stopwatchesSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopwatches'**
+  String get stopwatchesSection;
+
+  /// No description provided for @recordingsSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Recordings'**
+  String get recordingsSection;
+
+  /// No description provided for @contactSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contactSection;
+
+  /// No description provided for @contactHint.
+  ///
+  /// In en, this message translates to:
+  /// **'If you have any questions or problems, please contact me via the About page.'**
+  String get contactHint;
 }
 
 class _AppLocalizationsDelegate

@@ -14,7 +14,6 @@ void main() {
 }
 
 // TODO: add donation link
-// TODO: write help page => collection of info cards and some FAQ => add separate page for it
 // TODO: write tutorial page => done with info cards on start page
 // TODO: add introduction screen => done with info cards on start page
 

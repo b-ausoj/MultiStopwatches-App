@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/pages/about_page.dart';
+import 'package:multistopwatches/pages/help_page.dart';
 import 'package:multistopwatches/pages/recordings_page.dart';
 import 'package:multistopwatches/pages/settings_page.dart';
 import 'package:multistopwatches/pages/stopwatches_page.dart';
@@ -63,6 +64,9 @@ class _NavDrawerState extends State<NavDrawer> {
               icon: const Icon(Icons.settings_outlined),
               label: Text(AppLocalizations.of(context)!.settings)),
           NavigationDrawerDestination(
+              icon: const Icon(Icons.help_outline),
+              label: Text(AppLocalizations.of(context)!.help)),
+          NavigationDrawerDestination(
               icon: const Icon(Icons.info_outlined),
               label: Text(AppLocalizations.of(context)!.about)),
         ]);
@@ -121,6 +125,15 @@ class _NavDrawerState extends State<NavDrawer> {
               .then((value) => widget.onNavigationComplete?.call());
           break;
         case 3:
+          // help
+          Navigator.pop(context);
+          Navigator.of(context)
+              .push(MaterialPageRoute(
+                  builder: (context) => HelpPage(widget.allGroups,
+                      widget.settings, widget.sharedPreferencesKey)))
+              .then((value) => widget.onNavigationComplete?.call());
+          break;
+        case 4:
           // about
           Navigator.pop(context);
           Navigator.of(context)

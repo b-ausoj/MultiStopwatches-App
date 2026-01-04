@@ -497,4 +497,26 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get exportRecordingsHint =>
       'Saved recordings can be exported as CSV files via the three dots menu (⋮) on each recording group.';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get helpPageTitle => 'Help & FAQ';
+
+  @override
+  String get gettingStartedSection => 'Getting Started';
+
+  @override
+  String get stopwatchesSection => 'Stopwatches';
+
+  @override
+  String get recordingsSection => 'Recordings';
+
+  @override
+  String get contactSection => 'Contact';
+
+  @override
+  String get contactHint =>
+      'If you have any questions or problems, please contact me via the About page.';
 }
