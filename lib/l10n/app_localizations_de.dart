@@ -481,4 +481,12 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get noGroupsHint =>
       'Stoppuhren werden in Gruppen organisiert. Um zu beginnen, füge bitte eine Gruppe hinzu. Danach kannst du Stoppuhren innerhalb dieser Gruppe erstellen und starten/stoppen.';
+
+  @override
+  String get noStopwatchesHint =>
+      'Noch keine Stoppuhren vorhanden. Füge unten deine erste Stoppuhr hinzu, um mit der Zeitmessung zu beginnen.';
+
+  @override
+  String get noRecordingsHint =>
+      'Noch keine Aufzeichnungen gespeichert. Um eine Stoppuhr zu speichern, tippe auf das Drei-Punkte-Menü (⋮) auf einer Stoppuhr-Karte oder oben auf der Stoppuhrseite und wähle \'Speichern\'. Gespeicherte Aufzeichnungen erscheinen hier und können über das Drei-Punkte-Menü (⋮) jeder Aufzeichnungsgruppe exportiert werden.';
 }

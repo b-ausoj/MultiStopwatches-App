@@ -943,6 +943,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Stopwatches are organized in groups. To get started, please add a group. You can then create and start/stop stopwatches within that group.'**
   String get noGroupsHint;
+
+  /// No description provided for @noStopwatchesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'No stopwatches yet. Add your first stopwatch below to start timing.'**
+  String get noStopwatchesHint;
+
+  /// No description provided for @noRecordingsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'No recordings saved yet. To save a stopwatch, tap the three dots menu (⋮) on a stopwatch card or at the top of the stopwatch page, then select \'Save\'. Saved recordings will appear here and can be exported via the three dots menu (⋮) on each recording group.'**
+  String get noRecordingsHint;
 }
 
 class _AppLocalizationsDelegate

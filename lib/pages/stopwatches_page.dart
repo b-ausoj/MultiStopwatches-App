@@ -9,6 +9,7 @@ import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
 import 'package:multistopwatches/widgets/cards/add_stopwatch_card.dart';
+import 'package:multistopwatches/widgets/cards/info_card.dart';
 import 'package:multistopwatches/widgets/dialogs/delete_group_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/rename_dialog.dart';
 import 'package:multistopwatches/widgets/dialogs/sort_dialog.dart';
@@ -100,7 +101,14 @@ class _StopwatchesPageState extends State<StopwatchesPage>
               SortCriterion.customReordable,
           footer: AddStopwatchCard(
               () => _stopwatchesPageController.addStopwatch(context)),
-          children: _stopwatchesPageController.stopwatchCards,
+          children: [
+            if (_stopwatchesPageController.stopwatchCards.isEmpty)
+              InfoCard(
+                key: const ValueKey('info_card'),
+                message: AppLocalizations.of(context)!.noStopwatchesHint,
+              ),
+            ..._stopwatchesPageController.stopwatchCards,
+          ],
           onReorder: (int oldIndex, int newIndex) {
             if (oldIndex < newIndex) {
               newIndex -= 1;

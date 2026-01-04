@@ -477,4 +477,12 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get noGroupsHint =>
       'Stopwatches are organized in groups. To get started, please add a group. You can then create and start/stop stopwatches within that group.';
+
+  @override
+  String get noStopwatchesHint =>
+      'No stopwatches yet. Add your first stopwatch below to start timing.';
+
+  @override
+  String get noRecordingsHint =>
+      'No recordings saved yet. To save a stopwatch, tap the three dots menu (⋮) on a stopwatch card or at the top of the stopwatch page, then select \'Save\'. Saved recordings will appear here and can be exported via the three dots menu (⋮) on each recording group.';
 }

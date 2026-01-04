@@ -4,6 +4,7 @@ import 'package:multistopwatches/models/settings_model.dart';
 import 'package:multistopwatches/models/group_model.dart';
 import 'package:multistopwatches/services/shared_preferences_service.dart';
 import 'package:multistopwatches/utils/badge_checking.dart';
+import 'package:multistopwatches/widgets/cards/info_card.dart';
 import 'package:multistopwatches/widgets/dialogs/data_error_dialog.dart';
 import 'package:multistopwatches/widgets/icons/navigation_icon.dart';
 import 'package:multistopwatches/widgets/navigation_drawer.dart';
@@ -54,11 +55,19 @@ class _RecordingsPageState extends State<RecordingsPage>
           widget.allGroups, widget.settings, null, widget.sharedPreferencesKey),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: recordingsPageController.recordingsList.length,
-          itemBuilder: (context, index) =>
-              recordingsPageController.recordingsList[index],
-        ),
+        child: recordingsPageController.recordingsList.isEmpty
+            ? ListView(
+                children: [
+                  InfoCard(
+                    message: AppLocalizations.of(context)!.noRecordingsHint,
+                  ),
+                ],
+              )
+            : ListView.builder(
+                itemCount: recordingsPageController.recordingsList.length,
+                itemBuilder: (context, index) =>
+                    recordingsPageController.recordingsList[index],
+              ),
       ),
     );
   }
