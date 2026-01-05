@@ -34,6 +34,7 @@ class _RenameDialogState extends State<RenameDialog> {
     _errorMessage = _validateName(widget.initialName);
 
     // TODO: unsure if this Claude logic is good here or if we should revert the changes
+    // TODO: check the name validation / duplication logic
 
     // Select all text after the widget is built and focused
     // Skip on iOS due to Flutter bugs with keyboard and selection

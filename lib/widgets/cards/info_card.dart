@@ -26,6 +26,7 @@ class InfoCard extends StatelessWidget {
             const SizedBox(width: 16.0),
             Expanded(
               child: Center(
+                // TODO: add some padding to make the card a big bigger
                 child: Text(
                   message,
                   style: TextStyle(

@@ -10,6 +10,7 @@ import 'package:multistopwatches/enums/locale_setting.dart';
 // TODO: add donation link
 // TODO: write tutorial page => done with info cards on start page => maybe I should add some more info cards
 // TODO: add introduction screen => done with info cards on start page => maybe I should add some more info cards
+// TODO: improve the help page with more detailed info and images on how to use the app
 
 // TODO: add info popup dialog on how to add the app to homescreen (PWA)
 // TODO: maybe could use AnimationWidgets and Listeners to optimize the live updates of the stopwatch time display
