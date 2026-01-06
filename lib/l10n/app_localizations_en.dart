@@ -302,14 +302,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tncIntro =>
-      'Please read these terms and conditions (\"terms\") carefully before using the MultiStopwatches web application (\"service\") operated by Josua B. (\"us\", \"we\", or \"our\").';
+      'Please read these terms and conditions (\"terms\") carefully before using the MultiStopwatches web application (\"service\") operated by Josua (\"us\", \"we\", or \"our\").';
 
   @override
   String get tncTermsOfUseTitle => 'Terms of Use';
 
   @override
   String get tncTermsOfUse =>
-      'By accessing or using the web application, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You\'re not allowed to copy or modify the app, any part of the app, or our trademarks in any way. You\'re not allowed to make derivative versions of the app. The app itself, and all the trademarks, copyright, and other intellectual property rights related to it, belong to Josua B.';
+      'By accessing or using the web application, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You\'re not allowed to copy or modify the app, any part of the app, or our trademarks in any way. You\'re not allowed to make derivative versions of the app. The app itself, and all the trademarks, copyright, and other intellectual property rights related to it, belong to Josua.';
 
   @override
   String get tncServicePricingTitle => 'Service and Pricing';
@@ -337,7 +337,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tncLimitationLiability =>
-      'Josua B is not responsible for any direct, indirect, incidental, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service. We do not warrant that:';
+      'Josua is not responsible for any direct, indirect, incidental, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service. We do not warrant that:';
 
   @override
   String get tncLimitationLiabilityPoint1 =>

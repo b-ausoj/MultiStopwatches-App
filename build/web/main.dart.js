@@ -96578,9 +96578,9 @@ gYt(){return"Semikolon ;"},
 gYu(){return"Leerzeichen"},
 ga2q(){return"Allgemeine Gesch\xe4ftsbedingungen f\xfcr MultiStopwatches"},
 ga2f(){return"Letzte Aktualisierung: 29.12.2025"},
-ga2e(){return'Bitte lies diese Allgemeinen Gesch\xe4ftsbedingungen ("Bedingungen") sorgf\xe4ltig durch, bevor du die MultiStopwatches-Webanwendung ("Dienst") verwendest, die von Josua B. ("uns", "wir" oder "unser") betrieben wird.'},
+ga2e(){return'Bitte lies diese Allgemeinen Gesch\xe4ftsbedingungen ("Bedingungen") sorgf\xe4ltig durch, bevor du die MultiStopwatches-Webanwendung ("Dienst") verwendest, die von Josua ("uns", "wir" oder "unser") betrieben wird.'},
 ga2p(){return"Nutzungsbedingungen"},
-ga2o(){return"Durch den Zugriff auf oder die Nutzung der Webanwendung gelten diese Bedingungen automatisch f\xfcr dich \u2013 du solltest sie daher sorgf\xe4ltig lesen, bevor du die App verwendest. Es ist dir nicht gestattet, die App, Teile der App oder unsere Markenzeichen in irgendeiner Weise zu kopieren oder zu modifizieren. Es ist dir nicht gestattet, abgeleitete Versionen der App zu erstellen. Die App selbst sowie alle damit verbundenen Markenzeichen, Urheberrechte und andere geistige Eigentumsrechte geh\xf6ren Josua B."},
+ga2o(){return"Durch den Zugriff auf oder die Nutzung der Webanwendung gelten diese Bedingungen automatisch f\xfcr dich \u2013 du solltest sie daher sorgf\xe4ltig lesen, bevor du die App verwendest. Es ist dir nicht gestattet, die App, Teile der App oder unsere Markenzeichen in irgendeiner Weise zu kopieren oder zu modifizieren. Es ist dir nicht gestattet, abgeleitete Versionen der App zu erstellen. Die App selbst sowie alle damit verbundenen Markenzeichen, Urheberrechte und andere geistige Eigentumsrechte geh\xf6ren Josua."},
 ga2n(){return"Dienst und Preisgestaltung"},
 ga2m(){return"MultiStopwatches wird derzeit kostenlos als Webanwendung bereitgestellt. Wir behalten uns das Recht vor, optionale Spendenfunktionen einzuf\xfchren oder das Preismodell in Zukunft zu \xe4ndern, mit vorheriger Benachrichtigung der Nutzer."},
 ga2s(){return"Deine Verantwortlichkeiten"},
@@ -96588,7 +96588,7 @@ ga2r(){return"Du bist daf\xfcr verantwortlich, sicherzustellen, dass dein Browse
 ga2b(){return"Datenspeicherung"},
 ga2a(){return"Alle Anwendungsdaten werden ausschlie\xdflich im lokalen Speicher deines Browsers gespeichert. Es werden keine Daten an unsere Server \xfcbertragen oder dort gespeichert. Du bist f\xfcr deine eigene Datenverwaltung verantwortlich, einschlie\xdflich Backups. Das L\xf6schen deiner Browserdaten l\xf6scht alle Anwendungsdaten."},
 ga2l(){return"Haftungsbeschr\xe4nkung"},
-ga2g(){return"Josua B ist nicht verantwortlich f\xfcr direkte, indirekte, zuf\xe4llige, Folge- oder Strafsch\xe4den, einschlie\xdflich, aber nicht beschr\xe4nkt auf, Verlust von Gewinnen, Daten, Nutzung, Goodwill oder anderen immateriellen Verlusten, die sich aus deinem Zugriff auf oder der Nutzung von oder der Unf\xe4higkeit, auf den Dienst zuzugreifen oder ihn zu nutzen, ergeben. Wir garantieren nicht, dass:"},
+ga2g(){return"Josua ist nicht verantwortlich f\xfcr direkte, indirekte, zuf\xe4llige, Folge- oder Strafsch\xe4den, einschlie\xdflich, aber nicht beschr\xe4nkt auf, Verlust von Gewinnen, Daten, Nutzung, Goodwill oder anderen immateriellen Verlusten, die sich aus deinem Zugriff auf oder der Nutzung von oder der Unf\xe4higkeit, auf den Dienst zuzugreifen oder ihn zu nutzen, ergeben. Wir garantieren nicht, dass:"},
 ga2h(){return"\u2022der Dienst ununterbrochen, sicher oder zu einem bestimmten Zeitpunkt oder an einem bestimmten Ort verf\xfcgbar sein wird;"},
 ga2i(){return"\u2022Fehler oder M\xe4ngel korrigiert werden;"},
 ga2j(){return"\u2022der Dienst frei von Viren oder anderen sch\xe4dlichen Komponenten ist;"},
@@ -96724,9 +96724,9 @@ gYt(){return"Semicolon ;"},
 gYu(){return"Space"},
 ga2q(){return"Terms and Conditions for MultiStopwatches"},
 ga2f(){return"Last updated: 29.12.2025"},
-ga2e(){return'Please read these terms and conditions ("terms") carefully before using the MultiStopwatches web application ("service") operated by Josua B. ("us", "we", or "our").'},
+ga2e(){return'Please read these terms and conditions ("terms") carefully before using the MultiStopwatches web application ("service") operated by Josua ("us", "we", or "our").'},
 ga2p(){return"Terms of Use"},
-ga2o(){return"By accessing or using the web application, these terms will automatically apply to you \u2013 you should make sure therefore that you read them carefully before using the app. You're not allowed to copy or modify the app, any part of the app, or our trademarks in any way. You're not allowed to make derivative versions of the app. The app itself, and all the trademarks, copyright, and other intellectual property rights related to it, belong to Josua B."},
+ga2o(){return"By accessing or using the web application, these terms will automatically apply to you \u2013 you should make sure therefore that you read them carefully before using the app. You're not allowed to copy or modify the app, any part of the app, or our trademarks in any way. You're not allowed to make derivative versions of the app. The app itself, and all the trademarks, copyright, and other intellectual property rights related to it, belong to Josua."},
 ga2n(){return"Service and Pricing"},
 ga2m(){return"MultiStopwatches is currently provided free of charge as a web application. We reserve the right to introduce optional donation features or change the pricing model in the future, with prior notice to users."},
 ga2s(){return"Your Responsibilities"},
@@ -96734,7 +96734,7 @@ ga2r(){return"You are responsible for ensuring that your browser is compatible w
 ga2b(){return"Data Storage"},
 ga2a(){return"All application data is stored exclusively in your browser's local storage. No data is transmitted to or stored on our servers. You are responsible for your own data management, including backups. Clearing your browser data will delete all application data."},
 ga2l(){return"Limitation of Liability"},
-ga2g(){return"Josua B is not responsible for any direct, indirect, incidental, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service. We do not warrant that:"},
+ga2g(){return"Josua is not responsible for any direct, indirect, incidental, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service. We do not warrant that:"},
 ga2h(){return"\u2022the service will function uninterrupted, secure or available at any particular time or location;"},
 ga2i(){return"\u2022any errors or defects will be corrected;"},
 ga2j(){return"\u2022the service is free of viruses or other harmful components;"},
@@ -96921,7 +96921,7 @@ q=A.Z(A.W(a,B.k,k).gWy(),l,l,l,l,B.dh,l)
 p=A.Z(A.W(a,B.k,k).gXO(),l,l,l,l,l,l)
 o=A.H(a)
 n=t.p
-return A.qW(j,A.fq(A.dC(A.b([B.k1,r,B.k1,new A.b2(B.bw,q,l),new A.vr("josua.bu@gmail.com",l),B.k1,A.Ux(B.Oq,p,new A.arG(),A.m4(l,l,A.H(a).x1.b,l,l,l,l,l,l,l,l,o.ax.b,l,l,l,l,l,B.lx,l,l,l,l,l,l,l,l)),B.k2,A.cC(A.b([A.fZ(!1,l,!0,A.Z(A.W(a,B.k,k).gLQ(),l,l,l,l,l,l),l,!0,l,l,l,l,l,l,l,l,l,new A.arH(a),l,l,l,l,l),B.aby,A.fZ(!1,l,!0,A.Z(A.W(a,B.k,k).gLo(),l,l,l,l,l,l),l,!0,l,l,l,l,l,l,l,l,l,new A.arI(a),l,l,l,l,l)],n),B.G,B.mM,B.X,0),B.Hy],n),B.G,B.E,B.X),l,l),s,l,!1)}}
+return A.qW(j,A.fq(A.dC(A.b([B.k1,r,B.k1,new A.b2(B.bw,q,l),new A.vr("multistopwatchesapp@gmail.com",l),B.k1,A.Ux(B.Oq,p,new A.arG(),A.m4(l,l,A.H(a).x1.b,l,l,l,l,l,l,l,l,o.ax.b,l,l,l,l,l,B.lx,l,l,l,l,l,l,l,l)),B.k2,A.cC(A.b([A.fZ(!1,l,!0,A.Z(A.W(a,B.k,k).gLQ(),l,l,l,l,l,l),l,!0,l,l,l,l,l,l,l,l,l,new A.arH(a),l,l,l,l,l),B.aby,A.fZ(!1,l,!0,A.Z(A.W(a,B.k,k).gLo(),l,l,l,l,l,l),l,!0,l,l,l,l,l,l,l,l,l,new A.arI(a),l,l,l,l,l)],n),B.G,B.mM,B.X,0),B.Hy],n),B.G,B.E,B.X),l,l),s,l,!1)}}
 A.arC.prototype={
 $0(){var s=this.a,r=this.b,q=J.bA(r)
 s.d=A.iD(q.h(r,0))
@@ -97817,11 +97817,11 @@ I(a){var s,r=null,q=A.i3(B.Oe,A.H(a).ax.fy,r,48),p=t.J,o=A.Z(A.W(a,B.k,p).gYf(),
 l=k==null?l.k2:k
 k=A.jI(4)
 s=t.p
-k=A.dC(A.b([n,B.k1,m,B.a63,A.fZ(!1,r,!0,A.tL(r,A.cC(A.b([A.i3(B.O7,A.H(a).ax.b,r,16),B.nx,A.Z("josua.bu@gmail.com",r,r,r,A.ha(r,r,A.H(a).ax.b,r,r,r,r,r,"monospace",r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,r),B.nx,A.i3(B.NU,A.H(a).ax.b,r,14)],s),B.G,B.E,B.aF,0),B.Q,new A.fo(l,r,r,k,r,r,B.cg),r,r,B.pR,r),r,!0,r,r,r,r,r,r,r,r,r,new A.a8P(a),r,r,r,r,r)],s),B.bK,B.E,B.aF)
+k=A.dC(A.b([n,B.k1,m,B.a63,A.fZ(!1,r,!0,A.tL(r,A.cC(A.b([A.i3(B.O7,A.H(a).ax.b,r,16),B.nx,A.Z("multistopwatchesapp@gmail.com",r,r,r,A.ha(r,r,A.H(a).ax.b,r,r,r,r,r,"monospace",r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,r),B.nx,A.i3(B.NU,A.H(a).ax.b,r,14)],s),B.G,B.E,B.aF,0),B.Q,new A.fo(l,r,r,k,r,r,B.cg),r,r,B.pR,r),r,!0,r,r,r,r,r,r,r,r,r,new A.a8P(a),r,r,r,r,r)],s),B.bK,B.E,B.aF)
 return A.a6z(A.b([A.o3(!1,A.Z(A.W(a,B.k,p).gL3(),r,r,r,r,r,r),r,r,!0,r,r,r,r,new A.a8Q(a),r,r)],s),k,q,o)}}
 A.a8P.prototype={
 $0(){var s,r=null
-A.yO(new A.p9("josua.bu@gmail.com"))
+A.yO(new A.p9("multistopwatchesapp@gmail.com"))
 s=this.a
 s.aa(t.d).f.km(A.m1(r,r,r,r,r,B.K,r,A.Z(A.W(s,B.k,t.J).gZ2(),r,r,r,r,r,r),r,B.bF,r,r,r,r,r,r,r,r,r,r))},
 $S:0}
@@ -105466,7 +105466,7 @@ B.a4e=new A.CQ(null,null,null,null,null,null,null,null,null,null,null)
 B.a4f=new A.CR(null,null,null,null,null,null,null,null,null,null,null,null)
 B.a4g=new A.CS(null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.a4h=new A.CT(null,null)
-B.GQ=new A.vr("josua.bu@gmail.com",null)
+B.GQ=new A.vr("multistopwatchesapp@gmail.com",null)
 B.aS=new A.ik(0,"tap")
 B.GR=new A.ik(1,"doubleTap")
 B.bn=new A.ik(2,"longPress")
@@ -107144,7 +107144,7 @@ h=[400*d/(d+27.13),400*c/(c+27.13),400*i/(i+27.13)]
 return new A.ark(l,(40*h[0]+20*h[1]+h[2])/20*k,k,k,a1,1,q,m,A.xO(m,0.25),1.48+e)})
 s($,"bbA","hV",()=>new A.CA(A.t(t.aK,A.ai("bb<eG>")),A.ai("CA<qu<@>>")))
 s($,"bb8","aUm",()=>{var q=t.N
-return A.IA(null,"josua.bu@gmail.com",A.b4P(A.aC(["subject","[Feedback] MultiStopwatches App"],q,q)),null,"mailto")})
+return A.IA(null,"multistopwatchesapp@gmail.com",A.b4P(A.aC(["subject","[Feedback] MultiStopwatches App"],q,q)),null,"mailto")})
 s($,"b87","aJI",()=>new A.O())
 r($,"aYT","aSm",()=>{var q=new A.ahM()
 q.EA($.aJI())

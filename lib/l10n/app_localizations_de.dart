@@ -303,14 +303,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get tncIntro =>
-      'Bitte lies diese Allgemeinen Geschäftsbedingungen (\"Bedingungen\") sorgfältig durch, bevor du die MultiStopwatches-Webanwendung (\"Dienst\") verwendest, die von Josua B. (\"uns\", \"wir\" oder \"unser\") betrieben wird.';
+      'Bitte lies diese Allgemeinen Geschäftsbedingungen (\"Bedingungen\") sorgfältig durch, bevor du die MultiStopwatches-Webanwendung (\"Dienst\") verwendest, die von Josua (\"uns\", \"wir\" oder \"unser\") betrieben wird.';
 
   @override
   String get tncTermsOfUseTitle => 'Nutzungsbedingungen';
 
   @override
   String get tncTermsOfUse =>
-      'Durch den Zugriff auf oder die Nutzung der Webanwendung gelten diese Bedingungen automatisch für dich – du solltest sie daher sorgfältig lesen, bevor du die App verwendest. Es ist dir nicht gestattet, die App, Teile der App oder unsere Markenzeichen in irgendeiner Weise zu kopieren oder zu modifizieren. Es ist dir nicht gestattet, abgeleitete Versionen der App zu erstellen. Die App selbst sowie alle damit verbundenen Markenzeichen, Urheberrechte und andere geistige Eigentumsrechte gehören Josua B.';
+      'Durch den Zugriff auf oder die Nutzung der Webanwendung gelten diese Bedingungen automatisch für dich – du solltest sie daher sorgfältig lesen, bevor du die App verwendest. Es ist dir nicht gestattet, die App, Teile der App oder unsere Markenzeichen in irgendeiner Weise zu kopieren oder zu modifizieren. Es ist dir nicht gestattet, abgeleitete Versionen der App zu erstellen. Die App selbst sowie alle damit verbundenen Markenzeichen, Urheberrechte und andere geistige Eigentumsrechte gehören Josua.';
 
   @override
   String get tncServicePricingTitle => 'Dienst und Preisgestaltung';
@@ -338,7 +338,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get tncLimitationLiability =>
-      'Josua B ist nicht verantwortlich für direkte, indirekte, zufällige, Folge- oder Strafschäden, einschließlich, aber nicht beschränkt auf, Verlust von Gewinnen, Daten, Nutzung, Goodwill oder anderen immateriellen Verlusten, die sich aus deinem Zugriff auf oder der Nutzung von oder der Unfähigkeit, auf den Dienst zuzugreifen oder ihn zu nutzen, ergeben. Wir garantieren nicht, dass:';
+      'Josua ist nicht verantwortlich für direkte, indirekte, zufällige, Folge- oder Strafschäden, einschließlich, aber nicht beschränkt auf, Verlust von Gewinnen, Daten, Nutzung, Goodwill oder anderen immateriellen Verlusten, die sich aus deinem Zugriff auf oder der Nutzung von oder der Unfähigkeit, auf den Dienst zuzugreifen oder ihn zu nutzen, ergeben. Wir garantieren nicht, dass:';
 
   @override
   String get tncLimitationLiabilityPoint1 =>
